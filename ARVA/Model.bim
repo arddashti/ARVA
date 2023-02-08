@@ -1,0 +1,218 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/192 168 1 28;ARVA_BI",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "192.168.1.28",
+            "database": "ARVA_BI"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "Username": "sa",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "BI DIM_DATE",
+        "columns": [
+          {
+            "name": "Miladi",
+            "dataType": "dateTime",
+            "sourceColumn": "Miladi"
+          },
+          {
+            "name": "Jalali_1",
+            "dataType": "string",
+            "sourceColumn": "Jalali_1"
+          },
+          {
+            "name": "Jalali_2",
+            "dataType": "string",
+            "sourceColumn": "Jalali_2"
+          },
+          {
+            "name": "Miladi_1",
+            "dataType": "dateTime",
+            "sourceColumn": "Miladi_1"
+          },
+          {
+            "name": "jyear",
+            "dataType": "string",
+            "sourceColumn": "jyear"
+          },
+          {
+            "name": "mmonthN",
+            "dataType": "int64",
+            "sourceColumn": "mmonthN"
+          },
+          {
+            "name": "jmonthN",
+            "dataType": "int64",
+            "sourceColumn": "jmonthN"
+          },
+          {
+            "name": "mmonthT",
+            "dataType": "string",
+            "sourceColumn": "mmonthT"
+          },
+          {
+            "name": "jmonthT",
+            "dataType": "string",
+            "sourceColumn": "jmonthT"
+          },
+          {
+            "name": "mnime",
+            "dataType": "string",
+            "sourceColumn": "mnime"
+          },
+          {
+            "name": "jnime",
+            "dataType": "string",
+            "sourceColumn": "jnime"
+          },
+          {
+            "name": "JquarterN",
+            "dataType": "int64",
+            "sourceColumn": "JquarterN"
+          },
+          {
+            "name": "JQuarterT",
+            "dataType": "string",
+            "sourceColumn": "JQuarterT"
+          },
+          {
+            "name": "MquarterN",
+            "dataType": "int64",
+            "sourceColumn": "MquarterN"
+          },
+          {
+            "name": "JWeekDay",
+            "dataType": "string",
+            "sourceColumn": "JWeekDay"
+          },
+          {
+            "name": "MWeekDay",
+            "dataType": "string",
+            "sourceColumn": "MWeekDay"
+          },
+          {
+            "name": "MWeekNum",
+            "dataType": "int64",
+            "sourceColumn": "MWeekNum"
+          },
+          {
+            "name": "JWeekNum",
+            "dataType": "int64",
+            "sourceColumn": "JWeekNum"
+          },
+          {
+            "name": "date_Counter",
+            "dataType": "int64",
+            "sourceColumn": "date_Counter"
+          },
+          {
+            "name": "Is Holiday",
+            "dataType": "string",
+            "sourceColumn": "Is Holiday"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    BI_DIM_DATE = Source{[Schema=\"BI\",Item=\"DIM_DATE\"]}[Data]",
+                "in",
+                "    BI_DIM_DATE"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "BI DIM_Geographic",
+        "columns": [
+          {
+            "name": "Id",
+            "dataType": "int64",
+            "sourceColumn": "Id"
+          },
+          {
+            "name": "StateFars",
+            "dataType": "string",
+            "sourceColumn": "StateFars"
+          },
+          {
+            "name": "StateEng",
+            "dataType": "string",
+            "sourceColumn": "StateEng"
+          },
+          {
+            "name": "CityFars",
+            "dataType": "string",
+            "sourceColumn": "CityFars"
+          },
+          {
+            "name": "CityEng",
+            "dataType": "string",
+            "sourceColumn": "CityEng"
+          },
+          {
+            "name": "Lat",
+            "dataType": "double",
+            "sourceColumn": "Lat"
+          },
+          {
+            "name": "Long",
+            "dataType": "double",
+            "sourceColumn": "Long"
+          },
+          {
+            "name": "StateCity",
+            "dataType": "string",
+            "sourceColumn": "StateCity"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    BI_DIM_Geographic = Source{[Schema=\"BI\",Item=\"DIM_Geographic\"]}[Data]",
+                "in",
+                "    BI_DIM_Geographic"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
