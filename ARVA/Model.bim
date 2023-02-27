@@ -7,6 +7,7 @@
       {
         "type": "structured",
         "name": "SQL/192 168 1 28;ARVA_BI",
+        "description": "اتصال به دیتاورهوس جدید که برای اتصال به سیستم جدید طراحی شده است",
         "connectionDetails": {
           "protocol": "tds",
           "address": {
@@ -18,6 +19,8 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -26,26 +29,19 @@
     "tables": [
       {
         "name": "BI DIM_DATE",
+        "description": "جدول تقویم",
         "columns": [
           {
             "name": "Miladi",
             "dataType": "dateTime",
+            "description": "تاریخ میلادی",
             "sourceColumn": "Miladi"
           },
           {
             "name": "Jalali_1",
             "dataType": "string",
+            "description": "تاریخ شمسی",
             "sourceColumn": "Jalali_1"
-          },
-          {
-            "name": "Jalali_2",
-            "dataType": "string",
-            "sourceColumn": "Jalali_2"
-          },
-          {
-            "name": "Miladi_1",
-            "dataType": "dateTime",
-            "sourceColumn": "Miladi_1"
           },
           {
             "name": "jyear",
@@ -53,68 +49,45 @@
             "sourceColumn": "jyear"
           },
           {
-            "name": "mmonthN",
-            "dataType": "int64",
-            "sourceColumn": "mmonthN"
-          },
-          {
             "name": "jmonthN",
             "dataType": "int64",
+            "description": "شماره ماه شمسی",
             "sourceColumn": "jmonthN"
-          },
-          {
-            "name": "mmonthT",
-            "dataType": "string",
-            "sourceColumn": "mmonthT"
           },
           {
             "name": "jmonthT",
             "dataType": "string",
+            "description": "نام مه شمسی",
             "sourceColumn": "jmonthT"
-          },
-          {
-            "name": "mnime",
-            "dataType": "string",
-            "sourceColumn": "mnime"
           },
           {
             "name": "jnime",
             "dataType": "string",
+            "description": "نام نیمه سال شمسی",
             "sourceColumn": "jnime"
           },
           {
             "name": "JquarterN",
             "dataType": "int64",
+            "description": "شماره فصل شمسی",
             "sourceColumn": "JquarterN"
           },
           {
             "name": "JQuarterT",
             "dataType": "string",
+            "description": "نام فصل شمسی",
             "sourceColumn": "JQuarterT"
-          },
-          {
-            "name": "MquarterN",
-            "dataType": "int64",
-            "sourceColumn": "MquarterN"
           },
           {
             "name": "JWeekDay",
             "dataType": "string",
+            "description": "روز هفته شمسی",
             "sourceColumn": "JWeekDay"
-          },
-          {
-            "name": "MWeekDay",
-            "dataType": "string",
-            "sourceColumn": "MWeekDay"
-          },
-          {
-            "name": "MWeekNum",
-            "dataType": "int64",
-            "sourceColumn": "MWeekNum"
           },
           {
             "name": "JWeekNum",
             "dataType": "int64",
+            "description": "شماره روز هفته",
             "sourceColumn": "JWeekNum"
           },
           {
@@ -125,6 +98,7 @@
           {
             "name": "Is Holiday",
             "dataType": "string",
+            "description": "جدول مشخص کننده روزهای تعطیل",
             "sourceColumn": "Is Holiday"
           }
         ],
@@ -137,9 +111,11 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    BI_DIM_DATE = Source{[Schema=\"BI\",Item=\"DIM_DATE\"]}[Data]",
+                "    BI_DIM_DATE = Source{[Schema=\"BI\",Item=\"DIM_DATE\"]}[Data],",
+                "    #\"Removed Columns\" = Table.RemoveColumns(BI_DIM_DATE,{\"Jalali_2\", \"Miladi_1\", \"mmonthN\", \"mmonthT\", \"mnime\", \"MquarterN\", \"MWeekDay\", \"MWeekNum\"}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Removed Columns\",\"ي\",\"ی\",Replacer.ReplaceText,{\"jmonthT\", \"jnime\", \"JQuarterT\", \"JWeekDay\"})",
                 "in",
-                "    BI_DIM_DATE"
+                "    #\"Replaced Value\""
               ]
             }
           }
@@ -147,10 +123,12 @@
       },
       {
         "name": "BI DIM_Geographic",
+        "description": "جدول مشخصات شهر ها و استان ها",
         "columns": [
           {
             "name": "Id",
             "dataType": "int64",
+            "description": "id شهر",
             "sourceColumn": "Id"
           },
           {
@@ -159,19 +137,10 @@
             "sourceColumn": "StateFars"
           },
           {
-            "name": "StateEng",
-            "dataType": "string",
-            "sourceColumn": "StateEng"
-          },
-          {
             "name": "CityFars",
             "dataType": "string",
+            "description": "نام شهر فارسی",
             "sourceColumn": "CityFars"
-          },
-          {
-            "name": "CityEng",
-            "dataType": "string",
-            "sourceColumn": "CityEng"
           },
           {
             "name": "Lat",
@@ -182,11 +151,6 @@
             "name": "Long",
             "dataType": "double",
             "sourceColumn": "Long"
-          },
-          {
-            "name": "StateCity",
-            "dataType": "string",
-            "sourceColumn": "StateCity"
           }
         ],
         "partitions": [
@@ -198,13 +162,216 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    BI_DIM_Geographic = Source{[Schema=\"BI\",Item=\"DIM_Geographic\"]}[Data]",
+                "    BI_DIM_Geographic = Source{[Schema=\"BI\",Item=\"DIM_Geographic\"]}[Data],",
+                "    #\"Removed Columns\" = Table.RemoveColumns(BI_DIM_Geographic,{\"CityEng\", \"StateEng\", \"StateCity\"}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Removed Columns\",\"ي\",\"ی\",Replacer.ReplaceText,{\"StateFars\", \"CityFars\"})",
                 "in",
-                "    BI_DIM_Geographic"
+                "    #\"Replaced Value\""
               ]
             }
           }
         ]
+      },
+      {
+        "name": "VN Dim_Stock",
+        "description": "جدول مشخصات انبارها",
+        "columns": [
+          {
+            "name": "StockDC_ID",
+            "dataType": "int64",
+            "sourceColumn": "StockDC_ID"
+          },
+          {
+            "name": "StockDCName",
+            "dataType": "string",
+            "sourceColumn": "StockDCName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Dim_Stock = Source{[Schema=\"VN\",Item=\"Dim_Stock\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Dim_Stock,\"ي\",\"ی\",Replacer.ReplaceText,{\"StockDCName\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "VN Dim_Goods",
+        "description": "جدول مشخصات کالاها",
+        "columns": [
+          {
+            "name": "Goods_ID",
+            "dataType": "int64",
+            "description": "id محصول",
+            "sourceColumn": "Goods_ID"
+          },
+          {
+            "name": "GoodsCode",
+            "dataType": "string",
+            "description": "کد تعریف شده کالا",
+            "sourceColumn": "GoodsCode"
+          },
+          {
+            "name": "GoodsName",
+            "dataType": "string",
+            "description": "نام کالا",
+            "sourceColumn": "GoodsName"
+          },
+          {
+            "name": "GoodsGroupName",
+            "dataType": "string",
+            "description": "نام دسته بندی فرعی کالا",
+            "sourceColumn": "GoodsGroupName"
+          },
+          {
+            "name": "GoodsGroupName_Parent",
+            "dataType": "string",
+            "description": "نام دسه بندی اصلی کالا",
+            "sourceColumn": "GoodsGroupName_Parent"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Dim_Goods = Source{[Schema=\"VN\",Item=\"Dim_Goods\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Dim_Goods,\"ي\",\"ی\",Replacer.ReplaceText,{\"GoodsName\", \"GoodsGroupName\", \"GoodsGroupName_Parent\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "VN Fact_int_Vocher_Itm_Qty",
+        "description": "جدول موجودی هر کالا در هر انبار براساس داده های سندهای رسید انبار",
+        "columns": [
+          {
+            "name": "tblVocherItm_ID",
+            "dataType": "int64",
+            "sourceColumn": "tblVocherItm_ID"
+          },
+          {
+            "name": "GoodsRef",
+            "dataType": "int64",
+            "sourceColumn": "GoodsRef"
+          },
+          {
+            "name": "TotalQty",
+            "dataType": "double",
+            "sourceColumn": "TotalQty"
+          },
+          {
+            "name": "StockDCRef",
+            "dataType": "int64",
+            "sourceColumn": "StockDCRef"
+          },
+          {
+            "name": "VocherNo",
+            "dataType": "int64",
+            "sourceColumn": "VocherNo"
+          },
+          {
+            "name": "VocherDate",
+            "dataType": "string",
+            "sourceColumn": "VocherDate"
+          },
+          {
+            "name": "VocherTypeName",
+            "dataType": "string",
+            "sourceColumn": "VocherTypeName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Fact_int_Vocher_Itm_Qty = Source{[Schema=\"VN\",Item=\"Fact_int_Vocher_Itm_Qty\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Fact_int_Vocher_Itm_Qty,\"ي\",\"ی\",Replacer.ReplaceText,{\"VocherTypeName\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "BI last_refresh_time_knime",
+        "description": "جدول نشان دهنده آخرین تاریخ و زمان رفرش",
+        "columns": [
+          {
+            "name": "Time",
+            "dataType": "string",
+            "description": "زمان آخرین رفرش گزارشات",
+            "sourceColumn": "Time"
+          },
+          {
+            "name": "Date",
+            "dataType": "string",
+            "description": "تاریخ آخرین رفرش گزارشات",
+            "sourceColumn": "Date"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    BI_last_refresh_time_knime = Source{[Schema=\"BI\",Item=\"last_refresh_time_knime\"]}[Data]",
+                "in",
+                "    BI_last_refresh_time_knime"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "6baeca40-a82c-4403-998d-6b541a21619d",
+        "fromTable": "VN Fact_int_Vocher_Itm_Qty",
+        "fromColumn": "GoodsRef",
+        "toTable": "VN Dim_Goods",
+        "toColumn": "Goods_ID"
+      },
+      {
+        "name": "f5fe40bb-4ce0-429b-8d9f-43893bcd0560",
+        "fromTable": "VN Fact_int_Vocher_Itm_Qty",
+        "fromColumn": "StockDCRef",
+        "toTable": "VN Dim_Stock",
+        "toColumn": "StockDC_ID"
+      },
+      {
+        "name": "5b25d755-6830-4be1-a22b-4080b33a81bd",
+        "fromTable": "VN Fact_int_Vocher_Itm_Qty",
+        "fromColumn": "VocherDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "annotations": [
