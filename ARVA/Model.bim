@@ -267,36 +267,43 @@
           {
             "name": "tblVocherItm_ID",
             "dataType": "int64",
+            "description": "id سند های انبار",
             "sourceColumn": "tblVocherItm_ID"
           },
           {
             "name": "GoodsRef",
             "dataType": "int64",
+            "description": "id کالا",
             "sourceColumn": "GoodsRef"
           },
           {
             "name": "TotalQty",
             "dataType": "double",
+            "description": "تعداد ورودی یا خروجی",
             "sourceColumn": "TotalQty"
           },
           {
             "name": "StockDCRef",
             "dataType": "int64",
+            "description": "شماره انبار",
             "sourceColumn": "StockDCRef"
           },
           {
             "name": "VocherNo",
             "dataType": "int64",
+            "description": "شماره سند رسید انبار",
             "sourceColumn": "VocherNo"
           },
           {
             "name": "VocherDate",
             "dataType": "string",
+            "description": "تاریخ سند رسید انبار",
             "sourceColumn": "VocherDate"
           },
           {
             "name": "VocherTypeName",
             "dataType": "string",
+            "description": "نوع سند رسید انبار",
             "sourceColumn": "VocherTypeName"
           }
         ],
