@@ -381,6 +381,13 @@
         "fromColumn": "VocherDate",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "aa61cb7c-9de1-4f84-94f5-59c190f3872c",
+        "fromTable": "BI last_refresh_time_knime",
+        "fromColumn": "Date",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "annotations": [
