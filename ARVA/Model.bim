@@ -179,11 +179,13 @@
           {
             "name": "StockDC_ID",
             "dataType": "int64",
+            "description": "شماره یونیک انبار id",
             "sourceColumn": "StockDC_ID"
           },
           {
             "name": "StockDCName",
             "dataType": "string",
+            "description": "نام انبار",
             "sourceColumn": "StockDCName"
           }
         ],
@@ -265,36 +267,43 @@
           {
             "name": "tblVocherItm_ID",
             "dataType": "int64",
+            "description": "id سند های انبار",
             "sourceColumn": "tblVocherItm_ID"
           },
           {
             "name": "GoodsRef",
             "dataType": "int64",
+            "description": "id کالا",
             "sourceColumn": "GoodsRef"
           },
           {
             "name": "TotalQty",
             "dataType": "double",
+            "description": "تعداد ورودی یا خروجی",
             "sourceColumn": "TotalQty"
           },
           {
             "name": "StockDCRef",
             "dataType": "int64",
+            "description": "شماره انبار",
             "sourceColumn": "StockDCRef"
           },
           {
             "name": "VocherNo",
             "dataType": "int64",
+            "description": "شماره سند رسید انبار",
             "sourceColumn": "VocherNo"
           },
           {
             "name": "VocherDate",
             "dataType": "string",
+            "description": "تاریخ سند رسید انبار",
             "sourceColumn": "VocherDate"
           },
           {
             "name": "VocherTypeName",
             "dataType": "string",
+            "description": "نوع سند رسید انبار",
             "sourceColumn": "VocherTypeName"
           }
         ],
@@ -412,6 +421,13 @@
         "name": "5b25d755-6830-4be1-a22b-4080b33a81bd",
         "fromTable": "VN Fact_int_Vocher_Itm_Qty",
         "fromColumn": "VocherDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
+      },
+      {
+        "name": "aa61cb7c-9de1-4f84-94f5-59c190f3872c",
+        "fromTable": "BI last_refresh_time_knime",
+        "fromColumn": "Date",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
       }
