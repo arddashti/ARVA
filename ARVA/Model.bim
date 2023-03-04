@@ -364,6 +364,48 @@
             }
           }
         ]
+      },
+      {
+        "name": "VN Fact_int_Vocher_Itm_Qty_history",
+        "description": "جدول سوابق روزانه موجودی هر کالا در هر انبار براساس داده های سندهای رسید انبار",
+        "columns": [
+          {
+            "name": "StockDCRef",
+            "dataType": "int64",
+            "sourceColumn": "StockDCRef"
+          },
+          {
+            "name": "GoodsRef",
+            "dataType": "int64",
+            "sourceColumn": "GoodsRef"
+          },
+          {
+            "name": "jyear",
+            "dataType": "string",
+            "sourceColumn": "jyear"
+          },
+          {
+            "name": "Sum(TotalQty)",
+            "dataType": "double",
+            "sourceColumn": "Sum(TotalQty)"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Fact_int_Vocher_Itm_Qty_history = Source{[Schema=\"VN\",Item=\"Fact_int_Vocher_Itm_Qty_history\"]}[Data]",
+                "in",
+                "    VN_Fact_int_Vocher_Itm_Qty_history"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
