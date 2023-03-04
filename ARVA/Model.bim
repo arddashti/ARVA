@@ -119,6 +119,12 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "today",
+            "expression": " LOOKUPVALUE('BI DIM_DATE'[Jalali_1],'BI DIM_DATE'[Miladi],TODAY())"
+          }
         ]
       },
       {
