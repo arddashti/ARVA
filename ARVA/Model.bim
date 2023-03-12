@@ -101,6 +101,13 @@
             "dataType": "string",
             "description": "جدول مشخص کننده روزهای تعطیل",
             "sourceColumn": "Is Holiday"
+          },
+          {
+            "type": "calculated",
+            "name": "Day",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "MID('BI DIM_DATE'[Jalali_1],9,2)"
           }
         ],
         "partitions": [
