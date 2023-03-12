@@ -391,16 +391,17 @@
             "sourceColumn": "GoodsRef"
           },
           {
-            "name": "jyear",
-            "dataType": "int64",
-            "sourceColumn": "jyear",
+            "name": "Sum(TotalQty)",
+            "dataType": "double",
+            "description": "تعداد موجودی انبار در هر روز در هر انبار",
+            "sourceColumn": "Sum(TotalQty)",
             "formatString": "0"
           },
           {
-            "name": "Sum(TotalQty)",
-            "dataType": "int64",
-            "sourceColumn": "Sum(TotalQty)",
-            "formatString": "0"
+            "name": "VocherDate",
+            "dataType": "string",
+            "description": "تاریخ",
+            "sourceColumn": "VocherDate"
           }
         ],
         "partitions": [
@@ -463,6 +464,13 @@
         "fromColumn": "StockDCRef",
         "toTable": "VN Dim_Stock",
         "toColumn": "StockDC_ID"
+      },
+      {
+        "name": "4b70da09-6fcc-477d-9596-c79b15c23ed0",
+        "fromTable": "VN Fact_int_Vocher_Itm_Qty_history",
+        "fromColumn": "VocherDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "annotations": [
