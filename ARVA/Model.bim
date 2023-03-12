@@ -338,6 +338,20 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "01_product_in_stock_in_frist_day",
+            "expression": [
+              "",
+              "  var maxdate1 = MAX('BI DIM_DATE'[Jalali_1])",
+              "  var x = CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]), FILTER(ALL('BI DIM_DATE'),'BI DIM_DATE'[Jalali_1]<=maxdate1))",
+              "  return",
+              "  IF(SUM('VN Fact_int_Vocher_Itm_Qty'[TotalQty])>0,x)  ",
+              "  ",
+              "    "
+            ]
+          }
         ]
       },
       {
