@@ -45,8 +45,9 @@
           },
           {
             "name": "jyear",
-            "dataType": "string",
-            "sourceColumn": "jyear"
+            "dataType": "int64",
+            "sourceColumn": "jyear",
+            "formatString": "0"
           },
           {
             "name": "jmonthN",
@@ -100,6 +101,13 @@
             "dataType": "string",
             "description": "جدول مشخص کننده روزهای تعطیل",
             "sourceColumn": "Is Holiday"
+          },
+          {
+            "type": "calculated",
+            "name": "Day",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "MID('BI DIM_DATE'[Jalali_1],9,2)"
           }
         ],
         "partitions": [
@@ -118,6 +126,12 @@
                 "    #\"Replaced Value\""
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "today",
+            "expression": " LOOKUPVALUE('BI DIM_DATE'[Jalali_1],'BI DIM_DATE'[Miladi],TODAY())"
           }
         ]
       },
@@ -278,9 +292,10 @@
           },
           {
             "name": "TotalQty",
-            "dataType": "double",
+            "dataType": "int64",
             "description": "تعداد ورودی یا خروجی",
-            "sourceColumn": "TotalQty"
+            "sourceColumn": "TotalQty",
+            "formatString": "0"
           },
           {
             "name": "StockDCRef",
@@ -377,13 +392,15 @@
           },
           {
             "name": "jyear",
-            "dataType": "string",
-            "sourceColumn": "jyear"
+            "dataType": "int64",
+            "sourceColumn": "jyear",
+            "formatString": "0"
           },
           {
             "name": "Sum(TotalQty)",
-            "dataType": "double",
-            "sourceColumn": "Sum(TotalQty)"
+            "dataType": "int64",
+            "sourceColumn": "Sum(TotalQty)",
+            "formatString": "0"
           }
         ],
         "partitions": [
@@ -432,6 +449,20 @@
         "fromColumn": "Date",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "1d78e9cd-fe74-4781-bd96-53759f2f3e46",
+        "fromTable": "VN Fact_int_Vocher_Itm_Qty_history",
+        "fromColumn": "GoodsRef",
+        "toTable": "VN Dim_Goods",
+        "toColumn": "GoodsCode"
+      },
+      {
+        "name": "0789e9d5-972c-490b-a637-0e5e032db74b",
+        "fromTable": "VN Fact_int_Vocher_Itm_Qty_history",
+        "fromColumn": "StockDCRef",
+        "toTable": "VN Dim_Stock",
+        "toColumn": "StockDC_ID"
       }
     ],
     "annotations": [
