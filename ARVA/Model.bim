@@ -45,7 +45,7 @@
           },
           {
             "name": "jyear",
-            "dataType": "int64",
+            "dataType": "string",
             "sourceColumn": "jyear",
             "formatString": "0"
           },
@@ -103,11 +103,9 @@
             "sourceColumn": "Is Holiday"
           },
           {
-            "type": "calculated",
-            "name": "Day",
+            "name": "day",
             "dataType": "string",
-            "isDataTypeInferred": true,
-            "expression": "MID('BI DIM_DATE'[Jalali_1],9,2)"
+            "sourceColumn": "day"
           }
         ],
         "partitions": [
@@ -126,12 +124,6 @@
                 "    #\"Replaced Value\""
               ]
             }
-          }
-        ],
-        "measures": [
-          {
-            "name": "today",
-            "expression": " LOOKUPVALUE('BI DIM_DATE'[Jalali_1],'BI DIM_DATE'[Miladi],TODAY())"
           }
         ]
       },
