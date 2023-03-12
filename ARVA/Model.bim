@@ -366,11 +366,13 @@
           {
             "name": "StockDCRef",
             "dataType": "int64",
+            "description": "کد انبار",
             "sourceColumn": "StockDCRef"
           },
           {
             "name": "GoodsRef",
             "dataType": "int64",
+            "description": "id کالا",
             "sourceColumn": "GoodsRef"
           },
           {
