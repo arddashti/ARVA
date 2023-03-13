@@ -45,9 +45,8 @@
           },
           {
             "name": "jyear",
-            "dataType": "string",
-            "sourceColumn": "jyear",
-            "formatString": "0"
+            "dataType": "int64",
+            "sourceColumn": "jyear"
           },
           {
             "name": "jmonthN",
