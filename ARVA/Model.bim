@@ -336,6 +336,20 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "02_NumberSold",
+            "expression": [
+              "",
+              "     ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),",
+              "                         FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = ",
+              "\"خروجی\"",
+              "",
+              "",
+              "      )))*-1"
+            ]
+          }
         ]
       },
       {
