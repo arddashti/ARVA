@@ -414,6 +414,11 @@
             "dataType": "string",
             "description": "تاریخ",
             "sourceColumn": "VocherDate"
+          },
+          {
+            "name": "SalePrice",
+            "dataType": "double",
+            "sourceColumn": "SalePrice"
           }
         ],
         "partitions": [
