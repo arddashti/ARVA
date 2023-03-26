@@ -440,6 +440,7 @@
         "measures": [
           {
             "name": "01_TotalQTY",
+            "description": "موجودی پایان دوره",
             "expression": [
               " ",
               "     CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , FILTER('BI DIM_DATE','BI DIM_DATE'[end_month] =1)",
