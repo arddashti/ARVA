@@ -460,6 +460,27 @@
               ")"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "04_ average invetory",
+            "description": "میانگین موجودی انبار ( ابتدا و انتهای دوره )",
+            "expression": "( 'VN Fact_int_Vocher_Itm_Qty_history'[01_product_in_stock_in_last_day] + 'VN Fact_int_Vocher_Itm_Qty_history'[02_ product_in_stock_in_frist_day] )/2",
+            "formatString": "#,#"
+          },
+          {
+            "name": "05_real ITR",
+            "description": "محاسبه ITR ",
+            "expression": [
+              "  if (MAX('VN Dim_Stock'[StockDC_ID]) <> 2, ",
+              "    DIVIDE('VN Fact_int_Vocher_Itm_Qty'[02_NumberSold],'VN Fact_int_Vocher_Itm_Qty_history'[04_ average invetory]),",
+              "            DIVIDE(CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] =",
+              "\"انبار به انبار بستانكار\"))",
+              " , [04_ average invetory]))",
+              "",
+              "",
+              "",
+              ""
+            ]
           }
         ]
       }
