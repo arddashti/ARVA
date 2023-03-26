@@ -348,7 +348,8 @@
               "",
               "",
               "      )))*-1"
-            ]
+            ],
+            "formatString": "#,#"
           }
         ]
       },
@@ -418,6 +419,7 @@
           {
             "name": "SalePrice",
             "dataType": "double",
+            "description": "قیمت هر روز یک کالا در بک انبار",
             "sourceColumn": "SalePrice"
           }
         ],
@@ -444,7 +446,8 @@
               " ",
               "     CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , FILTER('BI DIM_DATE','BI DIM_DATE'[end_month] =1)",
               ")"
-            ]
+            ],
+            "formatString": "#,#"
           }
         ]
       }
