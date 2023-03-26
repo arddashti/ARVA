@@ -441,7 +441,7 @@
         ],
         "measures": [
           {
-            "name": "01_TotalQTY",
+            "name": "01_product_in_stock_in_last_day",
             "description": "موجودی پایان دوره",
             "expression": [
               " ",
@@ -449,6 +449,15 @@
               ")"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "02_ product_in_stock_in_frist_day",
+            "description": "موجودی ابتدای دوره",
+            "expression": [
+              "",
+              "     CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , FILTER('BI DIM_DATE','BI DIM_DATE'[end_month] =2)",
+              ")"
+            ]
           }
         ]
       }
