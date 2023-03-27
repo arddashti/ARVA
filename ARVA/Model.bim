@@ -363,6 +363,18 @@
               "      )))*-1"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "06_RialSold",
+            "expression": [
+              "",
+              "     ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice]),",
+              "                         FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = ",
+              "\"خروجی\"",
+              "",
+              "",
+              "      )))"
+            ]
           }
         ]
       },
