@@ -355,17 +355,23 @@
             "description": "تعداد فروش رفته ",
             "expression": [
               "",
-              "     ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),",
+              "   (  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),",
               "                         FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = ",
               "\"خروجی\"",
               "",
               "",
-              "      )))*-1"
+              "      )))*-1)",
+              "-",
+              " (  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),",
+              "                         FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = ",
+              "\"برگشت حواله\"",
+              "))))"
             ],
             "formatString": "#,#"
           },
           {
             "name": "06_RialSold",
+            "description": "فروش ریالی ",
             "expression": [
               "",
               "     ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice]),",
@@ -373,8 +379,14 @@
               "\"خروجی\"",
               "",
               "",
-              "      )))"
-            ]
+              "      )))",
+              "-",
+              "  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice]),",
+              "                         FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = ",
+              "\"برگشت حواله\"",
+              ")))"
+            ],
+            "formatString": "#,#"
           }
         ]
       },
@@ -443,7 +455,7 @@
           },
           {
             "name": "SalePrice",
-            "dataType": "double",
+            "dataType": "int64",
             "description": "قیمت هر روز یک کالا در بک انبار",
             "sourceColumn": "SalePrice"
           }
