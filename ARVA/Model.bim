@@ -290,7 +290,7 @@
           },
           {
             "name": "TotalQty",
-            "dataType": "int64",
+            "dataType": "double",
             "description": "تعداد ورودی یا خروجی",
             "sourceColumn": "TotalQty",
             "formatString": "0"
@@ -318,6 +318,16 @@
             "dataType": "string",
             "description": "نوع سند رسید انبار",
             "sourceColumn": "VocherTypeName"
+          },
+          {
+            "name": "AccYear",
+            "dataType": "int64",
+            "sourceColumn": "AccYear"
+          },
+          {
+            "name": "SalePrice",
+            "dataType": "double",
+            "sourceColumn": "SalePrice"
           }
         ],
         "partitions": [
