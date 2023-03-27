@@ -59,7 +59,8 @@
             "name": "jmonthT",
             "dataType": "string",
             "description": "نام مه شمسی",
-            "sourceColumn": "jmonthT"
+            "sourceColumn": "jmonthT",
+            "sortByColumn": "jmonthN"
           },
           {
             "name": "jnime",
@@ -77,7 +78,8 @@
             "name": "JQuarterT",
             "dataType": "string",
             "description": "نام فصل شمسی",
-            "sourceColumn": "JQuarterT"
+            "sourceColumn": "JQuarterT",
+            "sortByColumn": "JquarterN"
           },
           {
             "name": "JWeekDay",
