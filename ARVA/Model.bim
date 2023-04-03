@@ -457,7 +457,8 @@
             "name": "SalePrice",
             "dataType": "int64",
             "description": "قیمت هر روز یک کالا در بک انبار",
-            "sourceColumn": "SalePrice"
+            "sourceColumn": "SalePrice",
+            "formatString": "#,#"
           }
         ],
         "partitions": [
