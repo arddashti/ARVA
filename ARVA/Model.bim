@@ -522,7 +522,8 @@
           {
             "name": "07_Current inventory",
             "description": "موجودی ریالی لحظه ای انبار",
-            "expression": " sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) *  sum('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice])"
+            "expression": " sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty])*  sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice])",
+            "formatString": "#,#"
           }
         ]
       }
