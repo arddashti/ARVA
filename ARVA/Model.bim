@@ -330,6 +330,15 @@
             "name": "SalePrice",
             "dataType": "double",
             "sourceColumn": "SalePrice"
+          },
+          {
+            "type": "calculated",
+            "name": "08_CurrentInventory",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "description": "ریال کالا *تعداد",
+            "expression": " 'VN Fact_int_Vocher_Itm_Qty'[TotalQty] * 'VN Fact_int_Vocher_Itm_Qty'[SalePrice]",
+            "formatString": "#,#"
           }
         ],
         "partitions": [
@@ -374,17 +383,17 @@
             "description": "فروش ریالی ",
             "expression": [
               "",
-              "     ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice]),",
+              "   (  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice])*SUM('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),",
               "                         FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = ",
               "\"خروجی\"",
               "",
               "",
               "      )))",
               "-",
-              "  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice]),",
+              "  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice])*SUM('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),",
               "                         FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = ",
               "\"برگشت حواله\"",
-              ")))"
+              "))))* -1"
             ],
             "formatString": "#,#"
           }
@@ -518,12 +527,6 @@
               "",
               ""
             ]
-          },
-          {
-            "name": "07_Current inventory",
-            "description": "موجودی ریالی لحظه ای انبار",
-            "expression": " sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty])*  SUM('VN Fact_int_Vocher_Itm_Qty'[SalePrice])",
-            "formatString": "#,#"
           }
         ]
       }
