@@ -295,7 +295,7 @@
             "dataType": "double",
             "description": "تعداد ورودی یا خروجی",
             "sourceColumn": "TotalQty",
-            "formatString": "0"
+            "formatString": "#,#"
           },
           {
             "name": "StockDCRef",
