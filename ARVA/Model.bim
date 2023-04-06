@@ -383,17 +383,17 @@
             "description": "فروش ریالی ",
             "expression": [
               "",
-              "   (  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice])*SUM('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),",
+              "   (  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[08_CurrentInventory]),",
               "                         FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = ",
               "\"خروجی\"",
               "",
               "",
-              "      )))",
+              "      ))))*-1",
               "-",
-              "  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice])*SUM('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),",
+              "  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[08_CurrentInventory]),",
               "                         FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = ",
               "\"برگشت حواله\"",
-              "))))* -1"
+              ")))"
             ],
             "formatString": "#,#"
           }
