@@ -529,6 +529,107 @@
             ]
           }
         ]
+      },
+      {
+        "name": "VN Fact_Order",
+        "columns": [
+          {
+            "name": "tblOrderHdr_ID",
+            "dataType": "int64",
+            "sourceColumn": "tblOrderHdr_ID"
+          },
+          {
+            "name": "OrderNo",
+            "dataType": "int64",
+            "sourceColumn": "OrderNo"
+          },
+          {
+            "name": "OrderDate",
+            "dataType": "string",
+            "sourceColumn": "OrderDate"
+          },
+          {
+            "name": "CancelFlag",
+            "dataType": "int64",
+            "sourceColumn": "CancelFlag"
+          },
+          {
+            "name": "OrderType",
+            "dataType": "int64",
+            "sourceColumn": "OrderType"
+          },
+          {
+            "name": "StockDcRef",
+            "dataType": "int64",
+            "sourceColumn": "StockDcRef"
+          },
+          {
+            "name": "CustRef",
+            "dataType": "int64",
+            "sourceColumn": "CustRef"
+          },
+          {
+            "name": "DealerRef",
+            "dataType": "int64",
+            "sourceColumn": "DealerRef"
+          },
+          {
+            "name": "SumOrderQty",
+            "dataType": "double",
+            "sourceColumn": "SumOrderQty"
+          },
+          {
+            "name": "ConfirmDate",
+            "dataType": "string",
+            "sourceColumn": "ConfirmDate"
+          },
+          {
+            "name": "UserRef",
+            "dataType": "int64",
+            "sourceColumn": "UserRef"
+          },
+          {
+            "name": "ShipDate",
+            "dataType": "string",
+            "sourceColumn": "ShipDate"
+          },
+          {
+            "name": "SupervisorRef",
+            "dataType": "int64",
+            "sourceColumn": "SupervisorRef"
+          },
+          {
+            "name": "GoodsRef",
+            "dataType": "int64",
+            "sourceColumn": "GoodsRef"
+          },
+          {
+            "name": "OrderQty",
+            "dataType": "double",
+            "sourceColumn": "OrderQty"
+          },
+          {
+            "name": "IsDeleted",
+            "dataType": "int64",
+            "sourceColumn": "IsDeleted"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Fact_Order = Source{[Schema=\"VN\",Item=\"Fact_Order\"]}[Data]",
+                "in",
+                "    VN_Fact_Order"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -577,6 +678,43 @@
       {
         "name": "767ab058-c049-419c-a7c0-67e6fb310c2e",
         "fromTable": "VN Fact_int_Vocher_Itm_Qty_history",
+        "fromColumn": "GoodsRef",
+        "toTable": "VN Dim_Goods",
+        "toColumn": "Goods_ID"
+      },
+      {
+        "name": "4ed638d1-000d-4315-8373-6a839cb24ac8",
+        "fromTable": "VN Fact_Order",
+        "fromColumn": "OrderDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
+      },
+      {
+        "name": "86253f4e-9193-4288-9a32-9e2797a1119f",
+        "fromTable": "VN Fact_Order",
+        "fromColumn": "ShipDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1",
+        "isActive": false
+      },
+      {
+        "name": "db2254c9-14bf-4b02-a498-471838e76834",
+        "fromTable": "VN Fact_Order",
+        "fromColumn": "ConfirmDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1",
+        "isActive": false
+      },
+      {
+        "name": "19695839-f77e-4ada-bda6-be0abce75c51",
+        "fromTable": "VN Fact_Order",
+        "fromColumn": "StockDcRef",
+        "toTable": "VN Dim_Stock",
+        "toColumn": "StockDC_ID"
+      },
+      {
+        "name": "eea9792d-6a8c-43ef-ace8-8e225544689f",
+        "fromTable": "VN Fact_Order",
         "fromColumn": "GoodsRef",
         "toTable": "VN Dim_Goods",
         "toColumn": "Goods_ID"
