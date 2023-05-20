@@ -136,35 +136,33 @@
         ]
       },
       {
-        "name": "BI DIM_Geographic",
+        "name": "BI Dim_Geographic",
         "description": "جدول مشخصات شهر ها و استان ها",
         "columns": [
           {
-            "name": "Id",
+            "name": "StateCode",
+            "dataType": "string",
+            "sourceColumn": "StateCode"
+          },
+          {
+            "name": "StateName",
+            "dataType": "string",
+            "sourceColumn": "StateName"
+          },
+          {
+            "name": "ID",
             "dataType": "int64",
-            "description": "id شهر",
-            "sourceColumn": "Id"
+            "sourceColumn": "ID"
           },
           {
-            "name": "StateFars",
+            "name": "AreaCode",
             "dataType": "string",
-            "sourceColumn": "StateFars"
+            "sourceColumn": "AreaCode"
           },
           {
-            "name": "CityFars",
+            "name": "AreaName",
             "dataType": "string",
-            "description": "نام شهر فارسی",
-            "sourceColumn": "CityFars"
-          },
-          {
-            "name": "Lat",
-            "dataType": "double",
-            "sourceColumn": "Lat"
-          },
-          {
-            "name": "Long",
-            "dataType": "double",
-            "sourceColumn": "Long"
+            "sourceColumn": "AreaName"
           }
         ],
         "partitions": [
@@ -176,11 +174,11 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    BI_DIM_Geographic = Source{[Schema=\"BI\",Item=\"DIM_Geographic\"]}[Data],",
-                "    #\"Removed Columns\" = Table.RemoveColumns(BI_DIM_Geographic,{\"CityEng\", \"StateEng\", \"StateCity\"}),",
-                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Removed Columns\",\"ي\",\"ی\",Replacer.ReplaceText,{\"StateFars\", \"CityFars\"})",
+                "    BI_DIM_Geographic = Source{[Schema=\"BI\",Item=\"Dim_Geographic\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(BI_DIM_Geographic,\"ي\",\"ی\",Replacer.ReplaceText,{\"StateName\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"ي\",\"ی\",Replacer.ReplaceText,{\"AreaName\", \"StateName\"})",
                 "in",
-                "    #\"Replaced Value\""
+                "    #\"Replaced Value1\""
               ]
             }
           }
@@ -612,6 +610,21 @@
             "name": "IsDeleted",
             "dataType": "int64",
             "sourceColumn": "IsDeleted"
+          },
+          {
+            "name": "Order_date_Counter",
+            "dataType": "int64",
+            "sourceColumn": "Order_date_Counter"
+          },
+          {
+            "name": "Confirm_date_Counter",
+            "dataType": "int64",
+            "sourceColumn": "Confirm_date_Counter"
+          },
+          {
+            "name": "Ship_date_Counter",
+            "dataType": "int64",
+            "sourceColumn": "Ship_date_Counter"
           }
         ],
         "partitions": [
@@ -626,6 +639,280 @@
                 "    VN_Fact_Order = Source{[Schema=\"VN\",Item=\"Fact_Order\"]}[Data]",
                 "in",
                 "    VN_Fact_Order"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "VN Dim_Cust",
+        "columns": [
+          {
+            "name": "tblCust_ID",
+            "dataType": "int64",
+            "sourceColumn": "tblCust_ID"
+          },
+          {
+            "name": "CustCode",
+            "dataType": "string",
+            "sourceColumn": "CustCode"
+          },
+          {
+            "name": "FirstName",
+            "dataType": "string",
+            "sourceColumn": "FirstName"
+          },
+          {
+            "name": "LastName",
+            "dataType": "string",
+            "sourceColumn": "LastName"
+          },
+          {
+            "name": "RealName",
+            "dataType": "string",
+            "sourceColumn": "RealName"
+          },
+          {
+            "name": "Status",
+            "dataType": "int64",
+            "sourceColumn": "Status"
+          },
+          {
+            "name": "Latitude",
+            "dataType": "double",
+            "sourceColumn": "Latitude"
+          },
+          {
+            "name": "Longitude",
+            "dataType": "double",
+            "sourceColumn": "Longitude"
+          },
+          {
+            "name": "CustActName",
+            "dataType": "string",
+            "sourceColumn": "CustActName"
+          },
+          {
+            "name": "CustCtgrName",
+            "dataType": "string",
+            "sourceColumn": "CustCtgrName"
+          },
+          {
+            "name": "SalePathName",
+            "dataType": "string",
+            "sourceColumn": "SalePathName"
+          },
+          {
+            "name": "AreaRef",
+            "dataType": "int64",
+            "sourceColumn": "AreaRef"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Dim_Cust = Source{[Schema=\"VN\",Item=\"Dim_Cust\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Dim_Cust,\"ي\",\"ی\",Replacer.ReplaceText,{\"FirstName\", \"LastName\", \"RealName\", \"CustActName\", \"CustCtgrName\", \"SalePathName\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "VN Fact_Sale",
+        "columns": [
+          {
+            "name": "SaleHdr_ID",
+            "dataType": "int64",
+            "sourceColumn": "SaleHdr_ID"
+          },
+          {
+            "name": "OrderRef",
+            "dataType": "int64",
+            "sourceColumn": "OrderRef"
+          },
+          {
+            "name": "TotalAmount",
+            "dataType": "double",
+            "sourceColumn": "TotalAmount"
+          },
+          {
+            "name": "CustRef",
+            "dataType": "int64",
+            "sourceColumn": "CustRef"
+          },
+          {
+            "name": "DealerRef",
+            "dataType": "int64",
+            "sourceColumn": "DealerRef"
+          },
+          {
+            "name": "OrderType",
+            "dataType": "string",
+            "sourceColumn": "OrderType"
+          },
+          {
+            "name": "DisType",
+            "dataType": "string",
+            "sourceColumn": "DisType"
+          },
+          {
+            "name": "SaleVocherNo",
+            "dataType": "int64",
+            "sourceColumn": "SaleVocherNo"
+          },
+          {
+            "name": "OtherDiscount",
+            "dataType": "double",
+            "sourceColumn": "OtherDiscount"
+          },
+          {
+            "name": "OtherAddition",
+            "dataType": "double",
+            "sourceColumn": "OtherAddition"
+          },
+          {
+            "name": "GoodsRef",
+            "dataType": "int64",
+            "sourceColumn": "GoodsRef"
+          },
+          {
+            "name": "UnitCapasity",
+            "dataType": "double",
+            "sourceColumn": "UnitCapasity"
+          },
+          {
+            "name": "UnitQty",
+            "dataType": "double",
+            "sourceColumn": "UnitQty"
+          },
+          {
+            "name": "TotalQty",
+            "dataType": "double",
+            "sourceColumn": "TotalQty"
+          },
+          {
+            "name": "AmountNut",
+            "dataType": "double",
+            "sourceColumn": "AmountNut"
+          },
+          {
+            "name": "Discount",
+            "dataType": "double",
+            "sourceColumn": "Discount"
+          },
+          {
+            "name": "Amount",
+            "dataType": "double",
+            "sourceColumn": "Amount"
+          },
+          {
+            "name": "CPriceRef",
+            "dataType": "int64",
+            "sourceColumn": "CPriceRef"
+          },
+          {
+            "name": "IsDeleted",
+            "dataType": "int64",
+            "sourceColumn": "IsDeleted"
+          },
+          {
+            "name": "MainQty",
+            "dataType": "double",
+            "sourceColumn": "MainQty"
+          },
+          {
+            "name": "Dis1 (item)",
+            "dataType": "double",
+            "sourceColumn": "Dis1 (item)"
+          },
+          {
+            "name": "Dis2 (item)",
+            "dataType": "double",
+            "sourceColumn": "Dis2 (item)"
+          },
+          {
+            "name": "Dis3 (item)",
+            "dataType": "double",
+            "sourceColumn": "Dis3 (item)"
+          },
+          {
+            "name": "ExitRef",
+            "dataType": "int64",
+            "sourceColumn": "ExitRef"
+          },
+          {
+            "name": "SaleDate",
+            "dataType": "string",
+            "sourceColumn": "SaleDate"
+          },
+          {
+            "name": "DraftDate",
+            "dataType": "string",
+            "sourceColumn": "DraftDate"
+          },
+          {
+            "name": "SupervisorRef",
+            "dataType": "int64",
+            "sourceColumn": "SupervisorRef"
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status"
+          },
+          {
+            "name": "Item_ID",
+            "dataType": "int64",
+            "sourceColumn": "Item_ID"
+          },
+          {
+            "name": "year",
+            "dataType": "string",
+            "sourceColumn": "year"
+          },
+          {
+            "name": "SaleNo",
+            "dataType": "string",
+            "sourceColumn": "SaleNo"
+          },
+          {
+            "name": "PaymentUsance",
+            "dataType": "string",
+            "sourceColumn": "PaymentUsance"
+          },
+          {
+            "name": "Sale_date_Counter",
+            "dataType": "int64",
+            "sourceColumn": "Sale_date_Counter"
+          },
+          {
+            "name": "Draft_date_Counter",
+            "dataType": "int64",
+            "sourceColumn": "Draft_date_Counter"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Fact_Sale = Source{[Schema=\"VN\",Item=\"Fact_Sale\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Fact_Sale,\"ي\",\"ی\",Replacer.ReplaceText,{\"OrderType\", \"DisType\", \"PaymentUsance\"})",
+                "in",
+                "    #\"Replaced Value\""
               ]
             }
           }
@@ -718,6 +1005,50 @@
         "fromColumn": "GoodsRef",
         "toTable": "VN Dim_Goods",
         "toColumn": "Goods_ID"
+      },
+      {
+        "name": "3ced8d0f-1e8a-471f-9ed6-f0be9ad4a63f",
+        "fromTable": "VN Fact_Order",
+        "fromColumn": "CustRef",
+        "toTable": "VN Dim_Cust",
+        "toColumn": "tblCust_ID"
+      },
+      {
+        "name": "b49c24ea-32c8-4622-84f3-88b3fd475d01",
+        "fromTable": "VN Fact_Sale",
+        "fromColumn": "GoodsRef",
+        "toTable": "VN Dim_Goods",
+        "toColumn": "Goods_ID"
+      },
+      {
+        "name": "dda11403-1650-445c-9431-496ac158aa55",
+        "fromTable": "VN Fact_Sale",
+        "fromColumn": "CustRef",
+        "toTable": "VN Dim_Cust",
+        "toColumn": "tblCust_ID"
+      },
+      {
+        "name": "daa73da5-cefb-4014-b19c-29f84d1750d1",
+        "toCardinality": "many",
+        "fromTable": "VN Fact_Order",
+        "fromColumn": "tblOrderHdr_ID",
+        "toTable": "VN Fact_Sale",
+        "toColumn": "OrderRef",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "3de30480-7c70-417d-bfcc-f272a232c370",
+        "fromTable": "VN Dim_Cust",
+        "fromColumn": "AreaRef",
+        "toTable": "BI Dim_Geographic",
+        "toColumn": "ID"
+      },
+      {
+        "name": "1282abdf-dd9f-4329-8b95-fea6f67f3a3a",
+        "fromTable": "VN Fact_Sale",
+        "fromColumn": "SaleDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "annotations": [
