@@ -620,11 +620,6 @@
             "name": "Confirm_date_Counter",
             "dataType": "int64",
             "sourceColumn": "Confirm_date_Counter"
-          },
-          {
-            "name": "Ship_date_Counter",
-            "dataType": "int64",
-            "sourceColumn": "Ship_date_Counter"
           }
         ],
         "partitions": [
