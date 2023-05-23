@@ -913,6 +913,16 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "01_AmountNut",
+            "description": "فروش خالص ( با محدودیت باطل نشده)",
+            "expression": [
+              " CALCULATE( SUM('VN Fact_Sale'[AmountNut]) , FILTER('VN Fact_Sale', 'VN Fact_Sale'[Status] =",
+              "                                                                              \"باطل نشده\"))"
+            ]
+          }
         ]
       }
     ],
