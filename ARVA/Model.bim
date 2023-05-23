@@ -539,6 +539,7 @@
           {
             "name": "OrderNo",
             "dataType": "int64",
+            "description": "شماره درخواست ",
             "sourceColumn": "OrderNo"
           },
           {
@@ -747,6 +748,7 @@
           {
             "name": "DealerRef",
             "dataType": "int64",
+            "description": "کد ویزیتور ",
             "sourceColumn": "DealerRef"
           },
           {
