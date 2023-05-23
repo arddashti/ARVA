@@ -927,7 +927,15 @@
             "name": "02_Amount",
             "description": "فروش ناخالص با فیلتر باطل نشده ",
             "expression": [
-              " CALCULATE( SUM('VN Fact_Sale'[AmountNut]) , FILTER('VN Fact_Sale', 'VN Fact_Sale'[Status] =",
+              " CALCULATE( SUM('VN Fact_Sale'[Amount]) , FILTER('VN Fact_Sale', 'VN Fact_Sale'[Status] =",
+              "                                                                              \"باطل شده\"))"
+            ]
+          },
+          {
+            "name": "03_Discount",
+            "description": "تخفیف با فیلتر باطل نشده ",
+            "expression": [
+              " CALCULATE( SUM('VN Fact_Sale'[Discount]) , FILTER('VN Fact_Sale', 'VN Fact_Sale'[Status] =",
               "                                                                              \"باطل شده\"))"
             ]
           }
