@@ -133,6 +133,13 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "01_Today",
+            "description": "تاریخ روز ",
+            "expression": " LOOKUPVALUE('BI DIM_DATE'[Jalali_1],'BI DIM_DATE'[Miladi],TODAY())"
+          }
         ]
       },
       {
