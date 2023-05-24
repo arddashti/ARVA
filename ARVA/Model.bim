@@ -764,6 +764,7 @@
           {
             "name": "SaleVocherNo",
             "dataType": "int64",
+            "description": "شماره حواله",
             "sourceColumn": "SaleVocherNo"
           },
           {
@@ -921,7 +922,8 @@
             "expression": [
               " CALCULATE( SUM('VN Fact_Sale'[AmountNut]) , FILTER('VN Fact_Sale', 'VN Fact_Sale'[Status] =",
               "                                                                              \"باطل نشده\"))"
-            ]
+            ],
+            "formatString": "#,#"
           },
           {
             "name": "02_Amount",
@@ -929,7 +931,8 @@
             "expression": [
               " CALCULATE( SUM('VN Fact_Sale'[Amount]) , FILTER('VN Fact_Sale', 'VN Fact_Sale'[Status] =",
               "                                                                              \"باطل نشده\"))"
-            ]
+            ],
+            "formatString": "#,#"
           },
           {
             "name": "03_Discount",
@@ -937,7 +940,8 @@
             "expression": [
               " CALCULATE( SUM('VN Fact_Sale'[Discount]) , FILTER('VN Fact_Sale', 'VN Fact_Sale'[Status] =",
               "                                                                              \"باطل نشده\"))"
-            ]
+            ],
+            "formatString": "#,#"
           }
         ]
       }
