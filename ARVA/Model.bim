@@ -944,8 +944,9 @@
               "",
               "CALCULATE (",
               "    SUM ( 'VN Fact_Sale'[Amount] ),",
-              "    FILTER ( 'VN Fact_Sale', 'VN Fact_Sale'[Status] = \"باطل نشده\" )",
-              ")"
+              "    FILTER ( 'VN Fact_Sale', 'VN Fact_Sale'[Status] = \"باطل نشده\" ),",
+              "    FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] ",
+              "))"
             ],
             "formatString": "#,#"
           },
