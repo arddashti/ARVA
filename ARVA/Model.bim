@@ -106,7 +106,7 @@
           },
           {
             "name": "day",
-            "dataType": "string",
+            "dataType": "int64",
             "description": "روز",
             "sourceColumn": "day"
           },
@@ -132,6 +132,13 @@
                 "    #\"Replaced Value\""
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "01_Today",
+            "description": "تاریخ روز ",
+            "expression": " LOOKUPVALUE('BI DIM_DATE'[Jalali_1],'BI DIM_DATE'[Miladi],TODAY())"
           }
         ]
       },
@@ -539,6 +546,7 @@
           {
             "name": "OrderNo",
             "dataType": "int64",
+            "description": "شماره درخواست ",
             "sourceColumn": "OrderNo"
           },
           {
@@ -747,6 +755,7 @@
           {
             "name": "DealerRef",
             "dataType": "int64",
+            "description": "کد ویزیتور ",
             "sourceColumn": "DealerRef"
           },
           {
@@ -762,6 +771,7 @@
           {
             "name": "SaleVocherNo",
             "dataType": "int64",
+            "description": "شماره حواله",
             "sourceColumn": "SaleVocherNo"
           },
           {
@@ -910,6 +920,35 @@
                 "    #\"Replaced Value\""
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "01_AmountNut",
+            "description": "فروش خالص ( با محدودیت باطل نشده)",
+            "expression": [
+              " CALCULATE( SUM('VN Fact_Sale'[AmountNut]) , FILTER('VN Fact_Sale', 'VN Fact_Sale'[Status] =",
+              "                                                                              \"باطل نشده\"))"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "02_Amount",
+            "description": "فروش ناخالص با فیلتر باطل نشده ",
+            "expression": [
+              " CALCULATE( SUM('VN Fact_Sale'[Amount]) , FILTER('VN Fact_Sale', 'VN Fact_Sale'[Status] =",
+              "                                                                              \"باطل نشده\"))"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "03_Discount",
+            "description": "تخفیف با فیلتر باطل نشده ",
+            "expression": [
+              " CALCULATE( SUM('VN Fact_Sale'[Discount]) , FILTER('VN Fact_Sale', 'VN Fact_Sale'[Status] =",
+              "                                                                              \"باطل نشده\"))"
+            ],
+            "formatString": "#,#"
           }
         ]
       }
