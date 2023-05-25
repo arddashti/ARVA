@@ -964,6 +964,49 @@
             "formatString": "#,#"
           }
         ]
+      },
+      {
+        "name": "BI select_value",
+        "columns": [
+          {
+            "name": "select",
+            "dataType": "string",
+            "sourceColumn": "select"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    BI_select_value = Source{[Schema=\"BI\",Item=\"select_value\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(BI_select_value,\"ي\",\"ی\",Replacer.ReplaceText,{\"select\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "04_ select",
+            "description": "اسلایسر نوع فروش",
+            "expression": [
+              " if ( SELECTEDVALUE('BI select_value'[select]) = \"فروش\", ",
+              "                               'VN Fact_Sale'[01_AmountNut],",
+              "             IF(SELECTEDVALUE('BI select_value'[select] )= \"فروش ناخالص\",",
+              "                               'VN Fact_Sale'[02_Amount],",
+              "            if(SELECTEDVALUE( 'BI select_value'[select] ) = \"تخفیفات\",",
+              "                               'VN Fact_Sale'[03_Discount])))",
+              "",
+              "               ------- با  انتخاب هر یک در یک صفحه در پاور بی ای مشخصات مربوطه نمایش داده  می شود برای جلوگیری از ساخت بوک مارک این مژر ساخته شد"
+            ]
+          }
+        ]
       }
     ],
     "relationships": [
