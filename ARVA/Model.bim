@@ -537,6 +537,7 @@
       },
       {
         "name": "VN Fact_Order",
+        "description": "جدول درخواست فروش",
         "columns": [
           {
             "name": "tblOrderHdr_ID",
@@ -731,6 +732,7 @@
       },
       {
         "name": "VN Fact_Sale",
+        "description": "جدول فروش",
         "columns": [
           {
             "name": "SaleHdr_ID",
@@ -927,8 +929,11 @@
             "name": "01_AmountNut",
             "description": "فروش خالص ( با محدودیت باطل نشده)",
             "expression": [
-              " CALCULATE( SUM('VN Fact_Sale'[AmountNut]) , FILTER('VN Fact_Sale', 'VN Fact_Sale'[Status] =",
-              "                                                                              \"باطل نشده\"))"
+              "",
+              "CALCULATE (",
+              "    SUM ( 'VN Fact_Sale'[AmountNut] ),",
+              "    FILTER ( 'VN Fact_Sale', 'VN Fact_Sale'[Status] = \"باطل نشده\" )",
+              ")"
             ],
             "formatString": "#,#"
           },
@@ -936,8 +941,11 @@
             "name": "02_Amount",
             "description": "فروش ناخالص با فیلتر باطل نشده ",
             "expression": [
-              " CALCULATE( SUM('VN Fact_Sale'[Amount]) , FILTER('VN Fact_Sale', 'VN Fact_Sale'[Status] =",
-              "                                                                              \"باطل نشده\"))"
+              "",
+              "CALCULATE (",
+              "    SUM ( 'VN Fact_Sale'[Amount] ),",
+              "    FILTER ( 'VN Fact_Sale', 'VN Fact_Sale'[Status] = \"باطل نشده\" )",
+              ")"
             ],
             "formatString": "#,#"
           },
@@ -945,8 +953,11 @@
             "name": "03_Discount",
             "description": "تخفیف با فیلتر باطل نشده ",
             "expression": [
-              " CALCULATE( SUM('VN Fact_Sale'[Discount]) , FILTER('VN Fact_Sale', 'VN Fact_Sale'[Status] =",
-              "                                                                              \"باطل نشده\"))"
+              "",
+              "CALCULATE (",
+              "    SUM ( 'VN Fact_Sale'[Discount] ),",
+              "    FILTER ( 'VN Fact_Sale', 'VN Fact_Sale'[Status] = \"باطل نشده\" )",
+              ")"
             ],
             "formatString": "#,#"
           }
