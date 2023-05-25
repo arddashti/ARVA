@@ -931,9 +931,10 @@
             "expression": [
               "",
               "CALCULATE (",
-              "    SUM ( 'VN Fact_Sale'[AmountNut] ),",
-              "    FILTER ( 'VN Fact_Sale', 'VN Fact_Sale'[Status] = \"باطل نشده\" )",
-              ")"
+              "    SUM ( 'VN Fact_Sale'[Amountnut] ),",
+              "    FILTER ( 'VN Fact_Sale', 'VN Fact_Sale'[Status] = \"باطل نشده\" ),",
+              "    FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1",
+              "))"
             ],
             "formatString": "#,#"
           },
@@ -945,7 +946,7 @@
               "CALCULATE (",
               "    SUM ( 'VN Fact_Sale'[Amount] ),",
               "    FILTER ( 'VN Fact_Sale', 'VN Fact_Sale'[Status] = \"باطل نشده\" ),",
-              "    FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] ",
+              "    FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1",
               "))"
             ],
             "formatString": "#,#"
