@@ -358,7 +358,7 @@
         ],
         "measures": [
           {
-            "name": "02_NumberSold",
+            "name": "03_NumberSold",
             "description": "تعداد فروش رفته ",
             "expression": [
               "",
@@ -516,7 +516,7 @@
             "description": "محاسبه ITR ",
             "expression": [
               "  if (MAX('VN Dim_Stock'[StockDC_ID]) <> 2, ",
-              "    DIVIDE('VN Fact_int_Vocher_Itm_Qty'[02_NumberSold],'VN Fact_int_Vocher_Itm_Qty_history'[04_ average invetory]),",
+              "    DIVIDE('VN Fact_int_Vocher_Itm_Qty'[03_NumberSold],'VN Fact_int_Vocher_Itm_Qty_history'[04_ average invetory]),",
               "            DIVIDE(CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] =",
               "\"انبار به انبار بستانكار\"))",
               " , [04_ average invetory]))",
