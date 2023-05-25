@@ -981,6 +981,19 @@
               "----محاسبه فروش خالص از ( سال تا روز "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "05_YTD Sales(Amount)",
+            "description": "فروش ناخالص سال تا روز ",
+            "expression": [
+              "",
+              "VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "VAR D = LOOKUPVALUE('BI DIM_DATE'[Day_number_year], 'BI DIM_DATE'[Miladi], TODAY())",
+              "RETURN",
+              "    CALCULATE('VN Fact_Sale'[02_Amount], 'BI DIM_DATE'[Day_number_year] <= D , 'BI DIM_DATE'[jyear]= Y)",
+              "---- فروس ناخالص سال تا روز "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
