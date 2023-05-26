@@ -1052,6 +1052,112 @@
             "formatString": "#,#"
           }
         ]
+      },
+      {
+        "name": "VN Fact_RetSale",
+        "description": "جدول برگشت از فروش",
+        "columns": [
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "sourceColumn": "ID"
+          },
+          {
+            "name": "SaleDate",
+            "dataType": "string",
+            "description": "تاریخ فروش",
+            "sourceColumn": "SaleDate"
+          },
+          {
+            "name": "SaleHdr_ID",
+            "dataType": "int64",
+            "description": "id فاکتور اصلی",
+            "sourceColumn": "SaleHdr_ID"
+          },
+          {
+            "name": "HealthCode",
+            "dataType": "string",
+            "description": "وضعیت سلامت کالا",
+            "sourceColumn": "HealthCode"
+          },
+          {
+            "name": "RetTypeCode",
+            "dataType": "string",
+            "description": "نوع برگشت کالا",
+            "sourceColumn": "RetTypeCode"
+          },
+          {
+            "name": "RetCauseRef",
+            "dataType": "string",
+            "description": "علت برگشت کالا",
+            "sourceColumn": "RetCauseRef"
+          },
+          {
+            "name": "CustRef",
+            "dataType": "int64",
+            "description": "کد مشتری",
+            "sourceColumn": "CustRef"
+          },
+          {
+            "name": "DealerRef",
+            "dataType": "int64",
+            "description": "کد فروشنده",
+            "sourceColumn": "DealerRef"
+          },
+          {
+            "name": "RetSaleNo",
+            "dataType": "int64",
+            "description": "شماره برگشت",
+            "sourceColumn": "RetSaleNo"
+          },
+          {
+            "name": "GoodsRef",
+            "dataType": "int64",
+            "description": "کد کالا",
+            "sourceColumn": "GoodsRef"
+          },
+          {
+            "name": "MainQty",
+            "dataType": "double",
+            "description": "تعداد برگشتی",
+            "sourceColumn": "MainQty"
+          },
+          {
+            "name": "AmountNut",
+            "dataType": "double",
+            "description": "مبلغ خالص برگشت از فروش",
+            "sourceColumn": "AmountNut"
+          },
+          {
+            "name": "Discount",
+            "dataType": "double",
+            "description": "مبلغ تخفیف",
+            "sourceColumn": "Discount"
+          },
+          {
+            "name": "Amount",
+            "dataType": "double",
+            "description": "مبلغ ناخالص برگشت از فروش",
+            "sourceColumn": "Amount"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Fact_RetSale = Source{[Schema=\"VN\",Item=\"Fact_RetSale\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Fact_RetSale,\"ي\",\"ی\",Replacer.ReplaceText,{\"HealthCode\", \"RetTypeCode\", \"RetCauseRef\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -1184,6 +1290,36 @@
         "fromColumn": "SaleDate",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "41e94d30-9983-4808-9ab7-659822317bc4",
+        "fromTable": "VN Fact_RetSale",
+        "fromColumn": "SaleDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
+      },
+      {
+        "name": "299f56c1-a3c9-4637-a62b-27da744e5178",
+        "fromTable": "VN Fact_RetSale",
+        "fromColumn": "CustRef",
+        "toTable": "VN Dim_Cust",
+        "toColumn": "tblCust_ID"
+      },
+      {
+        "name": "2fdc9c7c-b4c8-4ce2-8230-1e869f235fb4",
+        "fromTable": "VN Fact_RetSale",
+        "fromColumn": "GoodsRef",
+        "toTable": "VN Dim_Goods",
+        "toColumn": "Goods_ID"
+      },
+      {
+        "name": "f289adc6-a354-43c0-b3e1-7bceda7f5fc6",
+        "toCardinality": "many",
+        "fromTable": "VN Fact_RetSale",
+        "fromColumn": "SaleHdr_ID",
+        "toTable": "VN Fact_Sale",
+        "toColumn": "SaleHdr_ID",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "annotations": [
