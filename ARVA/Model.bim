@@ -1322,6 +1322,36 @@
         "crossFilteringBehavior": "bothDirections"
       }
     ],
+    "roles": [
+      {
+        "name": "Refresher",
+        "modelPermission": "administrator",
+        "members": [
+          {
+            "memberName": "ARVA\\dashti.a",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-1264"
+          }
+        ]
+      },
+      {
+        "name": "Manager",
+        "modelPermission": "administrator",
+        "members": [
+          {
+            "memberName": "ARVA\\dashti.a",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-1264"
+          },
+          {
+            "memberName": "ARVA\\ahmadi.fr",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-4114"
+          },
+          {
+            "memberName": "ARVA\\gholami",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-1478"
+          }
+        ]
+      }
+    ],
     "annotations": [
       {
         "name": "ClientCompatibilityLevel",
