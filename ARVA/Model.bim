@@ -1037,7 +1037,8 @@
               "                                            FILTER(ALL('BI DIM_DATE'), 'BI DIM_DATE'[jyear] =yy),",
               "                                            filter(all('BI DIM_DATE'),'BI DIM_DATE'[jmonthN] = mm),",
               "                                            filter(all('BI DIM_DATE') ,'BI DIM_DATE'[day]<=dd))",
-              "                                            "
+              "                                            ",
+              "---- فروش خالص ماه تا روز "
             ],
             "formatString": "#,#"
           }
