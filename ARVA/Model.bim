@@ -1007,7 +1007,8 @@
               "    CALCULATE('VN Fact_Sale'[01_AmountNut], 'BI DIM_DATE'[Day_number_year] <= D , 'BI DIM_DATE'[jyear]= Y-1)",
               "",
               "---  فروش خالص سال گذشته  تا روز "
-            ]
+            ],
+            "formatString": "#,#"
           },
           {
             "name": "07_YTD Sales LastYear(Amount)",
@@ -1020,6 +1021,23 @@
               "    CALCULATE('VN Fact_Sale'[02_Amount], 'BI DIM_DATE'[Day_number_year] <= D , 'BI DIM_DATE'[jyear]= Y-1)",
               "",
               "---  فروش ناخالص سال گذشته  تا روز "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "08_ MTD AmountNut",
+            "description": "فروش خالص ماه تا روز ",
+            "expression": [
+              "     var yy =  SELECTEDVALUE('BI DIM_DATE'[jyear])",
+              "                           var mm= SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
+              "                           var dd = SELECTEDVALUE('BI DIM_DATE'[day])",
+              "          return",
+              "          ",
+              "               CALCULATE('VN Fact_Sale'[01_AmountNut], ",
+              "                                            FILTER(ALL('BI DIM_DATE'), 'BI DIM_DATE'[jyear] =yy),",
+              "                                            filter(all('BI DIM_DATE'),'BI DIM_DATE'[jmonthN] = mm),",
+              "                                            filter(all('BI DIM_DATE') ,'BI DIM_DATE'[day]<=dd))",
+              "                                            "
             ],
             "formatString": "#,#"
           }
