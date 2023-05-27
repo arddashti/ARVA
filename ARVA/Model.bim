@@ -45,7 +45,7 @@
           },
           {
             "name": "jyear",
-            "dataType": "int64",
+            "dataType": "string",
             "description": "سال شمسی",
             "sourceColumn": "jyear"
           },
@@ -106,7 +106,7 @@
           },
           {
             "name": "day",
-            "dataType": "int64",
+            "dataType": "string",
             "description": "روز",
             "sourceColumn": "day",
             "formatString": "0"
@@ -120,6 +120,11 @@
             "name": "Day_number_year",
             "dataType": "int64",
             "sourceColumn": "Day_number_year"
+          },
+          {
+            "name": "holiday",
+            "dataType": "string",
+            "sourceColumn": "holiday"
           }
         ],
         "partitions": [
