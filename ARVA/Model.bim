@@ -1080,6 +1080,25 @@
               "---- فروش ناخالص ماه تا روز "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "011_LastYear MTD Amount",
+            "description": "فروش ناخالص سال گذشته ماه تا روز",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE('VN Fact_Sale'[02_Amount], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
+              "                                                     'BI DIM_DATE'[day]<=d)",
+              "",
+              "---- فروش ناخالص سال گذشته ماه تا روز"
+            ],
+            "formatString": "#,#"
           }
         ]
       },
