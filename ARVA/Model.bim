@@ -997,6 +997,7 @@
           },
           {
             "name": "06_YTD Sales LastYear(AmountNut)",
+            "description": "فروش خالص سال گذشته تا روز ",
             "expression": [
               "",
               "VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
