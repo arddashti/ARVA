@@ -106,9 +106,10 @@
           },
           {
             "name": "day",
-            "dataType": "string",
+            "dataType": "int64",
             "description": "روز",
-            "sourceColumn": "day"
+            "sourceColumn": "day",
+            "formatString": "0"
           },
           {
             "name": "end_month",
