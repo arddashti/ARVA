@@ -1170,15 +1170,15 @@
           },
           {
             "name": "06 _ Title(رتبه بندی استان ها)",
-            "expression": "CONCATENATE( \"رتبه بندی استان ها  بر اساس\",MAX('BI select_value'[select]) )"
+            "expression": "CONCATENATE( \"   رتبه بندی استان ها  بر اساس \",MAX('BI select_value'[select]) )"
           },
           {
             "name": "07 _ Title(سهم مشتریان از )",
-            "expression": "CONCATENATE( \"سهم مشتریان از\",MAX('BI select_value'[select]) )"
+            "expression": "CONCATENATE( \" سهم مشتریان از \",MAX('BI select_value'[select]) )"
           },
           {
             "name": "08 _ Title(سهم گروه کالا از)",
-            "expression": "CONCATENATE( \"سهم گروه کالا از\",MAX('BI select_value'[select]) )"
+            "expression": "CONCATENATE( \" سهم گروه کالا از \",MAX('BI select_value'[select]) )"
           }
         ]
       },
@@ -1285,6 +1285,21 @@
                 "    #\"Replaced Value\""
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "01_returnedAmountNut",
+            "description": "خالص برگشت از فروش ",
+            "expression": [
+              "",
+              "",
+              "    SUM ( 'VN Fact_Sale'[Discount] )",
+              "",
+              "----  خالص  برگشت از فروش ",
+              ""
+            ],
+            "formatString": "#,#"
           }
         ]
       }
