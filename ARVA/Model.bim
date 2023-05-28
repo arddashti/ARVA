@@ -1274,6 +1274,21 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "01_returnedAmountNut",
+            "description": "خالص برگشت از فروش ",
+            "expression": [
+              "",
+              "",
+              "    SUM ( 'VN Fact_Sale'[Discount] )",
+              "",
+              "----  خالص  برگشت از فروش ",
+              ""
+            ],
+            "formatString": "#,#"
+          }
         ]
       }
     ],
