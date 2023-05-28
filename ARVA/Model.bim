@@ -140,9 +140,10 @@
                 "    #\"Removed Columns\" = Table.RemoveColumns(BI_DIM_DATE,{\"Jalali_2\", \"Miladi_1\", \"mmonthN\", \"mmonthT\", \"mnime\", \"MquarterN\", \"MWeekDay\", \"MWeekNum\"}),",
                 "    #\"Replaced Value\" = Table.ReplaceValue(#\"Removed Columns\",\"ي\",\"ی\",Replacer.ReplaceText,{\"jmonthT\", \"jnime\", \"JQuarterT\", \"JWeekDay\"}),",
                 "    #\"Filtered Rows\" = Table.SelectRows(#\"Replaced Value\", each ([jyear] = \"1399\" or [jyear] = \"1400\" or [jyear] = \"1401\" or [jyear] = \"1402\")),",
-                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Filtered Rows\",\"ي\",\"ی\",Replacer.ReplaceText,{\"holiday\"})",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Filtered Rows\",\"ي\",\"ی\",Replacer.ReplaceText,{\"holiday\"}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Replaced Value1\",{{\"jyear\", Int64.Type}})",
                 "in",
-                "    #\"Replaced Value1\""
+                "    #\"Changed Type\""
               ]
             }
           }
