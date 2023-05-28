@@ -45,9 +45,10 @@
           },
           {
             "name": "jyear",
-            "dataType": "string",
+            "dataType": "int64",
             "description": "سال شمسی",
-            "sourceColumn": "jyear"
+            "sourceColumn": "jyear",
+            "formatString": "0"
           },
           {
             "name": "jmonthN",
