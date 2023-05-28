@@ -47,7 +47,8 @@
             "name": "jyear",
             "dataType": "int64",
             "description": "سال شمسی",
-            "sourceColumn": "jyear"
+            "sourceColumn": "jyear",
+            "formatString": "0"
           },
           {
             "name": "jmonthN",
@@ -106,10 +107,9 @@
           },
           {
             "name": "day",
-            "dataType": "string",
+            "dataType": "int64",
             "description": "روز",
-            "sourceColumn": "day",
-            "formatString": "0"
+            "sourceColumn": "day"
           },
           {
             "name": "end_month",
