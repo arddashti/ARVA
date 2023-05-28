@@ -1152,8 +1152,20 @@
             "formatString": "#,#"
           },
           {
-            "name": "05 _ Title",
+            "name": "05 _ Title(به تفکیک ماه)",
             "expression": "CONCATENATE( MAX('BI select_value'[select]) ,\" به تفکیک ماه   \")"
+          },
+          {
+            "name": "06 _ Title(رتبه بندی استان ها)",
+            "expression": "CONCATENATE( \"رتبه بندی استان ها  بر اساس\",MAX('BI select_value'[select]) )"
+          },
+          {
+            "name": "07 _ Title(سهم مشتریان از )",
+            "expression": "CONCATENATE( \"سهم مشتریان از\",MAX('BI select_value'[select]) )"
+          },
+          {
+            "name": "08 _ Title(سهم گروه کالا از)",
+            "expression": "CONCATENATE( \"سهم گروه کالا از\",MAX('BI select_value'[select]) )"
           }
         ]
       },
