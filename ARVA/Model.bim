@@ -1338,6 +1338,43 @@
             }
           }
         ]
+      },
+      {
+        "name": "VN Personnel",
+        "columns": [
+          {
+            "name": "PersonnelCode",
+            "dataType": "string",
+            "sourceColumn": "PersonnelCode"
+          },
+          {
+            "name": "PersonnelId",
+            "dataType": "int64",
+            "sourceColumn": "PersonnelId"
+          },
+          {
+            "name": "ContactName",
+            "dataType": "string",
+            "sourceColumn": "ContactName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Personnel = Source{[Schema=\"VN\",Item=\"Personnel\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Personnel,\"ي\",\"ی\",Replacer.ReplaceText,{\"ContactName\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -1516,6 +1553,13 @@
         "toTable": "VN Fact_Target",
         "toColumn": "StateCode",
         "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "ef2e071e-e72a-4025-9944-f37b5abe7767",
+        "fromTable": "VN Fact_Sale",
+        "fromColumn": "DealerRef",
+        "toTable": "VN Personnel",
+        "toColumn": "PersonnelId"
       }
     ],
     "roles": [
