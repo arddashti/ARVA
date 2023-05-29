@@ -1302,6 +1302,42 @@
             "formatString": "#,#"
           }
         ]
+      },
+      {
+        "name": "VN Fact_Target",
+        "columns": [
+          {
+            "name": "Jalali_1",
+            "dataType": "string",
+            "sourceColumn": "Jalali_1"
+          },
+          {
+            "name": "target_amount_per_day",
+            "dataType": "double",
+            "sourceColumn": "target_amount_per_day"
+          },
+          {
+            "name": "StateCode",
+            "dataType": "string",
+            "sourceColumn": "StateCode"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Fact_Target = Source{[Schema=\"VN\",Item=\"Fact_Target\"]}[Data]",
+                "in",
+                "    VN_Fact_Target"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -1463,6 +1499,22 @@
         "fromColumn": "SaleHdr_ID",
         "toTable": "VN Fact_Sale",
         "toColumn": "SaleHdr_ID",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "34e41b7a-bae1-40c0-abc6-a169b5d126b9",
+        "fromTable": "VN Fact_Target",
+        "fromColumn": "Jalali_1",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
+      },
+      {
+        "name": "710e867f-c16c-4b91-b457-979afb04477a",
+        "toCardinality": "many",
+        "fromTable": "BI Dim_Geographic",
+        "fromColumn": "StateCode",
+        "toTable": "VN Fact_Target",
+        "toColumn": "StateCode",
         "crossFilteringBehavior": "bothDirections"
       }
     ],
