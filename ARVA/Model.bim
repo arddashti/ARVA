@@ -935,6 +935,16 @@
             "name": "Draft_date_Counter",
             "dataType": "int64",
             "sourceColumn": "Draft_date_Counter"
+          },
+          {
+            "name": "type",
+            "dataType": "string",
+            "sourceColumn": "type"
+          },
+          {
+            "name": "ExitRef_status",
+            "dataType": "string",
+            "sourceColumn": "ExitRef_status"
           }
         ],
         "partitions": [
@@ -947,9 +957,10 @@
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    VN_Fact_Sale = Source{[Schema=\"VN\",Item=\"Fact_Sale\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Fact_Sale,\"ي\",\"ی\",Replacer.ReplaceText,{\"OrderType\", \"DisType\", \"PaymentUsance\"})",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Fact_Sale,\"ي\",\"ی\",Replacer.ReplaceText,{\"OrderType\", \"DisType\", \"PaymentUsance\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"ي\",\"ی\",Replacer.ReplaceText,{\"type\", \"ExitRef_status\"})",
                 "in",
-                "    #\"Replaced Value\""
+                "    #\"Replaced Value1\""
               ]
             }
           }
