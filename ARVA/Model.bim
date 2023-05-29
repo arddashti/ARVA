@@ -1560,6 +1560,20 @@
         "fromColumn": "DealerRef",
         "toTable": "VN Personnel",
         "toColumn": "PersonnelId"
+      },
+      {
+        "name": "5fb2ca2f-cd0f-4c98-ab00-25586c39e1e4",
+        "fromTable": "VN Fact_Order",
+        "fromColumn": "DealerRef",
+        "toTable": "VN Personnel",
+        "toColumn": "PersonnelId"
+      },
+      {
+        "name": "363891b6-d9e5-4527-adda-9cddcb07a994",
+        "fromTable": "VN Fact_RetSale",
+        "fromColumn": "DealerRef",
+        "toTable": "VN Personnel",
+        "toColumn": "PersonnelId"
       }
     ],
     "roles": [
