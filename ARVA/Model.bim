@@ -912,11 +912,6 @@
             "sourceColumn": "SupervisorRef"
           },
           {
-            "name": "Status",
-            "dataType": "string",
-            "sourceColumn": "Status"
-          },
-          {
             "name": "Item_ID",
             "dataType": "int64",
             "sourceColumn": "Item_ID"
@@ -1429,38 +1424,6 @@
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    VN_Personnel = Source{[Schema=\"VN\",Item=\"Personnel\"]}[Data],",
                 "    #\"Replaced Value\" = Table.ReplaceValue(VN_Personnel,\"ي\",\"ی\",Replacer.ReplaceText,{\"ContactName\"})",
-                "in",
-                "    #\"Replaced Value\""
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "name": "BI select_type_sale",
-        "columns": [
-          {
-            "name": "select_type_sale",
-            "dataType": "string",
-            "sourceColumn": "select_type_sale"
-          },
-          {
-            "name": "select_type_sale_code",
-            "dataType": "string",
-            "sourceColumn": "select_type_sale_code"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Partition",
-            "dataView": "full",
-            "source": {
-              "type": "m",
-              "expression": [
-                "let",
-                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    BI_select_type_sale = Source{[Schema=\"BI\",Item=\"select_type_sale\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(BI_select_type_sale,\"ي\",\"ی\",Replacer.ReplaceText,{\"select_type_sale\"})",
                 "in",
                 "    #\"Replaced Value\""
               ]
