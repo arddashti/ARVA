@@ -1390,25 +1390,21 @@
         ]
       },
       {
-        "name": "VN Personnel",
-        "description": "جدول اسامی پرسنل شامل پرسنل عادی و ویزیتورها",
+        "name": "VN Dim_Personnel",
         "columns": [
           {
             "name": "PersonnelCode",
             "dataType": "string",
-            "description": "کد پرسنل",
             "sourceColumn": "PersonnelCode"
           },
           {
             "name": "PersonnelId",
             "dataType": "int64",
-            "description": "ID پرسنل",
             "sourceColumn": "PersonnelId"
           },
           {
             "name": "ContactName",
             "dataType": "string",
-            "description": "نام پرسنل",
             "sourceColumn": "ContactName"
           }
         ],
@@ -1421,8 +1417,8 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    VN_Personnel = Source{[Schema=\"VN\",Item=\"Personnel\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Personnel,\"ي\",\"ی\",Replacer.ReplaceText,{\"ContactName\"})",
+                "    VN_Dim_Personnel = Source{[Schema=\"VN\",Item=\"Dim_Personnel\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Dim_Personnel,\"ي\",\"ی\",Replacer.ReplaceText,{\"ContactName\"})",
                 "in",
                 "    #\"Replaced Value\""
               ]
@@ -1609,25 +1605,25 @@
         "crossFilteringBehavior": "bothDirections"
       },
       {
-        "name": "ef2e071e-e72a-4025-9944-f37b5abe7767",
+        "name": "f1fbe34b-eed9-4bf9-8427-f4fee668a73c",
         "fromTable": "VN Fact_Sale",
         "fromColumn": "DealerRef",
-        "toTable": "VN Personnel",
+        "toTable": "VN Dim_Personnel",
         "toColumn": "PersonnelId"
       },
       {
-        "name": "5fb2ca2f-cd0f-4c98-ab00-25586c39e1e4",
+        "name": "d93bfa85-72b0-4cdd-ad81-519862ed14ec",
         "fromTable": "VN Fact_Order",
         "fromColumn": "DealerRef",
-        "toTable": "VN Personnel",
+        "toTable": "VN Dim_Personnel",
         "toColumn": "PersonnelId"
       },
       {
-        "name": "363891b6-d9e5-4527-adda-9cddcb07a994",
+        "name": "07ad84f4-b926-481a-8886-d24d36b2cbee",
         "fromTable": "VN Fact_RetSale",
         "fromColumn": "DealerRef",
-        "toTable": "VN Personnel",
-        "toColumn": "PersonnelId"
+        "toTable": "VN Dim_Personnel",
+        "toColumn": "PersonnelCode"
       }
     ],
     "roles": [
