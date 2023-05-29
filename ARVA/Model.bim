@@ -675,6 +675,16 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "01_OrderAmount",
+            "expression": [
+              " SUM('VN Fact_Order'[amount])",
+              "",
+              "   ----- فروش ناهالص حواله"
+            ]
+          }
         ]
       },
       {
