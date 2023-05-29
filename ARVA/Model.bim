@@ -1166,17 +1166,6 @@
               "---  این مژر برای محاسبه حواله  و فاکتور ماه جاری  تا روز جاری لحاظ گردیده  ",
               "--(در ماه  جاری  هم فاکتور و هم  حواله هایی که به فاکتور تبدیل نشده محاسبه می گردد."
             ]
-          },
-          {
-            "name": "tesst_AmountNut",
-            "expression": [
-              "",
-              "CALCULATE (",
-              "    SUM ( 'VN Fact_Sale'[Amountnut] ),",
-              "    FILTER ( 'VN Fact_Sale', 'VN Fact_Sale'[Status] = \"باطل نشده\" )",
-              " --   FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1",
-              ")"
-            ]
           }
         ]
       },
