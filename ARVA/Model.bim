@@ -97,6 +97,7 @@
           {
             "name": "date_Counter",
             "dataType": "int64",
+            "description": "شماره یونیک روز که برای محاسبات اختلاف بین دو تاریخ از آن استفاده می شود",
             "sourceColumn": "date_Counter"
           },
           {
@@ -122,11 +123,13 @@
           {
             "name": "Day_number_year",
             "dataType": "int64",
+            "description": "مشخص کننده این است که هر تاریخی چندیمن روز از سال است",
             "sourceColumn": "Day_number_year"
           },
           {
             "name": "holiday",
             "dataType": "double",
+            "description": "جدول مشخص کننده تعداد روز کاری به این صورت که اگر آن روز تعطیل باشد مقدار صفر را دارد و اگر روز پنجشنبه باشد مقدار 0.5 را دارا و اگر آن روز غیر تعطیل باشد مقدار 1 را دارد.",
             "sourceColumn": "holiday"
           }
         ],
@@ -676,6 +679,7 @@
       },
       {
         "name": "VN Dim_Cust",
+        "description": "جدول مشتریان",
         "columns": [
           {
             "name": "tblCust_ID",
@@ -1310,20 +1314,24 @@
       },
       {
         "name": "VN Fact_Target",
+        "description": "جدول تارگت ها",
         "columns": [
           {
             "name": "Jalali_1",
             "dataType": "string",
+            "description": "تاریخ",
             "sourceColumn": "Jalali_1"
           },
           {
             "name": "target_amount_per_day",
             "dataType": "double",
+            "description": "مقدار تارگت روزانه هر شهر در هر تاریخ خاص",
             "sourceColumn": "target_amount_per_day"
           },
           {
             "name": "StateCode",
             "dataType": "string",
+            "description": "کد شهر",
             "sourceColumn": "StateCode"
           }
         ],
@@ -1346,20 +1354,24 @@
       },
       {
         "name": "VN Personnel",
+        "description": "جدول اسامی پرسنل شامل پرسنل عادی و ویزیتورها",
         "columns": [
           {
             "name": "PersonnelCode",
             "dataType": "string",
+            "description": "کد پرسنل",
             "sourceColumn": "PersonnelCode"
           },
           {
             "name": "PersonnelId",
             "dataType": "int64",
+            "description": "ID پرسنل",
             "sourceColumn": "PersonnelId"
           },
           {
             "name": "ContactName",
             "dataType": "string",
+            "description": "نام پرسنل",
             "sourceColumn": "ContactName"
           }
         ],
