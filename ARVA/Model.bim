@@ -1366,7 +1366,8 @@
             "name": "target_amount_per_day",
             "dataType": "int64",
             "description": "مقدار تارگت روزانه هر شهر در هر تاریخ خاص",
-            "sourceColumn": "target_amount_per_day"
+            "sourceColumn": "target_amount_per_day",
+            "formatString": "#,#"
           },
           {
             "name": "StateCode",
