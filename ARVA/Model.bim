@@ -1131,7 +1131,7 @@
           },
           {
             "name": "013_SalesTarget",
-            "description": " محاسب تارگت  ماه  تا روز(روزانه) فروش ناخالص ",
+            "description": "محاسبه تارگت بر اساس فروش ناخالص  فاکتور",
             "expression": [
               " ",
               "                    DIVIDE(  CALCULATE(SUM('VN Fact_Sale'[Amount]) ,",
