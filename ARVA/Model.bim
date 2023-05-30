@@ -1154,9 +1154,10 @@
           {
             "name": "013_SalesTarget",
             "expression": [
-              " IF( ",
-              "                      sum( 'VN Fact_Target'[target_amount_per_day])<>0 , ",
-              "                               DIVIDE('VN Fact_Sale'[01_AmountNut], sum('VN Fact_Target'[target_amount_per_day])))",
+              " ",
+              "               IF( ",
+              "                     sum( 'VN Fact_Target'[target_amount_per_day])>0 , ",
+              "                            'VN Fact_Sale'[01_AmountNut]/ sum('VN Fact_Target'[target_amount_per_day]))",
               "",
               "---- محاسبه تارگت بر اساس فروش خالص "
             ],
