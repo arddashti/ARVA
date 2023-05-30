@@ -1153,6 +1153,7 @@
           },
           {
             "name": "013_SalesTarget",
+            "description": "محاسبه تارگت بر اساس فروش خالص ",
             "expression": [
               " ",
               "               IF( ",
@@ -1363,7 +1364,7 @@
           },
           {
             "name": "target_amount_per_day",
-            "dataType": "double",
+            "dataType": "int64",
             "description": "مقدار تارگت روزانه هر شهر در هر تاریخ خاص",
             "sourceColumn": "target_amount_per_day"
           },
