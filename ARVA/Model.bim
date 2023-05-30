@@ -1143,6 +1143,22 @@
               "----   محاسبه تارگت بر اساس فروش ناخالص  فاکتور )"
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "012_ DailySalesTarget",
+            "description": "محاسبه  تارگت روزانه (ماه تا روز ) بر اساس فروش ناخالص ",
+            "expression": [
+              " ",
+              "  ",
+              "  DIVIDE( 'VN Fact_Sale'[08_ MTD AmountNut],",
+              "                                  ",
+              "          ",
+              "         SUM('VN Fact_Target'[target_amount_per_day]) , BLANK()) ",
+              "",
+              "",
+              "----- محاسبه  تارگت روزانه (ماه تا روز ) بر اساس فروش ناخالص "
+            ],
+            "formatString": "0.00 %;0.00- %;0.00 %"
           }
         ]
       },
