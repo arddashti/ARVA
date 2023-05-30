@@ -1134,9 +1134,7 @@
             "description": "محاسبه تارگت بر اساس فروش ناخالص  فاکتور",
             "expression": [
               " ",
-              "                    DIVIDE(  CALCULATE(SUM('VN Fact_Sale'[Amount]) ,",
-              "                              FILTER('VN Fact_Sale', 'VN Fact_Sale'[type] = \"فاکتور\"),",
-              "                             FILTER('VN Fact_Sale', 'VN Fact_Sale'[IsDeleted]<> 1))",
+              "                    DIVIDE( 'VN Fact_Sale'[014_ Amount(فاکتور )]",
               "                                  ",
               "                    ,SUM('VN Fact_Target'[target_amount_per_day]) , BLANK()) ",
               "",
