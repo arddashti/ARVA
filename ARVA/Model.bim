@@ -1153,12 +1153,16 @@
           },
           {
             "name": "013_SalesTarget",
-            "description": "محاسبه تارگت بر اساس فروش خالص ",
+            "description": "محاسبه تارگت بر اساس فروش ناخالص  فاکتور )",
             "expression": [
               " ",
-              "                    DIVIDE( 'VN Fact_Sale'[01_AmountNut],SUM('VN Fact_Target'[target_amount_per_day]) , BLANK()) ",
+              "                    DIVIDE(  CALCULATE(SUM('VN Fact_Sale'[Amount]) ,",
+              "                              FILTER('VN Fact_Sale', 'VN Fact_Sale'[type] = \"فاکتور\"),",
+              "                             FILTER('VN Fact_Sale', 'VN Fact_Sale'[IsDeleted]<> 1))",
+              "                                  ",
+              "                    ,SUM('VN Fact_Target'[target_amount_per_day]) , BLANK()) ",
               "",
-              "---- محاسبه تارگت بر اساس فروش خالص "
+              "----   محاسبه تارگت بر اساس فروش ناخالص  فاکتور )"
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
           }
