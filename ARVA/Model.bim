@@ -1156,11 +1156,11 @@
             "description": "محاسبه تارگت بر اساس فروش خالص ",
             "expression": [
               " ",
-              "                    DIVIDE( 'VN Fact_Sale'[01_AmountNut],SUM('VN Fact_Target'[target_amount_per_day]) , BLANK()) *100",
+              "                    DIVIDE( 'VN Fact_Sale'[01_AmountNut],SUM('VN Fact_Target'[target_amount_per_day]) , BLANK()) ",
               "",
               "---- محاسبه تارگت بر اساس فروش خالص "
             ],
-            "formatString": "0.00"
+            "formatString": "0.00 %;0.00- %;0.00 %"
           }
         ]
       },
