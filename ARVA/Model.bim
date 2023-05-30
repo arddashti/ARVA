@@ -1160,6 +1160,17 @@
               "---  این مژر برای محاسبه حواله  و فاکتور ماه جاری  تا روز جاری لحاظ گردیده  ",
               "--(در ماه  جاری  هم فاکتور و هم  حواله هایی که به فاکتور تبدیل نشده محاسبه می گردد."
             ]
+          },
+          {
+            "name": "013_SalesTarget",
+            "expression": [
+              " IF( ",
+              "                      sum( 'VN Fact_Target'[target_amount_per_day])<>0 , ",
+              "                               DIVIDE('VN Fact_Sale'[01_AmountNut], sum('VN Fact_Target'[target_amount_per_day])))",
+              "",
+              "---- محاسبه تارگت بر اساس فروش خالص "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
