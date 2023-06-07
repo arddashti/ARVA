@@ -1138,10 +1138,12 @@
               "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
               "",
               "        RETURN",
-              "           CALCULATE('VN Fact_Sale'[02_Amount], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
-              "                                                     'BI DIM_DATE'[day]<=d)",
+              "            if (CALCULATE('VN Fact_Sale'[02_Amount], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
+              "                                                     'BI DIM_DATE'[day]<=d) <> BLANK(), ",
+              "              CALCULATE('VN Fact_Sale'[02_Amount], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
+              "                                                     'BI DIM_DATE'[day]<=d) , \"حواله باز موجود نیست \")",
               "",
-              "---- فروش ناخالص سال گذشته ماه تا روز"
+              "---- فروش ناخالص سال گذشته ماه تا روز)"
             ],
             "formatString": "#,#"
           },
