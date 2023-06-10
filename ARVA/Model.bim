@@ -1655,6 +1655,66 @@
             "memberId": "S-1-5-21-455356666-4183223732-1480618698-1478"
           }
         ]
+      },
+      {
+        "name": "BI_Admins",
+        "description": "گروه جهت دسترسی ادیمن های BI",
+        "modelPermission": "administrator",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Admins",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-4319"
+          },
+          {
+            "memberName": "ARVA\\dashti.a",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-1264"
+          }
+        ]
+      },
+      {
+        "name": "BI_CEO_Fullview",
+        "description": "گروه جهت دسترسی مدیران",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_CEO_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-4314"
+          }
+        ]
+      },
+      {
+        "name": "BI_Ahvaz_Fullview",
+        "description": "گروه جهت دسترسی استان بوشهر",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Ahvaz_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3308"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": "'BI Dim_Geographic'[StateCode] = \"88\""
+          }
+        ]
+      },
+      {
+        "name": "BI_Shiraz_Fullview",
+        "description": "گروه جهت دسترسی استان فارس",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Shiraz_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-4320"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": "'BI Dim_Geographic'[StateCode] = \"17\""
+          }
+        ]
       }
     ],
     "annotations": [
