@@ -1746,6 +1746,40 @@
             "filterExpression": "'BI Dim_Geographic'[StateCode] = \"17\""
           }
         ]
+      },
+      {
+        "name": "BI_Esfahan_Fullview",
+        "description": "گروه جهت دسترسی استان فارس",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Esfahan_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3309"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode] =\"20\""
+          }
+        ]
+      },
+      {
+        "name": "BI_Tehran_Fullview",
+        "description": "گروه جهت دسترسی به استان تهران",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Tehran_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3310"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=\"10\""
+          }
+        ]
       }
     ],
     "annotations": [
