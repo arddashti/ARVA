@@ -167,8 +167,9 @@
         "columns": [
           {
             "name": "StateCode",
-            "dataType": "string",
-            "sourceColumn": "StateCode"
+            "dataType": "int64",
+            "sourceColumn": "StateCode",
+            "formatString": "0"
           },
           {
             "name": "StateName",
