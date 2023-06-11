@@ -1727,7 +1727,7 @@
         "tablePermissions": [
           {
             "name": "BI Dim_Geographic",
-            "filterExpression": "'BI Dim_Geographic'[StateCode] = \"88\""
+            "filterExpression": "'BI Dim_Geographic'[StateCode] = 88"
           }
         ]
       },
@@ -1744,7 +1744,7 @@
         "tablePermissions": [
           {
             "name": "BI Dim_Geographic",
-            "filterExpression": "'BI Dim_Geographic'[StateCode] = \"17\""
+            "filterExpression": "'BI Dim_Geographic'[StateCode] = 17"
           }
         ]
       },
@@ -1761,7 +1761,7 @@
         "tablePermissions": [
           {
             "name": "BI Dim_Geographic",
-            "filterExpression": " 'BI Dim_Geographic'[StateCode] =\"20\""
+            "filterExpression": " 'BI Dim_Geographic'[StateCode] =20"
           }
         ]
       },
@@ -1778,7 +1778,7 @@
         "tablePermissions": [
           {
             "name": "BI Dim_Geographic",
-            "filterExpression": " 'BI Dim_Geographic'[StateCode]=\"10\""
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=10"
           }
         ]
       },
@@ -1795,7 +1795,7 @@
         "tablePermissions": [
           {
             "name": "BI Dim_Geographic",
-            "filterExpression": " 'BI Dim_Geographic'[StateCode]=\"18\""
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=18  &&    USERNAME() = USERNAME()"
           }
         ]
       },
