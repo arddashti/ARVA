@@ -208,6 +208,16 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "USERNAME",
+            "expression": " USERNAME()"
+          },
+          {
+            "name": "USERPRINCIPALNAME",
+            "expression": "USERPRINCIPALNAME()"
+          }
         ]
       },
       {
