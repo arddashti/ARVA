@@ -1253,7 +1253,7 @@
           },
           {
             "name": "05 _ Title(به تفکیک ماه)",
-            "expression": "CONCATENATE( MAX('BI select_value'[select]) ,\" به تفکیک ماه   \")"
+            "expression": "CONCATENATE( MAX('BI select_value'[select]) ,\" به تفکیک سال و ماه   \")"
           },
           {
             "name": "06 _ Title(رتبه بندی استان ها)",
