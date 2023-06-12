@@ -1825,6 +1825,23 @@
             "filterExpression": " 'BI Dim_Geographic'[StateCode]= 15"
           }
         ]
+      },
+      {
+        "name": "BI_Ghom_Fullview",
+        "description": "گروه جهت دسترسی به استان قم",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Ghom_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3333"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=62"
+          }
+        ]
       }
     ],
     "annotations": [
