@@ -1266,6 +1266,10 @@
           {
             "name": "08 _ Title(سهم گروه کالا از)",
             "expression": "CONCATENATE( \" سهم گروه کالا از \",MAX('BI select_value'[select]) )"
+          },
+          {
+            "name": "09_Title(به تفکیک سال )",
+            "expression": "CONCATENATE( MAX('BI select_value'[select]) ,\" به تفکیک سال   \")"
           }
         ]
       },
