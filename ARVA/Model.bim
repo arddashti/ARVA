@@ -2061,6 +2061,23 @@
             "filterExpression": "'BI Dim_Geographic'[StateCode]=64"
           }
         ]
+      },
+      {
+        "name": "BI_Boshehr_Fullview",
+        "description": "گروه جهت دسترسی به بوشهر",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Boshehr_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3320"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": "'BI Dim_Geographic'[StateCode]=88"
+          }
+        ]
       }
     ],
     "annotations": [
