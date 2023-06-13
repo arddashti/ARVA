@@ -2010,6 +2010,57 @@
             "filterExpression": "'BI Dim_Geographic'[StateCode]=49"
           }
         ]
+      },
+      {
+        "name": "BI_Gilan_Fullview",
+        "description": "گروه جهت دسترسی به گیلان",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Gilan_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3331"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": "'BI Dim_Geographic'[StateCode]=55"
+          }
+        ]
+      },
+      {
+        "name": "BI_mazandaran_Fullview",
+        "description": "گروه جهت دسترسی به مازندران ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_mazandaran_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3311"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=12"
+          }
+        ]
+      },
+      {
+        "name": "BI_Golestan_Fullview",
+        "description": "گروه جهت دسترسی به گلستان ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Golestan_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3336"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": "'BI Dim_Geographic'[StateCode]=64"
+          }
+        ]
       }
     ],
     "annotations": [
