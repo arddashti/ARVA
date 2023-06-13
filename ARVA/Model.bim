@@ -1959,6 +1959,23 @@
             "filterExpression": "'BI Dim_Geographic'[StateCode]=27"
           }
         ]
+      },
+      {
+        "name": "BI_Yazd_Fullview",
+        "description": "گروه جهت دسترسی به یزد",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Yazd_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3334"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": "'BI Dim_Geographic'[StateCode]=77"
+          }
+        ]
       }
     ],
     "annotations": [
