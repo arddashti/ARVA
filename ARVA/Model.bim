@@ -1846,6 +1846,57 @@
             "filterExpression": " 'BI Dim_Geographic'[StateCode]=62"
           }
         ]
+      },
+      {
+        "name": "BI_Zanjan_Fullview",
+        "description": "گروه جهت دسترسی به استان زنجان",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Zanjan_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3328"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=29"
+          }
+        ]
+      },
+      {
+        "name": "BI_Markazi_Fullview",
+        "description": "گروه جهت دسترسی به  استان مرکزی",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Markazi_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3329"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=44"
+          }
+        ]
+      },
+      {
+        "name": "BI_Hamedan_Fullview",
+        "description": "گروه جهت دسترسی به استان همدان",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Hamedan_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3323"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]= 24"
+          }
+        ]
       }
     ],
     "annotations": [
