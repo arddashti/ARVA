@@ -1897,6 +1897,17 @@
             "filterExpression": " 'BI Dim_Geographic'[StateCode]= 24"
           }
         ]
+      },
+      {
+        "name": "Telephone sales",
+        "description": "گروه جهت دسترسی به همه استان ها (فروش تلفنی)",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\Telephone sales",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3340"
+          }
+        ]
       }
     ],
     "annotations": [
