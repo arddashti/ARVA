@@ -1976,6 +1976,40 @@
             "filterExpression": "'BI Dim_Geographic'[StateCode]=77"
           }
         ]
+      },
+      {
+        "name": "BI_Ghazvin_Fullview",
+        "description": "گروه جهت دسترسی به قزوین",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Ghazvin_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3335"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=63"
+          }
+        ]
+      },
+      {
+        "name": "BI_Alborz_Fullview",
+        "description": "گروه جهت دسترسی به البرز",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Alborz_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3330"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": "'BI Dim_Geographic'[StateCode]=49"
+          }
+        ]
       }
     ],
     "annotations": [
