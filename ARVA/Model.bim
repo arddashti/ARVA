@@ -1809,7 +1809,7 @@
         "tablePermissions": [
           {
             "name": "BI Dim_Geographic",
-            "filterExpression": " 'BI Dim_Geographic'[StateCode]=18  &&    USERNAME() = USERNAME()"
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=18  "
           }
         ]
       },
