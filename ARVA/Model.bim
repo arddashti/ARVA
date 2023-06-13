@@ -1899,13 +1899,64 @@
         ]
       },
       {
-        "name": "Telephone sales",
+        "name": "BI_Telephone Sales_Fullview",
         "description": "گروه جهت دسترسی به همه استان ها (فروش تلفنی)",
         "modelPermission": "read",
         "members": [
           {
-            "memberName": "ARVA\\Telephone sales",
-            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3340"
+            "memberName": "ARVA\\BI_Telephone Sales_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3342"
+          }
+        ]
+      },
+      {
+        "name": "BI_Kordestan_Fullview",
+        "description": "گروه جهت دسترسی به استان کردستان",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Kordestan_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3319"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=22"
+          }
+        ]
+      },
+      {
+        "name": "BI_Chaharmahal and bakhtiari_Fullview",
+        "description": "گروه جهت دسترسی به استان چهارمحال و بختیاری",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_chaharmahal and bakhtiari_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3324"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=25"
+          }
+        ]
+      },
+      {
+        "name": "BI_Ilam_Fullview",
+        "description": "گروه جهت دسترسی به استان ایلام ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Ilam_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3326"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": "'BI Dim_Geographic'[StateCode]=27"
           }
         ]
       }
