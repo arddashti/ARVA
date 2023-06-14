@@ -1201,6 +1201,19 @@
               "----- این مژر برای  نمایش در جدول درصد تحقق ساخته گردید)"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "015_SalesTarget",
+            "expression": [
+              " ",
+              "                    DIVIDE( 'VN Fact_Sale'[02_Amount]",
+              "                                  ",
+              "                    ,SUM('VN Fact_Target'[target_amount_per_day]) , BLANK()) ",
+              "",
+              "",
+              "",
+              "------ درصد تحقق فروش ناخاص (فاکتور و حواله)"
+            ]
           }
         ]
       },
