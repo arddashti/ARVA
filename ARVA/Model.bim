@@ -2093,6 +2093,17 @@
             "filterExpression": "'BI Dim_Geographic'[StateCode]=88"
           }
         ]
+      },
+      {
+        "name": "BI_SalesPlanning_Fullview",
+        "description": "گروه جهت دسترسی ب برنامه ریزی فروش ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_SalesPlanning_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3343"
+          }
+        ]
       }
     ],
     "annotations": [
