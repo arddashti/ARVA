@@ -2104,6 +2104,17 @@
             "memberId": "S-1-5-21-455356666-4183223732-1480618698-3343"
           }
         ]
+      },
+      {
+        "name": "BI_Finance_Fullview",
+        "description": "گروه جهت دسترسی  واحد مالی ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Finance_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3344"
+          }
+        ]
       }
     ],
     "annotations": [
