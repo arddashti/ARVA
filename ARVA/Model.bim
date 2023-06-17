@@ -2115,6 +2115,57 @@
             "memberId": "S-1-5-21-455356666-4183223732-1480618698-3344"
           }
         ]
+      },
+      {
+        "name": "BI_KhorasanJonobi_Fullview",
+        "description": "گروه جهت دسترسی به خراسان جنوبی",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_KhorasanJonobi_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3317"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=31"
+          }
+        ]
+      },
+      {
+        "name": "BI_KhorasanRazavi_Fullview",
+        "description": "گروه جهت دسترسی به خراسان رضوی",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_KhorasanRazavi_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3316"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": "'BI Dim_Geographic'[StateCode]=19"
+          }
+        ]
+      },
+      {
+        "name": "BI_KhorasanShomali_Fullview",
+        "description": "گروه جهت دسترسی به خراسان شمالی",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_KhorasanShomali_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3318"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=21"
+          }
+        ]
       }
     ],
     "annotations": [
