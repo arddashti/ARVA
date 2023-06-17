@@ -1400,7 +1400,9 @@
             "expression": [
               "",
               "",
-              "    SUM ( 'VN Fact_Sale'[Discount] )",
+              "CALCULATE(    SUM ( 'VN Fact_Sale'[Discount] ))",
+              "",
+              "",
               "",
               "----  خالص  برگشت از فروش ",
               ""
@@ -2164,6 +2166,23 @@
           {
             "name": "BI Dim_Geographic",
             "filterExpression": " 'BI Dim_Geographic'[StateCode]=21"
+          }
+        ]
+      },
+      {
+        "name": "BI_Lorestan_Fullview",
+        "description": "گروه جهت دسترسی به لرستان ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Lorestan_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3325"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": "'BI Dim_Geographic'[StateCode]=26"
           }
         ]
       }
