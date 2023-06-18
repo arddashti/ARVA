@@ -1400,7 +1400,7 @@
             "expression": [
               "",
               "",
-              "CALCULATE(    SUM ( 'VN Fact_Sale'[Discount] ))",
+              "CALCULATE(    SUM ( 'VN Fact_Sale'[Amount] ))",
               "",
               "",
               "",
