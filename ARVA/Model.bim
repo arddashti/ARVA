@@ -1644,15 +1644,6 @@
         "toColumn": "Goods_ID"
       },
       {
-        "name": "f289adc6-a354-43c0-b3e1-7bceda7f5fc6",
-        "toCardinality": "many",
-        "fromTable": "VN Fact_RetSale",
-        "fromColumn": "SaleHdr_ID",
-        "toTable": "VN Fact_Sale",
-        "toColumn": "SaleHdr_ID",
-        "crossFilteringBehavior": "bothDirections"
-      },
-      {
         "name": "34e41b7a-bae1-40c0-abc6-a169b5d126b9",
         "fromTable": "VN Fact_Target",
         "fromColumn": "Jalali_1",
@@ -1688,6 +1679,16 @@
         "fromColumn": "DealerRef",
         "toTable": "VN Dim_Personnel",
         "toColumn": "PersonnelCode"
+      },
+      {
+        "name": "8a522a72-6df3-4dc4-9379-b014ed757760",
+        "toCardinality": "many",
+        "fromTable": "VN Fact_RetSale",
+        "fromColumn": "SaleHdr_ID",
+        "toTable": "VN Fact_Sale",
+        "toColumn": "SaleHdr_ID",
+        "isActive": false,
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
