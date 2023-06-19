@@ -437,7 +437,7 @@
             "description": "محاسبه تجمعی موجودی انبار ",
             "expression": [
               "   ",
-              "                         var maxdate=  MAX('BI DIM_DATE'[Jalali_1])",
+              "                         var maxdate=  SELECTEDVALUE('BI DIM_DATE'[Jalali_1])",
               "",
               "",
               "             return",
