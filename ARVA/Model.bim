@@ -445,7 +445,7 @@
               "             return",
               "",
               "               CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]) , ",
-              "                              FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[Jalali_1]<=y),     ",
+              "                              FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[Jalali_1]=y),     ",
               "                               FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[Jalali_1]<=m),",
               "                              FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[Jalali_1]<=y))",
               "",
