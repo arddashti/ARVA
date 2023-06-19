@@ -442,7 +442,7 @@
               "  CALCULATE( sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
               "                                        filter('BI DIM_DATE','BI DIM_DATE'[end_month]=1))",
               "                           *",
-              "                               CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice])",
+              "                               CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice]))",
               "",
               "",
               "---- محاسبه  موجودی ریالی لحظه ای انبار )"
