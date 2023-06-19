@@ -54,7 +54,8 @@
             "name": "jmonthN",
             "dataType": "int64",
             "description": "شماره ماه شمسی",
-            "sourceColumn": "jmonthN"
+            "sourceColumn": "jmonthN",
+            "formatString": "0"
           },
           {
             "name": "jmonthT",
