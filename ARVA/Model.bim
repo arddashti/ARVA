@@ -434,6 +434,20 @@
               ")))"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "07_CurrentInventory(Rial)",
+            "description": "محاسبه  موجودی ریالی لحظه ای انبار ",
+            "expression": [
+              "  CALCULATE( sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                        filter('BI DIM_DATE','BI DIM_DATE'[end_month]=1))",
+              "                           *",
+              "                               CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice])",
+              "",
+              "",
+              "---- محاسبه  موجودی ریالی لحظه ای انبار )"
+            ],
+            "formatString": "#,#"
           }
         ]
       },
