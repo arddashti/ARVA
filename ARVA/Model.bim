@@ -431,6 +431,24 @@
               ")))"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "07_ CurrentInventory(Count)",
+            "description": "محاسبه تجمعی موجودی انبار ",
+            "expression": [
+              "   ",
+              "                         var maxdate=  MAX('BI DIM_DATE'[Jalali_1])",
+              "",
+              "",
+              "             return",
+              "",
+              "               CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]) , ",
+              "                              FILTER('BI DIM_DATE', 'BI DIM_DATE'[Jalali_1]<=maxdate))",
+              "",
+              "",
+              "------ محاسبه تجمعی موجودی انبار "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
