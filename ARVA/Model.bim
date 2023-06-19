@@ -443,7 +443,7 @@
               "             return",
               "",
               "               CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]) , ",
-              "                              FILTER('BI DIM_DATE', 'BI DIM_DATE'[Jalali_1]<=maxdate))",
+              "                              FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[Jalali_1]<=maxdate))",
               "",
               "",
               "------ محاسبه تجمعی موجودی انبار "
