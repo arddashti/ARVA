@@ -581,7 +581,7 @@
             ]
           },
           {
-            "name": "06_CurrentInventory",
+            "name": "06_CurrentInventory(Count)",
             "description": "محاسبه موجودی روز انبار ",
             "expression": [
               "   ",
