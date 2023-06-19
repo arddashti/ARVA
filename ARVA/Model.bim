@@ -568,6 +568,7 @@
           },
           {
             "name": "06_CurrentInventory",
+            "description": "محاسبه موجودی روز انبار ",
             "expression": [
               "   ",
               "                       CALCULATE( sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
@@ -575,7 +576,8 @@
               "",
               "",
               "---- محاسبه موجودی روز انبار )"
-            ]
+            ],
+            "formatString": "#,#"
           }
         ]
       },
