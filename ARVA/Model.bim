@@ -111,9 +111,10 @@
           },
           {
             "name": "day",
-            "dataType": "string",
+            "dataType": "int64",
             "description": "روز",
-            "sourceColumn": "day"
+            "sourceColumn": "day",
+            "formatString": "0"
           },
           {
             "name": "end_month",
@@ -437,17 +438,17 @@
             "description": "محاسبه تجمعی موجودی انبار ",
             "expression": [
               "   ",
-              "                         var y = SELECTEDVALUE('BI DIM_DATE'[jyear])",
-              "                         var m = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
-              "                         var d = SELECTEDVALUE('BI DIM_DATE'[day])",
+              "                         var yy = SELECTEDVALUE('BI DIM_DATE'[jyear])",
+              "                         var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
+              "                         var dd = SELECTEDVALUE('BI DIM_DATE'[day])",
               "",
               "",
               "             return",
               "",
               "               CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]) , ",
-              "                              FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[Jalali_1]=y),     ",
-              "                               FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[Jalali_1]<=m),",
-              "                              FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[Jalali_1]<=y))",
+              "                              FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[Jalali_1]=yy),     ",
+              "                               FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[Jalali_1]<=mm),",
+              "                              FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[Jalali_1]<=dd))",
               "",
               "",
               "------ محاسبه تجمعی موجودی انبار "
