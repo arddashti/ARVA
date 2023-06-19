@@ -120,7 +120,8 @@
           {
             "name": "end_month",
             "dataType": "int64",
-            "sourceColumn": "end_month"
+            "sourceColumn": "end_month",
+            "formatString": "0"
           },
           {
             "name": "Day_number_year",
@@ -433,36 +434,6 @@
               ")))"
             ],
             "formatString": "#,#"
-          },
-          {
-            "name": "07_ CurrentInventory(Count)",
-            "description": "محاسبه تجمعی موجودی انبار ",
-            "expression": [
-              "   ",
-              "                         var yy = SELECTEDVALUE('BI DIM_DATE'[jyear])",
-              "                         var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
-              "                         var dd = SELECTEDVALUE('BI DIM_DATE'[day]) ",
-              "                         ",
-              "                         var lastQTY = IF(mm<> 1,CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]) ,",
-              "                                        FILTER('BI DIM_DATE', 'BI DIM_DATE'[jyear] = yy ),",
-              "                                        FILTER('BI DIM_DATE', 'BI DIM_DATE'[jmonthN]<= mm-1) , ",
-              "                                        FILTER('BI DIM_DATE','BI DIM_DATE'[day]<=dd)))",
-              "                        var firstQTY = IF(mm= 1,CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]) ,",
-              "                                        FILTER('BI DIM_DATE', 'BI DIM_DATE'[jyear] = yy ),",
-              "                                        FILTER('BI DIM_DATE', 'BI DIM_DATE'[jmonthN]= mm) , ",
-              "                                        FILTER('BI DIM_DATE','BI DIM_DATE'[day]<=dd)))",
-              "                       ",
-              "                        return",
-              "",
-              "                   CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty'[TotalQty])+ firstQTY + lastQTY)",
-              "             ",
-              "",
-              "",
-              "",
-              "               ",
-              "------ محاسبه تجمعی موجودی انبار "
-            ],
-            "formatString": "#,#"
           }
         ]
       },
@@ -593,6 +564,17 @@
               "",
               "",
               ""
+            ]
+          },
+          {
+            "name": "06_CurrentInventory",
+            "expression": [
+              "   ",
+              "                       CALCULATE( sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                        filter('BI DIM_DATE','BI DIM_DATE'[end_month]=1))",
+              "",
+              "",
+              "---- محاسبه موجودی روز انبار )"
             ]
           }
         ]
