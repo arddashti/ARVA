@@ -377,11 +377,16 @@
           },
           {
             "type": "calculated",
-            "name": "08_CurrentInventory",
+            "name": "08_Rial changes",
             "dataType": "double",
             "isDataTypeInferred": true,
-            "description": "ریال کالا *تعداد",
-            "expression": " 'VN Fact_int_Vocher_Itm_Qty'[TotalQty] * 'VN Fact_int_Vocher_Itm_Qty'[SalePrice]",
+            "description": "ریال کالا* تعداد (تغییرات ) کالا ",
+            "expression": [
+              " 'VN Fact_int_Vocher_Itm_Qty'[TotalQty] * 'VN Fact_int_Vocher_Itm_Qty'[SalePrice]",
+              "----- تغییرات  ریالی در هر ماه ",
+              " -- TotalQty تغییرات در هر ماه   را  نمایش میدهد ",
+              ""
+            ],
             "formatString": "#,#"
           }
         ],
@@ -427,14 +432,14 @@
             "description": "فروش ریالی ",
             "expression": [
               "",
-              "   (  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[08_CurrentInventory]),",
+              "   (  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[08_Rial changes]),",
               "                         FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = ",
               "\"خروجی\"",
               "",
               "",
               "      ))))*-1",
               "-",
-              "  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[08_CurrentInventory]),",
+              "  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[08_Rial changes]),",
               "                         FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = ",
               "\"برگشت حواله\"",
               ")))"
@@ -460,10 +465,10 @@
               "",
               "                        *",
               "",
-              "  sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice])",
+              " sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice])",
               "",
               "",
-              "----- موجودی لحظه ای ریالی "
+              "----- موجودی لحظه ای ریالی )"
             ],
             "formatString": "#,#"
           }
@@ -617,11 +622,32 @@
               "",
               "",
               "",
-              "               -- CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                                       --  FILTER('BI DIM_DATE', 'BI DIM_DATE'[end_month]=1 ))",
               "",
               "",
               " ----- موجودی لحظه ای انبار "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "07_CurrentInventory(Rial)",
+            "description": "موجودی ریالی لحظه ای ",
+            "expression": [
+              "",
+              "           var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
+              "            var MToday= CONVERT(MONTH(TODAY()),INTEGER)",
+              "           ",
+              "    return",
+              "",
+              "    ( if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                 'BI DIM_DATE'[end_month]= 3) , ",
+              "                      CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                  'BI DIM_DATE'[end_month] =1))  ) ",
+              "               *",
+              "           sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty])",
+              "",
+              "",
+              "",
+              "----  موجودی ریالی لحظه ای "
             ],
             "formatString": "#,#"
           }
