@@ -442,24 +442,28 @@
             "formatString": "#,#"
           },
           {
-            "name": "07_ CurrentInventory(Count)",
-            "description": "محاسبه تجمعی موجودی انبار ",
+            "name": "07_CurrentInvetory (Rial)",
+            "description": "موجودی لحظه ای ریالی ",
             "expression": [
-              "   ",
-              "                         var yy = SELECTEDVALUE('BI DIM_DATE'[jyear])",
-              "                         var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
-              "                         var dd = SELECTEDVALUE('BI DIM_DATE'[day])",
+              " ",
+              "                                             ",
+              "            var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
+              "            var MToday= CONVERT(MONTH(TODAY()),INTEGER)",
+              "           ",
+              "    return",
+              "",
+              "  (   if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                 'BI DIM_DATE'[end_month]= 3) , ",
+              "                      CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                  'BI DIM_DATE'[end_month] =1)) )",
+              "      ",
+              "",
+              "                        *",
+              "",
+              "  sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice])",
               "",
               "",
-              "             return",
-              "",
-              "               CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]) , ",
-              "                              FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[jyear]=yy),     ",
-              "                               FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[jmonthN]<=mm),",
-              "                              FILTER(all('BI DIM_DATE'), 'BI DIM_DATE'[day]<=dd))",
-              "",
-              "",
-              "------ محاسبه تجمعی موجودی انبار "
+              "----- موجودی لحظه ای ریالی "
             ],
             "formatString": "#,#"
           }
