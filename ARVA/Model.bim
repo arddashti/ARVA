@@ -139,7 +139,7 @@
             "name": "02_ selectMonth",
             "dataType": "int64",
             "isDataTypeInferred": true,
-            "expression": "    IF( 'BI DIM_DATE'[Miladi]= TODAY() , 3 , 'BI DIM_DATE'[end_month])"
+            "formatString": "0"
           }
         ],
         "partitions": [
@@ -601,15 +601,19 @@
             "expression": [
               "  ",
               "",
-              "            var MToday= MONTH(TODAY())",
+              "            var MToday= CONVERT(MONTH(TODAY()),INTEGER)",
               "            var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
               "        ",
               "           ",
-              "    return ",
-              "           if ( mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                              FILTER('BI DIM_DATE' , 'BI DIM_DATE'[02_ selectMonth] = 3) ) , ",
-              "           if (mm < MToday  ,  CALCULATE( sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                               FILTER('BI DIM_DATE' , 'BI DIM_DATE'[02_ selectMonth] = 1))))",
+              "    return",
+              "",
+              "",
+              "",
+              " ",
+              "       if ( mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                            FILTER('BI DIM_DATE' , 'BI DIM_DATE'[02_ selectMonth] = 3)) , ",
+              "          if (mm < MToday  ,  CALCULATE( sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                             FILTER('BI DIM_DATE' , 'BI DIM_DATE'[02_ selectMonth] = 1))))",
               "                                  ",
               "",
               "",
