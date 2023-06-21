@@ -133,6 +133,13 @@
             "dataType": "double",
             "description": "جدول مشخص کننده تعداد روز کاری به این صورت که اگر آن روز تعطیل باشد مقدار صفر را دارد و اگر روز پنجشنبه باشد مقدار 0.5 را دارا و اگر آن روز غیر تعطیل باشد مقدار 1 را دارد.",
             "sourceColumn": "holiday"
+          },
+          {
+            "type": "calculated",
+            "name": "02_ selectMonth",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "    IF( 'BI DIM_DATE'[Miladi]= TODAY() , 3 , 'BI DIM_DATE'[end_month])"
           }
         ],
         "partitions": [
@@ -594,17 +601,15 @@
             "expression": [
               "  ",
               "",
-              "            var YY = SELECTEDVALUE('BI DIM_DATE'[jyear])",
+              "            var MToday= MONTH(TODAY())",
               "            var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
-              "           var dd = SELECTEDVALUE('BI DIM_DATE'[day])",
+              "        ",
               "           ",
               "    return ",
-              "           if ( mm <TODAY(), CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) ,",
-              "                                 FILTER('BI DIM_DATE', 'BI DIM_DATE'[end_month] = 1 )),",
-              "",
-              "        ",
-              "          CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                                           FILTER('BI DIM_DATE', 'BI DIM_DATE'[day]= DAY(TODAY()))))",
+              "           if ( mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                              FILTER('BI DIM_DATE' , 'BI DIM_DATE'[02_ selectMonth] = 3) ) , ",
+              "           if (mm < MToday  ,  CALCULATE( sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                               FILTER('BI DIM_DATE' , 'BI DIM_DATE'[02_ selectMonth] = 1))))",
               "                                  ",
               "",
               "",
