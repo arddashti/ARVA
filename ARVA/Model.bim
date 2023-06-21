@@ -601,9 +601,8 @@
             "expression": [
               "  ",
               "",
-              "            var MToday= CONVERT(MONTH(TODAY()),INTEGER)",
               "            var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
-              "        ",
+              "            var MToday= CONVERT(MONTH(TODAY()),INTEGER)",
               "           ",
               "    return",
               "",
