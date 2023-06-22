@@ -543,6 +543,17 @@
             "description": "قیمت هر روز یک کالا در بک انبار",
             "sourceColumn": "SalePrice",
             "formatString": "#,#"
+          },
+          {
+            "type": "calculated",
+            "name": "CurrentInventory",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": [
+              "    'VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] * 'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]",
+              "",
+              "----ریال *تعداد "
+            ]
           }
         ],
         "partitions": [
@@ -638,14 +649,10 @@
               "           ",
               "    return",
               "",
-              " --   ( if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                           --      'BI DIM_DATE'[end_month]= 3) , ",
-              "                  --    CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                           --       'BI DIM_DATE'[end_month] =1))  ) ",
-              "            --   *",
-              "              ( if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) , ",
+              "",
+              "              ( if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[CurrentInventory]) , ",
               "                                 'BI DIM_DATE'[end_month]= 3) , ",
-              "                      CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) , ",
+              "                      CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[CurrentInventory]) , ",
               "                                  'BI DIM_DATE'[end_month] =1))  ) ",
               "",
               "----  موجودی ریالی لحظه ای "
