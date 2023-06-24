@@ -140,7 +140,7 @@
             "dataType": "int64",
             "isDataTypeInferred": true,
             "expression": [
-              "   if ( 'BI DIM_DATE'[Miladi] = TODAY()  , 3 , 'BI DIM_DATE'[end_month])",
+              "   if ('BI DIM_DATE'[Jalali_1] = 'BI DIM_DATE'[01_Today] , 3 , 'BI DIM_DATE'[end_month])",
               "",
               "",
               "",
