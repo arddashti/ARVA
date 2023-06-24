@@ -139,6 +139,13 @@
             "name": "02_ selectMonth",
             "dataType": "int64",
             "isDataTypeInferred": true,
+            "expression": [
+              "   if ( 'BI DIM_DATE'[Miladi] = TODAY()  , 3 , 'BI DIM_DATE'[end_month])",
+              "",
+              "",
+              "",
+              "----  مشخص کردن ابتدا و انتها و تاریخ روز  ( برای محاسبه موجودی روز انبار مورد استفاده قرار میگیرد"
+            ],
             "formatString": "0"
           }
         ],
