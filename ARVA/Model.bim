@@ -629,7 +629,7 @@
               "  ",
               "",
               "            var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
-              "            var MToday= MONTH(TODAY())",
+              "            var MToday= CONVERT(MONTH(TODAY()),INTEGER)",
               "           ",
               "    return",
               "",
