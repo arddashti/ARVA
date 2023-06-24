@@ -642,7 +642,7 @@
               "",
               "",
               "",
-              " ----- موجودی لحظه ای انبار "
+              " -----  موجودی لحظه ای انبار "
             ],
             "formatString": "#,#"
           },
@@ -676,6 +676,20 @@
               "                                           'BI DIM_DATE'[Miladi]= TODAY())",
               "",
               "----- اخرین موجودی انبار )"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "09_LastInventory(Rial)",
+            "description": "محاسبه آخرین ریال  انبار ",
+            "expression": [
+              "   CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]),",
+              "                                           'BI DIM_DATE'[Miladi]= TODAY())  ",
+              "                            *",
+              "                        SUM('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice])",
+              "",
+              "",
+              "---- محاسبه آخرین ریال  انبار "
             ],
             "formatString": "#,#"
           }
