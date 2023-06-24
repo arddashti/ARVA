@@ -634,7 +634,7 @@
               "    return",
               "",
               "     if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                                 'BI DIM_DATE'[end_month]= 3) , ",
+              "                                   'BI DIM_DATE'[end_month]= 3) , ",
               "                      CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
               "                                  'BI DIM_DATE'[end_month] =1))",
               "",
