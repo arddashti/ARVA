@@ -624,7 +624,7 @@
           },
           {
             "name": "06_CurrentInventory",
-            "description": "موجودی لحظه ای انبار ",
+            "description": "موجودی لحظه ای انبار(CurrentInventory  محاسبه موجودی انبار  با  انتخاب ماه توسط کاربر( ",
             "expression": [
               "  ",
               "",
@@ -634,7 +634,7 @@
               "    return",
               "",
               "     if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                                   'BI DIM_DATE'[end_month]= 3) , ",
+              "                                   'BI DIM_DATE'[Miladi]=TODAY()) , ",
               "                      CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
               "                                  'BI DIM_DATE'[end_month] =1))",
               "",
