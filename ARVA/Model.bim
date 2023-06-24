@@ -668,6 +668,7 @@
           },
           {
             "name": "08_LastInventory",
+            "description": "محاسبه آخرین موجودی انبار ",
             "expression": [
               " ",
               "",
@@ -675,7 +676,8 @@
               "                                           'BI DIM_DATE'[Miladi]= TODAY())",
               "",
               "----- اخرین موجودی انبار )"
-            ]
+            ],
+            "formatString": "#,#"
           }
         ]
       },
