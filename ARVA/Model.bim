@@ -453,32 +453,6 @@
               ")))"
             ],
             "formatString": "#,#"
-          },
-          {
-            "name": "07_CurrentInvetory (Rial)",
-            "description": "موجودی لحظه ای ریالی ",
-            "expression": [
-              " ",
-              "                                             ",
-              "            var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
-              "            var MToday= CONVERT(MONTH(TODAY()),INTEGER)",
-              "           ",
-              "    return",
-              "",
-              "  (   if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                                 'BI DIM_DATE'[end_month]= 3) , ",
-              "                      CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                                  'BI DIM_DATE'[end_month] =1)) )",
-              "      ",
-              "",
-              "                        *",
-              "",
-              " sum('VN Fact_int_Vocher_Itm_Qty'[SalePrice])",
-              "",
-              "",
-              "----- موجودی لحظه ای ریالی )"
-            ],
-            "formatString": "#,#"
           }
         ]
       },
@@ -604,7 +578,11 @@
           {
             "name": "04_ average invetory",
             "description": "میانگین موجودی انبار ( ابتدا و انتهای دوره )",
-            "expression": "( 'VN Fact_int_Vocher_Itm_Qty_history'[01_product_in_stock_in_last_day] + 'VN Fact_int_Vocher_Itm_Qty_history'[02_ product_in_stock_in_frist_day] )/2",
+            "expression": [
+              "",
+              "                 ( 'VN Fact_int_Vocher_Itm_Qty_history'[01_product_in_stock_in_last_day] +",
+              "                           'VN Fact_int_Vocher_Itm_Qty_history'[02_ product_in_stock_in_frist_day] )/2"
+            ],
             "formatString": "#,#"
           },
           {
@@ -671,7 +649,7 @@
               "CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , 'BI DIM_DATE'[end_month]= 1 )            ",
               "                  *",
               "",
-              "CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) ,  'BI DIM_DATE'[end_month] = 1)"
+              "CALCULATE(AVERAGE('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) ,  'BI DIM_DATE'[end_month] = 1)"
             ],
             "formatString": "#,#"
           },
@@ -696,7 +674,7 @@
               "                                 CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]),",
               "                                                           'BI DIM_DATE'[Miladi]= TODAY())  ",
               "                                   *",
-              "                                       CALCULATE(  SUM('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) , ",
+              "                                       CALCULATE(  AVERAGE('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) , ",
               "                                                            'BI DIM_DATE'[Miladi]=TODAY())",
               "",
               "",
