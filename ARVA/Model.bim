@@ -623,7 +623,7 @@
             "formatString": "#,#"
           },
           {
-            "name": "06_CurrentInventory",
+            "name": "06_ previous month Inventory",
             "description": "موجودی لحظه ای انبار(CurrentInventory  محاسبه موجودی انبار  با  انتخاب ماه توسط کاربر( ",
             "expression": [
               "  ",
@@ -647,7 +647,7 @@
             "formatString": "#,#"
           },
           {
-            "name": "07_CurrentInventory(Rial)",
+            "name": "07_ previous month Inventory(Rial)",
             "description": "موجودی ریالی لحظه ای ",
             "expression": [
               "",
@@ -669,7 +669,7 @@
             "formatString": "#,#"
           },
           {
-            "name": "08_LastInventory",
+            "name": "08_Current month Inventory",
             "description": "محاسبه آخرین موجودی انبار ",
             "expression": [
               " ",
@@ -682,7 +682,7 @@
             "formatString": "#,#"
           },
           {
-            "name": "09_LastInventory(Rial)",
+            "name": "09_Current month Inventory(Rial)",
             "description": "محاسبه آخرین ریال  انبار ",
             "expression": [
               "   CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]),",
@@ -696,13 +696,14 @@
             "formatString": "#,#"
           },
           {
-            "name": "09_LastInventory",
+            "name": "09_Inventory by select month",
             "description": "محاسبه  موجودی  انبار برحسب  انتخاب ماه  توسط کاربر",
             "expression": [
               "",
               "",
-              "         if( 'VN Fact_int_Vocher_Itm_Qty_history'[06_CurrentInventory] = BLANK() , 'VN Fact_int_Vocher_Itm_Qty_history'[08_LastInventory] ,",
-              "                     'VN Fact_int_Vocher_Itm_Qty_history'[06_CurrentInventory])",
+              "         if( 'VN Fact_int_Vocher_Itm_Qty_history'[06_ previous month Inventory] = BLANK() ,",
+              "                       'VN Fact_int_Vocher_Itm_Qty_history'[08_Current month Inventory] ,",
+              "                     'VN Fact_int_Vocher_Itm_Qty_history'[06_ previous month Inventory])",
               "",
               "",
               "---- محاسبه  موجودی  انبار برحسب  انتخاب ماه  توسط کاربر"
