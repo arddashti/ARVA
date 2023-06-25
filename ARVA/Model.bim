@@ -120,7 +120,8 @@
           {
             "name": "end_month",
             "dataType": "int64",
-            "sourceColumn": "end_month"
+            "sourceColumn": "end_month",
+            "formatString": "0"
           },
           {
             "name": "Day_number_year",
