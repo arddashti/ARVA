@@ -685,10 +685,12 @@
             "name": "09_Current month Inventory(Rial)",
             "description": "محاسبه آخرین ریال  انبار ",
             "expression": [
-              "   CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]),",
-              "                                           'BI DIM_DATE'[Miladi]= TODAY())  ",
-              "                            *",
-              "                        SUM('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice])",
+              "  ",
+              "                                 CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]),",
+              "                                                           'BI DIM_DATE'[Miladi]= TODAY())  ",
+              "                                   *",
+              "                                       CALCULATE(  SUM('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) , ",
+              "                                                            'BI DIM_DATE'[Miladi]=TODAY())",
               "",
               "",
               "---- محاسبه آخرین ریال  انبار "
@@ -707,6 +709,23 @@
               "",
               "",
               "---- محاسبه  موجودی  انبار برحسب  انتخاب ماه  توسط کاربر"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "010_Inventory by select month(Rial)",
+            "description": "محاسبه  موجودی   ریالی  انبار برحسب  انتخاب ماه  توسط کاربر",
+            "expression": [
+              "",
+              "",
+              "         if( 'VN Fact_int_Vocher_Itm_Qty_history'[07_ previous month Inventory(Rial)] = BLANK() ,",
+              "                       'VN Fact_int_Vocher_Itm_Qty_history'[09_Current month Inventory(Rial)] ,",
+              "                     'VN Fact_int_Vocher_Itm_Qty_history'[07_ previous month Inventory(Rial)])",
+              "",
+              "",
+              "",
+              "",
+              "----- محاسبه  موجودی   ریالی  انبار برحسب  انتخاب ماه  توسط کاربر"
             ],
             "formatString": "#,#"
           }
