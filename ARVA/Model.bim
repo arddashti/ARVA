@@ -692,6 +692,31 @@
               "---- محاسبه آخرین ریال  انبار "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "tesssssst",
+            "expression": [
+              "          ",
+              "            var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
+              "            var MToday = CONVERT(MONTH('BI DIM_DATE'[01_Today]) ,INTEGER)",
+              "           ",
+              "    return",
+              "",
+              "     if(mm = MToday || mm = BLANK() , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                   'BI DIM_DATE'[Miladi]=TODAY()) , ",
+              "                      CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                  'BI DIM_DATE'[end_month] =1))",
+              ""
+            ]
+          },
+          {
+            "name": "test",
+            "expression": [
+              "",
+              "",
+              "         if( 'VN Fact_int_Vocher_Itm_Qty_history'[06_CurrentInventory] = BLANK() , 'VN Fact_int_Vocher_Itm_Qty_history'[08_LastInventory] ,",
+              "                     'VN Fact_int_Vocher_Itm_Qty_history'[06_CurrentInventory])"
+            ]
           }
         ]
       },
