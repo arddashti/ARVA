@@ -642,7 +642,7 @@
               "",
               "",
               "",
-              " -----  موجودی لحظه ای انبار "
+              " -----   موجودی لحظه ای انبار  برای  ماه های قبل از ماه جاری "
             ],
             "formatString": "#,#"
           },
@@ -651,18 +651,20 @@
             "description": "موجودی ریالی لحظه ای ",
             "expression": [
               "",
-              "           var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
+              "          var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
               "            var MToday= CONVERT(MONTH(TODAY()),INTEGER)",
               "           ",
               "    return",
               "",
+              "   (  if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                   'BI DIM_DATE'[Miladi]=TODAY()) , ",
+              "                      CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                  'BI DIM_DATE'[end_month] =1)))",
               "",
-              "              ( if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[CurrentInventory]) , ",
-              "                                 'BI DIM_DATE'[end_month]= 3) , ",
-              "                      CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[CurrentInventory]) , ",
-              "                                  'BI DIM_DATE'[end_month] =1))  ) ",
+              "              * ",
+              "              CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) ,  'BI DIM_DATE'[end_month] = 1)",
               "",
-              "----  موجودی ریالی لحظه ای "
+              "----  موجودی ریالی لحظه ای  برای  ماه های قبل از ماه جاری "
             ],
             "formatString": "#,#"
           },
@@ -675,7 +677,7 @@
               "                    CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]),",
               "                                           'BI DIM_DATE'[Miladi]= TODAY())",
               "",
-              "----- اخرین موجودی انبار )"
+              "----- اخرین موجودی انبار ) "
             ],
             "formatString": "#,#"
           },
@@ -694,29 +696,18 @@
             "formatString": "#,#"
           },
           {
-            "name": "tesssssst",
-            "expression": [
-              "          ",
-              "            var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
-              "            var MToday = CONVERT(MONTH('BI DIM_DATE'[01_Today]) ,INTEGER)",
-              "           ",
-              "    return",
-              "",
-              "     if(mm = MToday || mm = BLANK() , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                                   'BI DIM_DATE'[Miladi]=TODAY()) , ",
-              "                      CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                                  'BI DIM_DATE'[end_month] =1))",
-              ""
-            ]
-          },
-          {
-            "name": "test",
+            "name": "09_LastInventory",
+            "description": "محاسبه  موجودی  انبار برحسب  انتخاب ماه  توسط کاربر",
             "expression": [
               "",
               "",
               "         if( 'VN Fact_int_Vocher_Itm_Qty_history'[06_CurrentInventory] = BLANK() , 'VN Fact_int_Vocher_Itm_Qty_history'[08_LastInventory] ,",
-              "                     'VN Fact_int_Vocher_Itm_Qty_history'[06_CurrentInventory])"
-            ]
+              "                     'VN Fact_int_Vocher_Itm_Qty_history'[06_CurrentInventory])",
+              "",
+              "",
+              "---- محاسبه  موجودی  انبار برحسب  انتخاب ماه  توسط کاربر"
+            ],
+            "formatString": "#,#"
           }
         ]
       },
