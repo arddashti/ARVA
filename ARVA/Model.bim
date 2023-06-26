@@ -2277,6 +2277,23 @@
             "filterExpression": "'BI Dim_Geographic'[StateCode]=26"
           }
         ]
+      },
+      {
+        "name": "BI_Azarvayejangharbi_Fullview",
+        "description": "گروه جهت دسترسی به آذربایجان غربی ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Azarvayejangharbi_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3312"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=14"
+          }
+        ]
       }
     ],
     "annotations": [
