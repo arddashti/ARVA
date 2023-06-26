@@ -603,7 +603,7 @@
           },
           {
             "name": "06_ previous month Inventory",
-            "description": "موجودی لحظه ای انبار(CurrentInventory  محاسبه موجودی انبار  با  انتخاب ماه توسط کاربر( ",
+            "description": "موجودی لحظه ای انبار",
             "expression": [
               "  ",
               "",
@@ -621,7 +621,7 @@
               "",
               "",
               "",
-              " -----   موجودی لحظه ای انبار  برای  ماه های قبل از ماه جاری "
+              " -----   موجودی لحظه ای انبار   "
             ],
             "formatString": "#,#"
           },
@@ -646,10 +646,11 @@
               "",
               "",
               "",
-              "CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , 'BI DIM_DATE'[end_month]= 1 )            ",
+              "CALCULATE(AVERAGE('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , 'BI DIM_DATE'[end_month]= 1 )            ",
               "                  *",
               "",
-              "CALCULATE(AVERAGE('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) ,  'BI DIM_DATE'[end_month] = 1)"
+              "CALCULATE(AVERAGE('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) ,  'BI DIM_DATE'[end_month] = 1)",
+              "----موجودی ریالی لحظه ای"
             ],
             "formatString": "#,#"
           },
