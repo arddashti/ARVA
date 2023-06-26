@@ -602,7 +602,7 @@
             "formatString": "#,#"
           },
           {
-            "name": "06_ previous month Inventory",
+            "name": "06_ CurrentInventory",
             "description": "موجودی لحظه ای انبار",
             "expression": [
               "  ",
@@ -626,7 +626,7 @@
             "formatString": "#,#"
           },
           {
-            "name": "07_ previous month Inventory(Rial)",
+            "name": "07_ Current Inventory(Rial)",
             "description": "موجودی ریالی لحظه ای ",
             "expression": [
               "",
