@@ -1545,6 +1545,12 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "Target",
+            "expression": " CALCULATE( SUM('VN Fact_Target'[target_amount_per_day]))"
+          }
         ]
       },
       {
