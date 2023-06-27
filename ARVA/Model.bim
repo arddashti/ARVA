@@ -2294,6 +2294,40 @@
             "filterExpression": " 'BI Dim_Geographic'[StateCode]=14"
           }
         ]
+      },
+      {
+        "name": "BI_Azarbayejansharghi_Fullview",
+        "description": "گروه جهت دسترسی به آذربایجان شرقی ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Azarbayejansharghi_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3313"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]= 13"
+          }
+        ]
+      },
+      {
+        "name": "BI_Ardebil_Fullview",
+        "description": "گروه جهت دسترسی به اردبیل ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Ardebil_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3332"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=61"
+          }
+        ]
       }
     ],
     "annotations": [
