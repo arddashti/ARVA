@@ -1338,7 +1338,21 @@
               "",
               "",
               "",
-              "---- محاسبه نرخ رشد خالص سال  تا روز "
+              "---- محاسبه نرخ رشد ناخالص سال  تا روز "
+            ],
+            "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "018_GrowthRate YTD Amount",
+            "description": " محاسبه نرخ رشد ناخالص سال  تا روز ",
+            "expression": [
+              "   if('VN Fact_Sale'[05_YTD Sales(Amount)]>0,",
+              "                             ('VN Fact_Sale'[05_YTD Sales(Amount)] -'VN Fact_Sale'[07_YTD Sales LastYear(Amount)]) ",
+              "                                       / 'VN Fact_Sale'[07_YTD Sales LastYear(Amount)])",
+              "",
+              "",
+              "",
+              "---- محاسبه نرخ رشد ناخالص سال  تا روز "
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
           }
