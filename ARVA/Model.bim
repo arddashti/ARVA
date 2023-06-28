@@ -1327,6 +1327,18 @@
               "-----   تعداد فروش "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "017_GrowthRate YTD",
+            "description": "نرخ رشد ( سال تا روز )",
+            "expression": [
+              "   if('VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]>0, ('VN Fact_Sale'[04_YTD Sales(AmountNut)] -'VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]) ",
+              "                                       / 'VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)])",
+              "",
+              "",
+              "",
+              "---- محاسبه نرخ رشد ناخالص سال  تا روز "
+            ]
           }
         ]
       },
