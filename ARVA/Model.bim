@@ -1329,15 +1329,16 @@
             "formatString": "#,#"
           },
           {
-            "name": "017_GrowthRate YTD",
-            "description": "نرخ رشد ( سال تا روز )",
+            "name": "017_GrowthRate YTD AmountNut",
+            "description": "نرخ رشد فروش خالص( سال تا روز )",
             "expression": [
-              "   if('VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]>0, ('VN Fact_Sale'[04_YTD Sales(AmountNut)] -'VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]) ",
+              "   if('VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]>0,",
+              "                             ('VN Fact_Sale'[04_YTD Sales(AmountNut)] -'VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]) ",
               "                                       / 'VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)])",
               "",
               "",
               "",
-              "---- محاسبه نرخ رشد ناخالص سال  تا روز "
+              "---- محاسبه نرخ رشد خالص سال  تا روز "
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
           }
