@@ -1311,6 +1311,22 @@
               "------ درصد تحقق فروش ناخاص (فاکتور و حواله)"
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "016_QTY",
+            "description": " تعداد فروش ",
+            "expression": [
+              "",
+              "     CALCULATE (",
+              "              SUM ( 'VN Fact_Sale'[UnitQty] ),",
+              "",
+              "              FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1",
+              "))",
+              "",
+              "",
+              "-----   تعداد فروش "
+            ],
+            "formatString": "#,#"
           }
         ]
       },

@@ -13,7 +13,7 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Development' ">
     <OutputPath>bin\</OutputPath>
     <DeploymentServerName>192.168.112.12</DeploymentServerName>
-    <DeploymentServerEdition>Enterprise</DeploymentServerEdition>
+    <DeploymentServerEdition>Developer</DeploymentServerEdition>
     <DeploymentServerVersion>Unknown</DeploymentServerVersion>
     <DeploymentServerDatabase>ARVA</DeploymentServerDatabase>
     <DeploymentServerCubeName>Model</DeploymentServerCubeName>
