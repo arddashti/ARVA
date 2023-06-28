@@ -1369,6 +1369,20 @@
               "---- محاسبه نرخ رشد خالص ماه  تا روز "
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "020_GrowthRate MTD AmountNut",
+            "description": " محاسبه نرخ رشد ناخالص ماه  تا روز ",
+            "expression": [
+              "   if('VN Fact_Sale'[011_LastYear MTD Amount]>0,",
+              "                             ('VN Fact_Sale'[010_ MTD Amount] -'VN Fact_Sale'[011_LastYear MTD Amount]) ",
+              "                                       / 'VN Fact_Sale'[011_LastYear MTD Amount])",
+              "",
+              "",
+              "",
+              "---- محاسبه نرخ رشد ناخالص ماه  تا روز "
+            ],
+            "formatString": "0.00 %;0.00- %;0.00 %"
           }
         ]
       },
