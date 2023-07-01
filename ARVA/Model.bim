@@ -657,6 +657,21 @@
               "----موجودی ریالی لحظه ای"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "08 _Lastyear'sprice",
+            "description": "قیمت سال گذشته",
+            "expression": [
+              "    ",
+              "                         var y = MAX('BI DIM_DATE'[jyear])-1",
+              "          return ",
+              "                  CALCULATE(MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) ,",
+              "                                  'BI DIM_DATE'[jyear] = y)",
+              "",
+              "",
+              "---- قیمت سال گذشته"
+            ],
+            "formatString": "#.#"
           }
         ]
       },
