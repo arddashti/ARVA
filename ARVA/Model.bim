@@ -1289,19 +1289,6 @@
             "formatString": "#,#"
           },
           {
-            "name": "013_SalesTarget",
-            "description": "محاسبه تارگت بر اساس فروش ناخالص  فاکتور",
-            "expression": [
-              " ",
-              "                    DIVIDE( 'VN Fact_Sale'[014_ Amount(فاکتور )]",
-              "                                  ",
-              "                    ,SUM('VN Fact_Target'[target_amount_per_day]) , BLANK()) ",
-              "",
-              "----   محاسبه تارگت بر اساس فروش ناخالص  فاکتور )"
-            ],
-            "formatString": "0.00 %;0.00- %;0.00 %"
-          },
-          {
             "name": "012_ DailySalesTarget",
             "description": "محاسبه  تارگت روزانه (ماه تا روز ) بر اساس فروش ناخالص ",
             "expression": [
