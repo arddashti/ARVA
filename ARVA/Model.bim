@@ -672,6 +672,22 @@
               "---- قیمت سال گذشته"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "09_ProductGrowthRate",
+            "description": "نرخ تغغیرات (رشد) قیمت کالا",
+            "expression": [
+              "",
+              "          if('VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice]>0 , ",
+              "          ( MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) -'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice])",
+              "                                              /'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice])",
+              "",
+              "",
+              "",
+              "------نرخ تغغیرات (رشد) قیمت کالا",
+              "                                                "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
