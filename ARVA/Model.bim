@@ -1404,6 +1404,18 @@
               "----   فروش ناخالص سال گذشته "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "022_SalesGrowthRate",
+            "description": "نرخ رشد فروش ناخالص",
+            "expression": [
+              "  ",
+              "               DIVIDE('VN Fact_Sale'[02_Amount]- 'VN Fact_Sale'[021_ Lastyear's sales] , ",
+              "                                                'VN Fact_Sale'[021_ Lastyear's sales])",
+              "",
+              "---- نرخ رشد فروش ناخالص"
+            ],
+            "formatString": "#,#"
           }
         ]
       },
