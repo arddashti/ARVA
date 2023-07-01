@@ -1390,6 +1390,20 @@
               "---- محاسبه نرخ رشد ناخالص ماه  تا روز "
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "021_ Lastyear's sales",
+            "description": "فروش ناخالص سال گذشته ",
+            "expression": [
+              " ",
+              "                var y  = MAX('BI DIM_DATE'[jyear]) -1",
+              " return ",
+              "  CALCULATE('VN Fact_Sale'[02_Amount] , 'BI DIM_DATE'[jyear] = y )",
+              "",
+              "",
+              "----   فروش ناخالص سال گذشته "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
