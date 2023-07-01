@@ -1318,21 +1318,6 @@
             "formatString": "0.00 %;0.00- %;0.00 %"
           },
           {
-            "name": "014_ Amount(فاکتور )",
-            "description": "محاسبه فروش ناخالص بر اساس فاکتور ",
-            "expression": [
-              " CALCULATE(SUM('VN Fact_Sale'[Amount]) ,",
-              "                              FILTER('VN Fact_Sale', 'VN Fact_Sale'[type] = \"فاکتور\"),",
-              "                             FILTER('VN Fact_Sale', 'VN Fact_Sale'[IsDeleted]<> 1))",
-              "",
-              "",
-              "",
-              "----- محاسبه فروش ناخالص بر اساس فاکتور ",
-              "----- این مژر برای  نمایش در جدول درصد تحقق ساخته گردید)"
-            ],
-            "formatString": "#,#"
-          },
-          {
             "name": "015_SalesTarget",
             "description": "تارگت  فروش ناخالص ",
             "expression": [
