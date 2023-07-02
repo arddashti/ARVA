@@ -308,20 +308,6 @@
             "sourceColumn": "GoodsGroupName_Parent"
           },
           {
-            "type": "calculated",
-            "name": "01_NewGroupGoods",
-            "dataType": "string",
-            "isDataTypeInferred": true,
-            "expression": [
-              "    if ( ",
-              "         MID('VN Dim_Goods'[GoodsCode] , 1 , 1) = \"3\",",
-              "          ",
-              "                                        \"آروا\", if(MID('VN Dim_Goods'[GoodsCode] , 1 , 1) <>\"3\",",
-              "                                                                        \"سایر\")",
-              "                                                             )"
-            ]
-          },
-          {
             "name": "ManufacturerName",
             "dataType": "string",
             "sourceColumn": "ManufacturerName"
