@@ -320,6 +320,11 @@
               "                                                                        \"سایر\")",
               "                                                             )"
             ]
+          },
+          {
+            "name": "ManufacturerName",
+            "dataType": "string",
+            "sourceColumn": "ManufacturerName"
           }
         ],
         "partitions": [
@@ -332,9 +337,10 @@
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    VN_Dim_Goods = Source{[Schema=\"VN\",Item=\"Dim_Goods\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Dim_Goods,\"ي\",\"ی\",Replacer.ReplaceText,{\"GoodsName\", \"GoodsGroupName\", \"GoodsGroupName_Parent\"})",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Dim_Goods,\"ي\",\"ی\",Replacer.ReplaceText,{\"GoodsName\", \"GoodsGroupName\", \"GoodsGroupName_Parent\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"ي\",\"ی\",Replacer.ReplaceText,{\"ManufacturerName\"})",
                 "in",
-                "    #\"Replaced Value\""
+                "    #\"Replaced Value1\""
               ]
             }
           }
