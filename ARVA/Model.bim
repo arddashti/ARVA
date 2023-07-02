@@ -310,6 +310,7 @@
           {
             "name": "ManufacturerName",
             "dataType": "string",
+            "description": "نام تولید کننده",
             "sourceColumn": "ManufacturerName"
           }
         ],
