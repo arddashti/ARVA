@@ -1700,15 +1700,16 @@
             "name": "01_BestSeller",
             "expression": [
               "   ",
-              " \"بهترین فروشنده \" & ",
-              "                 LOOKUPVALUE('VN Dim_Personnel'[PersonnelCode],'VN Dim_Personnel'[PersonnelCode],",
-              "                                        CALCULATE( max('VN Fact_RetSale'[Amount]) ,",
-              "                                                        FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1 )))",
+              " \"بهترین فروشنده \" &",
+              "                    LOOKUPVALUE('VN Dim_Personnel'[ContactName],'VN Dim_Personnel'[PersonnelCode], ",
+              "                                      'VN Fact_Sale'[02_Amount])",
+              "-- max('VN Fact_RetSale'[Amount]) ,",
+              "                                               --  FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1)))",
+              "               ",
               "",
               "",
               "",
-              "",
-              "----- بهترین فروشنده)"
+              "----- بهترین فروشنده))))"
             ]
           }
         ]
