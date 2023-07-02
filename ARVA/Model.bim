@@ -1664,7 +1664,7 @@
         "columns": [
           {
             "name": "PersonnelCode",
-            "dataType": "string",
+            "dataType": "int64",
             "sourceColumn": "PersonnelCode"
           },
           {
@@ -1693,6 +1693,23 @@
                 "    #\"Replaced Value\""
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "01_BestSeller",
+            "expression": [
+              "   ",
+              " \"بهترین فروشنده \" & ",
+              "                 LOOKUPVALUE('VN Dim_Personnel'[PersonnelCode],'VN Dim_Personnel'[PersonnelCode],",
+              "                                        CALCULATE( max('VN Fact_RetSale'[Amount]) ,",
+              "                                                        FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1 )))",
+              "",
+              "",
+              "",
+              "",
+              "----- بهترین فروشنده)"
+            ]
           }
         ]
       }
