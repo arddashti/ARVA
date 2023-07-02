@@ -1325,7 +1325,7 @@
             "expression": [
               "",
               "     CALCULATE (",
-              "              SUM ( 'VN Fact_Sale'[UnitQty] ),",
+              "              SUM ( 'VN Fact_Sale'[TotalQty] ),",
               "",
               "              FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1",
               "))",
