@@ -679,9 +679,9 @@
             "expression": [
               "",
               " ",
-              "",
+              "if( 'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice] >0 && MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) <> BLANK(),",
               "  DIVIDE(MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) - 'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice] ,",
-              "                              'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice])",
+              "                              'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice]))",
               "",
               "       --   ( MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) -'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice])",
               "                                            --  /'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice]",
