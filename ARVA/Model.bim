@@ -2530,6 +2530,23 @@
             "filterExpression": " 'BI Dim_Geographic'[StateCode]=61"
           }
         ]
+      },
+      {
+        "name": "BI_Hormozgan_Fullview",
+        "description": "گروه جهخت دسترسی به هرمزگان",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Hormozgan_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3322"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "BI Dim_Geographic",
+            "filterExpression": " 'BI Dim_Geographic'[StateCode]=23"
+          }
+        ]
       }
     ],
     "annotations": [
