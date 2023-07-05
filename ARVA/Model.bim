@@ -1733,6 +1733,26 @@
           {
             "name": "Target",
             "expression": " CALCULATE( SUM('VN Fact_Target'[target_amount_per_day]))"
+          },
+          {
+            "name": "01_ Day of Target",
+            "description": "محاسبه روزانه تارگت ",
+            "expression": [
+              " ",
+              "",
+              "  var flag = CALCULATE( 'BI DIM_DATE'[02_flagBinary] , 'BI DIM_DATE'[Miladi] = TODAY())",
+              "",
+              "",
+              "return ",
+              "               CALCULATE(  ",
+              "                    DIVIDE( ",
+              "                         sum( 'VN Fact_Target'[target_amount_per_day]) , flag))",
+              "                      ",
+              "                                          ",
+              "                                            ",
+              "-- محاسبه روزانه تارگت )"
+            ],
+            "formatString": "#,#"
           }
         ]
       },
