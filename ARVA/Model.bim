@@ -175,6 +175,15 @@
             "name": "01_Today",
             "description": "تاریخ روز ",
             "expression": " LOOKUPVALUE('BI DIM_DATE'[Jalali_1],'BI DIM_DATE'[Miladi],TODAY())"
+          },
+          {
+            "name": "02_flagBinary",
+            "description": "محاسبه روز کاری",
+            "expression": [
+              "   sum( 'BI DIM_DATE'[holiday])",
+              " -- محاسبه روز کاری"
+            ],
+            "formatString": "#,#"
           }
         ]
       },
@@ -1724,20 +1733,6 @@
           {
             "name": "Target",
             "expression": " CALCULATE( SUM('VN Fact_Target'[target_amount_per_day]))"
-          },
-          {
-            "name": "02_Target of day",
-            "expression": [
-              "   ",
-              "              CALCULATE(",
-              "                 DIVIDE(",
-              "                       SUM('VN Fact_Target'[target_amount_per_day]),'BI DIM_DATE'[02 _FlagBinary]),",
-              "                               ALL('BI DIM_DATE'[day]))",
-              "",
-              "",
-              "",
-              "--- تارگت روزانه)"
-            ]
           }
         ]
       },
