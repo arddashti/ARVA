@@ -1733,6 +1733,20 @@
           {
             "name": "Target",
             "expression": " CALCULATE( SUM('VN Fact_Target'[target_amount_per_day]))"
+          },
+          {
+            "name": "02_Target of day",
+            "expression": [
+              "   ",
+              "              CALCULATE(",
+              "                 DIVIDE(",
+              "                       SUM('VN Fact_Target'[target_amount_per_day]),'BI DIM_DATE'[02 _FlagBinary]),",
+              "                               ALL('BI DIM_DATE'[day]))",
+              "",
+              "",
+              "",
+              "--- تارگت روزانه)"
+            ]
           }
         ]
       },
