@@ -175,6 +175,10 @@
             "name": "01_Today",
             "description": "تاریخ روز ",
             "expression": " LOOKUPVALUE('BI DIM_DATE'[Jalali_1],'BI DIM_DATE'[Miladi],TODAY())"
+          },
+          {
+            "name": "02 _FlagBinary",
+            "expression": " SUM('BI DIM_DATE'[holiday])"
           }
         ]
       },
@@ -1769,9 +1773,8 @@
             "name": "01_BestSeller",
             "expression": [
               "   ",
-              " \"بهترین فروشنده \" &",
-              "                    LOOKUPVALUE('VN Dim_Personnel'[ContactName],'VN Dim_Personnel'[PersonnelCode], ",
-              "                                      'VN Fact_Sale'[02_Amount])",
+              "-- \"بهترین فروشنده \" &",
+              "                    LOOKUPVALUE('VN Fact_Sale'[DealerRef], 'VN Dim_Personnel'[PersonnelId], MAX('VN Fact_Sale'[Amount]))",
               "-- max('VN Fact_RetSale'[Amount]) ,",
               "                                               --  FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1)))",
               "               ",
