@@ -1735,26 +1735,6 @@
             "expression": " CALCULATE( SUM('VN Fact_Target'[target_amount_per_day]))"
           },
           {
-            "name": "01_ Day of Target",
-            "description": "محاسبه روزانه تارگت ",
-            "expression": [
-              " ",
-              "",
-              "  var flag = CALCULATE( 'BI DIM_DATE'[02_flagBinary] , 'BI DIM_DATE'[Miladi] = TODAY())",
-              "",
-              "",
-              "return ",
-              "               CALCULATE(  ",
-              "                    DIVIDE( ",
-              "                         sum( 'VN Fact_Target'[target_amount_per_day]) , flag))",
-              "                      ",
-              "                                          ",
-              "                                            ",
-              "-- محاسبه روزانه تارگت )"
-            ],
-            "formatString": "#,#"
-          },
-          {
             "name": "02__ MTD Target",
             "description": "تارگت ماه تا روز ",
             "expression": [
@@ -1769,8 +1749,13 @@
               "           CALCULATE(sum('VN Fact_Target'[target_amount_per_day]),",
               "                                        'BI DIM_DATE'[jmonthN] = m , ",
               "                                                       'BI DIM_DATE'[jyear]= Y,",
-              "                                                                   'BI DIM_DATE'[day]<=d)",
+              "                                                                   'BI DIM_DATE'[day]<=d)             ",
+              "                 --         *",
               "",
+              "            -- CALCULATE('BI DIM_DATE'[02_flagBinary],",
+              "                               --         'BI DIM_DATE'[jmonthN] = m , ",
+              "                                                     --  'BI DIM_DATE'[jyear]= Y,",
+              "                                                            --       'BI DIM_DATE'[day]<=d)",
               "-- تارگت ماه تا روز "
             ],
             "formatString": "#,#"
