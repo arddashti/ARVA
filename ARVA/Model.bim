@@ -1759,6 +1759,17 @@
               "-- تارگت ماه تا روز "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "03_Daily fulfillment percentage",
+            "description": "درصد تحقق ماه تا روز ",
+            "expression": [
+              "       ",
+              "                                     DIVIDE('VN Fact_Sale'[010_ MTD Amount] , 'VN Fact_Target'[02__ MTD Target])",
+              "",
+              "                    -- درصد تحقق ماه تا روز "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
