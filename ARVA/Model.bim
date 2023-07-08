@@ -1489,7 +1489,7 @@
             "expression": [
               "  ",
               "              ",
-              "            if('VN Fact_Sale'[02_Amount] > 0 , 'VN Fact_Sale'[021_ Lastyear's sales] <> 0 , ",
+              "            if('VN Fact_Sale'[02_Amount] > 0  && 'VN Fact_Sale'[021_ Lastyear's sales] <> 0 , ",
               "",
               "               DIVIDE('VN Fact_Sale'[02_Amount]- 'VN Fact_Sale'[021_ Lastyear's sales] , ",
               "                                                'VN Fact_Sale'[021_ Lastyear's sales]))",
