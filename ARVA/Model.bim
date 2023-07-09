@@ -1239,7 +1239,11 @@
               "VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
               "VAR D = LOOKUPVALUE('BI DIM_DATE'[Day_number_year], 'BI DIM_DATE'[Miladi], TODAY())",
               "RETURN",
-              "    CALCULATE('VN Fact_Sale'[02_Amount], 'BI DIM_DATE'[Day_number_year] <= D , 'BI DIM_DATE'[jyear]= Y)",
+              "    CALCULATE('VN Fact_Sale'[02_Amount], ",
+              "                    'BI DIM_DATE'[Day_number_year] <= D , ",
+              "                                        'BI DIM_DATE'[jyear]= Y )",
+              "",
+              "                                ",
               "---- فروس ناخالص سال تا روز "
             ],
             "formatString": "#,#"
@@ -1833,13 +1837,14 @@
               " ",
               "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
               "                 ",
-              "             VAR D = LOOKUPVALUE('BI DIM_DATE'[Day_number_year], 'BI DIM_DATE'[Miladi], TODAY())",
+              "         VAR D = LOOKUPVALUE('BI DIM_DATE'[Day_number_year], 'BI DIM_DATE'[Miladi], TODAY())",
               "",
               "         ",
               "        RETURN",
               "           CALCULATE(sum('VN Fact_Target'[target_amount_per_day]), ",
               "                                     'BI DIM_DATE'[jyear]= Y,",
-              "                                          'BI DIM_DATE'[Day_number_year] <= D ) ",
+              "                                      'BI DIM_DATE'[Day_number_year] <= D)",
+              "                                       ",
               "                                                    ",
               "-- محاسبه تارگت سال تا روز "
             ],
@@ -1857,6 +1862,22 @@
               "--درصد تحقق سال تا روز"
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "05_YTD target",
+            "expression": [
+              "",
+              "VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "--VAR D = LOOKUPVALUE('BI DIM_DATE'[Day_number_year], 'BI DIM_DATE'[Miladi], TODAY())",
+              "RETURN",
+              "    CALCULATE(sum('VN Fact_Target'[target_amount_per_day]), ",
+              "                  --    'BI DIM_DATE'[Day_number_year] <= D , ",
+              "                                        'BI DIM_DATE'[jyear]= Y , 'BI DIM_DATE'[Miladi]<=TODAY())",
+              "",
+              "",
+              "",
+              "---- تارگت سال تا روز "
+            ]
           }
         ]
       },
