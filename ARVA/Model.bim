@@ -1499,7 +1499,7 @@
             "formatString": "0.00 %;0.00- %;0.00 %"
           },
           {
-            "name": "023_ MTD Amount",
+            "name": "023_ Daily Amount",
             "description": "محاسبه فروش روزانه",
             "expression": [
               " ",
@@ -1810,6 +1810,21 @@
               "----- محاسبه تارگت روزانه "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "05_daily target",
+            "description": "محاسبه تارگت روزانه",
+            "expression": [
+              "",
+              "",
+              "",
+              "             DIVIDE('VN Fact_Sale'[023_ Daily Amount] , 'VN Fact_Target'[04__Daily Target])",
+              "",
+              "",
+              "",
+              "---- محاسبه تارگت روزانه"
+            ],
+            "formatString": "0.00 %;0.00- %;0.00 %"
           }
         ]
       },
