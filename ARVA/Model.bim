@@ -1788,7 +1788,7 @@
               "",
               "                    -- درصد تحقق ماه تا روز "
             ],
-            "formatString": "#,#"
+            "formatString": "0.00 %;0.00- %;0.00 %"
           },
           {
             "name": "04__Daily Target",
