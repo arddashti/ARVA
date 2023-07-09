@@ -1843,7 +1843,7 @@
               "                                                    ",
               "-- محاسبه تارگت سال تا روز "
             ],
-            "formatString": "#و#"
+            "formatString": "#,#"
           },
           {
             "name": "07_ YTD Target percentage",
