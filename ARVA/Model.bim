@@ -1812,7 +1812,7 @@
             "formatString": "#,#"
           },
           {
-            "name": "05_daily target",
+            "name": "05_daily target percentage",
             "description": "محاسبه تارگت روزانه",
             "expression": [
               "",
@@ -1846,7 +1846,7 @@
             "formatString": "#و#"
           },
           {
-            "name": "07_ YTD Target",
+            "name": "07_ YTD Target percentage",
             "description": "درصد تحقق سال تا روز",
             "expression": [
               "",
