@@ -1780,7 +1780,7 @@
             "formatString": "#,#"
           },
           {
-            "name": "03_Daily fulfillment percentage",
+            "name": "03_MTD Target percentage",
             "description": "درصد تحقق ماه تا روز ",
             "expression": [
               "       ",
@@ -1844,6 +1844,19 @@
               "-- محاسبه تارگت سال تا روز "
             ],
             "formatString": "#و#"
+          },
+          {
+            "name": "07_ YTD Target",
+            "description": "درصد تحقق سال تا روز",
+            "expression": [
+              "",
+              "",
+              "",
+              "             DIVIDE('VN Fact_Sale'[05_YTD Sales(Amount)] , 'VN Fact_Target'[06_YTD Target])",
+              "",
+              "--درصد تحقق سال تا روز"
+            ],
+            "formatString": "0.00 %;0.00- %;0.00 %"
           }
         ]
       },
