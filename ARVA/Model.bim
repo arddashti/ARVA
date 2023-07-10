@@ -1648,6 +1648,20 @@
               "-- این مژر فروش سال گذشته را با قیمت جدید محاسبه میکند"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "029_GrowthRate MTD Amount",
+            "description": "محاسبه نرخ رشد ناخالص ماه  تا روز با احتساب رشد 45درصدی قیمت ",
+            "expression": [
+              "   if('VN Fact_Sale'[011_LastYear MTD Amount]>0,",
+              "                             ('VN Fact_Sale'[010_ MTD Amount] -'VN Fact_Sale'[028_LastYear MTD Amount *growth Rate Arva]) ",
+              "                                       / 'VN Fact_Sale'[028_LastYear MTD Amount *growth Rate Arva])",
+              "",
+              "",
+              "",
+              "---- محاسبه نرخ رشد ناخالص ماه  تا روز با احتساب رشد 45درصدی قیمت "
+            ],
+            "formatString": "0.00 %;0.00- %;0.00 %"
           }
         ]
       },
