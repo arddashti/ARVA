@@ -1460,7 +1460,7 @@
             "formatString": "0.00 %;0.00- %;0.00 %"
           },
           {
-            "name": "020_GrowthRate MTD AmountNut",
+            "name": "020_GrowthRate MTD Amount",
             "description": " محاسبه نرخ رشد ناخالص ماه  تا روز ",
             "expression": [
               "   if('VN Fact_Sale'[011_LastYear MTD Amount]>0,",
