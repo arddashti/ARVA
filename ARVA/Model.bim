@@ -1600,6 +1600,28 @@
               "-- این مژرفروش سال جدید را بر مبنای نرخ تورم 45 درصدی شرکت محاسبه میکند"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "027_GrowthRate YTD AmountNut",
+            "description": [
+              "017_GrowthRate YTD AmountNut:=   if('VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]>0,",
+              "                             ('VN Fact_Sale'[04_YTD Sales(AmountNut)] -'VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]) ",
+              "                                       / 'VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)])",
+              "",
+              "",
+              "",
+              "---- محاسبه نرخ رشد ناخالص سال  تا روز "
+            ],
+            "expression": [
+              "   if('VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]>0,",
+              "                             ('VN Fact_Sale'[04_YTD Sales(AmountNut)] -'VN Fact_Sale'[026_YTD Sales LastYear(AmountNut)]) ",
+              "                                       / 'VN Fact_Sale'[026_YTD Sales LastYear(AmountNut)])",
+              "",
+              "",
+              "",
+              "---- محاسبه نرخ رشد ناخالص سال  تا روز بر مبنای نرخ رشد قیمت  45درصدی سال جدید"
+            ],
+            "formatString": "0.00 %;0.00- %;0.00 %"
           }
         ]
       },
