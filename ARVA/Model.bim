@@ -1662,6 +1662,33 @@
               "---- محاسبه نرخ رشد ناخالص ماه  تا روز با احتساب رشد 45درصدی قیمت "
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "030_LastYear MTD AmountNut*GrowthRate Arva",
+            "description": "فروش خالص سال گذشته ماه تا روز با احتساب نرخ رشد 45 درصدی قیمت کالا آروا",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "        (  if( CALCULATE('VN Fact_Sale'[01_AmountNut], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
+              "                                                     'BI DIM_DATE'[day]<=d)<> BLANK() ,",
+              "                  CALCULATE('VN Fact_Sale'[01_AmountNut], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
+              "                                                     'BI DIM_DATE'[day]<=d), \"حواله باز موجود نیست \"))",
+              "                                                 ",
+              "                                                       +",
+              " (  if( CALCULATE('VN Fact_Sale'[01_AmountNut], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
+              "                                                     'BI DIM_DATE'[day]<=d)<> BLANK() ,",
+              "                  CALCULATE('VN Fact_Sale'[01_AmountNut], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
+              "                                                     'BI DIM_DATE'[day]<=d), \"حواله باز موجود نیست \")*45)/100",
+              "",
+              "----  فروش خالص سال گذشته ماه تا روز با احتساب نرخ رشد 45 درصدی قیمت کالا آروا"
+            ],
+            "formatString": "#,#"
           }
         ]
       },
