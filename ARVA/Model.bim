@@ -1616,6 +1616,38 @@
               "---- محاسبه نرخ رشد ناخالص سال  تا روز بر مبنای نرخ رشد قیمت  45درصدی سال جدید"
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "028_LastYear MTD Amount *growth Rate Arva",
+            "description": "فروش ناخالص سال گذشته ماه تا روز با احتساب نرخ رشد 45 درصدی قیمت کالا",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "          ",
+              " ( if (CALCULATE('VN Fact_Sale'[02_Amount], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
+              "                                                     'BI DIM_DATE'[day]<=d) <> BLANK(), ",
+              "              CALCULATE('VN Fact_Sale'[02_Amount], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
+              "                                                     'BI DIM_DATE'[day]<=d) , \"حواله باز موجود نیست \")) ",
+              "                                +",
+              "     ",
+              "",
+              "          ",
+              " ( if (CALCULATE('VN Fact_Sale'[02_Amount], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
+              "                                                     'BI DIM_DATE'[day]<=d) <> BLANK(), ",
+              "              CALCULATE('VN Fact_Sale'[02_Amount], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
+              "                                                     'BI DIM_DATE'[day]<=d) , \"حواله باز موجود نیست \")*45) 100",
+              "",
+              "",
+              "---- فروش ناخالص سال گذشته ماه تا روز با احتساب نرخ رشد 45 درصدی قیمت کالا)",
+              "-- این مژر فروش سال گذشته را با قیمت جدید محاسبه میکند"
+            ],
+            "formatString": "#.#"
           }
         ]
       },
