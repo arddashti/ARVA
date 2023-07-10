@@ -1603,18 +1603,12 @@
           },
           {
             "name": "027_GrowthRate YTD AmountNut(growth Rate Arva)",
-            "description": [
-              "017_GrowthRate YTD AmountNut:=   if('VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]>0,",
-              "                             ('VN Fact_Sale'[04_YTD Sales(AmountNut)] -'VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]) ",
-              "                                       / 'VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)])",
-              "",
-              "",
-              "",
-              "---- محاسبه نرخ رشد ناخالص سال  تا روز "
-            ],
+            "description": " محاسبه نرخ رشد ناخالص سال  تا روز بر مبنای نرخ رشد قیمت  45درصدی سال جدید",
             "expression": [
-              "   if('VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]>0,",
-              "                             ('VN Fact_Sale'[04_YTD Sales(AmountNut)] -'VN Fact_Sale'[026_YTD Sales LastYear(AmountNut)* growth Rate Arva]) ",
+              "  ",
+              "",
+              "       if('VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]>0,",
+              "                    ('VN Fact_Sale'[04_YTD Sales(AmountNut)] -'VN Fact_Sale'[026_YTD Sales LastYear(AmountNut)* growth Rate Arva]) ",
               "                                       / 'VN Fact_Sale'[026_YTD Sales LastYear(AmountNut)* growth Rate Arva])",
               "",
               "",
