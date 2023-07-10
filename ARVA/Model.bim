@@ -1554,7 +1554,7 @@
             "formatString": "#,#"
           },
           {
-            "name": "025_GrowthRate YTD Amount",
+            "name": "025_GrowthRate YTD Amount(growth Rate Arva)",
             "description": " محاسبه نرخ رشد ناخالص سال  تا روز   با احتساب افزایش قیمت 45درصدی آروا در سال 1402 ",
             "expression": [
               "  ",
@@ -1571,7 +1571,7 @@
             "formatString": "0.00 %;0.00- %;0.00 %"
           },
           {
-            "name": "026_YTD Sales LastYear(AmountNut)",
+            "name": "026_YTD Sales LastYear(AmountNut)* growth Rate Arva",
             "description": " فروش خالص سال گذشته  تا روز با احتساب نرخ تورم 45 درصدی آروا",
             "expression": [
               "",
@@ -1602,7 +1602,7 @@
             "formatString": "#,#"
           },
           {
-            "name": "027_GrowthRate YTD AmountNut",
+            "name": "027_GrowthRate YTD AmountNut(growth Rate Arva)",
             "description": [
               "017_GrowthRate YTD AmountNut:=   if('VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]>0,",
               "                             ('VN Fact_Sale'[04_YTD Sales(AmountNut)] -'VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]) ",
@@ -1614,8 +1614,8 @@
             ],
             "expression": [
               "   if('VN Fact_Sale'[06_YTD Sales LastYear(AmountNut)]>0,",
-              "                             ('VN Fact_Sale'[04_YTD Sales(AmountNut)] -'VN Fact_Sale'[026_YTD Sales LastYear(AmountNut)]) ",
-              "                                       / 'VN Fact_Sale'[026_YTD Sales LastYear(AmountNut)])",
+              "                             ('VN Fact_Sale'[04_YTD Sales(AmountNut)] -'VN Fact_Sale'[026_YTD Sales LastYear(AmountNut)* growth Rate Arva]) ",
+              "                                       / 'VN Fact_Sale'[026_YTD Sales LastYear(AmountNut)* growth Rate Arva])",
               "",
               "",
               "",
