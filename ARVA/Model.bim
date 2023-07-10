@@ -1641,13 +1641,13 @@
               " ( if (CALCULATE('VN Fact_Sale'[02_Amount], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
               "                                                     'BI DIM_DATE'[day]<=d) <> BLANK(), ",
               "              CALCULATE('VN Fact_Sale'[02_Amount], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
-              "                                                     'BI DIM_DATE'[day]<=d) , \"حواله باز موجود نیست \")*45) 100",
+              "                                                     'BI DIM_DATE'[day]<=d) , \"حواله باز موجود نیست \")*45) /100",
               "",
               "",
               "---- فروش ناخالص سال گذشته ماه تا روز با احتساب نرخ رشد 45 درصدی قیمت کالا)",
               "-- این مژر فروش سال گذشته را با قیمت جدید محاسبه میکند"
             ],
-            "formatString": "#.#"
+            "formatString": "#,#"
           }
         ]
       },
