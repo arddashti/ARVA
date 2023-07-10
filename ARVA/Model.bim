@@ -1560,7 +1560,7 @@
               "  ",
               "         if('VN Fact_Sale'[05_YTD Sales(Amount)]>0,",
               "                       ('VN Fact_Sale'[05_YTD Sales(Amount)] -'VN Fact_Sale'[024_YTD Sales LastYear(Amount)* growth Rate Arva]) ",
-              "                                       / 'VN Fact_Sale'[07_YTD Sales LastYear(Amount)])",
+              "                                       / 'VN Fact_Sale'[024_YTD Sales LastYear(Amount)* growth Rate Arva])",
               "",
               "",
               "",
