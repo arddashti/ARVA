@@ -1696,8 +1696,8 @@
             "expression": [
               "",
               "  if('VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva]>0,",
-              "                             ('VN Fact_Sale'[08_ MTD AmountNut] -'VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva]",
-              "                                       / 'VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva]))",
+              "                             ('VN Fact_Sale'[08_ MTD AmountNut] -'VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva])",
+              "                                       / 'VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva])",
               "",
               "",
               "",
