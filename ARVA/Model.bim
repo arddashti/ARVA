@@ -1460,20 +1460,6 @@
             "formatString": "0.00 %;0.00- %;0.00 %"
           },
           {
-            "name": "020_GrowthRate MTD Amount",
-            "description": " محاسبه نرخ رشد ناخالص ماه  تا روز ",
-            "expression": [
-              "   if('VN Fact_Sale'[011_LastYear MTD Amount]>0,",
-              "                             ('VN Fact_Sale'[010_ MTD Amount] -'VN Fact_Sale'[011_LastYear MTD Amount]) ",
-              "                                       / 'VN Fact_Sale'[011_LastYear MTD Amount])",
-              "",
-              "",
-              "",
-              "---- محاسبه نرخ رشد ناخالص ماه  تا روز "
-            ],
-            "formatString": "0.00 %;0.00- %;0.00 %"
-          },
-          {
             "name": "021_ Lastyear's sales",
             "description": "فروش ناخالص سال گذشته ",
             "expression": [
@@ -1499,6 +1485,20 @@
               "                                                'VN Fact_Sale'[021_ Lastyear's sales]))",
               "",
               "---- نرخ رشد فروش ناخالص"
+            ],
+            "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "020_GrowthRate MTD Amount",
+            "description": " محاسبه نرخ رشد ناخالص ماه  تا روز ",
+            "expression": [
+              "   if('VN Fact_Sale'[011_LastYear MTD Amount]>0,",
+              "                             ('VN Fact_Sale'[010_ MTD Amount] -'VN Fact_Sale'[011_LastYear MTD Amount]) ",
+              "                                       / 'VN Fact_Sale'[011_LastYear MTD Amount])",
+              "",
+              "",
+              "",
+              "---- محاسبه نرخ رشد ناخالص ماه  تا روز "
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
           },
@@ -2102,6 +2102,67 @@
             ]
           }
         ]
+      },
+      {
+        "name": "VN RFM",
+        "columns": [
+          {
+            "name": "CustRef",
+            "dataType": "int64",
+            "sourceColumn": "CustRef"
+          },
+          {
+            "name": "Recency_day",
+            "dataType": "int64",
+            "sourceColumn": "Recency_day"
+          },
+          {
+            "name": "Age_of_customer",
+            "dataType": "int64",
+            "sourceColumn": "Age_of_customer"
+          },
+          {
+            "name": "Frequency",
+            "dataType": "int64",
+            "sourceColumn": "Frequency"
+          },
+          {
+            "name": "Mean_diff_date",
+            "dataType": "double",
+            "sourceColumn": "Mean_diff_date"
+          },
+          {
+            "name": "SUM(Amount)",
+            "dataType": "double",
+            "sourceColumn": "SUM(Amount)"
+          },
+          {
+            "name": "ave_sum_amount",
+            "dataType": "double",
+            "sourceColumn": "ave_sum_amount"
+          },
+          {
+            "name": "Cluster",
+            "dataType": "string",
+            "sourceColumn": "Cluster"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_RFM = Source{[Schema=\"VN\",Item=\"RFM\"]}[Data]",
+                "in",
+                "    VN_RFM"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -2301,6 +2362,15 @@
         "toTable": "VN Fact_Sale",
         "toColumn": "SaleHdr_ID",
         "isActive": false,
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "2f966591-b5a1-4f0d-bfd1-2fc253d2b286",
+        "fromCardinality": "one",
+        "fromTable": "VN Dim_Cust",
+        "fromColumn": "tblCust_ID",
+        "toTable": "VN RFM",
+        "toColumn": "CustRef",
         "crossFilteringBehavior": "bothDirections"
       }
     ],
