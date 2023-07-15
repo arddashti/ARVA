@@ -1689,6 +1689,21 @@
               "----  فروش خالص سال گذشته ماه تا روز با احتساب نرخ رشد 45 درصدی قیمت کالا آروا"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "031_GrowthRate MTD AmountNUT(GrowthRate Arva)",
+            "description": "محاسبه نرخ رشد خالص ماه  تا روز با احتساب رشد 45درصدی قیمت ",
+            "expression": [
+              "",
+              "  if('VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva],",
+              "                             ('VN Fact_Sale'[08_ MTD AmountNut] -'VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva]",
+              "                                       / 'VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva]))",
+              "",
+              "",
+              "",
+              "---- محاسبه نرخ رشد خالص ماه  تا روز با احتساب رشد 45درصدی قیمت )"
+            ],
+            "formatString": "0.00 %;0.00- %;0.00 %"
           }
         ]
       },
