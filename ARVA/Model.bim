@@ -1695,7 +1695,7 @@
             "description": "محاسبه نرخ رشد خالص ماه  تا روز با احتساب رشد 45درصدی قیمت ",
             "expression": [
               "",
-              "  if('VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva],",
+              "  if('VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva]>0,",
               "                             ('VN Fact_Sale'[08_ MTD AmountNut] -'VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva]",
               "                                       / 'VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva]))",
               "",
