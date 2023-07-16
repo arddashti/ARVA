@@ -770,6 +770,25 @@
               "                                                "
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "010_CurrentInventory(currentMonth)",
+            "expression": [
+              "  ",
+              "",
+              "              var y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "              var m = LOOKUPVALUE('BI DIM_DATE'[jmonthN] , 'BI DIM_DATE'[Miladi], TODAY())",
+              "  ",
+              "               return",
+              "",
+              "",
+              "          CALCULATE( sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) ,",
+              "                                 'BI DIM_DATE'[jyear]=y , 'BI DIM_DATE'[jmonthN]=m ,  'BI DIM_DATE'[end_month]=1)",
+              "                                              ",
+              "",
+              "",
+              "---- محاسبه موجودی روز انبار فقط برای ماه جاری  )"
+            ]
           }
         ]
       },
