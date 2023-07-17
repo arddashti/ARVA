@@ -770,6 +770,50 @@
               "                                                "
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "010_CurrentInventory(currentMonth)",
+            "expression": [
+              "  ",
+              "",
+              "              var y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "              var m = LOOKUPVALUE('BI DIM_DATE'[jmonthN] , 'BI DIM_DATE'[Miladi], TODAY())",
+              "  ",
+              "               return",
+              "",
+              "",
+              "          CALCULATE( sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) ,",
+              "                                 'BI DIM_DATE'[jyear]=y , 'BI DIM_DATE'[jmonthN]=m ,  'BI DIM_DATE'[end_month]=1)",
+              "                                              ",
+              "",
+              "",
+              "---- محاسبه موجودی روز انبار فقط برای ماه جاری  )"
+            ]
+          },
+          {
+            "name": "011_ Current Inventory(Rial_CurrentMonth)",
+            "description": "موجودی ریالی لحظه ای ماه جاری ",
+            "expression": [
+              "",
+              "       var yy = LOOKUPVALUE ('BI DIM_DATE'[jyear] ,'BI DIM_DATE'[Miladi] , TODAY())",
+              "       ",
+              "        var mm = LOOKUPVALUE ('BI DIM_DATE'[jmonthN] ,'BI DIM_DATE'[Miladi] , TODAY())",
+              "           ",
+              " return",
+              "",
+              "",
+              "",
+              "",
+              "CALCULATE(",
+              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
+              "                                        * ",
+              "                                            'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                                                          'BI DIM_DATE'[jyear]=yy, 'BI DIM_DATE'[jmonthN]=mm,'BI DIM_DATE'[end_month]=1)            ",
+              "               ",
+              "",
+              "----  موجودی ریالی لحظه ای ماه جاری "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
@@ -1689,6 +1733,21 @@
               "----  فروش خالص سال گذشته ماه تا روز با احتساب نرخ رشد 45 درصدی قیمت کالا آروا"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "031_GrowthRate MTD AmountNUT(GrowthRate Arva)",
+            "description": "محاسبه نرخ رشد خالص ماه  تا روز با احتساب رشد 45درصدی قیمت ",
+            "expression": [
+              "",
+              "  if('VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva]>0,",
+              "                             ('VN Fact_Sale'[08_ MTD AmountNut] -'VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva])",
+              "                                       / 'VN Fact_Sale'[030_LastYear MTD AmountNut*GrowthRate Arva])",
+              "",
+              "",
+              "",
+              "---- محاسبه نرخ رشد خالص ماه  تا روز با احتساب رشد 45درصدی قیمت )"
+            ],
+            "formatString": "0.00 %;0.00- %;0.00 %"
           }
         ]
       },
