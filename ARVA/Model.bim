@@ -789,6 +789,31 @@
               "",
               "---- محاسبه موجودی روز انبار فقط برای ماه جاری  )"
             ]
+          },
+          {
+            "name": "011_ Current Inventory(Rial_CurrentMonth)",
+            "description": "موجودی ریالی لحظه ای ماه جاری ",
+            "expression": [
+              "",
+              "       var yy = LOOKUPVALUE ('BI DIM_DATE'[jyear] ,'BI DIM_DATE'[Miladi] , TODAY())",
+              "       ",
+              "        var mm = LOOKUPVALUE ('BI DIM_DATE'[jmonthN] ,'BI DIM_DATE'[Miladi] , TODAY())",
+              "           ",
+              " return",
+              "",
+              "",
+              "",
+              "",
+              "CALCULATE(",
+              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
+              "                                                                * ",
+              "                                                                   'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                                                                                      'BI DIM_DATE'[jyear]=yy, 'BI DIM_DATE'[jmonthN]=mm)            ",
+              "               ",
+              "",
+              "----  موجودی ریالی لحظه ای ماه جاری "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
