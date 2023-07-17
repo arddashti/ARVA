@@ -806,9 +806,9 @@
               "",
               "CALCULATE(",
               "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
-              "                                                                * ",
-              "                                                                   'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
-              "                                                                                      'BI DIM_DATE'[jyear]=yy, 'BI DIM_DATE'[jmonthN]=mm)            ",
+              "                                        * ",
+              "                                            'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                                                          'BI DIM_DATE'[jyear]=yy, 'BI DIM_DATE'[jmonthN]=mm,'BI DIM_DATE'[end_month]=1)            ",
               "               ",
               "",
               "----  موجودی ریالی لحظه ای ماه جاری "
