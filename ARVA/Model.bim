@@ -3378,7 +3378,7 @@
       },
       {
         "name": "BI_Hormozgan_Fullview",
-        "description": "گروه جهخت دسترسی به هرمزگان",
+        "description": "گروه جهت دسترسی به هرمزگان",
         "modelPermission": "read",
         "members": [
           {
@@ -3390,6 +3390,23 @@
           {
             "name": "BI Dim_Geographic",
             "filterExpression": " 'BI Dim_Geographic'[StateCode]=23"
+          }
+        ]
+      },
+      {
+        "name": "BSC_HR",
+        "description": "گروه جهت دسترسی به BSC منابع",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_HR",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-4375"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": "'NL BSC'[Unit code] =13"
           }
         ]
       }
