@@ -2347,6 +2347,29 @@
               "",
               "----  مقدار تحقق طی دوره  به درصد برای BSC"
             ]
+          },
+          {
+            "name": "002_Gauge Color",
+            "description": "رنگ گیج BSc",
+            "expression": [
+              " ",
+              "",
+              " IF(MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit] ) && MAX('NL BSC'[index direction]) = \"افزایشی\" && MAX('NL BSC'[Amount achieved during the period]) > MAX('NL BSC'[Target]), \"#01533D\",  ----- افزایشی",
+              "--IF(MAX(BSC[هدف]) >= MAX(BSC[حد پذیرش] ) && MAX(BSC[جهت شاخص]) = \"افزایشی\" && MAX(BSC[هدف])> MAX(BSC[مقدار محقق شده طی دوره]) >= MAX(BSC[حد پذیرش]), \"#DBDE1C\",   ----- افزایشی",
+              "            ",
+              "              ",
+              "      if( MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit])    && MAX('NL BSC'[index direction]) = \"افزایشی\" && MAX('NL BSC'[Acceptance limit])> MAX('NL BSC'[Amount achieved during the period]) ,\"#BB0E0E\",",
+              "          if( MAX('NL BSC'[Target]) <= MAX('NL BSC'[Acceptance limit] ) && MAX('NL BSC'[index direction]) = \"کاهشی\"  &&   MAX('NL BSC'[Target])< MAX('NL BSC'[Amount achieved during the period]) ,\"#BB0E0E\" , ",
+              "",
+              "  if( MAX('NL BSC'[Target]) <= MAX('NL BSC'[Acceptance limit] ) && MAX('NL BSC'[index direction]) = \"کاهشی\"     &&   MAX('NL BSC'[Acceptance limit])> MAX('NL BSC'[Amount achieved during the period]) ,\"#01533D\"))))",
+              "       --       if (MAX(BSC[هدف]) <= MAX(BSC[حد پذیرش] )&& MAX(BSC[هدف])< MAX(BSC[مقدار محقق شده طی دوره]) < MAX(BSC[حد پذیرش]), \"#DBDE1C\", ",
+              "  --  \"#01533D\"))",
+              "    --     ))))",
+              "",
+              "",
+              "",
+              "---- رنگ گیج BSc"
+            ]
           }
         ]
       },
