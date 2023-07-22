@@ -3426,6 +3426,17 @@
             "filterExpression": "'NL BSC'[Index code] =10"
           }
         ]
+      },
+      {
+        "name": "BSC_CRM",
+        "description": "گروه جهت  دسترسی BSC CRM",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": " 'NL BSC'[Index code] = 1"
+          }
+        ]
       }
     ],
     "annotations": [
