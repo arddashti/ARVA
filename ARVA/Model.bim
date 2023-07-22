@@ -3431,6 +3431,12 @@
         "name": "BSC_CRM",
         "description": "گروه جهت  دسترسی BSC CRM",
         "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_CRM",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3370"
+          }
+        ],
         "tablePermissions": [
           {
             "name": "NL BSC",
