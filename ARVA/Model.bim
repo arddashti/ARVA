@@ -3454,6 +3454,23 @@
             "filterExpression": "'NL BSC'[Index code] = 9"
           }
         ]
+      },
+      {
+        "name": "BSC_Support and supply",
+        "description": "گروه جهت دسترسی به پشتیبانی و  تامین ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_Support and supply",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3369"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": " 'NL BSC'[Index code]=12 &&  'NL BSC'[Index code]= 6 && 'NL BSC'[Index code]=5 && 'NL BSC'[Index code] =14"
+          }
+        ]
       }
     ],
     "annotations": [
