@@ -3474,7 +3474,7 @@
         "tablePermissions": [
           {
             "name": "NL BSC",
-            "filterExpression": " 'NL BSC'[Unit code]=12 &&  'NL BSC'[Unit code]= 6 && 'NL BSC'[Unit code]=5 && 'NL BSC'[Unit code] =14"
+            "filterExpression": " 'NL BSC'[Unit code]=12 ||  'NL BSC'[Unit code]= 6 || 'NL BSC'[Unit code]=7 || 'NL BSC'[Unit code] =14"
           }
         ]
       }
