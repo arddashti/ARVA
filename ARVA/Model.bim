@@ -3409,6 +3409,23 @@
             "filterExpression": "'NL BSC'[Unit code] =13"
           }
         ]
+      },
+      {
+        "name": "BSC_Sales",
+        "description": "گروه جهت دسترسی به  BSC  فروش  ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_Sales",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3365"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": "'NL BSC'[Index code] =10"
+          }
+        ]
       }
     ],
     "annotations": [
