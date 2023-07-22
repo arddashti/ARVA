@@ -3437,6 +3437,23 @@
             "filterExpression": " 'NL BSC'[Index code] = 1"
           }
         ]
+      },
+      {
+        "name": "BSC_Services",
+        "description": "گروه جهت دسترسی BSC  خدمات",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_Services",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3371"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": "'NL BSC'[Index code] = 9"
+          }
+        ]
       }
     ],
     "annotations": [
