@@ -3440,7 +3440,7 @@
         "tablePermissions": [
           {
             "name": "NL BSC",
-            "filterExpression": " 'NL BSC'[Index code] = 1"
+            "filterExpression": " 'NL BSC'[Unit code] = 1"
           }
         ]
       },
@@ -3457,7 +3457,7 @@
         "tablePermissions": [
           {
             "name": "NL BSC",
-            "filterExpression": "'NL BSC'[Index code] = 9"
+            "filterExpression": "'NL BSC'[Unit code]= 9"
           }
         ]
       },
@@ -3474,7 +3474,7 @@
         "tablePermissions": [
           {
             "name": "NL BSC",
-            "filterExpression": " 'NL BSC'[Index code]=12 &&  'NL BSC'[Index code]= 6 && 'NL BSC'[Index code]=5 && 'NL BSC'[Index code] =14"
+            "filterExpression": " 'NL BSC'[Unit code]=12 &&  'NL BSC'[Unit code]= 6 && 'NL BSC'[Unit code]=5 && 'NL BSC'[Unit code] =14"
           }
         ]
       }
