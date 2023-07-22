@@ -3463,7 +3463,7 @@
       },
       {
         "name": "BSC_Support and supply",
-        "description": "گروه جهت دسترسی به پشتیبانی و  تامین ",
+        "description": "گروه جهت دسترسی به BSC پشتیبانی و  تامین ",
         "modelPermission": "read",
         "members": [
           {
@@ -3475,6 +3475,23 @@
           {
             "name": "NL BSC",
             "filterExpression": " 'NL BSC'[Unit code]=12 ||  'NL BSC'[Unit code]= 6 || 'NL BSC'[Unit code]=7 || 'NL BSC'[Unit code] =14"
+          }
+        ]
+      },
+      {
+        "name": "BSC_Production",
+        "description": "گروه جهت دسترسی به BSC تولید ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_Production",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3372"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": "'NL BSC'[Unit code]=8"
           }
         ]
       }
