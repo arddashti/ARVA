@@ -1763,14 +1763,13 @@
               "      CALCULATE( 'VN Fact_Sale'[02_Amount] ,  ",
               "                  TOPN(10 , ",
               "                           ALL('VN Dim_Personnel'[ContactName]) , 'VN Fact_Sale'[02_Amount]) ,                                 ",
-              "                                              VALUES( 'VN Dim_Personnel'[ContactName]) ,",
-              "                                       FILTER('BI DIM_DATE','BI DIM_DATE'[jyear]=YY ),",
-              "                                          FILTER('BI DIM_DATE','BI DIM_DATE'[jmonthN]= MM))",
+              "                                              VALUES( 'VN Dim_Personnel'[ContactName])) ",
+              "                                       ",
               "",
               "",
               "",
               "",
-              "-- محاسبه  10 فروشنده برتر در ماه جاری )"
+              "-- محاسبه  10 فروشنده برتر  )"
             ],
             "formatString": "#,#"
           }
