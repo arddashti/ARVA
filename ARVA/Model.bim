@@ -1748,6 +1748,31 @@
               "---- محاسبه نرخ رشد خالص ماه  تا روز با احتساب رشد 45درصدی قیمت )"
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "032_TOP 10 Personel in Sale in (CurrentMonth)",
+            "description": "محاسبه  10 فروشنده برتر در ماه جاری ",
+            "expression": [
+              " ",
+              "",
+              "      VAR YY = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "      var MM = LOOKUPVALUE('BI DIM_DATE'[jmonthN] , 'BI DIM_DATE'[Miladi], TODAY())",
+              "           return",
+              "",
+              "",
+              "      CALCULATE( 'VN Fact_Sale'[02_Amount] ,  ",
+              "                  TOPN(10 , ",
+              "                           ALL('VN Dim_Personnel'[ContactName]) , 'VN Fact_Sale'[02_Amount]) ,                                 ",
+              "                                              VALUES( 'VN Dim_Personnel'[ContactName]) ,",
+              "                                       FILTER('BI DIM_DATE','BI DIM_DATE'[jyear]=YY ),",
+              "                                          FILTER('BI DIM_DATE','BI DIM_DATE'[jmonthN]= MM))",
+              "",
+              "",
+              "",
+              "",
+              "-- محاسبه  10 فروشنده برتر در ماه جاری )"
+            ],
+            "formatString": "#,#"
           }
         ]
       },
