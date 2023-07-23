@@ -2183,6 +2183,18 @@
               "",
               "----- بهترین فروشنده))))"
             ]
+          },
+          {
+            "name": "002_CountPersonel",
+            "description": "تعداد کل پرسنل ",
+            "expression": [
+              "    ",
+              "       DISTINCTCOUNT('VN Dim_Personnel'[PersonnelId])",
+              "    ",
+              "---- تعداد کل پرسنل ",
+              ""
+            ],
+            "formatString": "#,#"
           }
         ]
       },
