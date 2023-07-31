@@ -2378,7 +2378,7 @@
               " ",
               "",
               "           IF(MAX('NL BSC'[scale of measurement]) = \"درصد\",",
-              "                                        AVERAGE(('NL BSC'[Amount achieved during the period]))",
+              "                                        AVERAGE(('NL BSC'[Amount achieved during the period])))",
               "",
               "",
               "----  مقدار تحقق طی دوره  به درصد برای BSC)"
