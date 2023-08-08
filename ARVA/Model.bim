@@ -1232,6 +1232,19 @@
               "",
               "-- تبدیل تاریخ حواله به میلادی "
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "035_ DateDiff (draft and sale)",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "description": "تفاضل بین تاریخ حواله و تاریخ فاکتور ",
+            "expression": [
+              " ",
+              "                    DATEDIFF( 'VN Fact_Sale'[034_MiladiDraftDate],'VN Fact_Sale'[033_MiladiSalesDate], DAY)",
+              "",
+              "--تفاضل بین تاریخ حواله و تاریخ فاکتور "
+            ]
           }
         ],
         "partitions": [
