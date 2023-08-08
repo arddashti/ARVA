@@ -2430,6 +2430,7 @@
           {
             "name": "type of Document",
             "dataType": "string",
+            "description": "نوع پرداخت ",
             "sourceColumn": "type of Document"
           },
           {
@@ -2450,21 +2451,25 @@
           {
             "name": "situation",
             "dataType": "string",
+            "description": "دریافت- پرداخت ",
             "sourceColumn": "situation"
           },
           {
             "name": "series",
             "dataType": "string",
+            "description": "دریافت- پرداخت ",
             "sourceColumn": "series"
           },
           {
             "name": "detailed",
             "dataType": "string",
+            "description": "دریافت- پرداخت ",
             "sourceColumn": "detailed"
           },
           {
             "name": "type",
             "dataType": "string",
+            "description": "دریافت- پرداخت ",
             "sourceColumn": "type"
           },
           {
