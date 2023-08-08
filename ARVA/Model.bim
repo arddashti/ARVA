@@ -1152,11 +1152,13 @@
           {
             "name": "SaleDate",
             "dataType": "string",
+            "description": "تاریخ فاکتور",
             "sourceColumn": "SaleDate"
           },
           {
             "name": "DraftDate",
             "dataType": "string",
+            "description": "تاریخ حواله",
             "sourceColumn": "DraftDate"
           },
           {
@@ -1203,6 +1205,33 @@
             "name": "ExitRef_status",
             "dataType": "string",
             "sourceColumn": "ExitRef_status"
+          },
+          {
+            "type": "calculated",
+            "name": "033_MiladiSalesDate",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": "تبدیل تاریخ فاکتور به میلادی",
+            "expression": [
+              "",
+              "      FORMAT( LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Jalali_1], 'VN Fact_Sale'[SaleDate]) , \"yyyy/mm/dd\")",
+              "",
+              "--  تبدیل تاریخ فاکتور به میلادی برای محاسبه تفاضل دو تاریخ )"
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "034_MiladiDraftDate",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": "تبدیل تاریخ حواله به میلادی ",
+            "expression": [
+              "",
+              "                  FORMAT( LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Jalali_1], 'VN Fact_Sale'[SaleDate]) , \"yyyy/mm/dd\")",
+              "",
+              "",
+              "-- تبدیل تاریخ حواله به میلادی "
+            ]
           }
         ],
         "partitions": [
