@@ -1241,9 +1241,9 @@
             "description": "تفاضل بین تاریخ حواله و تاریخ فاکتور ",
             "expression": [
               " ",
-              "                    DATEDIFF( 'VN Fact_Sale'[034_MiladiDraftDate],'VN Fact_Sale'[033_MiladiSalesDate], DAY)",
+              "                    DATEDIFF( 'VN Fact_Sale'[034_MiladiDraftDate],'VN Fact_Sale'[033_MiladiSalesDate],DAY)",
               "",
-              "--تفاضل بین تاریخ حواله و تاریخ فاکتور "
+              "--تفاضل بین تاریخ حواله و تاریخ فاکتور )"
             ]
           }
         ],
