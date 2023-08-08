@@ -1814,6 +1814,17 @@
               "-- محاسبه  10 فروشنده برتر  )"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "036_Ave DateDiff( Draft & Sale )",
+            "description": " میانگین فاصله زمانی بین  تاریخ حواله  تا فاکتور ",
+            "expression": [
+              "",
+              "           AVERAGE('VN Fact_Sale'[035_ DateDiff (draft and sale)])",
+              "",
+              "-- میانگین فاصله زمانی بین  تاریخ حواله  تا فاکتور ",
+              ""
+            ]
           }
         ]
       },
