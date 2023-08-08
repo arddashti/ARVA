@@ -1227,7 +1227,7 @@
             "description": "تبدیل تاریخ حواله به میلادی ",
             "expression": [
               "",
-              "                  FORMAT( LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Jalali_1], 'VN Fact_Sale'[SaleDate]) , \"yyyy/mm/dd\")",
+              "                  FORMAT( LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Jalali_1], 'VN Fact_Sale'[DraftDate]) , \"yyyy/mm/dd\")",
               "",
               "",
               "-- تبدیل تاریخ حواله به میلادی "
