@@ -1152,11 +1152,13 @@
           {
             "name": "SaleDate",
             "dataType": "string",
+            "description": "تاریخ فاکتور",
             "sourceColumn": "SaleDate"
           },
           {
             "name": "DraftDate",
             "dataType": "string",
+            "description": "تاریخ حواله",
             "sourceColumn": "DraftDate"
           },
           {
@@ -1203,6 +1205,46 @@
             "name": "ExitRef_status",
             "dataType": "string",
             "sourceColumn": "ExitRef_status"
+          },
+          {
+            "type": "calculated",
+            "name": "033_MiladiSalesDate",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": "تبدیل تاریخ فاکتور به میلادی",
+            "expression": [
+              "",
+              "      FORMAT( LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Jalali_1], 'VN Fact_Sale'[SaleDate]) , \"yyyy/mm/dd\")",
+              "",
+              "--  تبدیل تاریخ فاکتور به میلادی برای محاسبه تفاضل دو تاریخ )"
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "034_MiladiDraftDate",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": "تبدیل تاریخ حواله به میلادی ",
+            "expression": [
+              "",
+              "                  FORMAT( LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Jalali_1], 'VN Fact_Sale'[DraftDate]) , \"yyyy/mm/dd\")",
+              "",
+              "",
+              "-- تبدیل تاریخ حواله به میلادی "
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "035_ DateDiff (draft and sale)",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "description": "تفاضل بین تاریخ حواله و تاریخ فاکتور ",
+            "expression": [
+              " ",
+              "                    DATEDIFF( 'VN Fact_Sale'[034_MiladiDraftDate],'VN Fact_Sale'[033_MiladiSalesDate],DAY)",
+              "",
+              "--تفاضل بین تاریخ حواله و تاریخ فاکتور )"
+            ]
           }
         ],
         "partitions": [
@@ -1748,6 +1790,41 @@
               "---- محاسبه نرخ رشد خالص ماه  تا روز با احتساب رشد 45درصدی قیمت )"
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "032_TOP 10 Personel in Sale in (CurrentMonth)",
+            "description": "محاسبه  10 فروشنده برتر در ماه جاری ",
+            "expression": [
+              " ",
+              "",
+              "      VAR YY = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "      var MM = LOOKUPVALUE('BI DIM_DATE'[jmonthN] , 'BI DIM_DATE'[Miladi], TODAY())",
+              "           return",
+              "",
+              "",
+              "      CALCULATE( 'VN Fact_Sale'[02_Amount] ,  ",
+              "                  TOPN(10 , ",
+              "                           ALL('VN Dim_Personnel'[ContactName]) , 'VN Fact_Sale'[02_Amount]) ,                                 ",
+              "                                              VALUES( 'VN Dim_Personnel'[ContactName])) ",
+              "                                       ",
+              "",
+              "",
+              "",
+              "",
+              "-- محاسبه  10 فروشنده برتر  )"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "036_Ave DateDiff( Draft & Sale )",
+            "description": " میانگین فاصله زمانی بین  تاریخ حواله  تا فاکتور ",
+            "expression": [
+              "",
+              "           AVERAGE('VN Fact_Sale'[035_ DateDiff (draft and sale)])",
+              "",
+              "-- میانگین فاصله زمانی بین  تاریخ حواله  تا فاکتور ",
+              ""
+            ]
           }
         ]
       },
@@ -2159,6 +2236,18 @@
               "",
               "----- بهترین فروشنده))))"
             ]
+          },
+          {
+            "name": "002_CountPersonel",
+            "description": "تعداد کل پرسنل ",
+            "expression": [
+              "    ",
+              "       DISTINCTCOUNT('VN Dim_Personnel'[PersonnelId])",
+              "    ",
+              "---- تعداد کل پرسنل ",
+              ""
+            ],
+            "formatString": "#,#"
           }
         ]
       },
@@ -2342,10 +2431,10 @@
               " ",
               "",
               "           IF(MAX('NL BSC'[scale of measurement]) = \"درصد\",",
-              "                                        SUM('NL BSC'[Amount achieved during the period]))",
+              "                                        AVERAGE(('NL BSC'[Amount achieved during the period])))",
               "",
               "",
-              "----  مقدار تحقق طی دوره  به درصد برای BSC"
+              "----  مقدار تحقق طی دوره  به درصد برای BSC)"
             ]
           },
           {
@@ -2370,6 +2459,252 @@
               "",
               "---- رنگ گیج BSc"
             ]
+          }
+        ]
+      },
+      {
+        "name": "NL General_receipt_report",
+        "columns": [
+          {
+            "name": "description_explanations_about",
+            "dataType": "string",
+            "sourceColumn": "description_explanations_about"
+          },
+          {
+            "name": "check_description",
+            "dataType": "string",
+            "sourceColumn": "check_description"
+          },
+          {
+            "name": "operation_date",
+            "dataType": "string",
+            "sourceColumn": "operation_date"
+          },
+          {
+            "name": "type of Document",
+            "dataType": "string",
+            "sourceColumn": "type of Document"
+          },
+          {
+            "name": "budget_type",
+            "dataType": "string",
+            "sourceColumn": "budget_type"
+          },
+          {
+            "name": "budget_code",
+            "dataType": "string",
+            "sourceColumn": "budget_code"
+          },
+          {
+            "name": "row_about_budget",
+            "dataType": "string",
+            "sourceColumn": "row_about_budget"
+          },
+          {
+            "name": "situation",
+            "dataType": "string",
+            "sourceColumn": "situation"
+          },
+          {
+            "name": "series",
+            "dataType": "string",
+            "sourceColumn": "series"
+          },
+          {
+            "name": "detailed",
+            "dataType": "string",
+            "sourceColumn": "detailed"
+          },
+          {
+            "name": "type",
+            "dataType": "string",
+            "sourceColumn": "type"
+          },
+          {
+            "name": "detailed_bank_fund",
+            "dataType": "string",
+            "sourceColumn": "detailed_bank_fund"
+          },
+          {
+            "name": "Detailed_description_of_receipt_of",
+            "dataType": "string",
+            "sourceColumn": "Detailed_description_of_receipt_of"
+          },
+          {
+            "name": "detailed_receipt_from",
+            "dataType": "int64",
+            "sourceColumn": "detailed_receipt_from"
+          },
+          {
+            "name": "the document number",
+            "dataType": "string",
+            "sourceColumn": "the document number"
+          },
+          {
+            "name": "date_sheet",
+            "dataType": "string",
+            "sourceColumn": "date_sheet"
+          },
+          {
+            "name": "due_date",
+            "dataType": "string",
+            "sourceColumn": "due_date"
+          },
+          {
+            "name": "sheet_number",
+            "dataType": "int64",
+            "sourceColumn": "sheet_number"
+          },
+          {
+            "name": "Amount",
+            "dataType": "int64",
+            "sourceColumn": "Amount"
+          },
+          {
+            "name": "fiscal year",
+            "dataType": "int64",
+            "sourceColumn": "fiscal year"
+          },
+          {
+            "name": "subject_code",
+            "dataType": "string",
+            "sourceColumn": "subject_code"
+          },
+          {
+            "name": "Bank_transfer",
+            "dataType": "string",
+            "sourceColumn": "Bank_transfer"
+          },
+          {
+            "name": "Branch_handover",
+            "dataType": "string",
+            "sourceColumn": "Branch_handover"
+          },
+          {
+            "name": "currency_amount",
+            "dataType": "string",
+            "sourceColumn": "currency_amount"
+          },
+          {
+            "name": "Transfer_Account_Number",
+            "dataType": "string",
+            "sourceColumn": "Transfer_Account_Number"
+          },
+          {
+            "name": "receiving_bank",
+            "dataType": "string",
+            "sourceColumn": "receiving_bank"
+          },
+          {
+            "name": "receiving_branch",
+            "dataType": "string",
+            "sourceColumn": "receiving_branch"
+          },
+          {
+            "name": "receipt_account",
+            "dataType": "string",
+            "sourceColumn": "receipt_account"
+          },
+          {
+            "name": "date_of_handover_to_the_representative",
+            "dataType": "string",
+            "sourceColumn": "date_of_handover_to_the_representative"
+          },
+          {
+            "name": "Payment_request_number",
+            "dataType": "string",
+            "sourceColumn": "Payment_request_number"
+          },
+          {
+            "name": "date_of_return_arrival",
+            "dataType": "string",
+            "sourceColumn": "date_of_return_arrival"
+          },
+          {
+            "name": "explanations",
+            "dataType": "string",
+            "sourceColumn": "explanations"
+          },
+          {
+            "name": "order_type",
+            "dataType": "string",
+            "sourceColumn": "order_type"
+          },
+          {
+            "name": "document_regulation_number",
+            "dataType": "int64",
+            "sourceColumn": "document_regulation_number"
+          },
+          {
+            "name": "Bank",
+            "dataType": "string",
+            "sourceColumn": "Bank"
+          },
+          {
+            "name": "Branch",
+            "dataType": "string",
+            "sourceColumn": "Branch"
+          },
+          {
+            "name": "Account",
+            "dataType": "string",
+            "sourceColumn": "Account"
+          },
+          {
+            "name": "Confirmation date",
+            "dataType": "string",
+            "sourceColumn": "Confirmation date"
+          },
+          {
+            "name": "Pay_to_receive_from",
+            "dataType": "string",
+            "sourceColumn": "Pay_to_receive_from"
+          },
+          {
+            "name": "for",
+            "dataType": "string",
+            "sourceColumn": "for"
+          },
+          {
+            "name": "name_representative",
+            "dataType": "string",
+            "sourceColumn": "name_representative"
+          },
+          {
+            "name": "bank_assigned_",
+            "dataType": "string",
+            "sourceColumn": "bank_assigned_"
+          },
+          {
+            "name": "payment method",
+            "dataType": "string",
+            "sourceColumn": "payment method"
+          },
+          {
+            "name": "for the budget",
+            "dataType": "string",
+            "sourceColumn": "for the budget"
+          },
+          {
+            "name": "State",
+            "dataType": "string",
+            "sourceColumn": "State"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_General_receipt_report = Source{[Schema=\"NL\",Item=\"General_receipt_report\"]}[Data]",
+                "in",
+                "    NL_General_receipt_report"
+              ]
+            }
           }
         ]
       }
@@ -3161,6 +3496,125 @@
           {
             "name": "NL BSC",
             "filterExpression": "'NL BSC'[Unit code] =13"
+          }
+        ]
+      },
+      {
+        "name": "BSC_Sales",
+        "description": "گروه جهت دسترسی به  BSC  فروش  ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_Sales",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3365"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": "'NL BSC'[Index code] =10"
+          }
+        ]
+      },
+      {
+        "name": "BSC_CRM",
+        "description": "گروه جهت  دسترسی BSC CRM",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_CRM",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3370"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": " 'NL BSC'[Unit code] = 1"
+          }
+        ]
+      },
+      {
+        "name": "BSC_Services",
+        "description": "گروه جهت دسترسی BSC  خدمات",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_Services",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3371"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": "'NL BSC'[Unit code]= 9"
+          }
+        ]
+      },
+      {
+        "name": "BSC_Support and supply",
+        "description": "گروه جهت دسترسی به BSC پشتیبانی و  تامین ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_Support and supply",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3369"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": " 'NL BSC'[Unit code]=12 ||  'NL BSC'[Unit code]= 6 || 'NL BSC'[Unit code]=7 || 'NL BSC'[Unit code] =14"
+          }
+        ]
+      },
+      {
+        "name": "BSC_Production",
+        "description": "گروه جهت دسترسی به BSC تولید ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_Production",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3372"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": "'NL BSC'[Unit code]=8"
+          }
+        ]
+      },
+      {
+        "name": "BSC_planning",
+        "description": "گروه جهت دسترسی به  BSC برنامه ریزی ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_planning",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3373"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": "'NL BSC'[Unit code]=5"
+          }
+        ]
+      },
+      {
+        "name": "BSC_Finance",
+        "description": "گروه جهت دسترسی به BSC  مالی ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_Finance",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3383"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": " 'NL BSC'[Unit code]=11"
           }
         ]
       }
