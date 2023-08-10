@@ -2461,6 +2461,220 @@
             ]
           }
         ]
+      },
+      {
+        "name": "NL payment_report",
+        "columns": [
+          {
+            "name": "payment_date",
+            "dataType": "string",
+            "sourceColumn": "payment_date"
+          },
+          {
+            "name": "due_date",
+            "dataType": "string",
+            "sourceColumn": "due_date"
+          },
+          {
+            "name": "Date_of_operation",
+            "dataType": "string",
+            "sourceColumn": "Date_of_operation"
+          },
+          {
+            "name": "payment_number",
+            "dataType": "string",
+            "sourceColumn": "payment_number"
+          },
+          {
+            "name": "Amount",
+            "dataType": "int64",
+            "sourceColumn": "Amount"
+          },
+          {
+            "name": "the_last_situation",
+            "dataType": "string",
+            "sourceColumn": "the_last_situation"
+          },
+          {
+            "name": "Payment_request_number",
+            "dataType": "string",
+            "sourceColumn": "Payment_request_number"
+          },
+          {
+            "name": "Accounting_document_number",
+            "dataType": "string",
+            "sourceColumn": "Accounting_document_number"
+          },
+          {
+            "name": "payment_method",
+            "dataType": "string",
+            "sourceColumn": "payment_method"
+          },
+          {
+            "name": "Description_how_to_pay",
+            "dataType": "string",
+            "sourceColumn": "Description_how_to_pay"
+          },
+          {
+            "name": "Payment_To",
+            "dataType": "string",
+            "sourceColumn": "Payment_To"
+          },
+          {
+            "name": "Description_payment",
+            "dataType": "string",
+            "sourceColumn": "Description_payment"
+          },
+          {
+            "name": "for",
+            "dataType": "string",
+            "sourceColumn": "for"
+          },
+          {
+            "name": "type_of_Document",
+            "dataType": "string",
+            "sourceColumn": "type_of_Document"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_payment_report = Source{[Schema=\"NL\",Item=\"payment_report\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_payment_report,\"ي\",\"ی\",Replacer.ReplaceText,{\"the_last_situation\", \"payment_method\", \"Description_how_to_pay\", \"Payment_To\", \"Description_payment\", \"for\", \"type_of_Document\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "NL receipt_report",
+        "columns": [
+          {
+            "name": "Detailed_code_1",
+            "dataType": "string",
+            "sourceColumn": "Detailed_code_1"
+          },
+          {
+            "name": "date_change_status",
+            "dataType": "string",
+            "sourceColumn": "date_change_status"
+          },
+          {
+            "name": "history",
+            "dataType": "string",
+            "sourceColumn": "history"
+          },
+          {
+            "name": "receiving_row",
+            "dataType": "string",
+            "sourceColumn": "receiving_row"
+          },
+          {
+            "name": "receipt_number",
+            "dataType": "string",
+            "sourceColumn": "receipt_number"
+          },
+          {
+            "name": "description_receipt",
+            "dataType": "string",
+            "sourceColumn": "description_receipt"
+          },
+          {
+            "name": "Amount",
+            "dataType": "int64",
+            "sourceColumn": "Amount"
+          },
+          {
+            "name": "Bank",
+            "dataType": "string",
+            "sourceColumn": "Bank"
+          },
+          {
+            "name": "account_number",
+            "dataType": "string",
+            "sourceColumn": "account_number"
+          },
+          {
+            "name": "Accounting_document_number",
+            "dataType": "string",
+            "sourceColumn": "Accounting_document_number"
+          },
+          {
+            "name": "Branch",
+            "dataType": "string",
+            "sourceColumn": "Branch"
+          },
+          {
+            "name": "cashier",
+            "dataType": "string",
+            "sourceColumn": "cashier"
+          },
+          {
+            "name": "for",
+            "dataType": "string",
+            "sourceColumn": "for"
+          },
+          {
+            "name": "The_nature_of_the_sale",
+            "dataType": "string",
+            "sourceColumn": "The_nature_of_the_sale"
+          },
+          {
+            "name": "type_of_Document",
+            "dataType": "string",
+            "sourceColumn": "type_of_Document"
+          },
+          {
+            "name": "row",
+            "dataType": "int64",
+            "sourceColumn": "row"
+          },
+          {
+            "name": "receive_from",
+            "dataType": "string",
+            "sourceColumn": "receive_from"
+          },
+          {
+            "name": "the_last_situation",
+            "dataType": "string",
+            "sourceColumn": "the_last_situation"
+          },
+          {
+            "name": "the_document_number",
+            "dataType": "string",
+            "sourceColumn": "the_document_number"
+          },
+          {
+            "name": "due_date",
+            "dataType": "string",
+            "sourceColumn": "due_date"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_receipt_report = Source{[Schema=\"NL\",Item=\"receipt_report\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_receipt_report,\"ي\",\"ی\",Replacer.ReplaceText,{\"description_receipt\", \"Bank\", \"Branch\", \"cashier\", \"for\", \"The_nature_of_the_sale\", \"type_of_Document\", \"receive_from\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
