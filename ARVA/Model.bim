@@ -2464,6 +2464,7 @@
       },
       {
         "name": "NL payment_report",
+        "description": "گزارش پرداخت نیلرام ",
         "columns": [
           {
             "name": "payment_date",
@@ -2558,6 +2559,7 @@
       },
       {
         "name": "NL receipt_report",
+        "description": "گزارش دریافت نیلرام ",
         "columns": [
           {
             "name": "Detailed_code_1",
