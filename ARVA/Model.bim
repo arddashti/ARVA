@@ -2488,7 +2488,9 @@
           {
             "name": "Amount",
             "dataType": "int64",
-            "sourceColumn": "Amount"
+            "description": "تغییر فرمت ",
+            "sourceColumn": "Amount",
+            "formatString": "#,#"
           },
           {
             "name": "the_last_situation",
@@ -2590,7 +2592,9 @@
           {
             "name": "Amount",
             "dataType": "int64",
-            "sourceColumn": "Amount"
+            "description": "تغییر فرمت ",
+            "sourceColumn": "Amount",
+            "formatString": "#,#"
           },
           {
             "name": "Bank",
