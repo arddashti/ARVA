@@ -2702,7 +2702,7 @@
           },
           {
             "name": "Amount",
-            "dataType": "int64",
+            "dataType": "double",
             "sourceColumn": "Amount"
           }
         ],
@@ -2716,9 +2716,10 @@
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    NL_Forecast_report = Source{[Schema=\"NL\",Item=\"Forecast_report\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(NL_Forecast_report,\"ي\",\"ی\",Replacer.ReplaceText,{\"budget\"})",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_Forecast_report,\"ي\",\"ی\",Replacer.ReplaceText,{\"budget\"}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Replaced Value\",{{\"Amount\", type number}})",
                 "in",
-                "    #\"Replaced Value\""
+                "    #\"Changed Type\""
               ]
             }
           }
