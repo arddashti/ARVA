@@ -2702,7 +2702,7 @@
           },
           {
             "name": "Amount",
-            "dataType": "string",
+            "dataType": "int64",
             "sourceColumn": "Amount"
           }
         ],
