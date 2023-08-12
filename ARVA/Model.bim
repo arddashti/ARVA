@@ -2884,6 +2884,20 @@
         "toTable": "VN RFM",
         "toColumn": "CustRef",
         "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "e75f1989-8d54-481d-a585-0df7aec59f96",
+        "fromTable": "NL payment_report",
+        "fromColumn": "Date_of_operation",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
+      },
+      {
+        "name": "cc367397-272f-44cb-a648-83f2c5db093b",
+        "fromTable": "NL receipt_report",
+        "fromColumn": "date_change_status",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "roles": [
