@@ -2681,6 +2681,48 @@
             }
           }
         ]
+      },
+      {
+        "name": "NL Forecast_report",
+        "columns": [
+          {
+            "name": "Year",
+            "dataType": "string",
+            "sourceColumn": "Year"
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "sourceColumn": "Month"
+          },
+          {
+            "name": "budget",
+            "dataType": "string",
+            "sourceColumn": "budget"
+          },
+          {
+            "name": "Amount",
+            "dataType": "string",
+            "sourceColumn": "Amount"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_Forecast_report = Source{[Schema=\"NL\",Item=\"Forecast_report\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_Forecast_report,\"ي\",\"ی\",Replacer.ReplaceText,{\"budget\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
