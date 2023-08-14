@@ -1820,7 +1820,12 @@
             "description": " میانگین فاصله زمانی بین  تاریخ حواله  تا فاکتور ",
             "expression": [
               "",
-              "           AVERAGE('VN Fact_Sale'[035_ DateDiff (draft and sale)])",
+              "        AVERAGE('VN Fact_Sale'[035_ DateDiff (draft and sale)])/ COUNT('VN Fact_Sale'[Item_ID])",
+              "",
+              "",
+              "                                   ",
+              "",
+              "",
               "",
               "-- میانگین فاصله زمانی بین  تاریخ حواله  تا فاکتور ",
               ""
