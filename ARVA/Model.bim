@@ -1842,6 +1842,19 @@
               "",
               "-- مجموع (تفاضل تاریخ حواله و فاکتور)"
             ]
+          },
+          {
+            "name": "038",
+            "expression": [
+              "",
+              "      --    SUMX(SUMMARIZE('VN Fact_Sale','VN Fact_Sale'[SaleDate],'VN Fact_Sale'[DraftDate], 'BI Dim_Geographic'[StateName],",
+              "                --        \"x\",max('VN Fact_Sale'[035_ DateDiff (draft and sale)])),[x])",
+              "",
+              "",
+              "",
+              "   AVERAGEX(SUMMARIZE('VN Fact_Sale','VN Fact_Sale'[SaleDate],'VN Fact_Sale'[DraftDate], 'BI Dim_Geographic'[StateName],",
+              "                     \"x\",max('VN Fact_Sale'[035_ DateDiff (draft and sale)])),[x])"
+            ]
           }
         ]
       },
