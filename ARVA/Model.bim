@@ -1820,7 +1820,9 @@
             "description": " میانگین فاصله زمانی بین  تاریخ حواله  تا فاکتور ",
             "expression": [
               "",
-              "        AVERAGE('VN Fact_Sale'[035_ DateDiff (draft and sale)])",
+              "      ",
+              "   AVERAGEX(SUMMARIZE('VN Fact_Sale','VN Fact_Sale'[SaleDate],'VN Fact_Sale'[DraftDate], 'BI Dim_Geographic'[StateName],",
+              "                     \"x\",max('VN Fact_Sale'[035_ DateDiff (draft and sale)])),[x])",
               "",
               "",
               "                                   ",
@@ -1829,31 +1831,6 @@
               "",
               "-- میانگین فاصله زمانی بین  تاریخ حواله  تا فاکتور ",
               ""
-            ]
-          },
-          {
-            "name": "037_SumDateDiff",
-            "description": "مجموع (تفاضل تاریخ حواله و فاکتور",
-            "expression": [
-              " ",
-              "                   sum('VN Fact_Sale'[035_ DateDiff (draft and sale)])",
-              "                                            /",
-              "                                      count('VN Fact_Sale'[Item_ID])",
-              "",
-              "-- مجموع (تفاضل تاریخ حواله و فاکتور)"
-            ]
-          },
-          {
-            "name": "038",
-            "expression": [
-              "",
-              "      --    SUMX(SUMMARIZE('VN Fact_Sale','VN Fact_Sale'[SaleDate],'VN Fact_Sale'[DraftDate], 'BI Dim_Geographic'[StateName],",
-              "                --        \"x\",max('VN Fact_Sale'[035_ DateDiff (draft and sale)])),[x])",
-              "",
-              "",
-              "",
-              "   AVERAGEX(SUMMARIZE('VN Fact_Sale','VN Fact_Sale'[SaleDate],'VN Fact_Sale'[DraftDate], 'BI Dim_Geographic'[StateName],",
-              "                     \"x\",max('VN Fact_Sale'[035_ DateDiff (draft and sale)])),[x])"
             ]
           }
         ]
