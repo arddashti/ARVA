@@ -412,6 +412,11 @@
               ""
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "unic_code_int",
+            "dataType": "string",
+            "sourceColumn": "unic_code_int"
           }
         ],
         "partitions": [
@@ -599,7 +604,7 @@
           },
           {
             "name": "SalePrice",
-            "dataType": "int64",
+            "dataType": "double",
             "description": "قیمت هر روز یک کالا در بک انبار",
             "sourceColumn": "SalePrice",
             "formatString": "#,#"
@@ -614,6 +619,11 @@
               "",
               "----ریال *تعداد "
             ]
+          },
+          {
+            "name": "unic_code_int",
+            "dataType": "string",
+            "sourceColumn": "unic_code_int"
           }
         ],
         "partitions": [
