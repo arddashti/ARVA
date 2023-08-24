@@ -1830,7 +1830,14 @@
             "description": " میانگین فاصله زمانی بین  تاریخ حواله  تا فاکتور ",
             "expression": [
               "",
-              "           AVERAGE('VN Fact_Sale'[035_ DateDiff (draft and sale)])",
+              "      ",
+              "   AVERAGEX(SUMMARIZE('VN Fact_Sale','VN Fact_Sale'[SaleDate],'VN Fact_Sale'[DraftDate], 'BI Dim_Geographic'[StateName],",
+              "                     \"x\",max('VN Fact_Sale'[035_ DateDiff (draft and sale)])),[x])",
+              "",
+              "",
+              "                                   ",
+              "",
+              "",
               "",
               "-- میانگین فاصله زمانی بین  تاریخ حواله  تا فاکتور ",
               ""
