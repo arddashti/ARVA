@@ -417,6 +417,28 @@
             "name": "unic_code_int",
             "dataType": "string",
             "sourceColumn": "unic_code_int"
+          },
+          {
+            "type": "calculated",
+            "name": "09_Sleep in the warehouse",
+            "dataType": "unknown",
+            "isDataTypeInferred": true,
+            "expression": [
+              "   ",
+              "            if('VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = \"رسید انبار\"  && 'VN Fact_int_Vocher_Itm_Qty_history'[06_ CurrentInventory]<> 0,",
+              "                 TODAY()-MAX())"
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "MiladiVocherDate",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": [
+              "  LOOKUPVALUE('BI DIM_DATE'[Miladi] ,'BI DIM_DATE'[Jalali_1], 'VN Fact_int_Vocher_Itm_Qty'[VocherDate])",
+              "",
+              "-- تاریخ میلادی سند انبار برای محاسبه خواب انبار"
+            ]
           }
         ],
         "partitions": [
