@@ -610,17 +610,6 @@
             "formatString": "#,#"
           },
           {
-            "type": "calculated",
-            "name": "CurrentInventory",
-            "dataType": "double",
-            "isDataTypeInferred": true,
-            "expression": [
-              "    'VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] * 'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]",
-              "",
-              "----ریال *تعداد "
-            ]
-          },
-          {
             "name": "unic_code_int",
             "dataType": "string",
             "sourceColumn": "unic_code_int"
@@ -3048,6 +3037,15 @@
         "fromColumn": "payment_date",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "397eb738-d652-4c60-b3cc-54f2e64ab60e",
+        "toCardinality": "many",
+        "fromTable": "VN Fact_int_Vocher_Itm_Qty",
+        "fromColumn": "08_Rial changes",
+        "toTable": "VN Fact_int_Vocher_Itm_Qty_history",
+        "toColumn": "unic_code_int",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
