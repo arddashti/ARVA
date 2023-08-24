@@ -3039,10 +3039,10 @@
         "toColumn": "Jalali_1"
       },
       {
-        "name": "397eb738-d652-4c60-b3cc-54f2e64ab60e",
+        "name": "794e2d3f-c64b-46a8-88e2-b6fdefd333eb",
         "toCardinality": "many",
         "fromTable": "VN Fact_int_Vocher_Itm_Qty",
-        "fromColumn": "08_Rial changes",
+        "fromColumn": "unic_code_int",
         "toTable": "VN Fact_int_Vocher_Itm_Qty_history",
         "toColumn": "unic_code_int",
         "crossFilteringBehavior": "bothDirections"
