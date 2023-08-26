@@ -421,12 +421,15 @@
           {
             "type": "calculated",
             "name": "09_Sleep in the warehouse",
-            "dataType": "unknown",
+            "dataType": "dateTime",
             "isDataTypeInferred": true,
             "expression": [
               "   ",
-              "            if('VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = \"رسید انبار\"  && 'VN Fact_int_Vocher_Itm_Qty_history'[06_ CurrentInventory]<> 0,",
-              "                 TODAY()-MAX())"
+              "            if('VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = \"رسید انبار\" ||",
+              "                  'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = \"انبار به انبار بدهكار\"",
+              "                  || 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = \"افتتاحیه انبار\"",
+              "             && 'VN Fact_int_Vocher_Itm_Qty_history'[06_ CurrentInventory]<> 0,",
+              "                 TODAY()-MAX('VN Fact_int_Vocher_Itm_Qty'[MiladiVocherDate]))"
             ]
           },
           {
