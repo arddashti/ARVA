@@ -561,6 +561,16 @@
               ""
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "test",
+            "expression": [
+              "  ",
+              "          sumx(SUMMARIZE('VN Fact_int_Vocher_Itm_Qty', 'VN Dim_Goods'[GoodsCode], ",
+              "                        'VN Dim_Goods'[GoodsGroupName] , 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName],'VN Dim_Stock'[StockDCName],",
+              "   \"max\" , MAX('VN Fact_int_Vocher_Itm_Qty'[VocherDate]),",
+              "                         \"sum\" , sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty])),[sum])"
+            ]
           }
         ]
       },
