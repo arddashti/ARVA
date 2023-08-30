@@ -1588,12 +1588,21 @@
             "description": "فروش ناخالص سال گذشته ",
             "expression": [
               " ",
-              "                var y  = MAX('BI DIM_DATE'[jyear]) -1",
-              " return ",
-              "  CALCULATE('VN Fact_Sale'[02_Amount] , 'BI DIM_DATE'[jyear] = y )",
+              "               -- var y  = MAX('BI DIM_DATE'[jyear]) -1",
+              "-- return ",
+              " -- CALCULATE('VN Fact_Sale'[02_Amount] , 'BI DIM_DATE'[jyear] = y )",
               "",
               "",
-              "----   فروش ناخالص سال گذشته "
+              "----   فروش ناخالص سال گذشته ",
+              "",
+              "",
+              "var m = MAX('BI DIM_DATE'[jmonthN])",
+              "var pm= if(m=1,12,m-1)",
+              "var y= if(pm=12,MAX('BI DIM_DATE'[jyear])-1, MAX('BI DIM_DATE'[jyear]))",
+              "",
+              "   return",
+              "   ",
+              "       CALCULATE('VN Fact_Sale'[02_Amount] , 'BI DIM_DATE'[jmonthN]= pm , 'BI DIM_DATE'[jyear] = y)"
             ],
             "formatString": "#,#"
           },
