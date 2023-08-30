@@ -1894,7 +1894,19 @@
               "   ",
               "       CALCULATE('VN Fact_Sale'[02_Amount] , 'BI DIM_DATE'[jmonthN]= pm , 'BI DIM_DATE'[jyear] = y)",
               "",
-              "--  فروش ناخالص ماه گذشته "
+              "--  فروش ناخالص ماه گذشته  "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "038_MonthlyGrothRate",
+            "description": "نرخ رشد ماهانه فروش ناخالص ",
+            "expression": [
+              "     if('VN Fact_Sale'[037_ Last month's sale]> 0 && 'VN Fact_Sale'[02_Amount]<> BLANK(), ",
+              "                            ( 'VN Fact_Sale'[02_Amount]- 'VN Fact_Sale'[037_ Last month's sale])",
+              "                                         / 'VN Fact_Sale'[037_ Last month's sale])",
+              "",
+              "-- نرخ رشد ماهانه فروش ناخالص )"
             ]
           }
         ]
