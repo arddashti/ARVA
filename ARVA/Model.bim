@@ -1608,7 +1608,7 @@
           },
           {
             "name": "022_SalesGrowthRate",
-            "description": "نرخ رشد فروش ناخالص",
+            "description": "نرخ رشد فروش ناخالص  نسبت به ماه مشابه سال قبل ",
             "expression": [
               "  ",
               "              ",
@@ -1617,7 +1617,7 @@
               "               DIVIDE('VN Fact_Sale'[02_Amount]- 'VN Fact_Sale'[021_ Lastyear's sales] , ",
               "                                                'VN Fact_Sale'[021_ Lastyear's sales]))",
               "",
-              "---- نرخ رشد فروش ناخالص"
+              "---- نرخ رشد فروش ناخالص نسبت به ماه مشابه سال قبل "
             ],
             "formatString": "0.00 %;0.00- %;0.00 %"
           },
