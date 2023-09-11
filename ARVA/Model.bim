@@ -2813,7 +2813,7 @@
             "name": "001_Realization of program budget",
             "description": "تحقق بودجه برنامه ای برای BSC مالی نیلرام ",
             "expression": [
-              " CALCULATE(sum('NL payment_report'[Amount])/SUM('NL Forecast_report'[Amount]) ,",
+              " CALCULATE(sum('NL payment_report'[Amount])/MAX('NL Forecast_report'[Amount]) ,",
               "                                          FILTER('NL Forecast_report', 'NL Forecast_report'[budget] = \"کل پرداخت های پیش بینی شده\"))",
               "",
               "--  تحقق بودجه برنامه ای برای BSC مالی نیلرام "
@@ -2824,7 +2824,8 @@
             "description": " تحقق کسری نقدینگی برای BSC مالی نیلرام ",
             "expression": [
               " ",
-              " CALCULATE(sum('NL receipt_report'[Amount])/SUM('NL Forecast_report'[Amount]) ,",
+              " CALCULATE(sum('NL receipt_report'[Amount])",
+              "                              /SUM('NL Forecast_report'[Amount]) ,",
               "                                          FILTER('NL Forecast_report', 'NL Forecast_report'[budget] = \"کل دریافت های پیش بینی شده\"))",
               "-- تحقق کسری نقدینگی برای BSC مالی نیلرام "
             ]
