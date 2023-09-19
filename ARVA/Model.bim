@@ -2836,44 +2836,44 @@
         "name": "GA Google_Analytics",
         "columns": [
           {
-            "name": "browser",
-            "dataType": "string",
-            "sourceColumn": "browser"
-          },
-          {
             "name": "date",
             "dataType": "string",
             "sourceColumn": "date"
           },
           {
-            "name": "continent",
+            "name": "sessionSourcePlatform",
             "dataType": "string",
-            "sourceColumn": "continent"
+            "sourceColumn": "sessionSourcePlatform"
           },
           {
-            "name": "deviceCategory",
+            "name": "sessionSourceMedium",
             "dataType": "string",
-            "sourceColumn": "deviceCategory"
+            "sourceColumn": "sessionSourceMedium"
           },
           {
-            "name": "operatingSystem",
+            "name": "sessionSource",
             "dataType": "string",
-            "sourceColumn": "operatingSystem"
+            "sourceColumn": "sessionSource"
           },
           {
-            "name": "source",
+            "name": "sessionDefaultChannelGroup",
             "dataType": "string",
-            "sourceColumn": "source"
+            "sourceColumn": "sessionDefaultChannelGroup"
           },
           {
-            "name": "users",
+            "name": "totalUsers",
             "dataType": "int64",
-            "sourceColumn": "users"
+            "sourceColumn": "totalUsers"
           },
           {
-            "name": "country",
-            "dataType": "string",
-            "sourceColumn": "country"
+            "name": "engagementRate",
+            "dataType": "double",
+            "sourceColumn": "engagementRate"
+          },
+          {
+            "name": "userEngagementDuration",
+            "dataType": "double",
+            "sourceColumn": "userEngagementDuration"
           }
         ],
         "partitions": [
@@ -2885,10 +2885,9 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    GA_Google_Analytics = Source{[Schema=\"GA\",Item=\"Google_Analytics\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(GA_Google_Analytics,\"ي\",\"ی\",Replacer.ReplaceText,{\"continent\", \"deviceCategory\", \"operatingSystem\", \"country\"})",
+                "    GA_Google_Analytics = Source{[Schema=\"GA\",Item=\"Google_Analytics\"]}[Data]",
                 "in",
-                "    #\"Replaced Value\""
+                "    GA_Google_Analytics"
               ]
             }
           }
