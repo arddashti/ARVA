@@ -2274,7 +2274,7 @@
         "columns": [
           {
             "name": "PersonnelCode",
-            "dataType": "int64",
+            "dataType": "string",
             "sourceColumn": "PersonnelCode"
           },
           {
@@ -2286,6 +2286,16 @@
             "name": "ContactName",
             "dataType": "string",
             "sourceColumn": "ContactName"
+          },
+          {
+            "name": "IsDealer",
+            "dataType": "boolean",
+            "sourceColumn": "IsDealer"
+          },
+          {
+            "name": "IsActiveDealer",
+            "dataType": "boolean",
+            "sourceColumn": "IsActiveDealer"
           }
         ],
         "partitions": [
