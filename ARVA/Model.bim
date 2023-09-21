@@ -3134,6 +3134,13 @@
         "toTable": "VN Fact_int_Vocher_Itm_Qty_history",
         "toColumn": "unic_code_int",
         "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "f2977cb6-4001-4ee0-baee-a2ab36d21b77",
+        "fromTable": "GA Google_Analytics",
+        "fromColumn": "date",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Miladi"
       }
     ],
     "roles": [
