@@ -2289,13 +2289,26 @@
           },
           {
             "name": "IsDealer",
-            "dataType": "boolean",
+            "dataType": "string",
+            "description": "ویزیتور",
             "sourceColumn": "IsDealer"
           },
           {
             "name": "IsActiveDealer",
             "dataType": "boolean",
             "sourceColumn": "IsActiveDealer"
+          },
+          {
+            "type": "calculated",
+            "name": "003_Number of visitors",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "description": "مشخص شدن ویزیتور با عدد 1",
+            "expression": [
+              " if( 'VN Dim_Personnel'[IsDealer] = \"TRUE\" , 1 , 0)",
+              "",
+              "-- مشخص شدن ویزیتور از پرسنل"
+            ]
           }
         ],
         "partitions": [
