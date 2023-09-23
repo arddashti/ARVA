@@ -2902,6 +2902,74 @@
             }
           }
         ]
+      },
+      {
+        "name": "GA Google_Search_Console_API",
+        "columns": [
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date"
+          },
+          {
+            "name": "country",
+            "dataType": "string",
+            "sourceColumn": "country"
+          },
+          {
+            "name": "query",
+            "dataType": "string",
+            "sourceColumn": "query"
+          },
+          {
+            "name": "clicks",
+            "dataType": "int64",
+            "sourceColumn": "clicks"
+          },
+          {
+            "name": "impressions",
+            "dataType": "int64",
+            "sourceColumn": "impressions"
+          },
+          {
+            "name": "ctr",
+            "dataType": "double",
+            "sourceColumn": "ctr"
+          },
+          {
+            "name": "position",
+            "dataType": "double",
+            "sourceColumn": "position"
+          },
+          {
+            "name": "device",
+            "dataType": "string",
+            "sourceColumn": "device"
+          },
+          {
+            "name": "page",
+            "dataType": "string",
+            "sourceColumn": "page"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    GA_Google_Search_Console_API = Source{[Schema=\"GA\",Item=\"Google_Search_Console_API\"]}[Data],",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(GA_Google_Search_Console_API,{{\"date\", type date}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Changed Type\",\"ي\",\"ی\",Replacer.ReplaceText,{\"query\", \"page\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
