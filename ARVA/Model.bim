@@ -3222,6 +3222,13 @@
         "fromColumn": "date",
         "toTable": "BI DIM_DATE",
         "toColumn": "Miladi"
+      },
+      {
+        "name": "a2ae8352-b24b-4f23-9a67-0afcc30d9cd6",
+        "fromTable": "GA Google_Search_Console_API",
+        "fromColumn": "date",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Miladi"
       }
     ],
     "roles": [
