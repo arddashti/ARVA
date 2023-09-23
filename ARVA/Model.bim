@@ -2918,50 +2918,60 @@
       },
       {
         "name": "GA Google_Search_Console_API",
+        "description": "جدول اطلاعات google search api",
         "columns": [
           {
             "name": "date",
             "dataType": "dateTime",
+            "description": "تاریخ",
             "sourceColumn": "date"
           },
           {
             "name": "country",
             "dataType": "string",
+            "description": "کشور مبدا",
             "sourceColumn": "country"
           },
           {
             "name": "query",
             "dataType": "string",
+            "description": "کلید واژه در نظر گرفته شده برای لینک",
             "sourceColumn": "query"
           },
           {
             "name": "clicks",
             "dataType": "int64",
+            "description": "تعداد کلیلک ها",
             "sourceColumn": "clicks"
           },
           {
             "name": "impressions",
             "dataType": "int64",
+            "description": "تعداد نمایش لینک توسط گوگل",
             "sourceColumn": "impressions"
           },
           {
             "name": "ctr",
             "dataType": "double",
+            "description": "نسبت تعداد کلیلک به تعداد نمایش لینک توسط گوگل",
             "sourceColumn": "ctr"
           },
           {
             "name": "position",
             "dataType": "double",
+            "description": "رتبه لینک در گوگل",
             "sourceColumn": "position"
           },
           {
             "name": "device",
             "dataType": "string",
+            "description": "نوع دستگاه مورد استفاده برای ورود",
             "sourceColumn": "device"
           },
           {
             "name": "page",
             "dataType": "string",
+            "description": "لینک صفحه وب مورد بررسی",
             "sourceColumn": "page"
           }
         ],
