@@ -3309,7 +3309,7 @@
         "tablePermissions": [
           {
             "name": "BI Dim_Geographic",
-            "filterExpression": "'BI Dim_Geographic'[StateCode] = 88"
+            "filterExpression": "'BI Dim_Geographic'[StateCode] = 16"
           }
         ]
       },
