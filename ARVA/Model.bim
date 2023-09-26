@@ -2864,21 +2864,6 @@
             "sourceColumn": "date"
           },
           {
-            "name": "sessionSourcePlatform",
-            "dataType": "string",
-            "sourceColumn": "sessionSourcePlatform"
-          },
-          {
-            "name": "sessionSourceMedium",
-            "dataType": "string",
-            "sourceColumn": "sessionSourceMedium"
-          },
-          {
-            "name": "sessionSource",
-            "dataType": "string",
-            "sourceColumn": "sessionSource"
-          },
-          {
             "name": "sessionDefaultChannelGroup",
             "dataType": "string",
             "sourceColumn": "sessionDefaultChannelGroup"
@@ -2897,6 +2882,41 @@
             "name": "userEngagementDuration",
             "dataType": "double",
             "sourceColumn": "userEngagementDuration"
+          },
+          {
+            "name": "dateRange",
+            "dataType": "string",
+            "sourceColumn": "dateRange"
+          },
+          {
+            "name": "fromDate",
+            "dataType": "dateTime",
+            "sourceColumn": "fromDate"
+          },
+          {
+            "name": "toDate",
+            "dataType": "dateTime",
+            "sourceColumn": "toDate"
+          },
+          {
+            "name": "activeUsers",
+            "dataType": "int64",
+            "sourceColumn": "activeUsers"
+          },
+          {
+            "name": "newUsers",
+            "dataType": "int64",
+            "sourceColumn": "newUsers"
+          },
+          {
+            "name": "sessions",
+            "dataType": "int64",
+            "sourceColumn": "sessions"
+          },
+          {
+            "name": "level",
+            "dataType": "string",
+            "sourceColumn": "level"
           }
         ],
         "partitions": [
@@ -2989,6 +3009,92 @@
                 "    #\"Replaced Value\" = Table.ReplaceValue(#\"Changed Type\",\"ي\",\"ی\",Replacer.ReplaceText,{\"query\", \"page\"})",
                 "in",
                 "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "GA Google_Analytics_month",
+        "columns": [
+          {
+            "name": "dateRange",
+            "dataType": "string",
+            "sourceColumn": "dateRange"
+          },
+          {
+            "name": "fromDate",
+            "dataType": "dateTime",
+            "sourceColumn": "fromDate"
+          },
+          {
+            "name": "toDate",
+            "dataType": "dateTime",
+            "sourceColumn": "toDate"
+          },
+          {
+            "name": "totalUsers",
+            "dataType": "int64",
+            "sourceColumn": "totalUsers"
+          },
+          {
+            "name": "activeUsers",
+            "dataType": "int64",
+            "sourceColumn": "activeUsers"
+          },
+          {
+            "name": "newUsers",
+            "dataType": "int64",
+            "sourceColumn": "newUsers"
+          },
+          {
+            "name": "userEngagementDuration",
+            "dataType": "double",
+            "sourceColumn": "userEngagementDuration"
+          },
+          {
+            "name": "engagementRate",
+            "dataType": "double",
+            "sourceColumn": "engagementRate"
+          },
+          {
+            "name": "sessions",
+            "dataType": "int64",
+            "sourceColumn": "sessions"
+          },
+          {
+            "name": "level",
+            "dataType": "string",
+            "sourceColumn": "level"
+          },
+          {
+            "name": "sessionDefaultChannelGroup",
+            "dataType": "string",
+            "sourceColumn": "sessionDefaultChannelGroup"
+          },
+          {
+            "name": "jyear",
+            "dataType": "string",
+            "sourceColumn": "jyear"
+          },
+          {
+            "name": "jmonthN",
+            "dataType": "string",
+            "sourceColumn": "jmonthN"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    GA_Google_Analytics_month = Source{[Schema=\"GA\",Item=\"Google_Analytics_month\"]}[Data]",
+                "in",
+                "    GA_Google_Analytics_month"
               ]
             }
           }
