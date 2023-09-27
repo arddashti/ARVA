@@ -2857,6 +2857,7 @@
       },
       {
         "name": "GA Google_Analytics",
+        "description": "گزارش روزانه آنالیتیکس",
         "columns": [
           {
             "name": "date",
@@ -3016,6 +3017,7 @@
       },
       {
         "name": "GA Google_Analytics_month",
+        "description": "گزارش ماهانه آنالیتیکس",
         "columns": [
           {
             "name": "dateRange",
