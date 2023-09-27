@@ -3059,7 +3059,8 @@
           {
             "name": "engagementRate",
             "dataType": "double",
-            "sourceColumn": "engagementRate"
+            "sourceColumn": "engagementRate",
+            "formatString": "0.00%;-0.00%;0.00%"
           },
           {
             "name": "sessions",
