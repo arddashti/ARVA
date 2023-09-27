@@ -3043,8 +3043,8 @@
           {
             "name": "activeUsers",
             "dataType": "int64",
-            "description": "#,#",
-            "sourceColumn": "activeUsers"
+            "sourceColumn": "activeUsers",
+            "formatString": "#,#"
           },
           {
             "name": "newUsers",
