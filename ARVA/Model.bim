@@ -3036,12 +3036,14 @@
           },
           {
             "name": "totalUsers",
-            "dataType": "int64",
-            "sourceColumn": "totalUsers"
+            "dataType": "decimal",
+            "sourceColumn": "totalUsers",
+            "formatString": "#,#"
           },
           {
             "name": "activeUsers",
             "dataType": "int64",
+            "description": "#,#",
             "sourceColumn": "activeUsers"
           },
           {
@@ -3062,7 +3064,8 @@
           {
             "name": "sessions",
             "dataType": "int64",
-            "sourceColumn": "sessions"
+            "sourceColumn": "sessions",
+            "formatString": "#,#"
           },
           {
             "name": "level",
