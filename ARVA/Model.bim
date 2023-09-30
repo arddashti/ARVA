@@ -2882,7 +2882,8 @@
           {
             "name": "engagementRate",
             "dataType": "double",
-            "sourceColumn": "engagementRate"
+            "sourceColumn": "engagementRate",
+            "formatString": "0.00%;-0.00%;0.00%"
           },
           {
             "name": "userEngagementDuration",
@@ -2907,16 +2908,19 @@
           {
             "name": "activeUsers",
             "dataType": "int64",
+            "description": "#,#",
             "sourceColumn": "activeUsers"
           },
           {
             "name": "newUsers",
             "dataType": "int64",
+            "description": "#,#",
             "sourceColumn": "newUsers"
           },
           {
             "name": "sessions",
             "dataType": "int64",
+            "description": "#,#",
             "sourceColumn": "sessions"
           },
           {
