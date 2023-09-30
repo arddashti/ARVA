@@ -3139,12 +3139,26 @@
           {
             "name": "StartTime",
             "dataType": "dateTime",
-            "sourceColumn": "StartTime"
+            "sourceColumn": "StartTime",
+            "formatString": "HH:mm:ss",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"LongTime\" FormatString=\"HH:mm:ss\" /></DateTimes></Format>"
+              }
+            ]
           },
           {
             "name": "EndTime",
             "dataType": "dateTime",
-            "sourceColumn": "EndTime"
+            "sourceColumn": "EndTime",
+            "formatString": "HH:mm:ss",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"LongTime\" FormatString=\"HH:mm:ss\" /></DateTimes></Format>"
+              }
+            ]
           },
           {
             "name": "Longitude",
@@ -3202,9 +3216,10 @@
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    VN_Fact_Tour_detail = Source{[Schema=\"VN\",Item=\"Fact_Tour_detail\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Fact_Tour_detail,\"ي\",\"ی\",Replacer.ReplaceText,{\"VisitStatus\", \"CallStatus\", \"NoSaleReasonName\", \"NoSaleReasonType\"})",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Fact_Tour_detail,\"ي\",\"ی\",Replacer.ReplaceText,{\"VisitStatus\", \"CallStatus\", \"NoSaleReasonName\", \"NoSaleReasonType\"}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Replaced Value\",{{\"StartTime\", type time}, {\"EndTime\", type time}})",
                 "in",
-                "    #\"Replaced Value\""
+                "    #\"Changed Type\""
               ]
             }
           }
@@ -3520,13 +3535,6 @@
         "toColumn": "Miladi"
       },
       {
-        "name": "865ff9c5-758b-4b99-ae24-b4c073cb0d05",
-        "fromTable": "VN Fact_Tour_detail",
-        "fromColumn": "TourUniqueId",
-        "toTable": "VN Fact_Tour",
-        "toColumn": "Id"
-      },
-      {
         "name": "d12182eb-e28d-4652-a162-25d872d367da",
         "fromTable": "VN Fact_Tour",
         "fromColumn": "PersonnelCode_agent",
@@ -3534,18 +3542,27 @@
         "toColumn": "PersonnelCode"
       },
       {
-        "name": "81a44e73-b8ce-4e82-8a73-f6c542756790",
-        "fromTable": "VN Fact_Tour_detail",
-        "fromColumn": "CustomerCode",
-        "toTable": "VN Dim_Cust",
-        "toColumn": "CustCode"
-      },
-      {
         "name": "4d87000b-6ff4-4c8b-a57a-12ead2304c00",
         "fromTable": "VN Fact_Tour",
         "fromColumn": "TourPDate",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "547e966b-ec8c-45ab-817e-89eb8339f7c3",
+        "fromTable": "VN Fact_Tour_detail",
+        "fromColumn": "CustomerCode",
+        "toTable": "VN Dim_Cust",
+        "toColumn": "CustCode",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "545ef488-16e0-4f83-8268-7c5ad73a9728",
+        "fromTable": "VN Fact_Tour_detail",
+        "fromColumn": "TourUniqueId",
+        "toTable": "VN Fact_Tour",
+        "toColumn": "Id",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
