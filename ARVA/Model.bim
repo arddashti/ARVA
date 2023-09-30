@@ -3042,7 +3042,7 @@
           },
           {
             "name": "totalUsers",
-            "dataType": "decimal",
+            "dataType": "int64",
             "sourceColumn": "totalUsers",
             "formatString": "#,#"
           },
@@ -3086,12 +3086,12 @@
           },
           {
             "name": "jyear",
-            "dataType": "string",
+            "dataType": "int64",
             "sourceColumn": "jyear"
           },
           {
             "name": "jmonthN",
-            "dataType": "string",
+            "dataType": "int64",
             "sourceColumn": "jmonthN"
           }
         ],
@@ -3104,9 +3104,10 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    GA_Google_Analytics_month = Source{[Schema=\"GA\",Item=\"Google_Analytics_month\"]}[Data]",
+                "    GA_Google_Analytics_month = Source{[Schema=\"GA\",Item=\"Google_Analytics_month\"]}[Data],",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(GA_Google_Analytics_month,{{\"jmonthN\", Int64.Type}, {\"jyear\", Int64.Type}})",
                 "in",
-                "    GA_Google_Analytics_month"
+                "    #\"Changed Type\""
               ]
             }
           }
