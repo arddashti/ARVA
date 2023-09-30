@@ -112,7 +112,7 @@
           },
           {
             "name": "day",
-            "dataType": "int64",
+            "dataType": "string",
             "description": "روز",
             "sourceColumn": "day",
             "formatString": "0"
@@ -148,6 +148,11 @@
               "----  مشخص کردن ابتدا و انتها و تاریخ روز  ( برای محاسبه موجودی روز انبار مورد استفاده قرار میگیرد"
             ],
             "formatString": "0"
+          },
+          {
+            "name": "myear",
+            "dataType": "int64",
+            "sourceColumn": "myear"
           }
         ],
         "partitions": [
@@ -3007,9 +3012,10 @@
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    GA_Google_Search_Console_API = Source{[Schema=\"GA\",Item=\"Google_Search_Console_API\"]}[Data],",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(GA_Google_Search_Console_API,{{\"date\", type date}}),",
-                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Changed Type\",\"ي\",\"ی\",Replacer.ReplaceText,{\"query\", \"page\"})",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Changed Type\",\"ي\",\"ی\",Replacer.ReplaceText,{\"query\", \"page\"}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Replaced Value\",{{\"date\", type datetime}})",
                 "in",
-                "    #\"Replaced Value\""
+                "    #\"Changed Type1\""
               ]
             }
           }
