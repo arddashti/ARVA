@@ -3112,6 +3112,162 @@
             }
           }
         ]
+      },
+      {
+        "name": "VN Fact_Tour_detail",
+        "description": "اطلاعات جزئیات تور ویزیت",
+        "columns": [
+          {
+            "name": "Id",
+            "dataType": "string",
+            "sourceColumn": "Id"
+          },
+          {
+            "name": "TourUniqueId",
+            "dataType": "string",
+            "sourceColumn": "TourUniqueId"
+          },
+          {
+            "name": "CallPDate",
+            "dataType": "string",
+            "sourceColumn": "CallPDate"
+          },
+          {
+            "name": "StartTime",
+            "dataType": "dateTime",
+            "sourceColumn": "StartTime"
+          },
+          {
+            "name": "EndTime",
+            "dataType": "dateTime",
+            "sourceColumn": "EndTime"
+          },
+          {
+            "name": "Longitude",
+            "dataType": "double",
+            "sourceColumn": "Longitude"
+          },
+          {
+            "name": "Latitude",
+            "dataType": "double",
+            "sourceColumn": "Latitude"
+          },
+          {
+            "name": "IsOutOfPath",
+            "dataType": "boolean",
+            "sourceColumn": "IsOutOfPath"
+          },
+          {
+            "name": "VisitStatus",
+            "dataType": "string",
+            "sourceColumn": "VisitStatus"
+          },
+          {
+            "name": "CallStatus",
+            "dataType": "string",
+            "sourceColumn": "CallStatus"
+          },
+          {
+            "name": "CustomerCode",
+            "dataType": "string",
+            "sourceColumn": "CustomerCode"
+          },
+          {
+            "name": "NoSaleReasonName",
+            "dataType": "string",
+            "sourceColumn": "NoSaleReasonName"
+          },
+          {
+            "name": "NoSaleReasonType",
+            "dataType": "string",
+            "sourceColumn": "NoSaleReasonType"
+          },
+          {
+            "name": "time_duration_min",
+            "dataType": "int64",
+            "sourceColumn": "time_duration_min"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Fact_Tour_detail = Source{[Schema=\"VN\",Item=\"Fact_Tour_detail\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Fact_Tour_detail,\"ي\",\"ی\",Replacer.ReplaceText,{\"VisitStatus\", \"CallStatus\", \"NoSaleReasonName\", \"NoSaleReasonType\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "VN Fact_Tour",
+        "description": "اطلاعات کلی مربوط به تور ویزیت ",
+        "columns": [
+          {
+            "name": "Id",
+            "dataType": "string",
+            "sourceColumn": "Id"
+          },
+          {
+            "name": "TourPDate",
+            "dataType": "string",
+            "sourceColumn": "TourPDate"
+          },
+          {
+            "name": "StartTime",
+            "dataType": "dateTime",
+            "sourceColumn": "StartTime"
+          },
+          {
+            "name": "EndTime",
+            "dataType": "dateTime",
+            "sourceColumn": "EndTime"
+          },
+          {
+            "name": "TourNo",
+            "dataType": "int64",
+            "sourceColumn": "TourNo"
+          },
+          {
+            "name": "TourStatusUniqueId",
+            "dataType": "string",
+            "sourceColumn": "TourStatusUniqueId"
+          },
+          {
+            "name": "PersonnelCode_agent",
+            "dataType": "string",
+            "sourceColumn": "PersonnelCode_agent"
+          },
+          {
+            "name": "time_duration_min",
+            "dataType": "int64",
+            "sourceColumn": "time_duration_min"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Fact_Tour = Source{[Schema=\"VN\",Item=\"Fact_Tour\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Fact_Tour,\"ي\",\"ی\",Replacer.ReplaceText,{\"TourStatusUniqueId\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
