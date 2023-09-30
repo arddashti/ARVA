@@ -3345,16 +3345,16 @@
         "crossFilteringBehavior": "bothDirections"
       },
       {
-        "name": "f2977cb6-4001-4ee0-baee-a2ab36d21b77",
-        "fromTable": "GA Google_Analytics",
+        "name": "a2ae8352-b24b-4f23-9a67-0afcc30d9cd6",
+        "fromTable": "GA Google_Search_Console_API",
         "fromColumn": "date",
         "toTable": "BI DIM_DATE",
         "toColumn": "Miladi"
       },
       {
-        "name": "a2ae8352-b24b-4f23-9a67-0afcc30d9cd6",
-        "fromTable": "GA Google_Search_Console_API",
-        "fromColumn": "date",
+        "name": "a20fe682-5357-4122-a8c7-c9e420bccb9f",
+        "fromTable": "GA Google_Analytics",
+        "fromColumn": "fromDate",
         "toTable": "BI DIM_DATE",
         "toColumn": "Miladi"
       }
