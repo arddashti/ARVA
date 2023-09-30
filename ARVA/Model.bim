@@ -3518,6 +3518,34 @@
         "fromColumn": "fromDate",
         "toTable": "BI DIM_DATE",
         "toColumn": "Miladi"
+      },
+      {
+        "name": "865ff9c5-758b-4b99-ae24-b4c073cb0d05",
+        "fromTable": "VN Fact_Tour_detail",
+        "fromColumn": "TourUniqueId",
+        "toTable": "VN Fact_Tour",
+        "toColumn": "Id"
+      },
+      {
+        "name": "d12182eb-e28d-4652-a162-25d872d367da",
+        "fromTable": "VN Fact_Tour",
+        "fromColumn": "PersonnelCode_agent",
+        "toTable": "VN Dim_Personnel",
+        "toColumn": "PersonnelCode"
+      },
+      {
+        "name": "81a44e73-b8ce-4e82-8a73-f6c542756790",
+        "fromTable": "VN Fact_Tour_detail",
+        "fromColumn": "CustomerCode",
+        "toTable": "VN Dim_Cust",
+        "toColumn": "CustCode"
+      },
+      {
+        "name": "4d87000b-6ff4-4c8b-a57a-12ead2304c00",
+        "fromTable": "VN Fact_Tour",
+        "fromColumn": "TourPDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "roles": [
