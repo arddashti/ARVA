@@ -1288,6 +1288,11 @@
               "",
               "--تفاضل بین تاریخ حواله و تاریخ فاکتور )"
             ]
+          },
+          {
+            "name": "unic_code",
+            "dataType": "string",
+            "sourceColumn": "unic_code"
           }
         ],
         "partitions": [
@@ -3204,6 +3209,11 @@
             "name": "time_duration_min",
             "dataType": "int64",
             "sourceColumn": "time_duration_min"
+          },
+          {
+            "name": "unic_code",
+            "dataType": "string",
+            "sourceColumn": "unic_code"
           }
         ],
         "partitions": [
@@ -3562,6 +3572,15 @@
         "fromColumn": "TourUniqueId",
         "toTable": "VN Fact_Tour",
         "toColumn": "Id",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "4e47f16d-f81e-4c3d-a94f-01fcf773ea7b",
+        "toCardinality": "many",
+        "fromTable": "VN Fact_Sale",
+        "fromColumn": "unic_code",
+        "toTable": "VN Fact_Tour_detail",
+        "toColumn": "unic_code",
         "crossFilteringBehavior": "bothDirections"
       }
     ],
