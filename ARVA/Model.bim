@@ -4264,6 +4264,17 @@
             "filterExpression": " 'NL BSC'[Unit code]=11"
           }
         ]
+      },
+      {
+        "name": "BI_Marketing_Fullview",
+        "description": "گروه جهت دسترسی به گزارش مارکتینگ گوگل آنالیتیکس",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BI_Marketing_Fullview",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3425"
+          }
+        ]
       }
     ],
     "annotations": [
