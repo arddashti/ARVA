@@ -3278,6 +3278,21 @@
             "name": "time_duration_min",
             "dataType": "int64",
             "sourceColumn": "time_duration_min"
+          },
+          {
+            "type": "calculated",
+            "name": "001_TourTime",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "description": "زمان ارسال تور",
+            "expression": [
+              " ",
+              "                  DATEDIFF('VN Fact_Tour'[EndTime], 'VN Fact_Tour'[StartTime] , DAY)",
+              "",
+              "",
+              "",
+              "-- زمان ارسال تور "
+            ]
           }
         ],
         "partitions": [
