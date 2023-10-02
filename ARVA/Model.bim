@@ -3287,8 +3287,8 @@
             "description": "زمان ارسال تور",
             "expression": [
               " ",
-              "             --     DATEDIFF('VN Fact_Tour'[EndTime], 'VN Fact_Tour'[StartTime] , DAY)",
-              "DATEDIFF('VN Fact_Tour'[StartTime], 'VN Fact_Tour'[EndTime],DAY)",
+              "            ",
+              "        DATEDIFF('VN Fact_Tour'[StartTime], 'VN Fact_Tour'[EndTime],DAY)",
               "",
               "",
               "",
