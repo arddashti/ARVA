@@ -3609,12 +3609,13 @@
         "crossFilteringBehavior": "bothDirections"
       },
       {
-        "name": "4e47f16d-f81e-4c3d-a94f-01fcf773ea7b",
+        "name": "56c935a7-297b-4eed-a06a-e265907a7c99",
         "toCardinality": "many",
         "fromTable": "VN Fact_Sale",
         "fromColumn": "unic_code",
         "toTable": "VN Fact_Tour_detail",
         "toColumn": "unic_code",
+        "isActive": false,
         "crossFilteringBehavior": "bothDirections"
       }
     ],
