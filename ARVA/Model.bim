@@ -3240,7 +3240,7 @@
             "description": "تعداد ویزیت ",
             "expression": [
               "       ",
-              "                var x = CALCULATE(DISTINCTCOUNT('VN Fact_Tour_detail'[Id]) , ",
+              "                var x = CALCULATE(DISTINCTCOUNT('VN Fact_Tour_detail'[CustomerCode]) , ",
               "                                   filter ('VN Fact_Tour_detail' , 'VN Fact_Tour_detail'[VisitStatus] = \"عدم ویزیت\")) -- تعداد عدم ویزیت",
               "",
               "",
