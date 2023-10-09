@@ -3233,6 +3233,23 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "001_TourVisit",
+            "expression": [
+              "       ",
+              "                var x = CALCULATE(DISTINCTCOUNT('VN Fact_Tour_detail'[Id]) , ",
+              "                                   filter ('VN Fact_Tour_detail' , 'VN Fact_Tour_detail'[VisitStatus] = \"عدم ویزیت\")) ",
+              "",
+              "",
+              "",
+              "              var y = CALCULATE(DISTINCTCOUNT('VN Fact_Tour_detail'[CustomerCode]))",
+              "",
+              "    return ",
+              "              CALCULATE(  y-x)"
+            ]
+          }
         ]
       },
       {
