@@ -957,7 +957,8 @@
           },
           {
             "name": "amount",
-            "dataType": "double",
+            "dataType": "int64",
+            "description": "#,#",
             "sourceColumn": "amount"
           },
           {
