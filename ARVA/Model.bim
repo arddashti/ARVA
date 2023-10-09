@@ -3237,17 +3237,18 @@
         "measures": [
           {
             "name": "001_TourVisit",
+            "description": "تعداد ویزیت ",
             "expression": [
               "       ",
               "                var x = CALCULATE(DISTINCTCOUNT('VN Fact_Tour_detail'[Id]) , ",
-              "                                   filter ('VN Fact_Tour_detail' , 'VN Fact_Tour_detail'[VisitStatus] = \"عدم ویزیت\")) ",
+              "                                   filter ('VN Fact_Tour_detail' , 'VN Fact_Tour_detail'[VisitStatus] = \"عدم ویزیت\")) -- تعداد عدم ویزیت",
               "",
               "",
               "",
-              "              var y = CALCULATE(DISTINCTCOUNT('VN Fact_Tour_detail'[CustomerCode]))",
+              "              var y = CALCULATE(DISTINCTCOUNT('VN Fact_Tour_detail'[CustomerCode])) --تعداد کل مشتریان",
               "",
               "    return ",
-              "              CALCULATE(  y-x)"
+              "              CALCULATE(  y-x) -- تعداد ویزیت "
             ]
           }
         ]
