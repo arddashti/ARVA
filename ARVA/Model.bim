@@ -964,6 +964,11 @@
             "name": "SaleNo",
             "dataType": "int64",
             "sourceColumn": "SaleNo"
+          },
+          {
+            "name": "unic_code",
+            "dataType": "string",
+            "sourceColumn": "unic_code"
           }
         ],
         "partitions": [
@@ -3616,6 +3621,15 @@
         "toTable": "VN Fact_Tour_detail",
         "toColumn": "unic_code",
         "isActive": false,
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "986a1095-b6da-470f-9c38-2a563100aeec",
+        "toCardinality": "many",
+        "fromTable": "VN Fact_Order",
+        "fromColumn": "unic_code",
+        "toTable": "VN Fact_Tour_detail",
+        "toColumn": "unic_code",
         "crossFilteringBehavior": "bothDirections"
       }
     ],
