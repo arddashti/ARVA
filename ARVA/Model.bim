@@ -161,7 +161,10 @@
             "isDataTypeInferred": true,
             "expression": [
               "",
-              "   IF('BI DIM_DATE'[Miladi] = TODAY() , \"Today\", 'BI DIM_DATE'[Miladi] & \"\")"
+              "   IF('BI DIM_DATE'[Miladi] = TODAY() , \"Today\", 'BI DIM_DATE'[Miladi] & \"\")",
+              "",
+              "",
+              "--جدا کردن  تاریخ روز از سایر تاریخ "
             ]
           }
         ],
