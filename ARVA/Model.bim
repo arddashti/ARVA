@@ -3229,6 +3229,16 @@
             "name": "unic_code",
             "dataType": "string",
             "sourceColumn": "unic_code"
+          },
+          {
+            "type": "calculated",
+            "name": "002_VisitTime",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "                           DATEDIFF('VN Fact_Tour_detail'[EndTime] , 'VN Fact_Tour_detail'[StartTime] , HOUR)"
+            ]
           }
         ],
         "partitions": [
