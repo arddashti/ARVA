@@ -153,6 +153,19 @@
             "name": "myear",
             "dataType": "int64",
             "sourceColumn": "myear"
+          },
+          {
+            "type": "calculated",
+            "name": "003_IsToday",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "   IF('BI DIM_DATE'[Miladi] = TODAY() , \"Today\", 'BI DIM_DATE'[Miladi] & \"\")",
+              "",
+              "",
+              "--جدا کردن  تاریخ روز از سایر تاریخ "
+            ]
           }
         ],
         "partitions": [
@@ -937,7 +950,8 @@
           },
           {
             "name": "OrderQty",
-            "dataType": "double",
+            "dataType": "int64",
+            "description": "#,#",
             "sourceColumn": "OrderQty"
           },
           {
@@ -957,7 +971,8 @@
           },
           {
             "name": "amount",
-            "dataType": "double",
+            "dataType": "int64",
+            "description": "#,#",
             "sourceColumn": "amount"
           },
           {
@@ -3219,6 +3234,21 @@
             "name": "unic_code",
             "dataType": "string",
             "sourceColumn": "unic_code"
+          },
+          {
+            "type": "calculated",
+            "name": "002_VisitTime",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "description": "محاسبه مدت تور به ساعت ",
+            "expression": [
+              "",
+              "                           DATEDIFF( 'VN Fact_Tour_detail'[StartTime] ,'VN Fact_Tour_detail'[EndTime] , HOUR)",
+              "",
+              "-- محاسبه مدت تور به ساعت ",
+              "                           ",
+              "                           "
+            ]
           }
         ],
         "partitions": [
