@@ -937,7 +937,8 @@
           },
           {
             "name": "OrderQty",
-            "dataType": "double",
+            "dataType": "int64",
+            "description": "#,#",
             "sourceColumn": "OrderQty"
           },
           {
