@@ -3235,9 +3235,14 @@
             "name": "002_VisitTime",
             "dataType": "int64",
             "isDataTypeInferred": true,
+            "description": "محاسبه مدت تور به ساعت ",
             "expression": [
               "",
-              "                           DATEDIFF('VN Fact_Tour_detail'[EndTime] , 'VN Fact_Tour_detail'[StartTime] , HOUR)"
+              "                           DATEDIFF( 'VN Fact_Tour_detail'[StartTime] ,'VN Fact_Tour_detail'[EndTime] , HOUR)",
+              "",
+              "-- محاسبه مدت تور به ساعت ",
+              "                           ",
+              "                           "
             ]
           }
         ],
