@@ -972,8 +972,9 @@
           {
             "name": "amount",
             "dataType": "int64",
-            "description": "#,#",
-            "sourceColumn": "amount"
+            "description": "ریال فروش ",
+            "sourceColumn": "amount",
+            "formatString": "#,#"
           },
           {
             "name": "SaleNo",
