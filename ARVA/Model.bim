@@ -3348,6 +3348,11 @@
               "",
               "-- زمان ارسال تور "
             ]
+          },
+          {
+            "name": "target_amount_per_day",
+            "dataType": "double",
+            "sourceColumn": "target_amount_per_day"
           }
         ],
         "partitions": [
