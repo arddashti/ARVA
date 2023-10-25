@@ -3352,6 +3352,7 @@
           {
             "name": "target_amount_per_day",
             "dataType": "double",
+            "description": "تارگت روزانه ویزیتور",
             "sourceColumn": "target_amount_per_day"
           }
         ],
@@ -3642,14 +3643,6 @@
         "crossFilteringBehavior": "bothDirections"
       },
       {
-        "name": "545ef488-16e0-4f83-8268-7c5ad73a9728",
-        "fromTable": "VN Fact_Tour_detail",
-        "fromColumn": "TourUniqueId",
-        "toTable": "VN Fact_Tour",
-        "toColumn": "Id",
-        "crossFilteringBehavior": "bothDirections"
-      },
-      {
         "name": "56c935a7-297b-4eed-a06a-e265907a7c99",
         "toCardinality": "many",
         "fromTable": "VN Fact_Sale",
@@ -3666,6 +3659,14 @@
         "fromColumn": "unic_code",
         "toTable": "VN Fact_Tour_detail",
         "toColumn": "unic_code",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "4c2d718b-3688-4fb6-b8be-241a4a812767",
+        "fromTable": "VN Fact_Tour_detail",
+        "fromColumn": "TourUniqueId",
+        "toTable": "VN Fact_Tour",
+        "toColumn": "Id",
         "crossFilteringBehavior": "bothDirections"
       }
     ],
