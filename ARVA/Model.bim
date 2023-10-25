@@ -3163,30 +3163,6 @@
             "sourceColumn": "CallPDate"
           },
           {
-            "name": "StartTime",
-            "dataType": "dateTime",
-            "sourceColumn": "StartTime",
-            "formatString": "HH:mm:ss",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"LongTime\" FormatString=\"HH:mm:ss\" /></DateTimes></Format>"
-              }
-            ]
-          },
-          {
-            "name": "EndTime",
-            "dataType": "dateTime",
-            "sourceColumn": "EndTime",
-            "formatString": "HH:mm:ss",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"LongTime\" FormatString=\"HH:mm:ss\" /></DateTimes></Format>"
-              }
-            ]
-          },
-          {
             "name": "Longitude",
             "dataType": "double",
             "sourceColumn": "Longitude"
@@ -3239,17 +3215,42 @@
           {
             "type": "calculated",
             "name": "002_VisitTime",
-            "dataType": "int64",
+            "dataType": "double",
             "isDataTypeInferred": true,
             "description": "محاسبه مدت تور به ساعت ",
             "expression": [
               "",
-              "                           DATEDIFF( 'VN Fact_Tour_detail'[StartTime] ,'VN Fact_Tour_detail'[EndTime] , HOUR)",
+              "                          DIVIDE('VN Fact_Tour_detail'[time_duration_min],60)",
               "",
               "-- محاسبه مدت تور به ساعت ",
               "                           ",
               "                           "
             ]
+          },
+          {
+            "name": "CityId",
+            "dataType": "int64",
+            "sourceColumn": "CityId"
+          },
+          {
+            "name": "Start_date",
+            "dataType": "string",
+            "sourceColumn": "Start_date"
+          },
+          {
+            "name": "Start_Time",
+            "dataType": "string",
+            "sourceColumn": "Start_Time"
+          },
+          {
+            "name": "End_date",
+            "dataType": "string",
+            "sourceColumn": "End_date"
+          },
+          {
+            "name": "End_Time",
+            "dataType": "string",
+            "sourceColumn": "End_Time"
           }
         ],
         "partitions": [
@@ -3262,10 +3263,9 @@
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    VN_Fact_Tour_detail = Source{[Schema=\"VN\",Item=\"Fact_Tour_detail\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Fact_Tour_detail,\"ي\",\"ی\",Replacer.ReplaceText,{\"VisitStatus\", \"CallStatus\", \"NoSaleReasonName\", \"NoSaleReasonType\"}),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Replaced Value\",{{\"StartTime\", type time}, {\"EndTime\", type time}})",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Fact_Tour_detail,\"ي\",\"ی\",Replacer.ReplaceText,{\"VisitStatus\", \"CallStatus\", \"NoSaleReasonName\", \"NoSaleReasonType\"})",
                 "in",
-                "    #\"Changed Type\""
+                "    #\"Replaced Value\""
               ]
             }
           }
@@ -3352,6 +3352,7 @@
           {
             "name": "target_amount_per_day",
             "dataType": "double",
+            "description": "تارگت روزانه ویزیتور",
             "sourceColumn": "target_amount_per_day",
             "formatString": "#,#"
           }
