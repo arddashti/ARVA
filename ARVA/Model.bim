@@ -3352,8 +3352,8 @@
           {
             "name": "target_amount_per_day",
             "dataType": "double",
-            "description": "تارگت روزانه ویزیتور",
-            "sourceColumn": "target_amount_per_day"
+            "sourceColumn": "target_amount_per_day",
+            "formatString": "#,#"
           }
         ],
         "partitions": [
@@ -3371,6 +3371,17 @@
                 "    #\"Replaced Value\""
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "001_ Visitor Target percentage",
+            "expression": [
+              " ",
+              "                           ",
+              "                               DIVIDE('VN Fact_Sale'[02_Amount] , sum('VN Fact_Tour'[target_amount_per_day]))"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       }
