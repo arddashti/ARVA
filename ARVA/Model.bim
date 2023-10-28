@@ -3286,6 +3286,15 @@
               "    return ",
               "              CALCULATE(  y-x) -- تعداد ویزیت "
             ]
+          },
+          {
+            "name": "002_ min Start Time",
+            "expression": [
+              "",
+              "                 MIN('VN Fact_Tour_detail'[Start_Time])",
+              "",
+              "-- کمترین زمان شروع تور "
+            ]
           }
         ]
       },
@@ -3383,16 +3392,6 @@
               "                               DIVIDE('VN Fact_Sale'[02_Amount] , sum('VN Fact_Tour'[target_amount_per_day]))"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
-          },
-          {
-            "name": "002_ min Start Time",
-            "description": "کمترین زمان شروع تور ",
-            "expression": [
-              "",
-              "                 MIN('VN Fact_Tour'[StartTime])",
-              "",
-              "-- کمترین زمان شروع تور "
-            ]
           }
         ]
       }
