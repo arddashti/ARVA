@@ -3295,6 +3295,16 @@
               "",
               "-- کمترین زمان شروع تور "
             ]
+          },
+          {
+            "name": "003_Max End Time",
+            "description": "بیشترین ساعت پایان ",
+            "expression": [
+              "",
+              "                 MIN('VN Fact_Tour_detail'[End_Time])",
+              "",
+              "-- بیشترین ساعت پایان "
+            ]
           }
         ]
       },
