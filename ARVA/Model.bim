@@ -3404,6 +3404,123 @@
             "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
+      },
+      {
+        "name": "NL personnel_HR",
+        "columns": [
+          {
+            "name": "personnel number",
+            "dataType": "string",
+            "sourceColumn": "personnel number"
+          },
+          {
+            "name": "name",
+            "dataType": "string",
+            "sourceColumn": "name"
+          },
+          {
+            "name": "family name",
+            "dataType": "string",
+            "sourceColumn": "family name"
+          },
+          {
+            "name": "employment_date",
+            "dataType": "string",
+            "sourceColumn": "employment_date"
+          },
+          {
+            "name": "history",
+            "dataType": "string",
+            "sourceColumn": "history"
+          },
+          {
+            "name": "gender",
+            "dataType": "string",
+            "sourceColumn": "gender"
+          },
+          {
+            "name": "the unit",
+            "dataType": "string",
+            "sourceColumn": "the unit"
+          },
+          {
+            "name": "Sub-unit 1",
+            "dataType": "string",
+            "sourceColumn": "Sub-unit 1"
+          },
+          {
+            "name": "Sub-unit 2",
+            "dataType": "string",
+            "sourceColumn": "Sub-unit 2"
+          },
+          {
+            "name": "Description of the organizational post",
+            "dataType": "string",
+            "sourceColumn": "Description of the organizational post"
+          },
+          {
+            "name": "Organizational job",
+            "dataType": "string",
+            "sourceColumn": "Organizational job"
+          },
+          {
+            "name": "employment_category",
+            "dataType": "string",
+            "sourceColumn": "employment_category"
+          },
+          {
+            "name": "date_of_separation",
+            "dataType": "string",
+            "sourceColumn": "date_of_separation"
+          },
+          {
+            "name": "Reason for separation",
+            "dataType": "string",
+            "sourceColumn": "Reason for separation"
+          },
+          {
+            "name": "Educational certificate",
+            "dataType": "string",
+            "sourceColumn": "Educational certificate"
+          },
+          {
+            "name": "Field of Study",
+            "dataType": "string",
+            "sourceColumn": "Field of Study"
+          },
+          {
+            "name": "separation month",
+            "dataType": "string",
+            "sourceColumn": "separation month"
+          },
+          {
+            "name": "year of separation",
+            "dataType": "string",
+            "sourceColumn": "year of separation"
+          },
+          {
+            "name": "cost center",
+            "dataType": "string",
+            "sourceColumn": "cost center"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_personnel_HR = Source{[Schema=\"NL\",Item=\"personnel_HR\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_personnel_HR,\"ي\",\"ی\",Replacer.ReplaceText,{\"name\", \"family name\", \"the unit\", \"Sub-unit 1\", \"Sub-unit 2\", \"Description of the organizational post\", \"Organizational job\", \"employment_category\", \"Reason for separation\", \"Educational certificate\", \"Field of Study\", \"cost center\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
