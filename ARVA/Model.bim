@@ -3502,6 +3502,18 @@
             "name": "cost center",
             "dataType": "string",
             "sourceColumn": "cost center"
+          },
+          {
+            "type": "calculated",
+            "name": "002_Active or NotActive",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": "فعال و غیر فعال بودن پرسنل ",
+            "expression": [
+              "  if (  'NL personnel_HR'[date_of_separation]  = BLANK() , \"فعال\", \"غیر فعال\")",
+              "  ",
+              "--  فعال و غیر فعال بودن پرسنل "
+            ]
           }
         ],
         "partitions": [
