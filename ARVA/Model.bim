@@ -3816,6 +3816,13 @@
         "toTable": "VN Fact_Tour",
         "toColumn": "Id",
         "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "4bfd339f-3914-4c62-81cd-5d3c78157b43",
+        "fromTable": "NL personnel_HR",
+        "fromColumn": "employment_date",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "roles": [
