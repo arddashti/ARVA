@@ -180,10 +180,10 @@
                 "    BI_DIM_DATE = Source{[Schema=\"BI\",Item=\"DIM_DATE\"]}[Data],",
                 "    #\"Removed Columns\" = Table.RemoveColumns(BI_DIM_DATE,{\"Jalali_2\", \"Miladi_1\", \"mmonthN\", \"mmonthT\", \"mnime\", \"MquarterN\", \"MWeekDay\", \"MWeekNum\"}),",
                 "    #\"Replaced Value\" = Table.ReplaceValue(#\"Removed Columns\",\"ي\",\"ی\",Replacer.ReplaceText,{\"jmonthT\", \"jnime\", \"JQuarterT\", \"JWeekDay\"}),",
-                "    #\"Filtered Rows\" = Table.SelectRows(#\"Replaced Value\", each ([jyear] = \"1399\" or [jyear] = \"1400\" or [jyear] = \"1401\" or [jyear] = \"1402\")),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Filtered Rows\",{{\"jyear\", Int64.Type}})",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Replaced Value\",{{\"jyear\", Int64.Type}}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Changed Type\", each [jyear] = 1392 or [jyear] = 1393 or [jyear] = 1394 or [jyear] = 1395 or [jyear] = 1396 or [jyear] = 1397 or [jyear] = 1398 or [jyear] = 1399 or [jyear] = 1400 or [jyear] = 1401 or [jyear] = 1402 or [jyear] = 1403)",
                 "in",
-                "    #\"Changed Type\""
+                "    #\"Filtered Rows\""
               ]
             }
           }
