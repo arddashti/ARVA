@@ -3410,7 +3410,7 @@
         "columns": [
           {
             "name": "personnel number",
-            "dataType": "string",
+            "dataType": "int64",
             "sourceColumn": "personnel number"
           },
           {
