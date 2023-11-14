@@ -3544,6 +3544,172 @@
             ]
           }
         ]
+      },
+      {
+        "name": "oracle VW_BI_INS_PERSONEL",
+        "columns": [
+          {
+            "name": "TYP",
+            "dataType": "double",
+            "sourceColumn": "TYP"
+          },
+          {
+            "name": "TYP_DSC",
+            "dataType": "string",
+            "sourceColumn": "TYP_DSC"
+          },
+          {
+            "name": "PRSL_UNIQUE",
+            "dataType": "string",
+            "sourceColumn": "PRSL_UNIQUE"
+          },
+          {
+            "name": "NAME",
+            "dataType": "string",
+            "sourceColumn": "NAME"
+          },
+          {
+            "name": "SEX",
+            "dataType": "string",
+            "sourceColumn": "SEX"
+          },
+          {
+            "name": "ID_DAT",
+            "dataType": "dateTime",
+            "sourceColumn": "ID_DAT"
+          },
+          {
+            "name": "CD_ASLI",
+            "dataType": "string",
+            "sourceColumn": "CD_ASLI"
+          },
+          {
+            "name": "CD_FAREI",
+            "dataType": "string",
+            "sourceColumn": "CD_FAREI"
+          },
+          {
+            "name": "PER_COM_CD",
+            "dataType": "string",
+            "sourceColumn": "PER_COM_CD"
+          },
+          {
+            "name": "M_WAGE",
+            "dataType": "double",
+            "sourceColumn": "M_WAGE"
+          },
+          {
+            "name": "MAIN_F_BK_CD",
+            "dataType": "string",
+            "sourceColumn": "MAIN_F_BK_CD"
+          },
+          {
+            "name": "NUM_ID",
+            "dataType": "string",
+            "sourceColumn": "NUM_ID"
+          },
+          {
+            "name": "PER_SODUR_LOC",
+            "dataType": "string",
+            "sourceColumn": "PER_SODUR_LOC"
+          },
+          {
+            "name": "PER_LOG_GUID",
+            "dataType": "string",
+            "sourceColumn": "PER_LOG_GUID"
+          },
+          {
+            "name": "L_SEMAT_CD",
+            "dataType": "string",
+            "sourceColumn": "L_SEMAT_CD"
+          },
+          {
+            "name": "L_SEMAT_DSC",
+            "dataType": "string",
+            "sourceColumn": "L_SEMAT_DSC"
+          },
+          {
+            "name": "FROM_DATE",
+            "dataType": "string",
+            "sourceColumn": "FROM_DATE"
+          },
+          {
+            "name": "TO_DATE",
+            "dataType": "string",
+            "sourceColumn": "TO_DATE"
+          },
+          {
+            "name": "L_RECP_CD",
+            "dataType": "string",
+            "sourceColumn": "L_RECP_CD"
+          },
+          {
+            "name": "L_GROUP_CD",
+            "dataType": "string",
+            "sourceColumn": "L_GROUP_CD"
+          },
+          {
+            "name": "L_CNR_CD",
+            "dataType": "string",
+            "sourceColumn": "L_CNR_CD"
+          },
+          {
+            "name": "L_HOKM_GROUP",
+            "dataType": "string",
+            "sourceColumn": "L_HOKM_GROUP"
+          },
+          {
+            "name": "LAST_HOKM",
+            "dataType": "string",
+            "sourceColumn": "LAST_HOKM"
+          },
+          {
+            "name": "TABAGHE",
+            "dataType": "double",
+            "sourceColumn": "TABAGHE"
+          },
+          {
+            "name": "JOB_CODE",
+            "dataType": "string",
+            "sourceColumn": "JOB_CODE"
+          },
+          {
+            "name": "POST_STATUS",
+            "dataType": "string",
+            "sourceColumn": "POST_STATUS"
+          },
+          {
+            "name": "LOC_ID",
+            "dataType": "double",
+            "sourceColumn": "LOC_ID"
+          },
+          {
+            "name": "TABAGHE_DSC",
+            "dataType": "string",
+            "sourceColumn": "TABAGHE_DSC"
+          },
+          {
+            "name": "JOB_DSC",
+            "dataType": "string",
+            "sourceColumn": "JOB_DSC"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    oracle_VW_BI_INS_PERSONEL = Source{[Schema=\"oracle\",Item=\"VW_BI_INS_PERSONEL\"]}[Data]",
+                "in",
+                "    oracle_VW_BI_INS_PERSONEL"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
