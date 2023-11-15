@@ -3714,6 +3714,20 @@
               "",
               "                LOOKUPVALUE('BI DIM_DATE'[Jalali_1],'BI DIM_DATE'[Miladi],'oracle VW_BI_INS_PERSONEL'[ID_DAT])"
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "003_Active or NotActive Personel",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": "پرسنل فعال و غیر فعال",
+            "expression": [
+              "",
+              "",
+              "                                 IF('oracle VW_BI_INS_PERSONEL'[TO_DATE]  = BLANK(), \"فعال\" , \"غیر فعال\")",
+              "",
+              "--پرسنل فعال و غیر فعال"
+            ]
           }
         ],
         "partitions": [
