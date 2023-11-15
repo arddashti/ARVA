@@ -3621,21 +3621,25 @@
           {
             "name": "L_SEMAT_CD",
             "dataType": "string",
+            "description": "آخرین کد سمت سازمانی ",
             "sourceColumn": "L_SEMAT_CD"
           },
           {
             "name": "L_SEMAT_DSC",
             "dataType": "string",
+            "description": "آخرین سمت سازمانی",
             "sourceColumn": "L_SEMAT_DSC"
           },
           {
             "name": "FROM_DATE",
             "dataType": "string",
+            "description": "تاریخ شروع از ",
             "sourceColumn": "FROM_DATE"
           },
           {
             "name": "TO_DATE",
             "dataType": "string",
+            "description": "تاریخ پایان ",
             "sourceColumn": "TO_DATE"
           },
           {
@@ -3656,6 +3660,7 @@
           {
             "name": "L_HOKM_GROUP",
             "dataType": "string",
+            "description": "حکم",
             "sourceColumn": "L_HOKM_GROUP"
           },
           {
@@ -3676,6 +3681,7 @@
           {
             "name": "POST_STATUS",
             "dataType": "string",
+            "description": "وضعیت حکم ",
             "sourceColumn": "POST_STATUS"
           },
           {
@@ -3686,11 +3692,13 @@
           {
             "name": "TABAGHE_DSC",
             "dataType": "string",
+            "description": "سمت سازمانی",
             "sourceColumn": "TABAGHE_DSC"
           },
           {
             "name": "JOB_DSC",
             "dataType": "string",
+            "description": "نوع شغل ",
             "sourceColumn": "JOB_DSC"
           },
           {
@@ -3698,6 +3706,7 @@
             "name": "001_StartDate",
             "dataType": "string",
             "isDataTypeInferred": true,
+            "description": "تاریخ شمسی شروع به کار ",
             "expression": [
               "",
               "                LOOKUPVALUE('BI DIM_DATE'[Jalali_1],'BI DIM_DATE'[Miladi],'oracle VW_BI_INS_PERSONEL'[ID_DAT])"
