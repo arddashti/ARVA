@@ -3557,6 +3557,7 @@
           {
             "name": "TYP_DSC",
             "dataType": "string",
+            "description": "نوع کارمندان ",
             "sourceColumn": "TYP_DSC"
           },
           {
@@ -3581,7 +3582,8 @@
           },
           {
             "name": "CD_ASLI",
-            "dataType": "string",
+            "dataType": "int64",
+            "description": "کد پرسنلی",
             "sourceColumn": "CD_ASLI"
           },
           {
