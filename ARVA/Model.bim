@@ -3733,6 +3733,19 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "002_Number of Personel",
+            "description": "تعداد کل پرسنل ",
+            "expression": [
+              "",
+              "                           DISTINCTCOUNT('oracle VW_BI_INS_PERSONEL'[CD_ASLI])",
+              "",
+              "-- تعداد کل پرسنل "
+            ],
+            "formatString": "#,#"
+          }
         ]
       }
     ],
