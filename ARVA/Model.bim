@@ -652,7 +652,7 @@
             "dataType": "double",
             "description": "تعداد موجودی انبار در هر روز در هر انبار",
             "sourceColumn": "Sum(TotalQty)",
-            "formatString": "0"
+            "formatString": "#,#"
           },
           {
             "name": "VocherDate",
