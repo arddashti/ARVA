@@ -904,7 +904,7 @@
               "",
               "                             if( 'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)]>0,",
               "                                 ('VN Fact_int_Vocher_Itm_Qty_history'[07_ Current Inventory(Rial)]- 'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)])",
-              "                                                    /'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)]",
+              "                                                    /'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)])",
               "",
               "-- نرخ رشد ریالی انیار )"
             ],
