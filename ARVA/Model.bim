@@ -871,6 +871,29 @@
               "----  موجودی ریالی لحظه ای ماه جاری "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "012_ Last Inventory(Rial_LastMonth)",
+            "expression": [
+              "",
+              "           var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
+              "       ",
+              "           var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
+              "           var pm = if(mm=1 , 12, mm-1)",
+              "           var py = IF(pm=12 , yy-1, yy)",
+              "",
+              " return",
+              "",
+              "",
+              "CALCULATE(",
+              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
+              "                                        * ",
+              "                                            'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm,'BI DIM_DATE'[end_month]=1) ",
+              "",
+              "",
+              "-- ریال ماه گذشته انبار"
+            ]
           }
         ]
       },
