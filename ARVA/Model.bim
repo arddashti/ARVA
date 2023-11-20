@@ -902,7 +902,7 @@
             "description": "نرخ رشد ریالی انیار ",
             "expression": [
               "",
-              "                             if( 'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)]>0,",
+              "                             if( 'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)]>0 && 'VN Fact_int_Vocher_Itm_Qty_history'[07_ Current Inventory(Rial)]<> BLANK(),",
               "                                 ('VN Fact_int_Vocher_Itm_Qty_history'[07_ Current Inventory(Rial)]- 'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)])",
               "                                                    /'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)])",
               "",
