@@ -911,7 +911,7 @@
             "formatString": "0.00%;-0.00%;0.00%"
           },
           {
-            "name": "014_ Last Inventory(Rial_LastMonth)",
+            "name": "014_ First Inventory(Rial_FirstMonth)",
             "description": "ریال ابتدای سال انبار برای محاسبه نرخ رشد ریالی نسبت به روز ",
             "expression": [
               "",
@@ -933,7 +933,25 @@
               "",
               "",
               ""
-            ]
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "015_Growth Rate(beginning to now)",
+            "description": "نرخ رشد ریالی انبار نسبت به ابتدای سال ",
+            "expression": [
+              "",
+              "",
+              "",
+              "               if ( 'VN Fact_int_Vocher_Itm_Qty_history'[014_ Last Inventory(Rial_LastMonth)]>0 && ",
+              "                            'VN Fact_int_Vocher_Itm_Qty_history'[011_ Current Inventory(Rial_CurrentMonth)] <> BLANK(),",
+              "             ( 'VN Fact_int_Vocher_Itm_Qty_history'[011_ Current Inventory(Rial_CurrentMonth)]- 'VN Fact_int_Vocher_Itm_Qty_history'[014_ Last Inventory(Rial_LastMonth)])",
+              "                         /",
+              "'VN Fact_int_Vocher_Itm_Qty_history'[014_ Last Inventory(Rial_LastMonth)]",
+              "",
+              "-- نرخ رشد ریالی انبار نسبت به ابتدای سال )"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
