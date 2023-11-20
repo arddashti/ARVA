@@ -899,7 +899,7 @@
           },
           {
             "name": "013_ Inventory growth Rate (Rial)",
-            "description": "نرخ رشد ریالی انیار ",
+            "description": "نرخ رشد ریالی انبار ",
             "expression": [
               "",
               "                             if( 'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)]>0 && 'VN Fact_int_Vocher_Itm_Qty_history'[07_ Current Inventory(Rial)]<> BLANK(),",
