@@ -874,6 +874,7 @@
           },
           {
             "name": "012_ Last Inventory(Rial_LastMonth)",
+            "description": "ریال ماه گذشته انبار",
             "expression": [
               "",
               "           var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
