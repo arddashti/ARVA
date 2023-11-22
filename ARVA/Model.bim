@@ -3600,16 +3600,44 @@
           {
             "type": "calculated",
             "name": "003_work experience",
-            "dataType": "unknown",
+            "dataType": "dateTime",
             "isDataTypeInferred": true,
             "description": " سابقه حضور پرسنل در شرکت ",
             "expression": [
               " ",
               "                        ",
               "                IF('NL personnel_HR'[date_of_separation]= BLANK() , ",
-              "                                                     TODAY()- 'NL personnel_HR'[employment_date] ,",
-              "                                                                               'NL personnel_HR'[date_of_separation]- 'NL personnel_HR'[employment_date]",
-              "-- سابقه حضور پرسنل در شرکت )"
+              "                                        TODAY()- 'NL personnel_HR'[004_Miladi Employment Date] ,",
+              "                                                                 'NL personnel_HR'[005_ Miladi Separation Date]- 'NL personnel_HR'[004_Miladi Employment Date])",
+              "-- سابقه حضور پرسنل در شرکت "
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "004_Miladi Employment Date",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "description": " تاریخ میلادی استخدام ",
+            "expression": [
+              " ",
+              "                     LOOKUPVALUE('BI DIM_DATE'[Miladi],'BI DIM_DATE'[Jalali_1],'NL personnel_HR'[employment_date])",
+              "",
+              "-- تاریخ میلادی استخدام "
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "005_ Miladi Separation Date",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "description": "تاریخ میلادی ترک کار ",
+            "expression": [
+              "",
+              "                                              ",
+              "    LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Jalali_1], 'NL personnel_HR'[date_of_separation])",
+              "                                               ",
+              "                                             ",
+              "  --تاریخ میلادی ترک کار "
             ]
           }
         ],
