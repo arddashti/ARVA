@@ -3600,16 +3600,16 @@
           {
             "type": "calculated",
             "name": "003_work experience",
-            "dataType": "dateTime",
+            "dataType": "int64",
             "isDataTypeInferred": true,
             "description": " سابقه حضور پرسنل در شرکت ",
             "expression": [
               " ",
               "                        ",
-              "                IF('NL personnel_HR'[date_of_separation]= BLANK() , ",
-              "                                        TODAY()- 'NL personnel_HR'[004_Miladi Employment Date] ,",
-              "                                                                 'NL personnel_HR'[005_ Miladi Separation Date]- 'NL personnel_HR'[004_Miladi Employment Date])",
-              "-- سابقه حضور پرسنل در شرکت "
+              "          IF('NL personnel_HR'[date_of_separation]= BLANK() , ",
+              "                       DATEDIFF('NL personnel_HR'[004_Miladi Employment Date],TODAY(), DAY) ,",
+              "                                   DATEDIFF( 'NL personnel_HR'[005_ Miladi Separation Date], 'NL personnel_HR'[004_Miladi Employment Date],DAY))",
+              "-- سابقه حضور پرسنل در شرکت ))))"
             ]
           },
           {
