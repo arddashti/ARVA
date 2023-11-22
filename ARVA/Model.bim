@@ -3596,6 +3596,21 @@
               "  ",
               "--  فعال و غیر فعال بودن پرسنل "
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "003_work experience",
+            "dataType": "unknown",
+            "isDataTypeInferred": true,
+            "description": " سابقه حضور پرسنل در شرکت ",
+            "expression": [
+              " ",
+              "                        ",
+              "                IF('NL personnel_HR'[date_of_separation]= BLANK() , ",
+              "                                                     TODAY()- 'NL personnel_HR'[employment_date] ,",
+              "                                                                               'NL personnel_HR'[date_of_separation]- 'NL personnel_HR'[employment_date]",
+              "-- سابقه حضور پرسنل در شرکت )"
+            ]
           }
         ],
         "partitions": [
