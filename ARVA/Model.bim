@@ -852,9 +852,9 @@
             "description": "موجودی ریالی لحظه ای ماه جاری ",
             "expression": [
               "",
-              "       var yy = LOOKUPVALUE ('BI DIM_DATE'[jyear] ,'BI DIM_DATE'[Miladi] , TODAY())",
+              "       var yy = SELECTEDVALUE( 'BI DIM_DATE'[jyear])",
               "       ",
-              "        var mm = LOOKUPVALUE ('BI DIM_DATE'[jmonthN] ,'BI DIM_DATE'[Miladi] , TODAY())",
+              "        var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
               "           ",
               " return",
               "",
@@ -943,13 +943,14 @@
               "",
               "",
               "",
-              "              if ( 'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)] > 0 && ",
-              "                           'VN Fact_int_Vocher_Itm_Qty_history'[011_ Current Inventory(Rial_CurrentMonth)] <> BLANK(),",
-              "             ( 'VN Fact_int_Vocher_Itm_Qty_history'[011_ Current Inventory(Rial_CurrentMonth)]- 'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)])",
+              " if ( 'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)] > 0",
+              "                 && ",
+              "              'VN Fact_int_Vocher_Itm_Qty_history'[011_ Current Inventory(Rial_CurrentMonth)] <> BLANK(),",
+              "     ( 'VN Fact_int_Vocher_Itm_Qty_history'[011_ Current Inventory(Rial_CurrentMonth)]- 'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)])",
               "                         /",
               "'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)])",
               "",
-              "-- نرخ رشد ریالی انبار نسبت به ابتدای سال )"
+              "-- نرخ رشد ریالی انبار نسبت به ابتدای سال ))"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
           }
