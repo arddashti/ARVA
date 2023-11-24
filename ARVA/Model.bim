@@ -3886,6 +3886,1103 @@
             "formatString": "#,#"
           }
         ]
+      },
+      {
+        "name": "PA Hokm",
+        "columns": [
+          {
+            "name": "HokmId",
+            "dataType": "string",
+            "sourceColumn": "HokmId"
+          },
+          {
+            "name": "HokmNo",
+            "dataType": "int64",
+            "sourceColumn": "HokmNo"
+          },
+          {
+            "name": "IssueDate",
+            "dataType": "string",
+            "sourceColumn": "IssueDate"
+          },
+          {
+            "name": "EffectiveDate",
+            "dataType": "string",
+            "sourceColumn": "EffectiveDate"
+          },
+          {
+            "name": "AccountNo",
+            "dataType": "string",
+            "sourceColumn": "AccountNo"
+          },
+          {
+            "name": "StartWorkDate",
+            "dataType": "string",
+            "sourceColumn": "StartWorkDate"
+          },
+          {
+            "name": "EndWorkDate",
+            "dataType": "string",
+            "sourceColumn": "EndWorkDate"
+          },
+          {
+            "name": "ContractStartDate",
+            "dataType": "string",
+            "sourceColumn": "ContractStartDate"
+          },
+          {
+            "name": "ContractEndDate",
+            "dataType": "string",
+            "sourceColumn": "ContractEndDate"
+          },
+          {
+            "name": "EndDate",
+            "dataType": "string",
+            "sourceColumn": "EndDate"
+          },
+          {
+            "name": "PersonnelInfoId",
+            "dataType": "int64",
+            "sourceColumn": "PersonnelInfoId"
+          },
+          {
+            "name": "IsActive",
+            "dataType": "boolean",
+            "sourceColumn": "IsActive"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description"
+          },
+          {
+            "name": "OrgChartId",
+            "dataType": "int64",
+            "sourceColumn": "OrgChartId"
+          },
+          {
+            "name": "OrgLocationId",
+            "dataType": "int64",
+            "sourceColumn": "OrgLocationId"
+          },
+          {
+            "name": "PostPostTitle",
+            "dataType": "string",
+            "sourceColumn": "PostPostTitle"
+          },
+          {
+            "name": "CostCenterTitle",
+            "dataType": "string",
+            "sourceColumn": "CostCenterTitle"
+          },
+          {
+            "name": "EmploymentTypeName",
+            "dataType": "string",
+            "sourceColumn": "EmploymentTypeName"
+          },
+          {
+            "name": "InsuranceTypeName",
+            "dataType": "string",
+            "sourceColumn": "InsuranceTypeName"
+          },
+          {
+            "name": "HokmTypeName",
+            "dataType": "string",
+            "sourceColumn": "HokmTypeName"
+          },
+          {
+            "name": "HokmMainTypeName",
+            "dataType": "string",
+            "sourceColumn": "HokmMainTypeName"
+          },
+          {
+            "name": "JobInfoTitle",
+            "dataType": "string",
+            "sourceColumn": "JobInfoTitle"
+          },
+          {
+            "name": "EmploymentStatusTypeName",
+            "dataType": "string",
+            "sourceColumn": "EmploymentStatusTypeName"
+          },
+          {
+            "name": "TaxCalculationTypeName",
+            "dataType": "string",
+            "sourceColumn": "TaxCalculationTypeName"
+          },
+          {
+            "name": "OrgChartName",
+            "dataType": "string",
+            "sourceColumn": "OrgChartName"
+          },
+          {
+            "name": "HokmStatusName",
+            "dataType": "string",
+            "sourceColumn": "HokmStatusName"
+          },
+          {
+            "name": "OrgLocationTitle",
+            "dataType": "string",
+            "sourceColumn": "OrgLocationTitle"
+          },
+          {
+            "name": "WorkingCalendarName",
+            "dataType": "string",
+            "sourceColumn": "WorkingCalendarName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    PA_Hokm = Source{[Schema=\"PA\",Item=\"Hokm\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(PA_Hokm,\"ي\",\"ی\",Replacer.ReplaceValue,{\"HokmId\", \"Description\", \"PostPostTitle\", \"CostCenterTitle\", \"EmploymentTypeName\", \"InsuranceTypeName\", \"HokmTypeName\", \"HokmMainTypeName\", \"JobInfoTitle\", \"EmploymentStatusTypeName\", \"TaxCalculationTypeName\", \"OrgChartName\", \"HokmStatusName\", \"OrgLocationTitle\", \"WorkingCalendarName\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "PA MonthlySalary",
+        "columns": [
+          {
+            "name": "CalculationPeriodId",
+            "dataType": "int64",
+            "sourceColumn": "CalculationPeriodId"
+          },
+          {
+            "name": "PersonnelInfoId",
+            "dataType": "int64",
+            "sourceColumn": "PersonnelInfoId"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year"
+          },
+          {
+            "name": "Month",
+            "dataType": "int64",
+            "sourceColumn": "Month"
+          },
+          {
+            "name": "LastHokmId",
+            "dataType": "int64",
+            "sourceColumn": "LastHokmId"
+          },
+          {
+            "name": "OrgChartId",
+            "dataType": "int64",
+            "sourceColumn": "OrgChartId"
+          },
+          {
+            "name": "WSEidiVaSanavat_DArsadMAliat",
+            "dataType": "int64",
+            "sourceColumn": "WSEidiVaSanavat_DArsadMAliat"
+          },
+          {
+            "name": "WSEidiVaSanavat_TedadRozEidi",
+            "dataType": "int64",
+            "sourceColumn": "WSEidiVaSanavat_TedadRozEidi"
+          },
+          {
+            "name": "TedadRoozSanavat",
+            "dataType": "int64",
+            "sourceColumn": "TedadRoozSanavat"
+          },
+          {
+            "name": "MandeMorakhasi",
+            "dataType": "string",
+            "sourceColumn": "MandeMorakhasi"
+          },
+          {
+            "name": "KhalessanavatKhedmat",
+            "dataType": "double",
+            "sourceColumn": "KhalessanavatKhedmat"
+          },
+          {
+            "name": "LastHokmNo",
+            "dataType": "string",
+            "sourceColumn": "LastHokmNo"
+          },
+          {
+            "name": "JameKosooratMostamer",
+            "dataType": "int64",
+            "sourceColumn": "JameKosooratMostamer"
+          },
+          {
+            "name": "JameMazayayeMostamer",
+            "dataType": "int64",
+            "sourceColumn": "JameMazayayeMostamer"
+          },
+          {
+            "name": "JameKosourateGheyreMostamer",
+            "dataType": "int64",
+            "sourceColumn": "JameKosourateGheyreMostamer"
+          },
+          {
+            "name": "JameMazayayeGheiremostamar1",
+            "dataType": "int64",
+            "sourceColumn": "JameMazayayeGheiremostamar1"
+          },
+          {
+            "name": "JameHoghoghMazaya1",
+            "dataType": "int64",
+            "sourceColumn": "JameHoghoghMazaya1"
+          },
+          {
+            "name": "JameKosour",
+            "dataType": "int64",
+            "sourceColumn": "JameKosour"
+          },
+          {
+            "name": "KhalesPardakhtHoghoghKol",
+            "dataType": "int64",
+            "sourceColumn": "KhalesPardakhtHoghoghKol"
+          },
+          {
+            "name": "ShomarehHesab",
+            "dataType": "string",
+            "sourceColumn": "ShomarehHesab"
+          },
+          {
+            "name": "JamTahodateKarfarma",
+            "dataType": "int64",
+            "sourceColumn": "JamTahodateKarfarma"
+          },
+          {
+            "name": "JameMazayayeMostamer2",
+            "dataType": "int64",
+            "sourceColumn": "JameMazayayeMostamer2"
+          },
+          {
+            "name": "JameMazayayeMostamerKol",
+            "dataType": "int64",
+            "sourceColumn": "JameMazayayeMostamerKol"
+          },
+          {
+            "name": "JameMazayayeGheiremostamar2",
+            "dataType": "int64",
+            "sourceColumn": "JameMazayayeGheiremostamar2"
+          },
+          {
+            "name": "JameMazayayeGheiremostamarKol",
+            "dataType": "int64",
+            "sourceColumn": "JameMazayayeGheiremostamarKol"
+          },
+          {
+            "name": "JameHoghoghMazaya2",
+            "dataType": "int64",
+            "sourceColumn": "JameHoghoghMazaya2"
+          },
+          {
+            "name": "JameHoghoghMazayaKol",
+            "dataType": "int64",
+            "sourceColumn": "JameHoghoghMazayaKol"
+          },
+          {
+            "name": "JameKosourateGheyreMostamer2",
+            "dataType": "int64",
+            "sourceColumn": "JameKosourateGheyreMostamer2"
+          },
+          {
+            "name": "JameKosourateGheyreMostamerKol",
+            "dataType": "int64",
+            "sourceColumn": "JameKosourateGheyreMostamerKol"
+          },
+          {
+            "name": "JameKosour2",
+            "dataType": "int64",
+            "sourceColumn": "JameKosour2"
+          },
+          {
+            "name": "JameKosourKol",
+            "dataType": "int64",
+            "sourceColumn": "JameKosourKol"
+          },
+          {
+            "name": "KhalesPardakhtHoghogh1",
+            "dataType": "int64",
+            "sourceColumn": "KhalesPardakhtHoghogh1"
+          },
+          {
+            "name": "KhalesPardakhtHoghogh2",
+            "dataType": "int64",
+            "sourceColumn": "KhalesPardakhtHoghogh2"
+          },
+          {
+            "name": "Ezafehkar",
+            "dataType": "string",
+            "sourceColumn": "Ezafehkar"
+          },
+          {
+            "name": "takhir",
+            "dataType": "string",
+            "sourceColumn": "takhir"
+          },
+          {
+            "name": "roozkarkard",
+            "dataType": "int64",
+            "sourceColumn": "roozkarkard"
+          },
+          {
+            "name": "roozemamooriyat",
+            "dataType": "int64",
+            "sourceColumn": "roozemamooriyat"
+          },
+          {
+            "name": "roozegheybat",
+            "dataType": "int64",
+            "sourceColumn": "roozegheybat"
+          },
+          {
+            "name": "roozebimari",
+            "dataType": "int64",
+            "sourceColumn": "roozebimari"
+          },
+          {
+            "name": "TedadRozEidi",
+            "dataType": "int64",
+            "sourceColumn": "TedadRozEidi"
+          },
+          {
+            "name": "TedadRoozSanavat2",
+            "dataType": "int64",
+            "sourceColumn": "TedadRoozSanavat2"
+          },
+          {
+            "name": "MandeMorakhasi2",
+            "dataType": "string",
+            "sourceColumn": "MandeMorakhasi2"
+          },
+          {
+            "name": "KarkardTatilKari",
+            "dataType": "string",
+            "sourceColumn": "KarkardTatilKari"
+          },
+          {
+            "name": "KarkardShabKari",
+            "dataType": "string",
+            "sourceColumn": "KarkardShabKari"
+          },
+          {
+            "name": "MandemorakhasiManfi",
+            "dataType": "string",
+            "sourceColumn": "MandemorakhasiManfi"
+          },
+          {
+            "name": "SalaryHagheOlad",
+            "dataType": "double",
+            "sourceColumn": "SalaryHagheOlad"
+          },
+          {
+            "name": "BasesSalary",
+            "dataType": "double",
+            "sourceColumn": "BasesSalary"
+          },
+          {
+            "name": "SalaryHagheMaskan",
+            "dataType": "double",
+            "sourceColumn": "SalaryHagheMaskan"
+          },
+          {
+            "name": "TedadRoozEstandardMah",
+            "dataType": "double",
+            "sourceColumn": "TedadRoozEstandardMah"
+          },
+          {
+            "name": "EsPayeHoghogh",
+            "dataType": "double",
+            "sourceColumn": "EsPayeHoghogh"
+          },
+          {
+            "name": "FeeKarkard",
+            "dataType": "int64",
+            "sourceColumn": "FeeKarkard"
+          },
+          {
+            "name": "EsHagheOlad",
+            "dataType": "double",
+            "sourceColumn": "EsHagheOlad"
+          },
+          {
+            "name": "EsHagheMaskan",
+            "dataType": "double",
+            "sourceColumn": "EsHagheMaskan"
+          },
+          {
+            "name": "EsBonNaghdi",
+            "dataType": "double",
+            "sourceColumn": "EsBonNaghdi"
+          },
+          {
+            "name": "EsPayeSanavat",
+            "dataType": "double",
+            "sourceColumn": "EsPayeSanavat"
+          },
+          {
+            "name": "SalaryBonKargari",
+            "dataType": "double",
+            "sourceColumn": "SalaryBonKargari"
+          },
+          {
+            "name": "SalaryPayeSanavat",
+            "dataType": "double",
+            "sourceColumn": "SalaryPayeSanavat"
+          },
+          {
+            "name": "SalaryCBD3",
+            "dataType": "double",
+            "sourceColumn": "SalaryCBD3"
+          },
+          {
+            "name": "ESCBD3",
+            "dataType": "double",
+            "sourceColumn": "ESCBD3"
+          },
+          {
+            "name": "ESCBD1",
+            "dataType": "double",
+            "sourceColumn": "ESCBD1"
+          },
+          {
+            "name": "ESCBD2",
+            "dataType": "double",
+            "sourceColumn": "ESCBD2"
+          },
+          {
+            "name": "SalaryCBD1",
+            "dataType": "double",
+            "sourceColumn": "SalaryCBD1"
+          },
+          {
+            "name": "SalaryCBD2",
+            "dataType": "double",
+            "sourceColumn": "SalaryCBD2"
+          },
+          {
+            "name": "PadashMahaneh",
+            "dataType": "double",
+            "sourceColumn": "PadashMahaneh"
+          },
+          {
+            "name": "SaatKareMahaneh",
+            "dataType": "double",
+            "sourceColumn": "SaatKareMahaneh"
+          },
+          {
+            "name": "ZaribEzafehkariAddi",
+            "dataType": "double",
+            "sourceColumn": "ZaribEzafehkariAddi"
+          },
+          {
+            "name": "NCBenefit",
+            "dataType": "int64",
+            "sourceColumn": "NCBenefit"
+          },
+          {
+            "name": "NCBenefit2",
+            "dataType": "int64",
+            "sourceColumn": "NCBenefit2"
+          },
+          {
+            "name": "NCBenefit3",
+            "dataType": "int64",
+            "sourceColumn": "NCBenefit3"
+          },
+          {
+            "name": "NCBenefit4",
+            "dataType": "int64",
+            "sourceColumn": "NCBenefit4"
+          },
+          {
+            "name": "PourSant",
+            "dataType": "double",
+            "sourceColumn": "PourSant"
+          },
+          {
+            "name": "EzafekareSabet",
+            "dataType": "double",
+            "sourceColumn": "EzafekareSabet"
+          },
+          {
+            "name": "HoghogheMoavagheh",
+            "dataType": "double",
+            "sourceColumn": "HoghogheMoavagheh"
+          },
+          {
+            "name": "SalaryEzafehkar",
+            "dataType": "double",
+            "sourceColumn": "SalaryEzafehkar"
+          },
+          {
+            "name": "SalaryMamooriyat",
+            "dataType": "double",
+            "sourceColumn": "SalaryMamooriyat"
+          },
+          {
+            "name": "EsSaatEzafehKar",
+            "dataType": "double",
+            "sourceColumn": "EsSaatEzafehKar"
+          },
+          {
+            "name": "EsRoozeMamooriyat",
+            "dataType": "int64",
+            "sourceColumn": "EsRoozeMamooriyat"
+          },
+          {
+            "name": "HoghogheMabna2",
+            "dataType": "double",
+            "sourceColumn": "HoghogheMabna2"
+          },
+          {
+            "name": "EsShabkari",
+            "dataType": "double",
+            "sourceColumn": "EsShabkari"
+          },
+          {
+            "name": "ZaribTatilKari",
+            "dataType": "double",
+            "sourceColumn": "ZaribTatilKari"
+          },
+          {
+            "name": "EsKarkardTatilkari",
+            "dataType": "double",
+            "sourceColumn": "EsKarkardTatilkari"
+          },
+          {
+            "name": "TatilKari",
+            "dataType": "double",
+            "sourceColumn": "TatilKari"
+          },
+          {
+            "name": "ZaribShabKari",
+            "dataType": "double",
+            "sourceColumn": "ZaribShabKari"
+          },
+          {
+            "name": "ShabKari",
+            "dataType": "double",
+            "sourceColumn": "ShabKari"
+          },
+          {
+            "name": "HagheNahar",
+            "dataType": "double",
+            "sourceColumn": "HagheNahar"
+          },
+          {
+            "name": "HagheBimehBikari",
+            "dataType": "double",
+            "sourceColumn": "HagheBimehBikari"
+          },
+          {
+            "name": "HagheBimehSahmeKarfarma",
+            "dataType": "double",
+            "sourceColumn": "HagheBimehSahmeKarfarma"
+          },
+          {
+            "name": "TedadMahePardakhteHoghoogh",
+            "dataType": "int64",
+            "sourceColumn": "TedadMahePardakhteHoghoogh"
+          },
+          {
+            "name": "JameDaramadeMashmooleBimeh",
+            "dataType": "double",
+            "sourceColumn": "JameDaramadeMashmooleBimeh"
+          },
+          {
+            "name": "JameDaramdeMashmooleMaliyat",
+            "dataType": "double",
+            "sourceColumn": "JameDaramdeMashmooleMaliyat"
+          },
+          {
+            "name": "SaghfeMashmooleBimeh",
+            "dataType": "double",
+            "sourceColumn": "SaghfeMashmooleBimeh"
+          },
+          {
+            "name": "DaramadeMashmooleMaliyateMah",
+            "dataType": "double",
+            "sourceColumn": "DaramadeMashmooleMaliyateMah"
+          },
+          {
+            "name": "BimeTaminEjtemai",
+            "dataType": "double",
+            "sourceColumn": "BimeTaminEjtemai"
+          },
+          {
+            "name": "ZaribBimehSahmeKarmand",
+            "dataType": "double",
+            "sourceColumn": "ZaribBimehSahmeKarmand"
+          },
+          {
+            "name": "SystemInitialDataTaxBaseIncomeYTD",
+            "dataType": "double",
+            "sourceColumn": "SystemInitialDataTaxBaseIncomeYTD"
+          },
+          {
+            "name": "SystemInitialDataMonthlyPresence",
+            "dataType": "int64",
+            "sourceColumn": "SystemInitialDataMonthlyPresence"
+          },
+          {
+            "name": "MonthlyPresence",
+            "dataType": "int64",
+            "sourceColumn": "MonthlyPresence"
+          },
+          {
+            "name": "KolDaramdeMashmooleMaliyat",
+            "dataType": "double",
+            "sourceColumn": "KolDaramdeMashmooleMaliyat"
+          },
+          {
+            "name": "PaidMonthTax",
+            "dataType": "double",
+            "sourceColumn": "PaidMonthTax"
+          },
+          {
+            "name": "PaidMaliyatFromStartOfYear",
+            "dataType": "double",
+            "sourceColumn": "PaidMaliyatFromStartOfYear"
+          },
+          {
+            "name": "ZaribBimehSahmeKarfarma",
+            "dataType": "double",
+            "sourceColumn": "ZaribBimehSahmeKarfarma"
+          },
+          {
+            "name": "ZaribBimehBikari",
+            "dataType": "double",
+            "sourceColumn": "ZaribBimehBikari"
+          },
+          {
+            "name": "HoghoghMazayayeMostamarMashmolMaliyat",
+            "dataType": "double",
+            "sourceColumn": "HoghoghMazayayeMostamarMashmolMaliyat"
+          },
+          {
+            "name": "MazayayeGheyreMostamareMashmolMaliyat",
+            "dataType": "double",
+            "sourceColumn": "MazayayeGheyreMostamareMashmolMaliyat"
+          },
+          {
+            "name": "JameHagheBimeh",
+            "dataType": "double",
+            "sourceColumn": "JameHagheBimeh"
+          },
+          {
+            "name": "MaliyatTaklifi",
+            "dataType": "double",
+            "sourceColumn": "MaliyatTaklifi"
+          },
+          {
+            "name": "MoafiatTaminEjtemaiMaliat",
+            "dataType": "double",
+            "sourceColumn": "MoafiatTaminEjtemaiMaliat"
+          },
+          {
+            "name": "TedadRoozKarkardSalaneh",
+            "dataType": "int64",
+            "sourceColumn": "TedadRoozKarkardSalaneh"
+          },
+          {
+            "name": "SaatKareMahaneh3",
+            "dataType": "double",
+            "sourceColumn": "SaatKareMahaneh3"
+          },
+          {
+            "name": "ZaribeTakhir",
+            "dataType": "double",
+            "sourceColumn": "ZaribeTakhir"
+          },
+          {
+            "name": "Mosaedeh",
+            "dataType": "double",
+            "sourceColumn": "Mosaedeh"
+          },
+          {
+            "name": "KasreTankhah",
+            "dataType": "double",
+            "sourceColumn": "KasreTankhah"
+          },
+          {
+            "name": "NCDefecit1",
+            "dataType": "int64",
+            "sourceColumn": "NCDefecit1"
+          },
+          {
+            "name": "NCDefecit2",
+            "dataType": "int64",
+            "sourceColumn": "NCDefecit2"
+          },
+          {
+            "name": "NCDefecit3",
+            "dataType": "int64",
+            "sourceColumn": "NCDefecit3"
+          },
+          {
+            "name": "NCDefecit4",
+            "dataType": "int64",
+            "sourceColumn": "NCDefecit4"
+          },
+          {
+            "name": "AlalHesabPorsant",
+            "dataType": "double",
+            "sourceColumn": "AlalHesabPorsant"
+          },
+          {
+            "name": "JarimeHoghogh",
+            "dataType": "double",
+            "sourceColumn": "JarimeHoghogh"
+          },
+          {
+            "name": "HoghogheMabna",
+            "dataType": "double",
+            "sourceColumn": "HoghogheMabna"
+          },
+          {
+            "name": "EsSaatTakhir",
+            "dataType": "double",
+            "sourceColumn": "EsSaatTakhir"
+          },
+          {
+            "name": "JarimehTakhir",
+            "dataType": "double",
+            "sourceColumn": "JarimehTakhir"
+          },
+          {
+            "name": "RemainSavingType227",
+            "dataType": "double",
+            "sourceColumn": "RemainSavingType227"
+          },
+          {
+            "name": "KharidPersoneli",
+            "dataType": "double",
+            "sourceColumn": "KharidPersoneli"
+          },
+          {
+            "name": "SavingType1091",
+            "dataType": "int64",
+            "sourceColumn": "SavingType1091"
+          },
+          {
+            "name": "LoanType1092",
+            "dataType": "double",
+            "sourceColumn": "LoanType1092"
+          },
+          {
+            "name": "LoanType1093",
+            "dataType": "double",
+            "sourceColumn": "LoanType1093"
+          },
+          {
+            "name": "LoanType1094",
+            "dataType": "double",
+            "sourceColumn": "LoanType1094"
+          },
+          {
+            "name": "RemineLoanType1092",
+            "dataType": "double",
+            "sourceColumn": "RemineLoanType1092"
+          },
+          {
+            "name": "RemineLoanType1093",
+            "dataType": "double",
+            "sourceColumn": "RemineLoanType1093"
+          },
+          {
+            "name": "RemineLoanType1094",
+            "dataType": "double",
+            "sourceColumn": "RemineLoanType1094"
+          },
+          {
+            "name": "EsSaatMandeMorakhasiManfi",
+            "dataType": "double",
+            "sourceColumn": "EsSaatMandeMorakhasiManfi"
+          },
+          {
+            "name": "MandemorakhasiManfi2",
+            "dataType": "string",
+            "sourceColumn": "MandemorakhasiManfi2"
+          },
+          {
+            "name": "JarimehMorakhasi",
+            "dataType": "double",
+            "sourceColumn": "JarimehMorakhasi"
+          },
+          {
+            "name": "LoanType90069",
+            "dataType": "double",
+            "sourceColumn": "LoanType90069"
+          },
+          {
+            "name": "RemainLoanType90069",
+            "dataType": "double",
+            "sourceColumn": "RemainLoanType90069"
+          },
+          {
+            "name": "HaddeaghaDastmozdeMahaneh",
+            "dataType": "double",
+            "sourceColumn": "HaddeaghaDastmozdeMahaneh"
+          },
+          {
+            "name": "SaatKareMahaneh2",
+            "dataType": "double",
+            "sourceColumn": "SaatKareMahaneh2"
+          },
+          {
+            "name": "WSEidiVaSanavat_",
+            "dataType": "double",
+            "sourceColumn": "WSEidiVaSanavat_"
+          },
+          {
+            "name": "KarkardMohasebatiEidiVaSanavatSalaneh",
+            "dataType": "int64",
+            "sourceColumn": "KarkardMohasebatiEidiVaSanavatSalaneh"
+          },
+          {
+            "name": "MoafiatMaliatEidi",
+            "dataType": "double",
+            "sourceColumn": "MoafiatMaliatEidi"
+          },
+          {
+            "name": "KhalesEidi",
+            "dataType": "int64",
+            "sourceColumn": "KhalesEidi"
+          },
+          {
+            "name": "MandeMorakhasiMotealeghe",
+            "dataType": "double",
+            "sourceColumn": "MandeMorakhasiMotealeghe"
+          },
+          {
+            "name": "TarkKar",
+            "dataType": "int64",
+            "sourceColumn": "TarkKar"
+          },
+          {
+            "name": "SanavatKhedmat",
+            "dataType": "double",
+            "sourceColumn": "SanavatKhedmat"
+          },
+          {
+            "name": "EidiMotealeghe",
+            "dataType": "int64",
+            "sourceColumn": "EidiMotealeghe"
+          },
+          {
+            "name": "KarkardSanavat",
+            "dataType": "int64",
+            "sourceColumn": "KarkardSanavat"
+          },
+          {
+            "name": "KarkardEidi",
+            "dataType": "int64",
+            "sourceColumn": "KarkardEidi"
+          },
+          {
+            "name": "MaliatEidi",
+            "dataType": "int64",
+            "sourceColumn": "MaliatEidi"
+          },
+          {
+            "name": "MandeMorakhasiMohasebati",
+            "dataType": "double",
+            "sourceColumn": "MandeMorakhasiMohasebati"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    PA_MonthlySalary = Source{[Schema=\"PA\",Item=\"MonthlySalary\"]}[Data]",
+                "in",
+                "    PA_MonthlySalary"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "PA OrgChar",
+        "columns": [
+          {
+            "name": "OrgChartId_Level1",
+            "dataType": "int64",
+            "sourceColumn": "OrgChartId_Level1"
+          },
+          {
+            "name": "OrgChartName_Level1",
+            "dataType": "string",
+            "sourceColumn": "OrgChartName_Level1"
+          },
+          {
+            "name": "OrgChartId_Level2",
+            "dataType": "int64",
+            "sourceColumn": "OrgChartId_Level2"
+          },
+          {
+            "name": "OrgChartName_Level2",
+            "dataType": "string",
+            "sourceColumn": "OrgChartName_Level2"
+          },
+          {
+            "name": "OrgChartId_Level3",
+            "dataType": "int64",
+            "sourceColumn": "OrgChartId_Level3"
+          },
+          {
+            "name": "OrgChartName_Level3",
+            "dataType": "string",
+            "sourceColumn": "OrgChartName_Level3"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    PA_OrgChar = Source{[Schema=\"PA\",Item=\"OrgChar\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(PA_OrgChar,\"ي\",\"ی\",Replacer.ReplaceText,{\"OrgChartName_Level1\", \"OrgChartName_Level2\", \"OrgChartName_Level3\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "PA PersonnelInfo",
+        "columns": [
+          {
+            "name": "PersonnelInfoId",
+            "dataType": "int64",
+            "sourceColumn": "PersonnelInfoId"
+          },
+          {
+            "name": "PersonnelInfoCode",
+            "dataType": "string",
+            "sourceColumn": "PersonnelInfoCode"
+          },
+          {
+            "name": "FatherName",
+            "dataType": "string",
+            "sourceColumn": "FatherName"
+          },
+          {
+            "name": "IdNo",
+            "dataType": "string",
+            "sourceColumn": "IdNo"
+          },
+          {
+            "name": "NationalCode",
+            "dataType": "string",
+            "sourceColumn": "NationalCode"
+          },
+          {
+            "name": "DLId",
+            "dataType": "int64",
+            "sourceColumn": "DLId"
+          },
+          {
+            "name": "Birthday",
+            "dataType": "string",
+            "sourceColumn": "Birthday"
+          },
+          {
+            "name": "InsuranceNo",
+            "dataType": "string",
+            "sourceColumn": "InsuranceNo"
+          },
+          {
+            "name": "PersonnelInfoStatusTypeName",
+            "dataType": "string",
+            "sourceColumn": "PersonnelInfoStatusTypeName"
+          },
+          {
+            "name": "UnderSupportChildernCountTypeName",
+            "dataType": "string",
+            "sourceColumn": "UnderSupportChildernCountTypeName"
+          },
+          {
+            "name": "FieldStudyName",
+            "dataType": "string",
+            "sourceColumn": "FieldStudyName"
+          },
+          {
+            "name": "EducationalDegreeTypeName",
+            "dataType": "string",
+            "sourceColumn": "EducationalDegreeTypeName"
+          },
+          {
+            "name": "NationalityTypeName",
+            "dataType": "string",
+            "sourceColumn": "NationalityTypeName"
+          },
+          {
+            "name": "MaritalStatusTypeName",
+            "dataType": "string",
+            "sourceColumn": "MaritalStatusTypeName"
+          },
+          {
+            "name": "ReligionName",
+            "dataType": "string",
+            "sourceColumn": "ReligionName"
+          },
+          {
+            "name": "GenderTypeName",
+            "dataType": "string",
+            "sourceColumn": "GenderTypeName"
+          },
+          {
+            "name": "BirthCity_name",
+            "dataType": "string",
+            "sourceColumn": "BirthCity_name"
+          },
+          {
+            "name": "IssueCity_name",
+            "dataType": "string",
+            "sourceColumn": "IssueCity_name"
+          },
+          {
+            "name": "fullname",
+            "dataType": "string",
+            "sourceColumn": "fullname"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    PA_PersonnelInfo = Source{[Schema=\"PA\",Item=\"PersonnelInfo\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(PA_PersonnelInfo,\"ي\",\"ی\",Replacer.ReplaceText,{\"FatherName\", \"PersonnelInfoStatusTypeName\", \"EducationalDegreeTypeName\", \"NationalityTypeName\", \"MaritalStatusTypeName\", \"ReligionName\", \"GenderTypeName\", \"BirthCity_name\", \"IssueCity_name\", \"fullname\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
