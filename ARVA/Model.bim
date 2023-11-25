@@ -6015,6 +6015,23 @@
             "memberId": "S-1-5-21-455356666-4183223732-1480618698-3428"
           }
         ]
+      },
+      {
+        "name": "BSC_Net",
+        "description": "گروه جهت دسترسی به BSC نت ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_Net",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3461"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": "'NL BSC'[Unit code]=15"
+          }
+        ]
       }
     ],
     "annotations": [
