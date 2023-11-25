@@ -203,6 +203,10 @@
               " -- محاسبه روز کاری"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "Sum of Miladi",
+            "expression": "SUM([Miladi])"
           }
         ]
       },
@@ -3485,6 +3489,34 @@
               "                               DIVIDE('VN Fact_Sale'[02_Amount] , sum('VN Fact_Tour'[target_amount_per_day]))"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "002__Daily Visitor Target",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE(sum('VN Fact_Tour'[target_amount_per_day]),",
+              "                                        'BI DIM_DATE'[jmonthN] = m , ",
+              "                                                       'BI DIM_DATE'[jyear]= Y,",
+              "                                                                   'BI DIM_DATE'[day]=d)  ",
+              "",
+              "--تارگت روزانه ویزیتور "
+            ]
+          },
+          {
+            "name": "003_Daily visitor Target",
+            "expression": [
+              " ",
+              "                  DIVIDE('VN Fact_Sale'[023_ Daily Amount],'VN Fact_Tour'[002__Daily Visitor Target])",
+              "",
+              "-- درصد تحقق روزانه ویزیتور"
+            ]
           }
         ]
       },
