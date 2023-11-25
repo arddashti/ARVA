@@ -6049,6 +6049,23 @@
             "filterExpression": " 'NL BSC'[Unit code]= 17"
           }
         ]
+      },
+      {
+        "name": "BSC_QC",
+        "description": "گروه جهت دسترسی به bsc QC",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_QC",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3463"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": " 'NL BSC'[Unit code]=16"
+          }
+        ]
       }
     ],
     "annotations": [
