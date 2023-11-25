@@ -3492,6 +3492,7 @@
           },
           {
             "name": "002__Daily Visitor Target",
+            "description": "تارگت  روزانه ویزیتور",
             "expression": [
               " ",
               "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
@@ -3511,11 +3512,43 @@
           },
           {
             "name": "003_Daily visitor Target",
+            "description": "درصد تحقق روزانه ویزیتور ",
             "expression": [
               " ",
               "                  DIVIDE('VN Fact_Sale'[023_ Daily Amount],'VN Fact_Tour'[002__Daily Visitor Target])",
               "",
               "-- درصد تحقق روزانه ویزیتور"
+            ]
+          },
+          {
+            "name": "004_ MTD Target",
+            "description": "تارگت ماه تا روز ویزیتور ",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE(sum('VN Fact_Tour'[target_amount_per_day]),",
+              "                                        'BI DIM_DATE'[jmonthN] = m , ",
+              "                                                       'BI DIM_DATE'[jyear]= Y,",
+              "                                                                   'BI DIM_DATE'[day]<=d)             ",
+              "           ",
+              "",
+              "--تارگت ماه تا روز "
+            ]
+          },
+          {
+            "name": "005_MTD Visitor Target Percentage",
+            "description": "درصد تحقق ماه تاروز ویزیتور ",
+            "expression": [
+              " ",
+              "                    DIVIDE('VN Fact_Sale'[010_ MTD Amount] , 'VN Fact_Tour'[004_ MTD Target])",
+              "",
+              "-- درصد تحقق ماه تاروز ویزیتور "
             ]
           }
         ]
