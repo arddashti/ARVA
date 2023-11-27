@@ -3519,7 +3519,8 @@
               "                  DIVIDE('VN Fact_Sale'[023_ Daily Amount],'VN Fact_Tour'[002__Daily Visitor Target])",
               "",
               "-- درصد تحقق روزانه ویزیتور"
-            ]
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           },
           {
             "name": "004_ MTD Target",
@@ -3550,7 +3551,8 @@
               "                    DIVIDE('VN Fact_Sale'[010_ MTD Amount] , 'VN Fact_Tour'[004_ MTD Target])",
               "",
               "-- درصد تحقق ماه تاروز ویزیتور "
-            ]
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
@@ -3675,7 +3677,8 @@
               "                        ",
               "          IF('NL personnel_HR'[date_of_separation]= BLANK() , ",
               "                       DATEDIFF('NL personnel_HR'[004_Miladi Employment Date],TODAY(), DAY) ,",
-              "                                   DATEDIFF( 'NL personnel_HR'[005_ Miladi Separation Date], 'NL personnel_HR'[004_Miladi Employment Date],DAY))",
+              "                                   DATEDIFF(  'NL personnel_HR'[004_Miladi Employment Date],'NL personnel_HR'[005_ Miladi Separation Date],",
+              "                                                   DAY))",
               "-- سابقه حضور پرسنل در شرکت ))))"
             ],
             "formatString": "0"
@@ -3716,17 +3719,18 @@
             "description": "سابقه حضور پرسنل به تفکیک بازه ماه ",
             "expression": [
               "",
-              "    IF('NL personnel_HR'[003_work experience]<=60 , \"0-1\" ,",
-              "          IF('NL personnel_HR'[003_work experience]>60 & 'NL personnel_HR'[003_work experience]<=90 , \"1-3\",",
-              "                if('NL personnel_HR'[003_work experience]>90 && 'NL personnel_HR'[003_work experience]<=180,\"3-6\",",
-              "                     IF('NL personnel_HR'[003_work experience]>180 & 'NL personnel_HR'[003_work experience]<=270, \"6-9\",",
-              "                        IF('NL personnel_HR'[003_work experience]>270 & 'NL personnel_HR'[003_work experience]<=360,\"9-12\",",
-              "                           IF('NL personnel_HR'[003_work experience]>360 & 'NL personnel_HR'[003_work experience]<=540,\"12-18\",",
-              "                              IF('NL personnel_HR'[003_work experience]>540 , \"18>0\"",
+              "   IF('NL personnel_HR'[003_work experience]<=60 , \"0-1\" ,",
+              "      IF('NL personnel_HR'[003_work experience]>60 & 'NL personnel_HR'[003_work experience]<=90 , \"1-3\",",
+              "        if('NL personnel_HR'[003_work experience]>90 && 'NL personnel_HR'[003_work experience]<=180,\"3-6\",",
+              "          IF('NL personnel_HR'[003_work experience]>180 & 'NL personnel_HR'[003_work experience]<=270, \"6-9\",",
+              "             IF('NL personnel_HR'[003_work experience]>270 & 'NL personnel_HR'[003_work experience]<=360,\"9-12\",",
+              "                IF('NL personnel_HR'[003_work experience]>360 & 'NL personnel_HR'[003_work experience]<=540,\"12-18\",",
+              "                   IF('NL personnel_HR'[003_work experience]>540 , \"18>0\"",
               "",
               ")))))))",
               "",
-              "-- سابقه حضور پرسنل به تفکیک بازه ماه "
+              "-- سابقه حضور پرسنل به تفکیک بازه ماه ",
+              ""
             ]
           }
         ],
