@@ -3677,7 +3677,8 @@
               "                       DATEDIFF('NL personnel_HR'[004_Miladi Employment Date],TODAY(), DAY) ,",
               "                                   DATEDIFF( 'NL personnel_HR'[005_ Miladi Separation Date], 'NL personnel_HR'[004_Miladi Employment Date],DAY))",
               "-- سابقه حضور پرسنل در شرکت ))))"
-            ]
+            ],
+            "formatString": "0"
           },
           {
             "type": "calculated",
@@ -3721,7 +3722,7 @@
               "                     IF('NL personnel_HR'[003_work experience]>180 & 'NL personnel_HR'[003_work experience]<=270, \"6-9\",",
               "                        IF('NL personnel_HR'[003_work experience]>270 & 'NL personnel_HR'[003_work experience]<=360,\"9-12\",",
               "                           IF('NL personnel_HR'[003_work experience]>360 & 'NL personnel_HR'[003_work experience]<=540,\"12-18\",",
-              "                              IF('NL personnel_HR'[003_work experience]>540 , \"18<0\"",
+              "                              IF('NL personnel_HR'[003_work experience]>540 , \"18>0\"",
               "",
               ")))))))",
               "",
