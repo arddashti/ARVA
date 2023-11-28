@@ -3,6 +3,7 @@
   "compatibilityLevel": 1500,
   "model": {
     "culture": "en-US",
+    "discourageImplicitMeasures": true,
     "dataSources": [
       {
         "type": "structured",
@@ -203,6 +204,10 @@
               " -- محاسبه روز کاری"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "Sum of Miladi",
+            "expression": "SUM([Miladi])"
           }
         ]
       },
@@ -3485,6 +3490,69 @@
               "                               DIVIDE('VN Fact_Sale'[02_Amount] , sum('VN Fact_Tour'[target_amount_per_day]))"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "002__Daily Visitor Target",
+            "description": "تارگت  روزانه ویزیتور",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE(sum('VN Fact_Tour'[target_amount_per_day]),",
+              "                                        'BI DIM_DATE'[jmonthN] = m , ",
+              "                                                       'BI DIM_DATE'[jyear]= Y,",
+              "                                                                   'BI DIM_DATE'[day]=d)  ",
+              "",
+              "--تارگت روزانه ویزیتور "
+            ]
+          },
+          {
+            "name": "003_Daily visitor Target",
+            "description": "درصد تحقق روزانه ویزیتور ",
+            "expression": [
+              " ",
+              "                  DIVIDE('VN Fact_Sale'[023_ Daily Amount],'VN Fact_Tour'[002__Daily Visitor Target])",
+              "",
+              "-- درصد تحقق روزانه ویزیتور"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "004_ MTD Target",
+            "description": "تارگت ماه تا روز ویزیتور ",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE(sum('VN Fact_Tour'[target_amount_per_day]),",
+              "                                        'BI DIM_DATE'[jmonthN] = m , ",
+              "                                                       'BI DIM_DATE'[jyear]= Y,",
+              "                                                                   'BI DIM_DATE'[day]<=d)             ",
+              "           ",
+              "",
+              "--تارگت ماه تا روز "
+            ]
+          },
+          {
+            "name": "005_MTD Visitor Target Percentage",
+            "description": "درصد تحقق ماه تاروز ویزیتور ",
+            "expression": [
+              " ",
+              "                    DIVIDE('VN Fact_Sale'[010_ MTD Amount] , 'VN Fact_Tour'[004_ MTD Target])",
+              "",
+              "-- درصد تحقق ماه تاروز ویزیتور "
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
@@ -3609,9 +3677,11 @@
               "                        ",
               "          IF('NL personnel_HR'[date_of_separation]= BLANK() , ",
               "                       DATEDIFF('NL personnel_HR'[004_Miladi Employment Date],TODAY(), DAY) ,",
-              "                                   DATEDIFF( 'NL personnel_HR'[005_ Miladi Separation Date], 'NL personnel_HR'[004_Miladi Employment Date],DAY))",
+              "                                   DATEDIFF(  'NL personnel_HR'[004_Miladi Employment Date],'NL personnel_HR'[005_ Miladi Separation Date],",
+              "                                                   DAY))",
               "-- سابقه حضور پرسنل در شرکت ))))"
-            ]
+            ],
+            "formatString": "0"
           },
           {
             "type": "calculated",
@@ -3639,6 +3709,28 @@
               "                                               ",
               "                                             ",
               "  --تاریخ میلادی ترک کار "
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Work experience grouping",
+            "dataType": "unknown",
+            "isDataTypeInferred": true,
+            "description": "سابقه حضور پرسنل به تفکیک بازه ماه ",
+            "expression": [
+              "",
+              "   IF('NL personnel_HR'[003_work experience]<=60 , \"0-1\" ,",
+              "      IF('NL personnel_HR'[003_work experience]>60 & 'NL personnel_HR'[003_work experience]<=90 , \"1-3\",",
+              "        if('NL personnel_HR'[003_work experience]>90 && 'NL personnel_HR'[003_work experience]<=180,\"3-6\",",
+              "          IF('NL personnel_HR'[003_work experience]>180 & 'NL personnel_HR'[003_work experience]<=270, \"6-9\",",
+              "             IF('NL personnel_HR'[003_work experience]>270 & 'NL personnel_HR'[003_work experience]<=360,\"9-12\",",
+              "                IF('NL personnel_HR'[003_work experience]>360 & 'NL personnel_HR'[003_work experience]<=540,\"12-18\",",
+              "                   IF('NL personnel_HR'[003_work experience]>540 , \"18>0\"",
+              "",
+              ")))))))",
+              "",
+              "-- سابقه حضور پرسنل به تفکیک بازه ماه ",
+              ""
             ]
           }
         ],
@@ -6013,6 +6105,57 @@
           {
             "memberName": "ARVA\\BSC_Admin",
             "memberId": "S-1-5-21-455356666-4183223732-1480618698-3428"
+          }
+        ]
+      },
+      {
+        "name": "BSC_Net",
+        "description": "گروه جهت دسترسی به BSC نت ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_Net",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3461"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": "'NL BSC'[Unit code]=15"
+          }
+        ]
+      },
+      {
+        "name": "BSC_Engineering",
+        "description": "گروه جهت دسترسی به BSC مهندسی ",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_Engineering",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3462"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": " 'NL BSC'[Unit code]= 17"
+          }
+        ]
+      },
+      {
+        "name": "BSC_QC",
+        "description": "گروه جهت دسترسی به bsc QC",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\BSC_QC",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-3463"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "NL BSC",
+            "filterExpression": " 'NL BSC'[Unit code]=16"
           }
         ]
       }
