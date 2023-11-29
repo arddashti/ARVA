@@ -1155,6 +1155,11 @@
             "name": "AreaRef",
             "dataType": "int64",
             "sourceColumn": "AreaRef"
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "sourceColumn": "Address"
           }
         ],
         "partitions": [
@@ -1167,9 +1172,10 @@
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    VN_Dim_Cust = Source{[Schema=\"VN\",Item=\"Dim_Cust\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Dim_Cust,\"ي\",\"ی\",Replacer.ReplaceText,{\"FirstName\", \"LastName\", \"RealName\", \"CustActName\", \"CustCtgrName\", \"SalePathName\"})",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Dim_Cust,\"ي\",\"ی\",Replacer.ReplaceText,{\"FirstName\", \"LastName\", \"RealName\", \"CustActName\", \"CustCtgrName\", \"SalePathName\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"ي\",\"ی\",Replacer.ReplaceText,{\"Address\"})",
                 "in",
-                "    #\"Replaced Value\""
+                "    #\"Replaced Value1\""
               ]
             }
           }
