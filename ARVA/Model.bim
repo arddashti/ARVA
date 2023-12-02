@@ -3661,61 +3661,29 @@
             "sourceColumn": "cost center"
           },
           {
-            "type": "calculated",
             "name": "002_Active or NotActive",
             "dataType": "string",
-            "isDataTypeInferred": true,
-            "description": "فعال و غیر فعال بودن پرسنل ",
-            "expression": [
-              "  if (  'NL personnel_HR'[date_of_separation]  = BLANK() , \"فعال\", \"غیر فعال\")",
-              "  ",
-              "--  فعال و غیر فعال بودن پرسنل "
-            ]
+            "sourceColumn": "002_Active or NotActive"
           },
           {
-            "type": "calculated",
-            "name": "003_work experience",
-            "dataType": "int64",
-            "isDataTypeInferred": true,
-            "description": " سابقه حضور پرسنل در شرکت ",
-            "expression": [
-              " ",
-              "                        ",
-              "          IF('NL personnel_HR'[date_of_separation]= BLANK() , ",
-              "                       DATEDIFF('NL personnel_HR'[004_Miladi Employment Date],TODAY(), DAY) ,",
-              "                                   DATEDIFF(  'NL personnel_HR'[004_Miladi Employment Date],'NL personnel_HR'[005_ Miladi Separation Date],",
-              "                                                   DAY))",
-              "-- سابقه حضور پرسنل در شرکت ))))"
-            ],
-            "formatString": "0"
-          },
-          {
-            "type": "calculated",
             "name": "004_Miladi Employment Date",
             "dataType": "dateTime",
-            "isDataTypeInferred": true,
-            "description": " تاریخ میلادی استخدام ",
-            "expression": [
-              " ",
-              "                     LOOKUPVALUE('BI DIM_DATE'[Miladi],'BI DIM_DATE'[Jalali_1],'NL personnel_HR'[employment_date])",
-              "",
-              "-- تاریخ میلادی استخدام "
-            ]
+            "sourceColumn": "004_Miladi Employment Date"
           },
           {
-            "type": "calculated",
             "name": "005_ Miladi Separation Date",
             "dataType": "dateTime",
-            "isDataTypeInferred": true,
-            "description": "تاریخ میلادی ترک کار ",
-            "expression": [
-              "",
-              "                                              ",
-              "    LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Jalali_1], 'NL personnel_HR'[date_of_separation])",
-              "                                               ",
-              "                                             ",
-              "  --تاریخ میلادی ترک کار "
-            ]
+            "sourceColumn": "005_ Miladi Separation Date"
+          },
+          {
+            "name": "003_work experience",
+            "dataType": "int64",
+            "sourceColumn": "003_work experience"
+          },
+          {
+            "name": "003_work experience_cat",
+            "dataType": "string",
+            "sourceColumn": "003_work experience_cat"
           }
         ],
         "partitions": [
