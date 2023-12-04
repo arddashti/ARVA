@@ -3718,6 +3718,16 @@
               "                                       DISTINCTCOUNT('NL personnel_HR'[personnel number])",
               "                                       -- تعداد پرسنل "
             ]
+          },
+          {
+            "name": "002_ CountPersonelInfirtPeriod",
+            "description": "تعداد پرسنل اول دوره ",
+            "expression": [
+              " ",
+              "                CALCULATE(DISTINCTCOUNT('NL personnel_HR'[personnel number]) ,",
+              "                                     FILTER('BI DIM_DATE', 'BI DIM_DATE'[003_IsToday]= 2))",
+              "-- تعداد پرسنل اول دوره "
+            ]
           }
         ]
       },
