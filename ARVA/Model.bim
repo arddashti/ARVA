@@ -345,6 +345,13 @@
             "dataType": "string",
             "description": "نام تولید کننده",
             "sourceColumn": "ManufacturerName"
+          },
+          {
+            "type": "calculated",
+            "name": "GoodsCode 1",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": " RIGHT('VN Dim_Goods'[GoodsCode],4)"
           }
         ],
         "partitions": [
