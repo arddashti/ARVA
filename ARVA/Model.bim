@@ -349,7 +349,7 @@
           {
             "type": "calculated",
             "name": "GoodsCode 1",
-            "dataType": "int64",
+            "dataType": "string",
             "description": "کد کالا",
             "expression": " RIGHT('VN Dim_Goods'[GoodsCode],5)"
           }
