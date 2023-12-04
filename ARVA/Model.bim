@@ -3684,7 +3684,12 @@
             "name": "003_work experience_cat",
             "dataType": "string",
             "sourceColumn": "003_work experience_cat",
-            "sortByColumn": "003_work experience"
+            "sortByColumn": "003_work experience_cat_No"
+          },
+          {
+            "name": "003_work experience_cat_No",
+            "dataType": "string",
+            "sourceColumn": "003_work experience_cat_No"
           }
         ],
         "partitions": [
