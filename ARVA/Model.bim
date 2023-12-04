@@ -349,8 +349,8 @@
           {
             "type": "calculated",
             "name": "GoodsCode 1",
-            "dataType": "string",
-            "isDataTypeInferred": true,
+            "dataType": "int64",
+            "description": "کد کالا",
             "expression": " RIGHT('VN Dim_Goods'[GoodsCode],4)"
           }
         ],
