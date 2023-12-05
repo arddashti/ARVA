@@ -3783,6 +3783,19 @@
               "",
               "-- تعداد پرسنل آخر دوره "
             ]
+          },
+          {
+            "name": "004_ExitRate",
+            "description": "نرخ خروج کارکنان ",
+            "expression": [
+              " ",
+              "   CALCULATE(DISTINCTCOUNT('NL personnel_HR'[personnel number]), ",
+              "                FILTER('NL personnel_HR','NL personnel_HR'[002_Active or NotActive] = \"غیر فعال\")) /",
+              " ",
+              "         ('NL personnel_HR'[002_ CountPersonelInfirtPeriod]+'NL personnel_HR'[003_ CountPersonelendofPeriod])/2",
+              "",
+              "-- نرخ خروج کارکنان "
+            ]
           }
         ]
       },
