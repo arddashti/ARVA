@@ -3746,7 +3746,8 @@
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    NL_personnel_HR = Source{[Schema=\"NL\",Item=\"personnel_HR\"]}[Data],",
                 "    #\"Replaced Value\" = Table.ReplaceValue(NL_personnel_HR,\"ي\",\"ی\",Replacer.ReplaceText,{\"name\", \"family name\", \"the unit\", \"Sub-unit 1\", \"Sub-unit 2\", \"Description of the organizational post\", \"Organizational job\", \"employment_category\", \"Reason for separation\", \"Educational certificate\", \"Field of Study\", \"cost center\"}),",
-                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"ي\",\"ی\",Replacer.ReplaceText,{\"003_work experience_cat\", \"age_cat\"})",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Replaced Value\", each [cost center] = \"پارسا\" and [personnel number] <> \"6000\"),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Filtered Rows\",\"ي\",\"ی\",Replacer.ReplaceText,{\"003_work experience_cat\", \"age_cat\"})",
                 "in",
                 "    #\"Replaced Value1\""
               ]
