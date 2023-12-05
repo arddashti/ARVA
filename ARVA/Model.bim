@@ -3790,7 +3790,7 @@
             "expression": [
               " ",
               "   CALCULATE(DISTINCTCOUNT('NL personnel_HR'[personnel number]), ",
-              "                FILTER('NL personnel_HR','NL personnel_HR'[002_Active or NotActive] = \"غیر فعال\")) /",
+              "                FILTER('NL personnel_HR','NL personnel_HR'[002_Active or NotActive] = \"غير فعال\")) /",
               " ",
               "         ('NL personnel_HR'[002_ CountPersonelInfirtPeriod]+'NL personnel_HR'[003_ CountPersonelendofPeriod])/2",
               "",
