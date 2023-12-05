@@ -5112,6 +5112,67 @@
             }
           }
         ]
+      },
+      {
+        "name": "BI dollar_price",
+        "columns": [
+          {
+            "name": "open_price",
+            "dataType": "string",
+            "sourceColumn": "open_price"
+          },
+          {
+            "name": "low_price",
+            "dataType": "string",
+            "sourceColumn": "low_price"
+          },
+          {
+            "name": "high_price",
+            "dataType": "string",
+            "sourceColumn": "high_price"
+          },
+          {
+            "name": "close_price",
+            "dataType": "string",
+            "sourceColumn": "close_price"
+          },
+          {
+            "name": "miladi_date",
+            "dataType": "string",
+            "sourceColumn": "miladi_date"
+          },
+          {
+            "name": "jalali_date",
+            "dataType": "string",
+            "sourceColumn": "jalali_date"
+          },
+          {
+            "name": "change%",
+            "dataType": "string",
+            "sourceColumn": "change%"
+          },
+          {
+            "name": "change",
+            "dataType": "string",
+            "sourceColumn": "change"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    BI_dollar_price = Source{[Schema=\"BI\",Item=\"dollar_price\"]}[Data]",
+                "in",
+                "    BI_dollar_price"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
