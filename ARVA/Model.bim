@@ -1167,6 +1167,16 @@
             "name": "Address",
             "dataType": "string",
             "sourceColumn": "Address"
+          },
+          {
+            "name": "Phone",
+            "dataType": "string",
+            "sourceColumn": "Phone"
+          },
+          {
+            "name": "Mobile",
+            "dataType": "string",
+            "sourceColumn": "Mobile"
           }
         ],
         "partitions": [
