@@ -3574,7 +3574,7 @@
         "columns": [
           {
             "name": "personnel number",
-            "dataType": "int64",
+            "dataType": "string",
             "sourceColumn": "personnel number"
           },
           {
@@ -3734,6 +3734,17 @@
               "                CALCULATE(DISTINCTCOUNT('NL personnel_HR'[personnel number]) ,",
               "                                     FILTER('BI DIM_DATE', 'BI DIM_DATE'[02_ selectMonth]= 2))",
               "-- تعداد پرسنل اول دوره "
+            ]
+          },
+          {
+            "name": "003_ CountPersonelendofPeriod",
+            "description": "تعداد پرسنل آخر دوره ",
+            "expression": [
+              " ",
+              "                CALCULATE(DISTINCTCOUNT('NL personnel_HR'[personnel number]) ,",
+              "                                     FILTER('BI DIM_DATE', 'BI DIM_DATE'[02_ selectMonth]= 1))",
+              "",
+              "-- تعداد پرسنل آخر دوره "
             ]
           }
         ]
