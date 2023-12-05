@@ -3697,6 +3697,32 @@
             "name": "003_work experience_cat_No",
             "dataType": "string",
             "sourceColumn": "003_work experience_cat_No"
+          },
+          {
+            "name": "Date of birth",
+            "dataType": "string",
+            "sourceColumn": "Date of birth"
+          },
+          {
+            "name": "Miladi Date of birth",
+            "dataType": "dateTime",
+            "sourceColumn": "Miladi Date of birth"
+          },
+          {
+            "name": "age",
+            "dataType": "int64",
+            "sourceColumn": "age"
+          },
+          {
+            "name": "age_cat",
+            "dataType": "string",
+            "sourceColumn": "age_cat",
+            "sortByColumn": "age_cat_No"
+          },
+          {
+            "name": "age_cat_No",
+            "dataType": "string",
+            "sourceColumn": "age_cat_No"
           }
         ],
         "partitions": [
@@ -3709,9 +3735,10 @@
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    NL_personnel_HR = Source{[Schema=\"NL\",Item=\"personnel_HR\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(NL_personnel_HR,\"ي\",\"ی\",Replacer.ReplaceText,{\"name\", \"family name\", \"the unit\", \"Sub-unit 1\", \"Sub-unit 2\", \"Description of the organizational post\", \"Organizational job\", \"employment_category\", \"Reason for separation\", \"Educational certificate\", \"Field of Study\", \"cost center\"})",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_personnel_HR,\"ي\",\"ی\",Replacer.ReplaceText,{\"name\", \"family name\", \"the unit\", \"Sub-unit 1\", \"Sub-unit 2\", \"Description of the organizational post\", \"Organizational job\", \"employment_category\", \"Reason for separation\", \"Educational certificate\", \"Field of Study\", \"cost center\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"ي\",\"ی\",Replacer.ReplaceText,{\"003_work experience_cat\", \"age_cat\"})",
                 "in",
-                "    #\"Replaced Value\""
+                "    #\"Replaced Value1\""
               ]
             }
           }
