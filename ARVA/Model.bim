@@ -3751,10 +3751,10 @@
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    NL_personnel_HR = Source{[Schema=\"NL\",Item=\"personnel_HR\"]}[Data],",
                 "    #\"Replaced Value\" = Table.ReplaceValue(NL_personnel_HR,\"ي\",\"ی\",Replacer.ReplaceText,{\"name\", \"family name\", \"the unit\", \"Sub-unit 1\", \"Sub-unit 2\", \"Description of the organizational post\", \"Organizational job\", \"employment_category\", \"Reason for separation\", \"Educational certificate\", \"Field of Study\", \"cost center\"}),",
-                "    #\"Filtered Rows\" = Table.SelectRows(#\"Replaced Value\", each Text.StartsWith([personnel number], \"1402\") and [cost center] = \"پارسا\" or not Text.StartsWith([personnel number], \"6000\") and [cost center] = \"آروا\"),",
-                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Filtered Rows\",\"ي\",\"ی\",Replacer.ReplaceText,{\"003_work experience_cat\", \"age_cat\"})",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"ي\",\"ی\",Replacer.ReplaceText,{\"003_work experience_cat\", \"age_cat\"}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Replaced Value1\", each Text.StartsWith([personnel number], \"1402\") and [cost center] = \"پارسا\" or not Text.StartsWith([personnel number], \"6000\") and [cost center] = \"آروا\")",
                 "in",
-                "    #\"Replaced Value1\""
+                "    #\"Filtered Rows\""
               ]
             }
           }
