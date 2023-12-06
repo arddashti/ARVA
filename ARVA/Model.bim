@@ -5213,6 +5213,17 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "001_PersonelCount(History)",
+            "description": "تعداد پرسنل ",
+            "expression": [
+              " ",
+              "                                       DISTINCTCOUNT('NL personnel_HR'[personnel number])",
+              "                                       -- تعداد پرسنل "
+            ]
+          }
         ]
       }
     ],
