@@ -167,6 +167,11 @@
               "",
               "--جدا کردن  تاریخ روز از سایر تاریخ "
             ]
+          },
+          {
+            "name": "unic_code",
+            "dataType": "string",
+            "sourceColumn": "unic_code"
           }
         ],
         "partitions": [
@@ -5173,6 +5178,42 @@
             }
           }
         ]
+      },
+      {
+        "name": "NL personnel_HR_history",
+        "columns": [
+          {
+            "name": "unic_code",
+            "dataType": "string",
+            "sourceColumn": "unic_code"
+          },
+          {
+            "name": "personnel number",
+            "dataType": "string",
+            "sourceColumn": "personnel number"
+          },
+          {
+            "name": "status",
+            "dataType": "string",
+            "sourceColumn": "status"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_personnel_HR_history = Source{[Schema=\"NL\",Item=\"personnel_HR_history\"]}[Data]",
+                "in",
+                "    NL_personnel_HR_history"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -5470,18 +5511,29 @@
         "crossFilteringBehavior": "bothDirections"
       },
       {
-        "name": "4bfd339f-3914-4c62-81cd-5d3c78157b43",
-        "fromTable": "NL personnel_HR",
-        "fromColumn": "employment_date",
-        "toTable": "BI DIM_DATE",
-        "toColumn": "Jalali_1"
-      },
-      {
         "name": "2cc33cdb-7f8e-4948-b6a6-63b36b0c6688",
         "fromTable": "oracle VW_BI_INS_PERSONEL",
         "fromColumn": "ID_DAT",
         "toTable": "BI DIM_DATE",
         "toColumn": "Miladi"
+      },
+      {
+        "name": "b091e47d-f142-47d8-a8ce-33f5ab301b88",
+        "toCardinality": "many",
+        "fromTable": "BI DIM_DATE",
+        "fromColumn": "unic_code",
+        "toTable": "NL personnel_HR_history",
+        "toColumn": "unic_code",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "043da1f2-57e4-4992-8d6f-5356c2400a50",
+        "toCardinality": "many",
+        "fromTable": "NL personnel_HR_history",
+        "fromColumn": "personnel number",
+        "toTable": "NL personnel_HR",
+        "toColumn": "personnel number",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
