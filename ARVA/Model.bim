@@ -5196,6 +5196,11 @@
             "name": "status",
             "dataType": "string",
             "sourceColumn": "status"
+          },
+          {
+            "name": "type",
+            "dataType": "string",
+            "sourceColumn": "type"
           }
         ],
         "partitions": [
