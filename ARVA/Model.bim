@@ -3801,17 +3801,18 @@
             "description": "نرخ خروج پرسنل ",
             "expression": [
               " ",
-              "              CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
+              "           CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
               "         ",
-              "                               FILTER('NL personnel_HR_history',  'NL personnel_HR_history'[type]=\"خروج\"))",
-              "                             /",
-              "                  ('NL personnel_HR'[002_ CountPersonelInfirtPeriod]+'NL personnel_HR'[003_ CountPersonelendofPeriod])/2",
+              "                              FILTER('NL personnel_HR_history',  'NL personnel_HR_history'[type]=\"خروج\"))",
+              "                       /",
+              "                 ('NL personnel_HR'[002_ CountPersonelInfirtPeriod]+'NL personnel_HR'[003_ CountPersonelendofPeriod])/2",
               "",
               "",
               "--نرخ خروج پرسنل ",
               "                             ",
               ""
-            ]
+            ],
+            "formatString": "0.00"
           }
         ]
       },
