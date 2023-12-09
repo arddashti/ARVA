@@ -3774,9 +3774,10 @@
             "description": "تعداد پرسنل اول دوره ",
             "expression": [
               " ",
-              "                CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
-              "                                     FILTER('BI DIM_DATE', 'BI DIM_DATE'[02_ selectMonth]= 2))",
-              "-- تعداد پرسنل اول دوره "
+              "           CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
+              "                               FILTER('NL personnel_HR_history', 'NL personnel_HR_history'[status]=\"فعال\" &&",
+              "                                             'NL personnel_HR_history'[type]<>\"استخدام\"))",
+              "-- تعداد پرسنل اول دوره )"
             ]
           },
           {
@@ -3784,23 +3785,15 @@
             "description": "تعداد پرسنل آخر دوره ",
             "expression": [
               " ",
-              "                CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]) ,",
-              "                                     FILTER('BI DIM_DATE', 'BI DIM_DATE'[02_ selectMonth]= 1))",
+              "              CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
+              "                    ",
+              "                               FILTER('NL personnel_HR_history', 'NL personnel_HR_history'[status]=\"فعال\"))",
+              "           -",
+              "  CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
+              "         ",
+              "                               FILTER('NL personnel_HR_history',  'NL personnel_HR_history'[type]=\"خروج\")) ",
               "",
               "-- تعداد پرسنل آخر دوره "
-            ]
-          },
-          {
-            "name": "004_ExitRate",
-            "description": "نرخ خروج کارکنان ",
-            "expression": [
-              " ",
-              "    --   CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]), ",
-              "            --     FILTER('NL personnel_HR_history','NL personnel_HR_history'[status]= \"غيرفعال\")) /",
-              " ",
-              "         ('NL personnel_HR'[002_ CountPersonelInfirtPeriod]+'NL personnel_HR'[003_ CountPersonelendofPeriod])/2",
-              "",
-              "-- نرخ خروج کارکنان "
             ]
           }
         ]
