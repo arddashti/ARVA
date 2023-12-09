@@ -3797,18 +3797,20 @@
             ]
           },
           {
-            "name": "004_ExitRate",
+            "name": "004_avgPersonel",
             "description": "نرخ خروج پرسنل ",
             "expression": [
               " ",
-              "       --    DISTINCTCOUNT('NL personnel_HR_history'[personnel number])",
-              "           --                 /",
+              "              CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
+              "         ",
+              "                               FILTER('NL personnel_HR_history',  'NL personnel_HR_history'[type]=\"خروج\")",
+              "                                 /",
               "                  ('NL personnel_HR'[002_ CountPersonelInfirtPeriod]+'NL personnel_HR'[003_ CountPersonelendofPeriod])/2",
               "",
               "",
               "--نرخ خروج پرسنل ",
               "                             ",
-              ""
+              ")"
             ]
           }
         ]
