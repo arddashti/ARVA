@@ -5250,6 +5250,17 @@
               "",
               "-- تعداد پرسنل استخدامی "
             ]
+          },
+          {
+            "name": "003_ The number of personnel left",
+            "description": "تعداد پرسنل خارج شده",
+            "expression": [
+              " ",
+              "       CALCULATE(  DISTINCTCOUNT('NL personnel_HR_history'[personnel number]), ",
+              "          FILTER('NL personnel_HR_history' , 'NL personnel_HR_history'[type] = \"خروج\"))",
+              "",
+              "-- تعداد پرسنل خارج شده"
+            ]
           }
         ]
       }
