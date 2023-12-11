@@ -5239,6 +5239,17 @@
               "                                       DISTINCTCOUNT('NL personnel_HR'[personnel number])",
               "                                       -- تعداد پرسنل "
             ]
+          },
+          {
+            "name": "002_ Number of employed personnel",
+            "description": "تعداد پرسنل استخدام شده ",
+            "expression": [
+              " ",
+              "       CALCULATE(  DISTINCTCOUNT('NL personnel_HR_history'[personnel number]), ",
+              "          FILTER('NL personnel_HR_history' , 'NL personnel_HR_history'[type] = \"استخدام\"))",
+              "",
+              "-- تعداد پرسنل استخدامی "
+            ]
           }
         ]
       }
