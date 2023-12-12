@@ -5263,6 +5263,173 @@
             ]
           }
         ]
+      },
+      {
+        "name": "NL after_sales_service",
+        "columns": [
+          {
+            "name": "acceptance number",
+            "dataType": "int64",
+            "sourceColumn": "acceptance number"
+          },
+          {
+            "name": "normal_customer_name",
+            "dataType": "string",
+            "sourceColumn": "normal_customer_name"
+          },
+          {
+            "name": "Acceptable date",
+            "dataType": "dateTime",
+            "sourceColumn": "Acceptable date"
+          },
+          {
+            "name": "Date of departure or delivery or filing",
+            "dataType": "dateTime",
+            "sourceColumn": "Date of departure or delivery or filing"
+          },
+          {
+            "name": "device_brand",
+            "dataType": "string",
+            "sourceColumn": "device_brand"
+          },
+          {
+            "name": "device type",
+            "dataType": "string",
+            "sourceColumn": "device type"
+          },
+          {
+            "name": "device_model",
+            "dataType": "string",
+            "sourceColumn": "device_model"
+          },
+          {
+            "name": "device_serial_number",
+            "dataType": "string",
+            "sourceColumn": "device_serial_number"
+          },
+          {
+            "name": "customer_address",
+            "dataType": "string",
+            "sourceColumn": "customer_address"
+          },
+          {
+            "name": "Customer_phone_number",
+            "dataType": "string",
+            "sourceColumn": "Customer_phone_number"
+          },
+          {
+            "name": "service_type",
+            "dataType": "string",
+            "sourceColumn": "service_type"
+          },
+          {
+            "name": "serviced",
+            "dataType": "string",
+            "sourceColumn": "serviced"
+          },
+          {
+            "name": "solar_date_of_exit_or_delivery_or_archive",
+            "dataType": "string",
+            "sourceColumn": "solar_date_of_exit_or_delivery_or_archive"
+          },
+          {
+            "name": "Acceptable solar date",
+            "dataType": "string",
+            "sourceColumn": "Acceptable solar date"
+          },
+          {
+            "name": "State",
+            "dataType": "string",
+            "sourceColumn": "State"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City"
+          },
+          {
+            "name": "name_service_representative",
+            "dataType": "string",
+            "sourceColumn": "name_service_representative"
+          },
+          {
+            "name": "representative_code",
+            "dataType": "int64",
+            "sourceColumn": "representative_code"
+          },
+          {
+            "name": "date_of_the_year_of_archiving_operations",
+            "dataType": "dateTime",
+            "sourceColumn": "date_of_the_year_of_archiving_operations"
+          },
+          {
+            "name": "solar_date_of_archiving_operations",
+            "dataType": "string",
+            "sourceColumn": "solar_date_of_archiving_operations"
+          },
+          {
+            "name": "issuing_code",
+            "dataType": "string",
+            "sourceColumn": "issuing_code"
+          },
+          {
+            "name": "issuer_name",
+            "dataType": "string",
+            "sourceColumn": "issuer_name"
+          },
+          {
+            "name": "file_name",
+            "dataType": "string",
+            "sourceColumn": "file_name"
+          },
+          {
+            "name": "Time_Archive",
+            "dataType": "dateTime",
+            "sourceColumn": "Time_Archive"
+          },
+          {
+            "name": "service_end_time",
+            "dataType": "string",
+            "sourceColumn": "service_end_time"
+          },
+          {
+            "name": "Acceptance time",
+            "dataType": "dateTime",
+            "sourceColumn": "Acceptance time"
+          },
+          {
+            "name": "Acceptable_registration_code",
+            "dataType": "string",
+            "sourceColumn": "Acceptable_registration_code"
+          },
+          {
+            "name": "solar_date_of_service_completion",
+            "dataType": "string",
+            "sourceColumn": "solar_date_of_service_completion"
+          },
+          {
+            "name": "date_of_formation_of_invoice_acceptance",
+            "dataType": "string",
+            "sourceColumn": "date_of_formation_of_invoice_acceptance"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_after_sales_service = Source{[Schema=\"NL\",Item=\"after_sales_service\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_after_sales_service,\"ي\",\"ی\",Replacer.ReplaceText,{\"normal_customer_name\", \"device_brand\", \"device type\", \"customer_address\", \"service_type\", \"State\", \"City\", \"name_service_representative\", \"issuer_name\", \"file_name\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
