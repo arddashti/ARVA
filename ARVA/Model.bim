@@ -977,8 +977,11 @@
             "expression": [
               "      ",
               "",
-              "                    CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                                  'BI DIM_DATE'[end_month] =1)   * 'BI dollar_price'[001_ MaxClose Price_Dollar]",
+              "                  CALCULATE(",
+              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
+              "                                                                * ",
+              "                                                                   'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                                                                                       'BI DIM_DATE'[end_month]= 1 )   * 'BI dollar_price'[001_ MaxClose Price_Dollar]",
               "",
               "--- قیمت دلاری موجودی انبار "
             ]
