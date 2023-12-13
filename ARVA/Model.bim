@@ -984,7 +984,8 @@
               "                                                                                       'BI DIM_DATE'[end_month]= 1 )   * 'BI dollar_price'[001_ MaxClose Price_Dollar]",
               "",
               "--- قیمت دلاری موجودی انبار "
-            ]
+            ],
+            "formatString": "#,#"
           }
         ]
       },
