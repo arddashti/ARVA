@@ -1024,7 +1024,7 @@
               "CALCULATE(",
               "        ",
               "                  'BI dollar_price'[001_ MaxClose Price_Dollar] ,",
-              "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm,'BI DIM_DATE'[end_month]=1) ",
+              "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm) ",
               "",
               "",
               "",
