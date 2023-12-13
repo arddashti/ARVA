@@ -970,6 +970,18 @@
               "-- نرخ رشد ریالی انبار نسبت به ابتدای سال ))"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "016_ DollarPriceStorage",
+            "description": "قیمت دلاری موجودی انبار ",
+            "expression": [
+              "      ",
+              "",
+              "                    CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                  'BI DIM_DATE'[end_month] =1)   * 'BI dollar_price'[001_ MaxClose Price_Dollar]",
+              "",
+              "--- قیمت دلاری موجودی انبار "
+            ]
           }
         ]
       },
