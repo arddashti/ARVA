@@ -5204,9 +5204,12 @@
         "measures": [
           {
             "name": "001_ MaxClose Price_Dollar",
+            "description": "ماکزیمم قیمت دلار ",
             "expression": [
               "",
-              "                      max('BI dollar_price'[close_price])"
+              "                      max('BI dollar_price'[close_price])",
+              "",
+              "--- ماکزیمم قیمت دلار "
             ]
           }
         ]
