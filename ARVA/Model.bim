@@ -5212,17 +5212,17 @@
         "columns": [
           {
             "name": "open_price",
-            "dataType": "string",
+            "dataType": "int64",
             "sourceColumn": "open_price"
           },
           {
             "name": "low_price",
-            "dataType": "string",
+            "dataType": "int64",
             "sourceColumn": "low_price"
           },
           {
             "name": "high_price",
-            "dataType": "string",
+            "dataType": "int64",
             "sourceColumn": "high_price"
           },
           {
@@ -5261,9 +5261,10 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    BI_dollar_price = Source{[Schema=\"BI\",Item=\"dollar_price\"]}[Data]",
+                "    BI_dollar_price = Source{[Schema=\"BI\",Item=\"dollar_price\"]}[Data],",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(BI_dollar_price,{{\"close_price\", Int64.Type}, {\"high_price\", Int64.Type}, {\"low_price\", Int64.Type}, {\"open_price\", Int64.Type}})",
                 "in",
-                "    BI_dollar_price"
+                "    #\"Changed Type\""
               ]
             }
           }
