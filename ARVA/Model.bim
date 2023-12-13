@@ -995,7 +995,7 @@
               "",
               "",
               "",
-              "                   ",
+              "     --- محاسبه ریال انبار ماه گذشته               ",
               "           var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
               "           var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
               "           var pm = if(mm=1 , 12, mm-1)",
@@ -1012,7 +1012,7 @@
               "                                                             /",
               "                                                     ",
               "",
-              "                   ",
+              " ----- محاسبه دلار انبار ماه گذشته                  ",
               "           var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
               "           var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
               "           var pm = if(mm=1 , 12, mm-1)",
@@ -1033,7 +1033,8 @@
               "",
               "-- دلار انبار  ماه گذشته ",
               ""
-            ]
+            ],
+            "formatString": "#,#"
           }
         ]
       },
