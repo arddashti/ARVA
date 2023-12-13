@@ -5188,6 +5188,15 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "001_ MaxClose Price_Dollar",
+            "expression": [
+              "",
+              "                      max('BI dollar_price'[close_price])"
+            ]
+          }
         ]
       },
       {
