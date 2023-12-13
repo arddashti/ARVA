@@ -981,7 +981,7 @@
               "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
               "                   *   'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice] ),",
               "                                                  'BI DIM_DATE'[end_month]= 1 )  /",
-              "                                     'BI dollar_price'[001_ MaxClose Price_Dollar]",
+              "                                     'BI dollar_price'[001_ maxClose Price_Dollar]",
               "                                                              ",
               "",
               "--- قیمت دلاری موجودی انبار "
@@ -1023,7 +1023,7 @@
               "",
               "CALCULATE(",
               "        ",
-              "                  'BI dollar_price'[001_ MaxClose Price_Dollar] ,",
+              "                  'BI dollar_price'[001_ maxClose Price_Dollar] ,",
               "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm) ",
               "",
               "",
@@ -5227,7 +5227,8 @@
           },
           {
             "name": "close_price",
-            "dataType": "string",
+            "dataType": "int64",
+            "description": "#,#",
             "sourceColumn": "close_price"
           },
           {
@@ -5269,11 +5270,11 @@
         ],
         "measures": [
           {
-            "name": "001_ MaxClose Price_Dollar",
+            "name": "001_ maxClose Price_Dollar",
             "description": "ماکزیمم قیمت دلار ",
             "expression": [
               "",
-              "                      max('BI dollar_price'[close_price])",
+              "                      AVERAGE('BI dollar_price'[close_price])",
               "",
               "--- ماکزیمم قیمت دلار "
             ],
