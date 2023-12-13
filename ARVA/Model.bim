@@ -1035,6 +1035,19 @@
               ""
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "018_ Inventory growth Rate (Dollar)",
+            "description": " نرخ رشد دلاری انبار ",
+            "expression": [
+              "",
+              "                  if( 'VN Fact_int_Vocher_Itm_Qty_history'[017_PreviousDollarPrice(Storage)]>0 && 'VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage]> BLANK(),",
+              "                                 ('VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage]- 'VN Fact_int_Vocher_Itm_Qty_history'[017_PreviousDollarPrice(Storage)])",
+              "                                                    /'VN Fact_int_Vocher_Itm_Qty_history'[017_PreviousDollarPrice(Storage)]",
+              "-- نرخ رشد دلاری انبار ",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
