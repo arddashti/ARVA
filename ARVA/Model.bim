@@ -5750,6 +5750,13 @@
         "toTable": "NL personnel_HR",
         "toColumn": "personnel number",
         "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "0453a074-d529-4dcb-9f91-bdae0fc2c4a6",
+        "fromTable": "BI dollar_price",
+        "fromColumn": "jalali_date",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "roles": [
