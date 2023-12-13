@@ -987,6 +987,34 @@
               "--- قیمت دلاری موجودی انبار "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "017_PreviousDollarPrice(Storage)",
+            "description": "دلار انبار  ماه گذشته ",
+            "expression": [
+              "",
+              "",
+              " ( var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
+              "       ",
+              "           var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
+              "           var pm = if(mm=1 , 12, mm-1)",
+              "           var py = IF(pm=12 , yy-1, yy)",
+              "",
+              " return",
+              "",
+              "",
+              "CALCULATE(",
+              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
+              "                                        * ",
+              "                                            'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm,'BI DIM_DATE'[end_month]=1) )",
+              "   /",
+              "       'BI dollar_price'[001_ MaxClose Price_Dollar]",
+              "",
+              "",
+              "-- دلار انبار  ماه گذشته ",
+              ""
+            ]
           }
         ]
       },
