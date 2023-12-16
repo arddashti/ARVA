@@ -5354,6 +5354,21 @@
               "",
               "-- تعداد پرسنل خارج شده"
             ]
+          },
+          {
+            "name": "004_Active Persobel",
+            "expression": [
+              "",
+              "                    var monthh = MONTH(TODAY())",
+              "                    var selectt = SELECTEDVALUE('NL personnel_HR_history'[type])",
+              "",
+              "return ",
+              "",
+              "    CALCULATE(selectt = \"فعال\",",
+              "                     DISTINCTCOUNT('NL personnel_HR_history'[personnel number]) ,",
+              "                                   FILTER('BI DIM_DATE', 'BI DIM_DATE'[jmonthN]= monthh),",
+              "                                     DISTINCTCOUNT('NL personnel_HR_history'[personnel number]))"
+            ]
           }
         ]
       },
@@ -5373,61 +5388,73 @@
           {
             "name": "Acceptable date",
             "dataType": "dateTime",
+            "description": "تاریخ میلادی پذیرش",
             "sourceColumn": "Acceptable date"
           },
           {
             "name": "Date of departure or delivery or filing",
             "dataType": "dateTime",
+            "description": "تاریخ میلادی خروج -تحویل یا بایگانی",
             "sourceColumn": "Date of departure or delivery or filing"
           },
           {
             "name": "device_brand",
             "dataType": "string",
+            "description": "مارک دستگاه ",
             "sourceColumn": "device_brand"
           },
           {
             "name": "device type",
             "dataType": "string",
+            "description": "نوع دستگاه",
             "sourceColumn": "device type"
           },
           {
             "name": "device_model",
             "dataType": "string",
+            "description": "مدل دستگاه",
             "sourceColumn": "device_model"
           },
           {
             "name": "device_serial_number",
             "dataType": "string",
+            "description": "شماره سریال دستگاه",
             "sourceColumn": "device_serial_number"
           },
           {
             "name": "customer_address",
             "dataType": "string",
+            "description": "آدرس مشتری",
             "sourceColumn": "customer_address"
           },
           {
             "name": "Customer_phone_number",
             "dataType": "string",
+            "description": "تلفن مشتری",
             "sourceColumn": "Customer_phone_number"
           },
           {
             "name": "service_type",
             "dataType": "string",
+            "description": "نوع سرویس",
             "sourceColumn": "service_type"
           },
           {
             "name": "serviced",
             "dataType": "string",
+            "description": "سرویس شده ",
             "sourceColumn": "serviced"
           },
           {
             "name": "solar_date_of_exit_or_delivery_or_archive",
             "dataType": "string",
+            "description": "تاریخ شمسی خروج یا تحویل یا بایگانی",
             "sourceColumn": "solar_date_of_exit_or_delivery_or_archive"
           },
           {
             "name": "Acceptable solar date",
             "dataType": "string",
+            "description": "تاریخ شمسی پذیرش",
             "sourceColumn": "Acceptable solar date"
           },
           {
@@ -5443,66 +5470,79 @@
           {
             "name": "name_service_representative",
             "dataType": "string",
+            "description": "نام نماینده خدمت ",
             "sourceColumn": "name_service_representative"
           },
           {
             "name": "representative_code",
             "dataType": "int64",
+            "description": "کد نماینده خدمت ",
             "sourceColumn": "representative_code"
           },
           {
             "name": "date_of_the_year_of_archiving_operations",
             "dataType": "dateTime",
+            "description": "تاریخ میلادی انجام عملیات بایگانی",
             "sourceColumn": "date_of_the_year_of_archiving_operations"
           },
           {
             "name": "solar_date_of_archiving_operations",
             "dataType": "string",
+            "description": "تاریخ شمسی انجام عملیات بایگانی",
             "sourceColumn": "solar_date_of_archiving_operations"
           },
           {
             "name": "issuing_code",
             "dataType": "string",
+            "description": "کد صادر کننده",
             "sourceColumn": "issuing_code"
           },
           {
             "name": "issuer_name",
             "dataType": "string",
+            "description": "نا صادر کننده",
             "sourceColumn": "issuer_name"
           },
           {
             "name": "file_name",
             "dataType": "string",
+            "description": "نام بایگان",
             "sourceColumn": "file_name"
           },
           {
             "name": "Time_Archive",
             "dataType": "dateTime",
+            "description": "ساعت بایگانی",
             "sourceColumn": "Time_Archive"
           },
           {
             "name": "service_end_time",
             "dataType": "string",
+            "description": "ساعت اتمام سرویس",
             "sourceColumn": "service_end_time"
           },
           {
             "name": "Acceptance time",
             "dataType": "dateTime",
+            "description": "ساعت پذیرش",
             "sourceColumn": "Acceptance time"
           },
           {
             "name": "Acceptable_registration_code",
             "dataType": "string",
+            "description": "کد ثبت پذیرش",
             "sourceColumn": "Acceptable_registration_code"
           },
           {
             "name": "solar_date_of_service_completion",
             "dataType": "string",
+            "description": "تاریخ شمسی اتمام سرویس",
             "sourceColumn": "solar_date_of_service_completion"
           },
           {
             "name": "date_of_formation_of_invoice_acceptance",
             "dataType": "string",
+            "description": "تاریخ تشکیل قبض پذیرش",
             "sourceColumn": "date_of_formation_of_invoice_acceptance"
           }
         ],
