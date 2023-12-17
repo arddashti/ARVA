@@ -5358,8 +5358,8 @@
           {
             "name": "004_Active Persobel",
             "expression": [
-              "",
-              "                    var monthh = MONTH(TODAY())",
+              " 1",
+              "       /*             var monthh = MONTH(TODAY())",
               "                    var selectt = SELECTEDVALUE('NL personnel_HR_history'[type])",
               "",
               "return ",
@@ -5367,7 +5367,10 @@
               "    CALCULATE(selectt = \"فعال\",",
               "                     DISTINCTCOUNT('NL personnel_HR_history'[personnel number]) ,",
               "                                   FILTER('BI DIM_DATE', 'BI DIM_DATE'[jmonthN]= monthh),",
-              "                                     DISTINCTCOUNT('NL personnel_HR_history'[personnel number]))"
+              "                                     DISTINCTCOUNT('NL personnel_HR_history'[personnel number]))",
+              "                                     ",
+              "                                     ",
+              "                                     */"
             ]
           }
         ]
