@@ -960,7 +960,7 @@
               "",
               "",
               "",
-              " if ( 'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)] > 0",
+              " if ( 'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)] <> 0",
               "                 && ",
               "              'VN Fact_int_Vocher_Itm_Qty_history'[011_ Current Inventory(Rial_CurrentMonth)] <> BLANK(),",
               "     ( 'VN Fact_int_Vocher_Itm_Qty_history'[011_ Current Inventory(Rial_CurrentMonth)]- 'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)])",
@@ -1046,6 +1046,55 @@
               "                                                    /'VN Fact_int_Vocher_Itm_Qty_history'[017_PreviousDollarPrice(Storage)]",
               "-- نرخ رشد دلاری انبار ",
               ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "019_ First Inventory(Dollar_FirstMonth)",
+            "description": "دلار ابتدای سال انبار",
+            "expression": [
+              "",
+              "        ",
+              "",
+              "        var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
+              "   return",
+              "    CALCULATE(",
+              "             sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
+              "                                      * ",
+              "                              'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                                                    'BI DIM_DATE'[jyear]=yy-1, 'BI DIM_DATE'[jmonthN]=12,'BI DIM_DATE'[end_month]=1)",
+              "                                     /  ",
+              "",
+              " var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
+              "          ",
+              "          ",
+              " return",
+              "",
+              "CALCULATE(",
+              "        ",
+              "                  'BI dollar_price'[001_ maxClose Price_Dollar] ,",
+              "                                                          'BI DIM_DATE'[jyear]=yy-1, 'BI DIM_DATE'[jmonthN]=12) ",
+              "",
+              "-- دلار ابتدای سال انبار برای محاسبه نرخ رشد ریالی نسبت به روز "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "020_Growth Rate Dollar(beginning to now)",
+            "description": "نرخ رشد دلاری نسبت به ابتدای سال ",
+            "expression": [
+              "",
+              "",
+              "",
+              " if ( 'VN Fact_int_Vocher_Itm_Qty_history'[019_ First Inventory(Dollar_FirstMonth)]<> 0",
+              "                 && ",
+              "              'VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage] <> BLANK(),",
+              "     ( 'VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage]- 'VN Fact_int_Vocher_Itm_Qty_history'[019_ First Inventory(Dollar_FirstMonth)])",
+              "                         /",
+              "'VN Fact_int_Vocher_Itm_Qty_history'[019_ First Inventory(Dollar_FirstMonth)])",
+              "",
+              "--نرخ رشد دلاری نسبت به ابتدای سال ",
+              ""
             ],
             "formatString": "0.00%;-0.00%;0.00%"
           }
@@ -3816,6 +3865,16 @@
             "name": "age_cat_No",
             "dataType": "string",
             "sourceColumn": "age_cat_No"
+          },
+          {
+            "type": "calculated",
+            "name": "005_name family",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "                   'NL personnel_HR'[name] & \" \" & 'NL personnel_HR'[family name]"
+            ]
           }
         ],
         "partitions": [
@@ -5995,6 +6054,25 @@
         "fromColumn": "jalali_date",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "761541a8-5453-42f9-ba8a-d0ae981d984e",
+        "toCardinality": "many",
+        "fromTable": "NL personnel_HR",
+        "fromColumn": "005_name family",
+        "toTable": "NL jalasat_report",
+        "toColumn": "Responsible",
+        "isActive": false,
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "117d855d-4af1-4eeb-b35d-6573301adce8",
+        "toCardinality": "many",
+        "fromTable": "NL jalasat_report",
+        "fromColumn": "completion_status",
+        "toTable": "NL personnel_HR",
+        "toColumn": "002_Active or NotActive",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
