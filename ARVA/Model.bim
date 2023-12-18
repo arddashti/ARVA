@@ -5625,31 +5625,6 @@
             "sourceColumn": "session_number"
           },
           {
-            "name": "start_time",
-            "dataType": "string",
-            "sourceColumn": "start_time"
-          },
-          {
-            "name": "end_time",
-            "dataType": "string",
-            "sourceColumn": "end_time"
-          },
-          {
-            "name": "meeting_summary",
-            "dataType": "string",
-            "sourceColumn": "meeting_summary"
-          },
-          {
-            "name": "meeting_date",
-            "dataType": "string",
-            "sourceColumn": "meeting_date"
-          },
-          {
-            "name": "session_type",
-            "dataType": "string",
-            "sourceColumn": "session_type"
-          },
-          {
             "name": "row",
             "dataType": "int64",
             "sourceColumn": "row"
@@ -5695,29 +5670,9 @@
             "sourceColumn": "explanations"
           },
           {
-            "name": "completion_status",
-            "dataType": "string",
-            "sourceColumn": "completion_status"
-          },
-          {
-            "name": "Name_of_the_responsible_unit",
-            "dataType": "string",
-            "sourceColumn": "Name_of_the_responsible_unit"
-          },
-          {
-            "name": "Responsible",
-            "dataType": "string",
-            "sourceColumn": "Responsible"
-          },
-          {
             "name": "Work_teams",
             "dataType": "string",
             "sourceColumn": "Work_teams"
-          },
-          {
-            "name": "secretary_meeting 2",
-            "dataType": "string",
-            "sourceColumn": "secretary_meeting 2"
           },
           {
             "name": "present_in_the_meeting",
@@ -5725,9 +5680,24 @@
             "sourceColumn": "present_in_the_meeting"
           },
           {
-            "name": "topic of the meeting",
+            "name": "from_hour",
             "dataType": "string",
-            "sourceColumn": "topic of the meeting"
+            "sourceColumn": "from_hour"
+          },
+          {
+            "name": "until",
+            "dataType": "string",
+            "sourceColumn": "until"
+          },
+          {
+            "name": "Explanations 2",
+            "dataType": "string",
+            "sourceColumn": "Explanations 2"
+          },
+          {
+            "name": "personnel_code",
+            "dataType": "int64",
+            "sourceColumn": "personnel_code"
           }
         ],
         "partitions": [
@@ -5739,10 +5709,9 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    NL_jalasat_report = Source{[Schema=\"NL\",Item=\"jalasat_report\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(NL_jalasat_report,\"ي\",\"ی\",Replacer.ReplaceText,{\"meeting_summary\", \"session_type\", \"Description\", \"The name of the follow-up officer\", \"completion_status\", \"Name_of_the_responsible_unit\", \"Responsible\", \"Work_teams\", \"secretary_meeting 2\", \"present_in_the_meeting\", \"topic of the meeting\"})",
+                "    NL_jalasat_report = Source{[Schema=\"NL\",Item=\"jalasat_report\"]}[Data]",
                 "in",
-                "    #\"Replaced Value\""
+                "    NL_jalasat_report"
               ]
             }
           }
