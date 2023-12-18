@@ -6086,15 +6086,6 @@
         "toColumn": "Jalali_1"
       },
       {
-        "name": "4f10b3a0-d195-46dd-aeb0-4061f0f910c7",
-        "toCardinality": "many",
-        "fromTable": "NL jalasat_report",
-        "fromColumn": "completion_status",
-        "toTable": "NL personnel_HR",
-        "toColumn": "002_Active or NotActive",
-        "crossFilteringBehavior": "bothDirections"
-      },
-      {
         "name": "761541a8-5453-42f9-ba8a-d0ae981d984e",
         "toCardinality": "many",
         "fromTable": "NL personnel_HR",
@@ -6102,6 +6093,15 @@
         "toTable": "NL jalasat_report",
         "toColumn": "Responsible",
         "isActive": false,
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "117d855d-4af1-4eeb-b35d-6573301adce8",
+        "toCardinality": "many",
+        "fromTable": "NL jalasat_report",
+        "fromColumn": "completion_status",
+        "toTable": "NL personnel_HR",
+        "toColumn": "002_Active or NotActive",
         "crossFilteringBehavior": "bothDirections"
       }
     ],
