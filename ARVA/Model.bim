@@ -3865,6 +3865,16 @@
             "name": "age_cat_No",
             "dataType": "string",
             "sourceColumn": "age_cat_No"
+          },
+          {
+            "type": "calculated",
+            "name": "005_name family",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "                   'NL personnel_HR'[name] & \" \" & 'NL personnel_HR'[family name]"
+            ]
           }
         ],
         "partitions": [
@@ -6074,6 +6084,15 @@
         "fromColumn": "jalali_date",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "4f10b3a0-d195-46dd-aeb0-4061f0f910c7",
+        "toCardinality": "many",
+        "fromTable": "NL jalasat_report",
+        "fromColumn": "completion_status",
+        "toTable": "NL personnel_HR",
+        "toColumn": "002_Active or NotActive",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
