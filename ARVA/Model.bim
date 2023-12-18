@@ -1058,12 +1058,12 @@
               "",
               "        var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
               "   return",
-              "     CALCULATE(",
+              "  (   CALCULATE(",
               "             sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
               "                                      * ",
               "                              'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
               "                                                    'BI DIM_DATE'[jyear]=yy-1, 'BI DIM_DATE'[jmonthN]=12,'BI DIM_DATE'[end_month]=1)",
-              "                                     / 'BI dollar_price'[001_ maxClose Price_Dollar]",
+              "                                     / 'BI dollar_price'[001_ maxClose Price_Dollar])",
               "",
               "-- دلار ابتدای سال انبار برای محاسبه نرخ رشد ریالی نسبت به روز "
             ]
