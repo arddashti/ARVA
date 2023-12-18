@@ -1050,7 +1050,7 @@
             "formatString": "0.00%;-0.00%;0.00%"
           },
           {
-            "name": "019_ First Inventory(Rial_FirstMonth)",
+            "name": "019_ First Inventory(Dollar_FirstMonth)",
             "description": "دلار ابتدای سال انبار",
             "expression": [
               "",
@@ -1076,6 +1076,24 @@
               "                                                          'BI DIM_DATE'[jyear]=yy-1, 'BI DIM_DATE'[jmonthN]=12) ",
               "",
               "-- دلار ابتدای سال انبار برای محاسبه نرخ رشد ریالی نسبت به روز "
+            ]
+          },
+          {
+            "name": "020_Growth Rate Dollar(beginning to now)",
+            "description": "نرخ رشد دلاری نسبت به ابتدای سال ",
+            "expression": [
+              "",
+              "",
+              "",
+              " if ( 'VN Fact_int_Vocher_Itm_Qty_history'[019_ First Inventory(Dollar_FirstMonth)]> 0",
+              "                 && ",
+              "              'VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage] <> BLANK(),",
+              "     ( 'VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage]- 'VN Fact_int_Vocher_Itm_Qty_history'[019_ First Inventory(Dollar_FirstMonth)])",
+              "                         /",
+              "'VN Fact_int_Vocher_Itm_Qty_history'[019_ First Inventory(Dollar_FirstMonth)])",
+              "",
+              "--نرخ رشد دلاری نسبت به ابتدای سال ",
+              ""
             ]
           }
         ]
