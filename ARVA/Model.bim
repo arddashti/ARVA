@@ -6093,6 +6093,16 @@
         "toTable": "NL personnel_HR",
         "toColumn": "002_Active or NotActive",
         "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "761541a8-5453-42f9-ba8a-d0ae981d984e",
+        "toCardinality": "many",
+        "fromTable": "NL personnel_HR",
+        "fromColumn": "005_name family",
+        "toTable": "NL jalasat_report",
+        "toColumn": "Responsible",
+        "isActive": false,
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
