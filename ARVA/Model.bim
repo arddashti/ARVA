@@ -5585,6 +5585,138 @@
             }
           }
         ]
+      },
+      {
+        "name": "NL jalasat_report",
+        "columns": [
+          {
+            "name": "session_number",
+            "dataType": "int64",
+            "sourceColumn": "session_number"
+          },
+          {
+            "name": "start_time",
+            "dataType": "string",
+            "sourceColumn": "start_time"
+          },
+          {
+            "name": "end_time",
+            "dataType": "string",
+            "sourceColumn": "end_time"
+          },
+          {
+            "name": "meeting_summary",
+            "dataType": "string",
+            "sourceColumn": "meeting_summary"
+          },
+          {
+            "name": "meeting_date",
+            "dataType": "string",
+            "sourceColumn": "meeting_date"
+          },
+          {
+            "name": "session_type",
+            "dataType": "string",
+            "sourceColumn": "session_type"
+          },
+          {
+            "name": "row",
+            "dataType": "int64",
+            "sourceColumn": "row"
+          },
+          {
+            "name": "secretary_meeting",
+            "dataType": "int64",
+            "sourceColumn": "secretary_meeting"
+          },
+          {
+            "name": "description_of_the_meeting_secretary",
+            "dataType": "string",
+            "sourceColumn": "description_of_the_meeting_secretary"
+          },
+          {
+            "name": "deadline_date",
+            "dataType": "string",
+            "sourceColumn": "deadline_date"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description"
+          },
+          {
+            "name": "Executive_Descriptions",
+            "dataType": "string",
+            "sourceColumn": "Executive_Descriptions"
+          },
+          {
+            "name": "Follower_explanations",
+            "dataType": "string",
+            "sourceColumn": "Follower_explanations"
+          },
+          {
+            "name": "The name of the follow-up officer",
+            "dataType": "string",
+            "sourceColumn": "The name of the follow-up officer"
+          },
+          {
+            "name": "explanations",
+            "dataType": "string",
+            "sourceColumn": "explanations"
+          },
+          {
+            "name": "completion_status",
+            "dataType": "string",
+            "sourceColumn": "completion_status"
+          },
+          {
+            "name": "Name_of_the_responsible_unit",
+            "dataType": "string",
+            "sourceColumn": "Name_of_the_responsible_unit"
+          },
+          {
+            "name": "Responsible",
+            "dataType": "string",
+            "sourceColumn": "Responsible"
+          },
+          {
+            "name": "Work_teams",
+            "dataType": "string",
+            "sourceColumn": "Work_teams"
+          },
+          {
+            "name": "secretary_meeting 2",
+            "dataType": "string",
+            "sourceColumn": "secretary_meeting 2"
+          },
+          {
+            "name": "present_in_the_meeting",
+            "dataType": "string",
+            "sourceColumn": "present_in_the_meeting"
+          },
+          {
+            "name": "topic of the meeting",
+            "dataType": "string",
+            "sourceColumn": "topic of the meeting"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_jalasat_report = Source{[Schema=\"NL\",Item=\"jalasat_report\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_jalasat_report,\"ي\",\"ی\",Replacer.ReplaceText,{\"meeting_summary\", \"session_type\", \"Description\", \"The name of the follow-up officer\", \"completion_status\", \"Name_of_the_responsible_unit\", \"Responsible\", \"Work_teams\", \"secretary_meeting 2\", \"present_in_the_meeting\", \"topic of the meeting\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
