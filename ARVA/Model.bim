@@ -5709,9 +5709,10 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    NL_jalasat_report = Source{[Schema=\"NL\",Item=\"jalasat_report\"]}[Data]",
+                "    NL_jalasat_report = Source{[Schema=\"NL\",Item=\"jalasat_report\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_jalasat_report,\"ي\",\"ی\",Replacer.ReplaceText,{\"explanations\", \"Executive_Descriptions\", \"Explanations 2\", \"description_of_the_meeting_secretary\", \"Description\", \"The name of the follow-up officer\", \"Follower_explanations\", \"Work_teams\", \"present_in_the_meeting\"})",
                 "in",
-                "    NL_jalasat_report"
+                "    #\"Replaced Value\""
               ]
             }
           }
