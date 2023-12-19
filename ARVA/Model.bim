@@ -5600,13 +5600,14 @@
           {
             "type": "calculated",
             "name": "001_The distance between admission and departure",
-            "dataType": "dateTime",
+            "dataType": "int64",
             "isDataTypeInferred": true,
             "description": "تفاضل پذیرش تا تحویل ",
             "expression": [
               " ",
               "       ",
-              "            'NL after_sales_service'[Acceptable date]-'NL after_sales_service'[Date of departure or delivery or filing]",
+              "         DATEDIFF('NL after_sales_service'[Acceptable date],",
+              "                            'NL after_sales_service'[Date of departure or delivery or filing],DAY)",
               "",
               "--تفاضل پذیرش تا تحویل "
             ]
