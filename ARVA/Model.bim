@@ -5629,6 +5629,19 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "002_count acceptance",
+            "description": " تعداد پذیرش ",
+            "expression": [
+              " ",
+              "",
+              "  DISTINCTCOUNT('NL after_sales_service'[Acceptable date])",
+              "",
+              "-- تعداد پذیرش "
+            ]
+          }
         ]
       },
       {
