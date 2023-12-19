@@ -5622,6 +5622,7 @@
           {
             "name": "session_number",
             "dataType": "int64",
+            "description": "شماره جلسه",
             "sourceColumn": "session_number"
           },
           {
@@ -6051,6 +6052,13 @@
         "fromColumn": "personnel_code",
         "toTable": "NL personnel_HR",
         "toColumn": "personnel number"
+      },
+      {
+        "name": "0b851f1e-1f5c-4c48-b0b8-08dacd5f815e",
+        "fromTable": "NL after_sales_service",
+        "fromColumn": "Acceptable date",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Miladi"
       }
     ],
     "roles": [
