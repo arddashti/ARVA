@@ -5596,6 +5596,20 @@
             "dataType": "string",
             "description": "تاریخ تشکیل قبض پذیرش",
             "sourceColumn": "date_of_formation_of_invoice_acceptance"
+          },
+          {
+            "type": "calculated",
+            "name": "001_The distance between admission and departure",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "description": "تفاضل پذیرش تا تحویل ",
+            "expression": [
+              " ",
+              "       ",
+              "            'NL after_sales_service'[Acceptable date]-'NL after_sales_service'[Date of departure or delivery or filing]",
+              "",
+              "--تفاضل پذیرش تا تحویل "
+            ]
           }
         ],
         "partitions": [
