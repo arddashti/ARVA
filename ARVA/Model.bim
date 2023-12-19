@@ -6074,6 +6074,13 @@
         "fromColumn": "Acceptable date",
         "toTable": "BI DIM_DATE",
         "toColumn": "Miladi"
+      },
+      {
+        "name": "5b4f8c56-b2eb-4524-ac6b-e69025c38dde",
+        "fromTable": "NL after_sales_service",
+        "fromColumn": "City",
+        "toTable": "BI Dim_Geographic",
+        "toColumn": "AreaCode"
       }
     ],
     "roles": [
