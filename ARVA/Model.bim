@@ -6044,6 +6044,13 @@
         "fromColumn": "jalali_date",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "8732809c-a618-463e-9a2c-96b1a5c57219",
+        "fromTable": "NL jalasat_report",
+        "fromColumn": "personnel_code",
+        "toTable": "NL personnel_HR",
+        "toColumn": "personnel number"
       }
     ],
     "roles": [
