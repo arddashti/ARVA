@@ -5746,6 +5746,120 @@
             }
           }
         ]
+      },
+      {
+        "name": "NL survey_on_employment",
+        "columns": [
+          {
+            "name": "1) What_job_position",
+            "dataType": "string",
+            "sourceColumn": "1) What_job_position"
+          },
+          {
+            "name": "2) What_category_organization",
+            "dataType": "string",
+            "sourceColumn": "2) What_category_organization"
+          },
+          {
+            "name": "3) Who_have_you_interacted",
+            "dataType": "string",
+            "sourceColumn": "3) Who_have_you_interacted"
+          },
+          {
+            "name": "4) How_long_process",
+            "dataType": "string",
+            "sourceColumn": "4) How_long_process"
+          },
+          {
+            "name": "5)interview_held_at_appointed_time",
+            "dataType": "string",
+            "sourceColumn": "5)interview_held_at_appointed_time"
+          },
+          {
+            "name": "6)final_time_announcing_ result",
+            "dataType": "string",
+            "sourceColumn": "6)final_time_announcing_ result"
+          },
+          {
+            "name": "7) recommend_Arva_company",
+            "dataType": "string",
+            "sourceColumn": "7) recommend_Arva_company"
+          },
+          {
+            "name": "8)positive_points",
+            "dataType": "string",
+            "sourceColumn": "8)positive_points"
+          },
+          {
+            "name": "9)improved_way",
+            "dataType": "string",
+            "sourceColumn": "9)improved_way"
+          },
+          {
+            "name": "full_name",
+            "dataType": "string",
+            "sourceColumn": "full_name"
+          },
+          {
+            "name": "ID",
+            "dataType": "string",
+            "sourceColumn": "ID"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_survey_on_employment = Source{[Schema=\"NL\",Item=\"survey_on_employment\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_survey_on_employment,\"ي\",\"ی\",Replacer.ReplaceText,{\"1) What_job_position\", \"2) What_category_organization\", \"3) Who_have_you_interacted\", \"4) How_long_process\", \"5)interview_held_at_appointed_time\", \"6)final_time_announcing_ result\", \"7) recommend_Arva_company\", \"8)positive_points\", \"9)improved_way\", \"full_name\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "NL survey_on_employment_detail",
+        "columns": [
+          {
+            "name": "Question",
+            "dataType": "string",
+            "sourceColumn": "Question"
+          },
+          {
+            "name": "ID",
+            "dataType": "string",
+            "sourceColumn": "ID"
+          },
+          {
+            "name": "Score",
+            "dataType": "double",
+            "sourceColumn": "Score"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_survey_on_employment_detail = Source{[Schema=\"NL\",Item=\"survey_on_employment_detail\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_survey_on_employment_detail,\"ي\",\"ی\",Replacer.ReplaceText,{\"Question\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -6094,6 +6208,13 @@
         "fromColumn": "City",
         "toTable": "BI Dim_Geographic",
         "toColumn": "AreaCode"
+      },
+      {
+        "name": "fb89f835-4c85-4f21-806c-27dc645164aa",
+        "fromTable": "NL survey_on_employment_detail",
+        "fromColumn": "ID",
+        "toTable": "NL survey_on_employment",
+        "toColumn": "ID"
       }
     ],
     "roles": [
