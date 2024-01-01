@@ -3418,6 +3418,7 @@
           {
             "name": "IsOutOfPath",
             "dataType": "boolean",
+            "description": "مشتریان داخل و خارج از مسیر ",
             "sourceColumn": "IsOutOfPath"
           },
           {
