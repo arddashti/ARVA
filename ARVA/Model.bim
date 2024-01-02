@@ -1097,6 +1097,28 @@
               ""
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "020_PrevouseDollar",
+            "description": "دلار ماه گذشته ",
+            "expression": [
+              "",
+              "                      var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
+              "           var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
+              "           var pm = if(mm=1 , 12, mm-1)",
+              "           var py = IF(pm=12 , yy-1, yy)",
+              "",
+              " return",
+              "",
+              "",
+              "CALCULATE(",
+              "        ",
+              "                  'BI dollar_price'[001_ maxClose Price_Dollar] ,",
+              "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm) ",
+              "",
+              "-- دلار ماه گذشته "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
