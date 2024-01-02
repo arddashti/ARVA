@@ -5944,6 +5944,183 @@
             }
           }
         ]
+      },
+      {
+        "name": "NL CRM",
+        "columns": [
+          {
+            "name": "No._complaint_PK",
+            "dataType": "int64",
+            "sourceColumn": "No._complaint_PK"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year"
+          },
+          {
+            "name": "Complaint number",
+            "dataType": "int64",
+            "sourceColumn": "Complaint number"
+          },
+          {
+            "name": "sort",
+            "dataType": "string",
+            "sourceColumn": "sort"
+          },
+          {
+            "name": "Category description",
+            "dataType": "string",
+            "sourceColumn": "Category description"
+          },
+          {
+            "name": "Complaint_date",
+            "dataType": "string",
+            "sourceColumn": "Complaint_date"
+          },
+          {
+            "name": "Complaint time",
+            "dataType": "string",
+            "sourceColumn": "Complaint time"
+          },
+          {
+            "name": "registrant_user",
+            "dataType": "string",
+            "sourceColumn": "registrant_user"
+          },
+          {
+            "name": "Canceled by the customer",
+            "dataType": "string",
+            "sourceColumn": "Canceled by the customer"
+          },
+          {
+            "name": "contact_code",
+            "dataType": "int64",
+            "sourceColumn": "contact_code"
+          },
+          {
+            "name": "complaint_basis",
+            "dataType": "string",
+            "sourceColumn": "complaint_basis"
+          },
+          {
+            "name": "Audience",
+            "dataType": "string",
+            "sourceColumn": "Audience"
+          },
+          {
+            "name": "subject_complaint",
+            "dataType": "string",
+            "sourceColumn": "subject_complaint"
+          },
+          {
+            "name": "employer_code",
+            "dataType": "string",
+            "sourceColumn": "employer_code"
+          },
+          {
+            "name": "employer_description",
+            "dataType": "string",
+            "sourceColumn": "employer_description"
+          },
+          {
+            "name": "Sufficiency",
+            "dataType": "string",
+            "sourceColumn": "Sufficiency"
+          },
+          {
+            "name": "subjectivity",
+            "dataType": "string",
+            "sourceColumn": "subjectivity"
+          },
+          {
+            "name": "effective",
+            "dataType": "string",
+            "sourceColumn": "effective"
+          },
+          {
+            "name": "effective_date",
+            "dataType": "string",
+            "sourceColumn": "effective_date"
+          },
+          {
+            "name": "customer_satisfaction_survey",
+            "dataType": "string",
+            "sourceColumn": "customer_satisfaction_survey"
+          },
+          {
+            "name": "Date_of_satisfaction_survey",
+            "dataType": "string",
+            "sourceColumn": "Date_of_satisfaction_survey"
+          },
+          {
+            "name": "representative_code",
+            "dataType": "string",
+            "sourceColumn": "representative_code"
+          },
+          {
+            "name": "Representative_Description",
+            "dataType": "string",
+            "sourceColumn": "Representative_Description"
+          },
+          {
+            "name": "audience_description",
+            "dataType": "string",
+            "sourceColumn": "audience_description"
+          },
+          {
+            "name": "Along",
+            "dataType": "int64",
+            "sourceColumn": "Along"
+          },
+          {
+            "name": "priority",
+            "dataType": "string",
+            "sourceColumn": "priority"
+          },
+          {
+            "name": "Phone",
+            "dataType": "string",
+            "sourceColumn": "Phone"
+          },
+          {
+            "name": "contact_address",
+            "dataType": "string",
+            "sourceColumn": "contact_address"
+          },
+          {
+            "name": "Complaint type",
+            "dataType": "string",
+            "sourceColumn": "Complaint type"
+          },
+          {
+            "name": "Description of the type of complaint",
+            "dataType": "string",
+            "sourceColumn": "Description of the type of complaint"
+          },
+          {
+            "name": "report_date",
+            "dataType": "string",
+            "sourceColumn": "report_date"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_CRM = Source{[Schema=\"NL\",Item=\"CRM\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_CRM,\"ي\",\"ی\",Replacer.ReplaceText,{\"Category description\", \"Canceled by the customer\", \"Audience\", \"subject_complaint\", \"employer_description\", \"Sufficiency\", \"subjectivity\", \"effective\", \"customer_satisfaction_survey\", \"audience_description\", \"priority\", \"Phone\", \"contact_address\", \"Description of the type of complaint\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
