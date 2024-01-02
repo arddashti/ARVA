@@ -5861,6 +5861,89 @@
             }
           }
         ]
+      },
+      {
+        "name": "VN Visitor_Path_History",
+        "description": "جدول سوابق مسیر ویزیتورها",
+        "columns": [
+          {
+            "name": "SalePathRef",
+            "dataType": "int64",
+            "sourceColumn": "SalePathRef"
+          },
+          {
+            "name": "SalePathNo",
+            "dataType": "int64",
+            "sourceColumn": "SalePathNo"
+          },
+          {
+            "name": "SalePathName",
+            "dataType": "string",
+            "sourceColumn": "SalePathName"
+          },
+          {
+            "name": "SaleAreaRef",
+            "dataType": "int64",
+            "sourceColumn": "SaleAreaRef"
+          },
+          {
+            "name": "SaleAreaNo",
+            "dataType": "int64",
+            "sourceColumn": "SaleAreaNo"
+          },
+          {
+            "name": "DealerRef",
+            "dataType": "int64",
+            "sourceColumn": "DealerRef"
+          },
+          {
+            "name": "SaleAreaName",
+            "dataType": "string",
+            "sourceColumn": "SaleAreaName"
+          },
+          {
+            "name": "SaleZoneRef",
+            "dataType": "int64",
+            "sourceColumn": "SaleZoneRef"
+          },
+          {
+            "name": "SaleZoneNo",
+            "dataType": "int64",
+            "sourceColumn": "SaleZoneNo"
+          },
+          {
+            "name": "SaleZoneName",
+            "dataType": "string",
+            "sourceColumn": "SaleZoneName"
+          },
+          {
+            "name": "AreaRef",
+            "dataType": "int64",
+            "sourceColumn": "AreaRef"
+          },
+          {
+            "name": "insertDate",
+            "dataType": "string",
+            "sourceColumn": "insertdate"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Visitor_Path_History = Source{[Schema=\"VN\",Item=\"Visitor_Path_History\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Visitor_Path_History,\"ي\",\"ی\",Replacer.ReplaceText,{\"SalePathName\", \"SaleAreaName\", \"SaleZoneName\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -6216,6 +6299,20 @@
         "fromColumn": "ID",
         "toTable": "NL survey_on_employment",
         "toColumn": "ID"
+      },
+      {
+        "name": "19b94d05-7aa2-4eb7-aae3-882b21f1183b",
+        "fromTable": "VN Visitor_Path_History",
+        "fromColumn": "DealerRef",
+        "toTable": "VN Dim_Personnel",
+        "toColumn": "PersonnelId"
+      },
+      {
+        "name": "bef724cd-ed48-4613-9cc1-6f62d8f62e21",
+        "fromTable": "VN Visitor_Path_History",
+        "fromColumn": "insertDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "roles": [
