@@ -5978,116 +5978,139 @@
           {
             "name": "Year",
             "dataType": "int64",
+            "description": "سال ",
             "sourceColumn": "Year"
           },
           {
             "name": "Complaint number",
             "dataType": "int64",
+            "description": "شماره شکایت ",
             "sourceColumn": "Complaint number"
           },
           {
             "name": "sort",
             "dataType": "string",
+            "description": "دسته بندی ",
             "sourceColumn": "sort"
           },
           {
             "name": "Category description",
             "dataType": "string",
+            "description": "شرح دسته بندی",
             "sourceColumn": "Category description"
           },
           {
             "name": "Complaint_date",
             "dataType": "string",
+            "description": "تاریخ شکایت ",
             "sourceColumn": "Complaint_date"
           },
           {
             "name": "Complaint time",
             "dataType": "string",
+            "description": "زمان شکایت ",
             "sourceColumn": "Complaint time"
           },
           {
             "name": "registrant_user",
             "dataType": "string",
+            "description": "کاربر ثبت کننده",
             "sourceColumn": "registrant_user"
           },
           {
             "name": "Canceled by the customer",
             "dataType": "string",
+            "description": "کنسلی توسط مشتری ",
             "sourceColumn": "Canceled by the customer"
           },
           {
             "name": "contact_code",
             "dataType": "int64",
+            "description": "کد مخاطب ",
             "sourceColumn": "contact_code"
           },
           {
             "name": "complaint_basis",
             "dataType": "string",
+            "description": "شکایت مبنا",
             "sourceColumn": "complaint_basis"
           },
           {
             "name": "Audience",
             "dataType": "string",
+            "description": "مخاطب",
             "sourceColumn": "Audience"
           },
           {
             "name": "subject_complaint",
             "dataType": "string",
+            "description": "موضوع شکایت ",
             "sourceColumn": "subject_complaint"
           },
           {
             "name": "employer_code",
             "dataType": "string",
+            "description": "کد کارفرما",
             "sourceColumn": "employer_code"
           },
           {
             "name": "employer_description",
             "dataType": "string",
+            "description": "شرح کارفرما",
             "sourceColumn": "employer_description"
           },
           {
             "name": "Sufficiency",
             "dataType": "string",
+            "description": "کفایت ",
             "sourceColumn": "Sufficiency"
           },
           {
             "name": "subjectivity",
             "dataType": "string",
+            "description": "موضوعیت ",
             "sourceColumn": "subjectivity"
           },
           {
             "name": "effective",
             "dataType": "string",
+            "description": "اثربخشی ",
             "sourceColumn": "effective"
           },
           {
             "name": "effective_date",
             "dataType": "string",
+            "description": "تاریخ  اثربخشی",
             "sourceColumn": "effective_date"
           },
           {
             "name": "customer_satisfaction_survey",
             "dataType": "string",
+            "description": "رضایت سنجی مشتری ",
             "sourceColumn": "customer_satisfaction_survey"
           },
           {
             "name": "Date_of_satisfaction_survey",
             "dataType": "string",
+            "description": "تاریخ رضایت سنجی",
             "sourceColumn": "Date_of_satisfaction_survey"
           },
           {
             "name": "representative_code",
             "dataType": "string",
+            "description": "کد رضایت سنجی ",
             "sourceColumn": "representative_code"
           },
           {
             "name": "Representative_Description",
             "dataType": "string",
+            "description": "شرح نماینده",
             "sourceColumn": "Representative_Description"
           },
           {
             "name": "audience_description",
             "dataType": "string",
+            "description": "شرح مخاطب ",
             "sourceColumn": "audience_description"
           },
           {
@@ -6098,26 +6121,31 @@
           {
             "name": "priority",
             "dataType": "string",
+            "description": "اولویت ",
             "sourceColumn": "priority"
           },
           {
             "name": "Phone",
             "dataType": "string",
+            "description": "تلفن ",
             "sourceColumn": "Phone"
           },
           {
             "name": "contact_address",
             "dataType": "string",
+            "description": "آدرس مخاطب ",
             "sourceColumn": "contact_address"
           },
           {
             "name": "Complaint type",
             "dataType": "string",
+            "description": "نوع شکایت ",
             "sourceColumn": "Complaint type"
           },
           {
             "name": "Description of the type of complaint",
             "dataType": "string",
+            "description": "شرح نوع شکایت ",
             "sourceColumn": "Description of the type of complaint"
           },
           {
