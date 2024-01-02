@@ -6540,6 +6540,13 @@
         "fromColumn": "insertDate",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "10e70b6a-7c2d-4554-ab0d-b1621f55c55e",
+        "fromTable": "NL CRM",
+        "fromColumn": "Date_of_satisfaction_survey",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "roles": [
