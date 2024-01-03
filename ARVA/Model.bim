@@ -6237,36 +6237,6 @@
               "--متوسط رضایت سنجی"
             ],
             "formatString": "0.00"
-          },
-          {
-            "name": "006_Average satisfaction(Complaint)",
-            "description": "متوسط رضایت سنجی افراد راضی ",
-            "expression": [
-              " ",
-              "",
-              "          CALCULATE(  sum('NL CRM'[004_DateDiff complaint and survy]), ",
-              "                         FILTER('NL CRM', 'NL CRM'[customer_satisfaction_survey] = \"راضی\"))",
-              "                    / ",
-              "                      'NL CRM'[001_Number of customer complaints]",
-              "",
-              "--متوسط رضایت سنجی افراد راضی "
-            ],
-            "formatString": "0.00"
-          },
-          {
-            "name": "007_Average Notsatisfaction(Complaint)",
-            "description": "متوسط رضایت سنجی افراد ناراضی",
-            "expression": [
-              " ",
-              "",
-              "          CALCULATE(  sum('NL CRM'[004_DateDiff complaint and survy]), ",
-              "                         FILTER('NL CRM', 'NL CRM'[customer_satisfaction_survey] = \"ناراضی\"))",
-              "                    / ",
-              "                      'NL CRM'[001_Number of customer complaints]",
-              "",
-              "--متوسط رضایت سنجی افراد ناراضی "
-            ],
-            "formatString": "0.00"
           }
         ]
       }
