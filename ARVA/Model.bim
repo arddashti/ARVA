@@ -6237,6 +6237,13 @@
               "--متوسط رضایت سنجی"
             ],
             "formatString": "0.00"
+          },
+          {
+            "name": "006_Customer satisfaction percentage",
+            "expression": [
+              "",
+              "                   "
+            ]
           }
         ]
       }
