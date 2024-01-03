@@ -6175,7 +6175,8 @@
             "description": "تاریخ میلادی نظرسنجی",
             "expression": [
               " ",
-              "          LOOKUPVALUE('BI DIM_DATE'[Miladi],'BI DIM_DATE'[Jalali_1], 'NL CRM'[Date_of_satisfaction_survey])",
+              "        if( 'NL CRM'[Date_of_satisfaction_survey] = BLANK() , TODAY(), ",
+              "          LOOKUPVALUE('BI DIM_DATE'[Miladi],'BI DIM_DATE'[Jalali_1], 'NL CRM'[Date_of_satisfaction_survey]))",
               "",
               " -- تاریخ میلادی نظرسنجی "
             ]
