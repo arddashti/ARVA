@@ -6170,6 +6170,20 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "001_Number of customer complaints",
+            "description": "تعداد شکایت مشتریان ",
+            "expression": [
+              " ",
+              "",
+              "                CALCULATE(  DISTINCTCOUNT('NL CRM'[Complaint number]) ,",
+              "                                      USERELATIONSHIP('NL CRM'[Complaint_date], 'BI DIM_DATE'[Jalali_1]))",
+              "",
+              "-- تعداد شکایت مشتریان "
+            ]
+          }
         ]
       }
     ],
