@@ -6179,6 +6179,19 @@
               "",
               " -- تاریخ میلادی نظرسنجی "
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "004_DateDiff complaint and survy",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "description": "اختلاف تاریخ ثبت شکایت و نظرسنجی",
+            "expression": [
+              "",
+              "                   DATEDIFF('NL CRM'[003_Miladi Date of satisfaction], 'NL CRM'[002_miladi Date complaints] , DAY)",
+              "",
+              "-- اختلاف تاریخ ثبت شکایت و نظرسنجی"
+            ]
           }
         ],
         "partitions": [
