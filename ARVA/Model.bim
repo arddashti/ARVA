@@ -6223,6 +6223,19 @@
               "",
               "-- تعداد شکایت مشتریان "
             ]
+          },
+          {
+            "name": "005_Average satisfaction",
+            "description": "متوسط رضایت سنجی",
+            "expression": [
+              " ",
+              "",
+              "            sum('NL CRM'[004_DateDiff complaint and survy])",
+              "                    / ",
+              "                      'NL CRM'[001_Number of customer complaints]",
+              "",
+              "--متوسط رضایت سنجی"
+            ]
           }
         ]
       }
