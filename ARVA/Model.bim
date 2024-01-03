@@ -6164,6 +6164,20 @@
               "                LOOKUPVALUE('BI DIM_DATE'[Miladi],'BI DIM_DATE'[Jalali_1], 'NL CRM'[Complaint_date])",
               "",
               "   -- تاریخ میلادی شکایت "
+            ],
+            "formatString": "General Date"
+          },
+          {
+            "type": "calculated",
+            "name": "003_Miladi Date of satisfaction",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "description": "تاریخ میلادی نظرسنجی",
+            "expression": [
+              " ",
+              "          LOOKUPVALUE('BI DIM_DATE'[Miladi],'BI DIM_DATE'[Jalali_1], 'NL CRM'[Date_of_satisfaction_survey])",
+              "",
+              " -- تاریخ میلادی نظرسنجی "
             ]
           }
         ],
