@@ -6250,7 +6250,8 @@
               "                      'NL CRM'[001_Number of customer complaints]",
               "",
               "--متوسط رضایت سنجی افراد راضی "
-            ]
+            ],
+            "formatString": "0.00"
           }
         ]
       }
