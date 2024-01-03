@@ -6188,7 +6188,7 @@
             "description": "اختلاف تاریخ ثبت شکایت و نظرسنجی",
             "expression": [
               "",
-              "                   DATEDIFF('NL CRM'[003_Miladi Date of satisfaction], 'NL CRM'[002_miladi Date complaints] , DAY)",
+              "                   DATEDIFF( 'NL CRM'[002_miladi Date complaints] ,'NL CRM'[003_Miladi Date of satisfaction], DAY)",
               "",
               "-- اختلاف تاریخ ثبت شکایت و نظرسنجی"
             ]
