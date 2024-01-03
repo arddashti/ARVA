@@ -6245,7 +6245,7 @@
               " ",
               "",
               "          CALCULATE(  sum('NL CRM'[004_DateDiff complaint and survy]), ",
-              "                         FILTER('NL CRM', 'NL CRM'[customer_satisfaction_survey] = \"راضي\"))",
+              "                         FILTER('NL CRM', 'NL CRM'[customer_satisfaction_survey] = \"راضی\"))",
               "                    / ",
               "                      'NL CRM'[001_Number of customer complaints]",
               "",
