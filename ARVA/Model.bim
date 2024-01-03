@@ -6152,6 +6152,19 @@
             "name": "report_date",
             "dataType": "string",
             "sourceColumn": "report_date"
+          },
+          {
+            "type": "calculated",
+            "name": "002_miladi Date complaints",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "description": "تاریخ میلادی شکایت ",
+            "expression": [
+              " ",
+              "                LOOKUPVALUE('BI DIM_DATE'[Miladi],'BI DIM_DATE'[Jalali_1], 'NL CRM'[Complaint_date])",
+              "",
+              "   -- تاریخ میلادی شکایت "
+            ]
           }
         ],
         "partitions": [
