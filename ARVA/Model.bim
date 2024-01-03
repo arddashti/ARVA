@@ -6547,6 +6547,14 @@
         "fromColumn": "Date_of_satisfaction_survey",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "966314f0-2df0-43c1-9e3a-ac904280fb66",
+        "fromTable": "NL CRM",
+        "fromColumn": "Complaint_date",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1",
+        "isActive": false
       }
     ],
     "roles": [
