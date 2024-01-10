@@ -291,6 +291,11 @@
             "dataType": "string",
             "description": "نام انبار",
             "sourceColumn": "StockDCName"
+          },
+          {
+            "name": "StockGroup",
+            "dataType": "string",
+            "sourceColumn": "StockGroup"
           }
         ],
         "partitions": [
@@ -303,9 +308,10 @@
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    VN_Dim_Stock = Source{[Schema=\"VN\",Item=\"Dim_Stock\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Dim_Stock,\"ي\",\"ی\",Replacer.ReplaceText,{\"StockDCName\"})",
+                "    #\"Replaced Value\" = Table.ReplaceValue(VN_Dim_Stock,\"ي\",\"ی\",Replacer.ReplaceText,{\"StockDCName\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"ي\",\"ی\",Replacer.ReplaceText,{\"StockGroup\"})",
                 "in",
-                "    #\"Replaced Value\""
+                "    #\"Replaced Value1\""
               ]
             }
           }
