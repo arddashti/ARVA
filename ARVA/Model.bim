@@ -2211,6 +2211,27 @@
               "-- نرخ رشد ماهانه فروش ناخالص )"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "039_Net sales with return deductions",
+            "description": "فروش خالص با کسر برگشتی ",
+            "expression": [
+              " ",
+              "     ",
+              "",
+              "                     'VN Fact_Sale'[01_AmountNut]  -  'VN Fact_RetSale'[01_returnedAmountNut]",
+              "               ",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "--فروش خالص با کسر برگشتی "
+            ]
           }
         ]
       },
