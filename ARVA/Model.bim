@@ -2427,14 +2427,13 @@
           },
           {
             "name": "02_returnedAmountNut",
+            "description": "خالص برگشتی",
             "expression": [
               "",
               "",
-              "CALCULATE(    SUM ( 'VN Fact_RetSale'[AmountNut]] ))",
+              "CALCULATE(    SUM ( 'VN Fact_RetSale'[AmountNut] ))",
               "",
-              "",
-              "",
-              "----   خالص برگشت از فروش ))"
+              "-- خالص برگشتی"
             ]
           }
         ]
