@@ -2213,13 +2213,13 @@
             "formatString": "0.00%;-0.00%;0.00%"
           },
           {
-            "name": "039_Net sales with return deductions",
+            "name": "039 _Net sales with return deductions",
             "description": "فروش خالص با کسر برگشتی ",
             "expression": [
               " ",
               "     ",
               "",
-              "                     'VN Fact_Sale'[01_AmountNut]  -  'VN Fact_RetSale'[01_returnedAmountNut]",
+              "                     'VN Fact_Sale'[01_AmountNut]  -  'VN Fact_RetSale'[02_returnedAmountNut]",
               "               ",
               "",
               "",
@@ -2424,6 +2424,18 @@
               ""
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "02_returnedAmountNut",
+            "expression": [
+              "",
+              "",
+              "CALCULATE(    SUM ( 'VN Fact_RetSale'[AmountNut]] ))",
+              "",
+              "",
+              "",
+              "----   خالص برگشت از فروش ))"
+            ]
           }
         ]
       },
