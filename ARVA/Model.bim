@@ -5986,6 +5986,11 @@
             "name": "insertDate",
             "dataType": "string",
             "sourceColumn": "insertdate"
+          },
+          {
+            "name": "StateCode",
+            "dataType": "string",
+            "sourceColumn": "StateCode"
           }
         ],
         "partitions": [
