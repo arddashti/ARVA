@@ -1337,6 +1337,16 @@
             "name": "Mobile",
             "dataType": "string",
             "sourceColumn": "Mobile"
+          },
+          {
+            "name": "SaleAreaRef",
+            "dataType": "int64",
+            "sourceColumn": "SaleAreaRef"
+          },
+          {
+            "name": "SaleAreaName",
+            "dataType": "string",
+            "sourceColumn": "SaleAreaName"
           }
         ],
         "partitions": [
@@ -1350,9 +1360,10 @@
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    VN_Dim_Cust = Source{[Schema=\"VN\",Item=\"Dim_Cust\"]}[Data],",
                 "    #\"Replaced Value\" = Table.ReplaceValue(VN_Dim_Cust,\"ي\",\"ی\",Replacer.ReplaceText,{\"FirstName\", \"LastName\", \"RealName\", \"CustActName\", \"CustCtgrName\", \"SalePathName\"}),",
-                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"ي\",\"ی\",Replacer.ReplaceText,{\"Address\"})",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"ي\",\"ی\",Replacer.ReplaceText,{\"Address\"}),",
+                "    #\"Replaced Value2\" = Table.ReplaceValue(#\"Replaced Value1\",\"ي\",\"ی\",Replacer.ReplaceText,{\"SaleAreaName\"})",
                 "in",
-                "    #\"Replaced Value1\""
+                "    #\"Replaced Value2\""
               ]
             }
           }
@@ -5986,11 +5997,6 @@
             "name": "insertDate",
             "dataType": "string",
             "sourceColumn": "insertdate"
-          },
-          {
-            "name": "StateCode",
-            "dataType": "string",
-            "sourceColumn": "StateCode"
           }
         ],
         "partitions": [
