@@ -2655,6 +2655,13 @@
               "",
               "-- مشخص شدن ویزیتور از پرسنل"
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "Active Or NotActive",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "   if ( 'VN Dim_Personnel'[IsActiveDealer] = FALSE , \"غیر فعال\", \"فعال\")"
           }
         ],
         "partitions": [
