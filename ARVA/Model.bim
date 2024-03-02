@@ -1649,7 +1649,10 @@
             "expression": [
               "",
               "",
-              "    SUM ( 'VN Fact_Sale'[Discount] )",
+              "  CALCULATE(  SUM ( 'VN Fact_Sale'[Discount] ),",
+              " FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1))",
+              "",
+              "-- تخفیفات فروش ",
               ""
             ],
             "formatString": "#,#"
