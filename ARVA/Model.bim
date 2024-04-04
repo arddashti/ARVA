@@ -5504,6 +5504,15 @@
               "                                     ",
               "                                     */"
             ]
+          },
+          {
+            "name": "001111_event _personelcount",
+            "expression": [
+              " ",
+              "",
+              "                                       DISTINCTCOUNT('NL personnel_HR'[personnel number]) +300",
+              "                                       -- تعداد پرسنل "
+            ]
           }
         ]
       },
