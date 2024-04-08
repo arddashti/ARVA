@@ -6388,7 +6388,8 @@
           {
             "name": "03_percent",
             "description": "درصد ریزش مشتری ",
-            "expression": " sum('NL sales'[Percent])"
+            "expression": " sum('NL sales'[Percent])",
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       }
