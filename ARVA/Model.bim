@@ -6347,6 +6347,11 @@
             "name": "Number of new customer creations",
             "dataType": "int64",
             "sourceColumn": "Number of new customer creations"
+          },
+          {
+            "name": "Month number",
+            "dataType": "int64",
+            "sourceColumn": "Month number"
           }
         ],
         "partitions": [
