@@ -6377,7 +6377,8 @@
           {
             "name": "01_percentage shere",
             "description": "ریزش مشتری ",
-            "expression": " SUM('NL sales'[Percentage share of Portugal])"
+            "expression": " SUM('NL sales'[Percentage share of Portugal])",
+            "formatString": "0.00%;-0.00%;0.00%"
           },
           {
             "name": "02_new Customer",
