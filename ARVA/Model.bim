@@ -6316,6 +6316,7 @@
           {
             "name": "Customer churn",
             "dataType": "int64",
+            "description": "درصد سهم پرتفو",
             "sourceColumn": "Customer churn"
           },
           {
@@ -6369,6 +6370,23 @@
                 "    #\"Replaced Value\""
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "01_percentage shere",
+            "description": "ریزش مشتری ",
+            "expression": " SUM('NL sales'[Percentage share of Portugal])"
+          },
+          {
+            "name": "02_new Customer",
+            "description": "مشتری جدید",
+            "expression": " sum('NL sales'[Number of new customer creations])"
+          },
+          {
+            "name": "03_percent",
+            "description": "درصد ریزش مشتری ",
+            "expression": " sum('NL sales'[Percent])"
           }
         ]
       }
