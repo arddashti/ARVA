@@ -2850,7 +2850,7 @@
           },
           {
             "name": "Target",
-            "dataType": "double",
+            "dataType": "int64",
             "sourceColumn": "Target"
           },
           {
@@ -5503,6 +5503,15 @@
               "                                     ",
               "                                     ",
               "                                     */"
+            ]
+          },
+          {
+            "name": "001111_event _personelcount",
+            "expression": [
+              " ",
+              "",
+              "                                       DISTINCTCOUNT('NL personnel_HR'[personnel number]) +300",
+              "                                       -- تعداد پرسنل "
             ]
           }
         ]
