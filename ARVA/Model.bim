@@ -6418,7 +6418,8 @@
               "                    sum ('NL sales'[Number of authorized service representatives])",
               "",
               "-- تعداد نمایندگان مجاز خدمات "
-            ]
+            ],
+            "formatString": "0"
           }
         ]
       }
