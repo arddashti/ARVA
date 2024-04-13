@@ -2906,14 +2906,18 @@
             "expression": [
               " ",
               "",
-              " IF(MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit] ) && MAX('NL BSC'[index direction]) = \"افزایشی\" && MAX('NL BSC'[Amount achieved during the period]) > MAX('NL BSC'[Target]), \"#01533D\",  ----- افزایشی",
+              " IF(MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit] ) && ",
+              "MAX('NL BSC'[index direction]) = \"افزایشی\" && MAX('NL BSC'[Amount achieved during the period]) > MAX('NL BSC'[Target]), \"#0A6511\",  ----- افزایشی",
               "--IF(MAX(BSC[هدف]) >= MAX(BSC[حد پذیرش] ) && MAX(BSC[جهت شاخص]) = \"افزایشی\" && MAX(BSC[هدف])> MAX(BSC[مقدار محقق شده طی دوره]) >= MAX(BSC[حد پذیرش]), \"#DBDE1C\",   ----- افزایشی",
               "            ",
               "              ",
-              "      if( MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit])    && MAX('NL BSC'[index direction]) = \"افزایشی\" && MAX('NL BSC'[Acceptance limit])> MAX('NL BSC'[Amount achieved during the period]) ,\"#BB0E0E\",",
-              "          if( MAX('NL BSC'[Target]) <= MAX('NL BSC'[Acceptance limit] ) && MAX('NL BSC'[index direction]) = \"کاهشی\"  &&   MAX('NL BSC'[Target])< MAX('NL BSC'[Amount achieved during the period]) ,\"#BB0E0E\" , ",
+              "      if( MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit])    &&",
+              " MAX('NL BSC'[index direction]) = \"افزایشی\" && MAX('NL BSC'[Acceptance limit])> MAX('NL BSC'[Amount achieved during the period]) ,\"#FA0000\",",
+              "          if( MAX('NL BSC'[Target]) <= MAX('NL BSC'[Acceptance limit] ) &&",
+              " MAX('NL BSC'[index direction]) = \"کاهشی\"  &&   MAX('NL BSC'[Target])< MAX('NL BSC'[Amount achieved during the period]) ,\"#FA0000\" , ",
               "",
-              "  if( MAX('NL BSC'[Target]) <= MAX('NL BSC'[Acceptance limit] ) && MAX('NL BSC'[index direction]) = \"کاهشی\"     &&   MAX('NL BSC'[Acceptance limit])> MAX('NL BSC'[Amount achieved during the period]) ,\"#01533D\"))))",
+              "  if( MAX('NL BSC'[Target]) <= MAX('NL BSC'[Acceptance limit] ) && MAX('NL BSC'[index direction]) = \"کاهشی\" ",
+              "    &&   MAX('NL BSC'[Acceptance limit])> MAX('NL BSC'[Amount achieved during the period]) ,\"#0A6511\"))))",
               "       --       if (MAX(BSC[هدف]) <= MAX(BSC[حد پذیرش] )&& MAX(BSC[هدف])< MAX(BSC[مقدار محقق شده طی دوره]) < MAX(BSC[حد پذیرش]), \"#DBDE1C\", ",
               "  --  \"#01533D\"))",
               "    --     ))))",
@@ -6316,6 +6320,7 @@
           {
             "name": "Customer churn",
             "dataType": "int64",
+            "description": "درصد سهم پرتفو",
             "sourceColumn": "Customer churn"
           },
           {
@@ -6331,7 +6336,8 @@
           {
             "name": "Month",
             "dataType": "string",
-            "sourceColumn": "Month"
+            "sourceColumn": "Month",
+            "sortByColumn": "Month number"
           },
           {
             "name": "Year",
@@ -6384,6 +6390,25 @@
                 "    #\"Replaced Value\""
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "01_percentage shere",
+            "description": "ریزش مشتری ",
+            "expression": " SUM('NL sales'[Percentage share of Portugal])",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "02_new Customer",
+            "description": "مشتری جدید",
+            "expression": " sum('NL sales'[Number of new customer creations])"
+          },
+          {
+            "name": "03_percent",
+            "description": "درصد ریزش مشتری ",
+            "expression": " sum('NL sales'[Percent])",
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       }
