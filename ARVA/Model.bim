@@ -6352,6 +6352,21 @@
             "name": "Month number",
             "dataType": "int64",
             "sourceColumn": "Month number"
+          },
+          {
+            "name": "Happy Call",
+            "dataType": "double",
+            "sourceColumn": "Happy Call"
+          },
+          {
+            "name": "Number of authorized service representatives",
+            "dataType": "int64",
+            "sourceColumn": "Number of authorized service representatives"
+          },
+          {
+            "name": "Average time from upload to repair",
+            "dataType": "string",
+            "sourceColumn": "Average time from upload to repair"
           }
         ],
         "partitions": [
