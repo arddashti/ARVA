@@ -6409,6 +6409,16 @@
             "description": "درصد ریزش مشتری ",
             "expression": " sum('NL sales'[Percent])",
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "04_service Number",
+            "description": "تعداد نمایندگان مجاز خدمات ",
+            "expression": [
+              " ",
+              "                    sum ('NL sales'[Number of authorized service representatives])",
+              "",
+              "-- تعداد نمایندگان مجاز خدمات "
+            ]
           }
         ]
       }
