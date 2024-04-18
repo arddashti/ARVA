@@ -6425,6 +6425,17 @@
               "-- تعداد نمایندگان مجاز خدمات "
             ],
             "formatString": "0"
+          },
+          {
+            "name": "01_performance",
+            "expression": [
+              " ",
+              "         SUM('NL sales'[Performance percentage of sales service representatives])",
+              "",
+              "",
+              "",
+              " --درصد عملکرد نمایندگان خدمات پس از فروش "
+            ]
           }
         ]
       }
