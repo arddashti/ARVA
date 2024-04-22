@@ -36,7 +36,14 @@
             "name": "Miladi",
             "dataType": "dateTime",
             "description": "تاریخ میلادی",
-            "sourceColumn": "Miladi"
+            "sourceColumn": "Miladi",
+            "formatString": "yyyy-MM-dd",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"ShortDate\" FormatString=\"yyyy-MM-dd\" /></DateTimes></Format>"
+              }
+            ]
           },
           {
             "name": "Jalali_1",
@@ -113,7 +120,7 @@
           },
           {
             "name": "day",
-            "dataType": "string",
+            "dataType": "int64",
             "description": "روز",
             "sourceColumn": "day",
             "formatString": "0"
@@ -1764,7 +1771,8 @@
               "          if( CALCULATE('VN Fact_Sale'[01_AmountNut], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
               "                                                     'BI DIM_DATE'[day]<=d)<> BLANK() ,",
               "                  CALCULATE('VN Fact_Sale'[01_AmountNut], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y-1,",
-              "                                                     'BI DIM_DATE'[day]<=d), \"حواله باز موجود نیست \")",
+              "                                                     'BI DIM_DATE'[day]<=d),",
+              "                                                                          \"حواله باز موجود نیست \")",
               "",
               "---- فروش خالص سال گذشته ماه تا روز"
             ],
@@ -1889,7 +1897,9 @@
             "name": "019_GrowthRate MTD AmountNut",
             "description": "محاسبه نرخ رشد خالص ماه  تا روز ",
             "expression": [
-              "   if('VN Fact_Sale'[09_LastYear MTD AmountNut]>0,",
+              " ",
+              "",
+              "        if('VN Fact_Sale'[09_LastYear MTD AmountNut]>0,",
               "                             ('VN Fact_Sale'[08_ MTD AmountNut] -'VN Fact_Sale'[09_LastYear MTD AmountNut]) ",
               "                                       / 'VN Fact_Sale'[09_LastYear MTD AmountNut])",
               "",
@@ -2247,6 +2257,27 @@
               "--فروش خالص با کسر برگشتی "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "040 _ sales with return deductions",
+            "description": "فروش ناخالص با کسر برگشتی",
+            "expression": [
+              " ",
+              "     ",
+              "",
+              "                     'VN Fact_Sale'[02_Amount]  -  'VN Fact_RetSale'[01_returnedAmount]",
+              "               ",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "--فروش ناخالص با کسر برگشتی "
+            ]
           }
         ]
       },
@@ -2288,7 +2319,7 @@
               "            if(SELECTEDVALUE( 'BI select_value'[select] ) = \"تخفیفات\",",
               "                               'VN Fact_Sale'[03_Discount], ",
               "             IF(SELECTEDVALUE('BI select_value'[select] ) = \"برگشتی\",",
-              "                                'VN Fact_RetSale'[01_returnedAmountNut]))))",
+              "                                'VN Fact_RetSale'[01_returnedAmount]))))",
               "",
               "",
               "",
@@ -2426,7 +2457,7 @@
         ],
         "measures": [
           {
-            "name": "01_returnedAmountNut",
+            "name": "01_returnedAmount",
             "description": "خالص برگشت از فروش ",
             "expression": [
               "",
