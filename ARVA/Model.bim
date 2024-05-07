@@ -2321,7 +2321,7 @@
               "                               'VN Fact_Sale'[03_Discount], ",
               "             IF(SELECTEDVALUE('BI select_value'[select] ) = \"برگشتی\",",
               "                                'VN Fact_RetSale'[01_returnedAmount],",
-              "              IF(SELECTEDVALUE('BI select_value'[select] ) = \"فروش ناخالص با کسر برگشتي\",",
+              "              IF(SELECTEDVALUE('BI select_value'[select] ) = \"فروش ناخالص با کسر برگشتی\",",
               "                                'VN Fact_Sale'[040 _ sales with return deductions]",
               "                                                                               )))))",
               "",
