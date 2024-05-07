@@ -2320,12 +2320,15 @@
               "            if(SELECTEDVALUE( 'BI select_value'[select] ) = \"تخفیفات\",",
               "                               'VN Fact_Sale'[03_Discount], ",
               "             IF(SELECTEDVALUE('BI select_value'[select] ) = \"برگشتی\",",
-              "                                'VN Fact_RetSale'[01_returnedAmount]))))",
+              "                                'VN Fact_RetSale'[01_returnedAmount],",
+              "              IF(SELECTEDVALUE('BI select_value'[select] ) = \"فروش ناخالص با کسر برگشتي\",",
+              "                                'VN Fact_Sale'[040 _ sales with return deductions]",
+              "                                                                               )))))",
               "",
               "",
               "",
               "",
-              "               ------- با  انتخاب هر یک در یک صفحه در پاور بی ای مشخصات مربوطه نمایش داده  می شود برای جلوگیری از ساخت بوک مارک این مژر ساخته شد)))))))"
+              "               ------- با  انتخاب هر یک در یک صفحه در پاور بی ای مشخصات مربوطه نمایش داده  می شود برای جلوگیری از ساخت بوک مارک این مژر ساخته شد)))))))))"
             ],
             "formatString": "#,#"
           },
