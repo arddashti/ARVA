@@ -2461,6 +2461,17 @@
         ],
         "measures": [
           {
+            "name": "02_returnedAmountNut",
+            "description": "خالص برگشتی",
+            "expression": [
+              "",
+              "",
+              "CALCULATE(    SUM ( 'VN Fact_RetSale'[AmountNut] ))",
+              "",
+              "-- خالص برگشتی"
+            ]
+          },
+          {
             "name": "01_returnedAmount",
             "description": "خالص برگشت از فروش ",
             "expression": [
@@ -2474,17 +2485,6 @@
               ""
             ],
             "formatString": "#,#"
-          },
-          {
-            "name": "02_returnedAmountNut",
-            "description": "خالص برگشتی",
-            "expression": [
-              "",
-              "",
-              "CALCULATE(    SUM ( 'VN Fact_RetSale'[AmountNut] ))",
-              "",
-              "-- خالص برگشتی"
-            ]
           }
         ]
       },
