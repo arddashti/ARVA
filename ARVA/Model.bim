@@ -2279,6 +2279,30 @@
               "--فروش ناخالص با کسر برگشتی "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "041_Discounts on netsale with return",
+            "description": " نسبت  تخفیف به فروش خالص با کسر برگشتی",
+            "expression": [
+              "  ",
+              "                       'VN Fact_Sale'[03_Discount] / 'VN Fact_Sale'[039 _Net sales with return deductions]",
+              "",
+              " ",
+              "                     --  نسبت  تخفیف به فروش خالص با کسر برگشتی"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "042_Discounts on sale with return",
+            "description": " نسبت  تخفیف به فروش ناخالص با کسر برگشتی",
+            "expression": [
+              "  ",
+              "                       'VN Fact_Sale'[03_Discount] / 'VN Fact_Sale'[039 _Net sales with return deductions]",
+              "",
+              " ",
+              "                     --  نسبت  تخفیف به فروش ناخالص با کسر برگشتی"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
