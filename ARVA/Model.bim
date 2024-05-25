@@ -2297,7 +2297,7 @@
             "description": " نسبت  تخفیف به فروش ناخالص با کسر برگشتی",
             "expression": [
               "  ",
-              "                       'VN Fact_Sale'[03_Discount] / 'VN Fact_Sale'[039 _Net sales with return deductions]",
+              "                       'VN Fact_Sale'[03_Discount] / 'VN Fact_Sale'[040 _ sales with return deductions]",
               "",
               " ",
               "                     --  نسبت  تخفیف به فروش ناخالص با کسر برگشتی"
