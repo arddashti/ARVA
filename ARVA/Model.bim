@@ -1839,9 +1839,12 @@
             "description": "تارگت  فروش ناخالص ",
             "expression": [
               " ",
+              "                 ",
+              "",
+              "    ",
               "                    DIVIDE( 'VN Fact_Sale'[02_Amount]",
               "                                  ",
-              "                    ,SUM('VN Fact_Target'[target_amount_per_day]) , BLANK()) ",
+              "                              ,SUM('VN Fact_Target'[target_amount_per_day]) , BLANK()) ",
               "",
               "",
               "",
@@ -2303,6 +2306,25 @@
               "                     --  نسبت  تخفیف به فروش ناخالص با کسر برگشتی"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "043_anuual sales Target",
+            "description": " درصد تحقق سالانه برای استفاده در گیج ",
+            "expression": [
+              " ",
+              "   ",
+              "              var y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "   return ",
+              "",
+              "",
+              "CALCULATE(",
+              "               DIVIDE( 'VN Fact_Sale'[02_Amount]",
+              "                                  ",
+              "                       ,SUM('VN Fact_Target'[target_amount_per_day]) , BLANK()) , 'BI DIM_DATE'[jyear]=y)",
+              "",
+              "-- درصد تحقق سالانه برای استفاده در گیج ",
+              ""
+            ]
           }
         ]
       },
