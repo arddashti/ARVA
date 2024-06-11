@@ -712,8 +712,7 @@
               "",
               "          if('VN Fact_int_Vocher_Itm_Qty_history'[StockDCRef] = 411 &&",
               "                        'VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]>0,        ",
-              "                                    CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                                                'BI DIM_DATE'[end_month] =1))",
+              "                                  'VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)])",
               "",
               "--موجودی روز انبار 411 کارخانه  که در اکسل موجود است "
             ]
@@ -1152,14 +1151,14 @@
           },
           {
             "name": "023_Current inventory(411)",
-            "description": "موجودی روز انبار 411 کارخانه ",
+            "description": "موجودی پایان دوره  انبار 411 کارخانه ",
             "expression": [
               "",
-              " CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[022_411 warehouse inventory]) , ",
-              "                  'BI DIM_DATE'[end_month] =1)",
+              "             CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[022_411 warehouse inventory]) , ",
+              "                       'BI DIM_DATE'[end_month] =1)",
               "",
               "",
-              "--موجودی روز انبار 411 کارخانه "
+              "--موجودی پایان دوره  انبار 411 کارخانه "
             ],
             "formatString": "#,#"
           }
