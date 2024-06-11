@@ -701,6 +701,22 @@
             "name": "unic_code_int",
             "dataType": "string",
             "sourceColumn": "unic_code_int"
+          },
+          {
+            "type": "calculated",
+            "name": "022_411 warehouse inventory",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "description": "موجودی روز انبار 411 کارخانه",
+            "expression": [
+              "",
+              "          if('VN Fact_int_Vocher_Itm_Qty_history'[StockDCRef] = 411 &&",
+              "                        'VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]>0,        ",
+              "                                    CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                                'BI DIM_DATE'[end_month] =1))",
+              "",
+              "--موجودی روز انبار 411 کارخانه  که در اکسل موجود است "
+            ]
           }
         ],
         "partitions": [
@@ -725,8 +741,9 @@
             "description": "موجودی پایان دوره",
             "expression": [
               " ",
-              "     CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , FILTER('BI DIM_DATE','BI DIM_DATE'[end_month] =1)",
-              ")"
+              "     CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                  FILTER('BI DIM_DATE','BI DIM_DATE'[end_month] =1)",
+              "                                                                                    )"
             ],
             "formatString": "#,#"
           },
