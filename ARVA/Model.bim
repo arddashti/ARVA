@@ -1154,8 +1154,8 @@
             "description": "موجودی پایان دوره  انبار 411 کارخانه ",
             "expression": [
               "",
-              "             CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[022_411 warehouse inventory]) , ",
-              "                       'BI DIM_DATE'[end_month] =1)",
+              "            sum('VN Fact_int_Vocher_Itm_Qty_history'[022_411 warehouse inventory]) ",
+              "                       ",
               "",
               "",
               "--موجودی پایان دوره  انبار 411 کارخانه "
