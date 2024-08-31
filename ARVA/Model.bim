@@ -2401,7 +2401,7 @@
               "                                'VN Fact_Sale'[040 _ sales with return deductions], ",
               "            IF(SELECTEDVALUE('BI select_value'[select] ) = \"فروش خالص با کسر برگشتی\",",
               "                                 'VN Fact_Sale'[039 _Net sales with return deductions] ,",
-              "            if(SELECTEDVALUE('BI select_value'[select]) = \"فروش تعدادی\",",
+              "            if(SELECTEDVALUE('BI select_value'[select]) = \"فروش تعدادي\",",
               "                                  'VN Fact_Sale'[016_QTY]",
               "                                                                                     )))))) ",
               "",
@@ -2413,7 +2413,7 @@
               "",
               "",
               "",
-              "               ------- با  انتخاب هر یک در یک صفحه در پاور بی ای مشخصات مربوطه نمایش داده  می شود برای جلوگیری از ساخت بوک مارک این مژر ساخته شد))))))))))))))"
+              "               ------- با  انتخاب هر یک در یک صفحه در پاور بی ای مشخصات مربوطه نمایش داده  می شود برای جلوگیری از ساخت بوک مارک این مژر ساخته شد)))))))))))))))"
             ],
             "formatString": "#,#"
           },
