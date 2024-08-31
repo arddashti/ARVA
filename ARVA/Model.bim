@@ -2403,7 +2403,7 @@
               "                                 'VN Fact_Sale'[039 _Net sales with return deductions] ,",
               "            if(SELECTEDVALUE('BI select_value'[select]) = \"فروش تعدادي\",",
               "                                  'VN Fact_Sale'[016_QTY]",
-              "                                                                                     )))))) ",
+              "                                                                                     )))))))",
               "",
               "",
               "",
