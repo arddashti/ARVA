@@ -1479,6 +1479,7 @@
           {
             "name": "TotalQty",
             "dataType": "double",
+            "description": "تعداد ",
             "sourceColumn": "TotalQty"
           },
           {
@@ -2387,6 +2388,22 @@
               "                                       filter('VN Fact_Sale', 'VN Fact_Sale'[PrizeType]=1))",
               "",
               "-- تخفیفات کالای رایگان )"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "046_Number of free items",
+            "description": "تعداد کالاهای رایگان فروخته شده ",
+            "expression": [
+              " ",
+              "          CALCULATE (",
+              "              SUM ( 'VN Fact_Sale'[TotalQty] ),",
+              "",
+              "              FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1) ,",
+              "              FILTER('VN Fact_Sale', 'VN Fact_Sale'[PrizeType] = 1))",
+              "--- تعداد کالاهای رایگان فروخته شده ",
+              "",
+              ""
             ],
             "formatString": "#,#"
           }
