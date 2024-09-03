@@ -113,7 +113,7 @@
             "name": "Is Holiday",
             "dataType": "string",
             "description": [
-              "جدول مشخص کننده روزهای تعطیل",
+              "جدول مشخص کننده روزهای تعطیل\r",
               "این جدول دارای 3 وضعیت است اولی 1 برای روز های غیر تعطیل و دومی 0 برای روزهای تعطیل و 0.5 برای روزهای پنجشنبه"
             ],
             "sourceColumn": "Is Holiday"
@@ -1636,6 +1636,7 @@
           {
             "name": "PrizeType",
             "dataType": "int64",
+            "description": "برای مشخص شدن  تخفیفات نقدی و جایزه ای که 0 برای تخفیفات نقدی و 1  برای کالای رایگان استflag",
             "sourceColumn": "PrizeType"
           }
         ],
@@ -2337,7 +2338,7 @@
               "                       'VN Fact_Sale'[03_Discount] / 'VN Fact_Sale'[040 _ sales with return deductions]",
               "",
               " ",
-              "                     --  نسبت  تخفیف به فروش ناخالص با کسر برگشتی"
+              "                     --  نسبت تخفیف به فروش ناخالص با کسر برگشتی"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
           },
@@ -2360,6 +2361,34 @@
               ""
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "044_Cash Discounts",
+            "description": "تخفیفات نقدی ",
+            "expression": [
+              "",
+              "                    CALCULATE(  SUM ( 'VN Fact_Sale'[Discount] ),",
+              "                                       FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1) , ",
+              "                                       filter('VN Fact_Sale', 'VN Fact_Sale'[PrizeType]=0)",
+              "",
+              "--تحفیفات نقدی ",
+              "            )"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "045_Discounts on free goods",
+            "description": "تخفیفات کالای رایگان ",
+            "expression": [
+              " ",
+              "                    ",
+              "                           CALCULATE(  SUM ( 'VN Fact_Sale'[Discount] ),",
+              "                                       FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1) , ",
+              "                                       filter('VN Fact_Sale', 'VN Fact_Sale'[PrizeType]=1))",
+              "",
+              "-- تخفیفات کالای رایگان )"
+            ],
+            "formatString": "#,#"
           }
         ]
       },
