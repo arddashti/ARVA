@@ -2623,7 +2623,7 @@
           },
           {
             "name": "01_returnedAmount",
-            "description": "خالص برگشت از فروش ",
+            "description": "نا خالص برگشت از فروش  ",
             "expression": [
               "",
               "",
