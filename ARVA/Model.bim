@@ -2427,7 +2427,7 @@
             "expression": [
               "",
               "",
-              "     'VN Fact_Sale'[03_Discount] /",
+              "     'VN Fact_RetSale'[01_returnedAmount] /",
               "                                  ('VN Fact_Sale'[02_Amount] + 'VN Fact_Sale'[045_Discounts on free goods])",
               "",
               "",
