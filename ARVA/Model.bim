@@ -2406,6 +2406,20 @@
               ""
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "047_Ratio of discount to gross sales",
+            "description": "نسبت تخفیفات نقدی و کالای رایگان به فروش ناخالص و کالای رایگان ",
+            "expression": [
+              "",
+              "",
+              "     'VN Fact_Sale'[03_Discount] /",
+              "                                  ('VN Fact_Sale'[02_Amount] + 'VN Fact_Sale'[045_Discounts on free goods])",
+              "",
+              "",
+              "--نسبت تخفیفات نقدی و کالای رایگان به فروش ناخالص و کالای رایگان "
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
