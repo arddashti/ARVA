@@ -1327,6 +1327,7 @@
           {
             "name": "Status",
             "dataType": "int64",
+            "description": "وضعیت سیستمی مشتریان ",
             "sourceColumn": "Status"
           },
           {
@@ -1383,6 +1384,21 @@
             "name": "SaleAreaName",
             "dataType": "string",
             "sourceColumn": "SaleAreaName"
+          },
+          {
+            "type": "calculated",
+            "name": "001_CustomerStatuse",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "    ",
+              "           if('VN Dim_Cust'[Status]= 1, \"فعال\", ",
+              "                                           if('VN Dim_Cust'[Status]= 2,\"غیرفعال\" , \"ممنوع الفروش\"))",
+              "                                                                                ",
+              "",
+              "-- وضعیت مشتریان سیستمی"
+            ]
           }
         ],
         "partitions": [
