@@ -1447,11 +1447,11 @@
             "expression": [
               " ",
               "",
-              "        DIVIDE('VN Dim_Cust'[001_ActiveCustomer with 500 sales], 'VN Dim_Cust'[002_Active Customer])",
+              "        DIVIDE('VN Dim_Cust'[001_ActiveCustomer with 500 sales], 'VN Dim_Cust'[002_Active Customer]) *100",
               "",
               "-- گستردگی فروش"
             ],
-            "formatString": "0.00%;-0.00%;0.00%"
+            "formatString": "0"
           }
         ]
       },
