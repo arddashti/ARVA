@@ -1419,6 +1419,39 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "001_ActiveCustomer with 500 sales",
+            "description": "تعداد مشتریان فعال  با  فروش بالای 5000000 ریال ",
+            "expression": [
+              "",
+              "",
+              "      CALCULATE(  DISTINCTCOUNT('VN Dim_Cust'[CustCode]) , FILTER('VN Dim_Cust', 'VN Dim_Cust'[Status]=1), ",
+              "                                                      filter('VN Fact_Sale', 'VN Fact_Sale'[01_AmountNut] >5000000))"
+            ]
+          },
+          {
+            "name": "002_Active Customer",
+            "description": " تعداد مشتریان فعال ",
+            "expression": [
+              "",
+              "                CALCULATE( DISTINCTCOUNT('VN Dim_Cust'[CustCode]) , FILTER('VN Dim_Cust', 'VN Dim_Cust'[Status]=1))",
+              "",
+              "--  تعداد مشتریان فعال "
+            ]
+          },
+          {
+            "name": "003_Sales Covarage",
+            "description": "گستردگی فروش",
+            "expression": [
+              " ",
+              "",
+              "        DIVIDE('VN Dim_Cust'[001_ActiveCustomer with 500 sales], 'VN Dim_Cust'[002_Active Customer])",
+              "",
+              "-- گستردگی فروش"
+            ]
+          }
         ]
       },
       {
