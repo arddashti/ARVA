@@ -1450,7 +1450,8 @@
               "        DIVIDE('VN Dim_Cust'[001_ActiveCustomer with 500 sales], 'VN Dim_Cust'[002_Active Customer])",
               "",
               "-- گستردگی فروش"
-            ]
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
