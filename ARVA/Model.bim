@@ -120,7 +120,7 @@
           },
           {
             "name": "day",
-            "dataType": "int64",
+            "dataType": "string",
             "description": "روز",
             "sourceColumn": "day",
             "formatString": "0"
@@ -179,6 +179,16 @@
             "name": "unic_code",
             "dataType": "string",
             "sourceColumn": "unic_code"
+          },
+          {
+            "name": "date_Counter_friday",
+            "dataType": "int64",
+            "sourceColumn": "date_Counter_friday"
+          },
+          {
+            "name": "date_Counter_all",
+            "dataType": "int64",
+            "sourceColumn": "date_Counter_all"
           }
         ],
         "partitions": [
