@@ -113,7 +113,7 @@
             "name": "Is Holiday",
             "dataType": "string",
             "description": [
-              "جدول مشخص کننده روزهای تعطیل",
+              "جدول مشخص کننده روزهای تعطیل\r",
               "این جدول دارای 3 وضعیت است اولی 1 برای روز های غیر تعطیل و دومی 0 برای روزهای تعطیل و 0.5 برای روزهای پنجشنبه"
             ],
             "sourceColumn": "Is Holiday"
@@ -523,7 +523,7 @@
         "measures": [
           {
             "name": "03_NumberSold",
-            "description": "تعداد فروش رفته ",
+            "description": " تعداد فروش رفته یا  خروج از انبار ",
             "expression": [
               "",
               "   (  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),",
@@ -533,10 +533,23 @@
               "",
               "      )))*-1)",
               "-",
+              "(",
               " (  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),",
               "                         FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = ",
               "\"برگشت حواله\"",
-              "))))"
+              "))))",
+              " +",
+              "(  ( CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),",
+              "                         FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] = ",
+              "\"برگشت به انبار\"",
+              "))))",
+              ")",
+              "",
+              "--- تعداد فروش رفته یا  خروج از انبار ",
+              "",
+              "",
+              "",
+              ""
             ],
             "formatString": "#,#"
           },
