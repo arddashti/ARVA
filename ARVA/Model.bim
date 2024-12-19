@@ -6710,6 +6710,57 @@
             ]
           }
         ]
+      },
+      {
+        "name": "VN Fact_int_AVG_more5",
+        "columns": [
+          {
+            "name": "StockDCRef",
+            "dataType": "int64",
+            "sourceColumn": "StockDCRef"
+          },
+          {
+            "name": "GoodsRef",
+            "dataType": "int64",
+            "sourceColumn": "GoodsRef"
+          },
+          {
+            "name": "AVG(TotalQty)",
+            "dataType": "double",
+            "sourceColumn": "AVG(TotalQty)"
+          },
+          {
+            "name": "VocherDate",
+            "dataType": "string",
+            "sourceColumn": "VocherDate"
+          },
+          {
+            "name": "more5",
+            "dataType": "int64",
+            "sourceColumn": "more5"
+          },
+          {
+            "name": "TotalQty",
+            "dataType": "double",
+            "sourceColumn": "TotalQty"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Fact_int_AVG_more5 = Source{[Schema=\"VN\",Item=\"Fact_int_AVG_more5\"]}[Data]",
+                "in",
+                "    VN_Fact_int_AVG_more5"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
