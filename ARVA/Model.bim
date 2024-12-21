@@ -6784,7 +6784,7 @@
             "description": "میانگین  خروج کالا از انبار به ازای روزهای موجود در انبار ",
             "expression": [
               "",
-              "                 sum('VN Fact_int_AVG_more5'[Warehouse exit]) /  sum('VN Fact_int_AVG_more5'[more5])",
+              "                 sum('VN Fact_int_AVG_more5'[Warehouse exit]) * (-1)/  sum('VN Fact_int_AVG_more5'[more5])",
               "--- میانگین  خروج کالا از انبار به ازای روزهای موجود در انبار "
             ]
           }
