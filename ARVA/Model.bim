@@ -7198,6 +7198,13 @@
         "fromColumn": "GoodsRef",
         "toTable": "VN Dim_Goods",
         "toColumn": "Goods_ID"
+      },
+      {
+        "name": "01733076-0bd4-49fe-8037-139d060a05af",
+        "fromTable": "VN Fact_int_AVG_more5",
+        "fromColumn": "VocherDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "roles": [
