@@ -6727,6 +6727,7 @@
           {
             "name": "AVG(TotalQty)",
             "dataType": "double",
+            "description": "موجودی پایان روز ",
             "sourceColumn": "AVG(TotalQty)"
           },
           {
@@ -6737,11 +6738,13 @@
           {
             "name": "more5",
             "dataType": "int64",
+            "description": "روزهایی که موجودی بیشتر از 5 عدد بوده است",
             "sourceColumn": "more5"
           },
           {
             "name": "TotalQty",
             "dataType": "double",
+            "description": "سند حواله خروج از انبار",
             "sourceColumn": "TotalQty"
           }
         ],
