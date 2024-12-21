@@ -6749,7 +6749,8 @@
             "name": "more5",
             "dataType": "int64",
             "description": "روزهایی که موجودی بیشتر از 5 عدد بوده است",
-            "sourceColumn": "more5"
+            "sourceColumn": "more5",
+            "formatString": "0"
           },
           {
             "name": "TotalQty",
@@ -6794,9 +6795,36 @@
             "description": "میانگین  خروج کالا از انبار به ازای روزهای موجود در انبار ",
             "expression": [
               "",
-              "                  if( sum('VN Fact_int_AVG_more5'[more5])>0 , ",
-              "                  sum('VN Fact_int_AVG_more5'[Warehouse exit]) * (-1)/  sum('VN Fact_int_AVG_more5'[more5]))",
+              "         if( sum('VN Fact_int_AVG_more5'[more5])>0 , ",
+              "                 sum('VN Fact_int_AVG_more5'[Warehouse exit]) * (-1)",
+              "                                              / ",
+              "                                                          sum('VN Fact_int_AVG_more5'[more5])",
+              "                                                                                 )",
               "--- میانگین  خروج کالا از انبار به ازای روزهای موجود در انبار "
+            ]
+          },
+          {
+            "name": "002_Sum Days",
+            "description": " تعداد روزهایی که  کالا بیشتر از 5 عدد داشته است",
+            "expression": [
+              "",
+              "         ",
+              "               sum('VN Fact_int_AVG_more5'[more5])",
+              "",
+              "-- تعداد روزهایی که  کالا بیشتر از 5 عدد داشته است",
+              "                                                                           "
+            ]
+          },
+          {
+            "name": "003_Stock exit",
+            "description": "تعداد خروجی های انبار ",
+            "expression": [
+              "",
+              "",
+              "                 sum('VN Fact_int_AVG_more5'[Warehouse exit]) * (-1)",
+              "                                          ",
+              "",
+              "-- تعداد خروجی های انبار "
             ]
           }
         ]
