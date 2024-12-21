@@ -7186,18 +7186,18 @@
         "isActive": false
       },
       {
-        "name": "f0c7d323-5173-469a-832b-965b5876168e",
-        "fromTable": "VN Fact_int_AVG_more5",
-        "fromColumn": "GoodsRef",
-        "toTable": "VN Dim_Goods",
-        "toColumn": "GoodsCode"
-      },
-      {
         "name": "1ab516d0-1616-46d1-9024-be8c908c345c",
         "fromTable": "VN Fact_int_AVG_more5",
         "fromColumn": "StockDCRef",
         "toTable": "VN Dim_Stock",
         "toColumn": "StockDC_ID"
+      },
+      {
+        "name": "a5b4e072-87b8-4485-9e5a-560d48cbc177",
+        "fromTable": "VN Fact_int_AVG_more5",
+        "fromColumn": "GoodsRef",
+        "toTable": "VN Dim_Goods",
+        "toColumn": "Goods_ID"
       }
     ],
     "roles": [
