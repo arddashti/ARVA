@@ -6746,6 +6746,20 @@
             "dataType": "double",
             "description": "سند حواله خروج از انبار",
             "sourceColumn": "TotalQty"
+          },
+          {
+            "type": "calculated",
+            "name": "Warehouse exit",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "description": "حواله خروج از انبار",
+            "expression": [
+              "",
+              "",
+              "           if('VN Fact_int_AVG_more5'[TotalQty]<=0 , 'VN Fact_int_AVG_more5'[TotalQty] , 0)",
+              "",
+              "--- حواله خروج از انبار"
+            ]
           }
         ],
         "partitions": [
