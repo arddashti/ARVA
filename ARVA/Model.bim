@@ -6767,9 +6767,37 @@
             "expression": [
               "",
               "",
-              "           if('VN Fact_int_AVG_more5'[TotalQty]<0 , 'VN Fact_int_AVG_more5'[TotalQty] , 0)",
+              "           if('VN Fact_int_AVG_more5'[VocherTypeName]= \"خروجي\" , 'VN Fact_int_AVG_more5'[TotalQty] , 0)",
               "",
               "--- حواله خروج از انبار"
+            ]
+          },
+          {
+            "name": "VocherTypeName",
+            "dataType": "string",
+            "sourceColumn": "VocherTypeName"
+          },
+          {
+            "name": "Is Holiday",
+            "dataType": "string",
+            "sourceColumn": "Is Holiday"
+          },
+          {
+            "name": "holiday",
+            "dataType": "double",
+            "sourceColumn": "holiday"
+          },
+          {
+            "type": "calculated",
+            "name": "DayCounter",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "     if('VN Fact_int_AVG_more5'[more5]<> 0  && 'VN Fact_int_AVG_more5'[holiday] <> BLANK() ,",
+              "                                            'VN Fact_int_AVG_more5'[holiday]  , 'VN Fact_int_AVG_more5'[more5])",
+              "  ",
+              "                              "
             ]
           }
         ],
@@ -6782,9 +6810,10 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    VN_Fact_int_AVG_more5 = Source{[Schema=\"VN\",Item=\"Fact_int_AVG_more5\"]}[Data]",
+                "    VN_Fact_int_AVG_more5 = Source{[Schema=\"VN\",Item=\"Fact_int_AVG_more5\"]}[Data],",
+                "    #\"Filtered Rows\" = Table.SelectRows(VN_Fact_int_AVG_more5, each true)",
                 "in",
-                "    VN_Fact_int_AVG_more5"
+                "    #\"Filtered Rows\""
               ]
             }
           }
@@ -6798,7 +6827,7 @@
               "         if( sum('VN Fact_int_AVG_more5'[more5])>0 , ",
               "                 sum('VN Fact_int_AVG_more5'[Warehouse exit]) * (-1)",
               "                                              / ",
-              "                                                          sum('VN Fact_int_AVG_more5'[more5])",
+              "                                                          sum('VN Fact_int_AVG_more5'[DayCounter])",
               "                                                                                 )",
               "--- میانگین  خروج کالا از انبار به ازای روزهای موجود در انبار "
             ]
@@ -6809,7 +6838,7 @@
             "expression": [
               "",
               "         ",
-              "               sum('VN Fact_int_AVG_more5'[more5])",
+              "               sum('VN Fact_int_AVG_more5'[DayCounter])",
               "",
               "-- تعداد روزهایی که  کالا بیشتر از 5 عدد داشته است",
               "                                                                           "
