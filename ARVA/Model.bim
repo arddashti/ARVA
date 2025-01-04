@@ -6858,6 +6858,232 @@
             ]
           }
         ]
+      },
+      {
+        "name": "sorooshan primary_parts",
+        "columns": [
+          {
+            "name": "spindex",
+            "dataType": "int64",
+            "sourceColumn": "spindex"
+          },
+          {
+            "name": "spcode",
+            "dataType": "string",
+            "sourceColumn": "spcode"
+          },
+          {
+            "name": "gcode",
+            "dataType": "string",
+            "sourceColumn": "gcode"
+          },
+          {
+            "name": "gname",
+            "dataType": "string",
+            "sourceColumn": "gname"
+          },
+          {
+            "name": "spname",
+            "dataType": "string",
+            "sourceColumn": "spname"
+          },
+          {
+            "name": "partno",
+            "dataType": "string",
+            "sourceColumn": "partno"
+          },
+          {
+            "name": "intcode",
+            "dataType": "string",
+            "sourceColumn": "intcode"
+          },
+          {
+            "name": "model",
+            "dataType": "string",
+            "sourceColumn": "model"
+          },
+          {
+            "name": "mucode",
+            "dataType": "string",
+            "sourceColumn": "mucode"
+          },
+          {
+            "name": "balance",
+            "dataType": "double",
+            "sourceColumn": "balance"
+          },
+          {
+            "name": "centralbalance",
+            "dataType": "double",
+            "sourceColumn": "centralbalance"
+          },
+          {
+            "name": "owningbalance",
+            "dataType": "double",
+            "sourceColumn": "owningbalance"
+          },
+          {
+            "name": "lastfinalbalance",
+            "dataType": "double",
+            "sourceColumn": "lastfinalbalance"
+          },
+          {
+            "name": "lastfinalowningbalance",
+            "dataType": "double",
+            "sourceColumn": "lastfinalowningbalance"
+          },
+          {
+            "name": "reserved",
+            "dataType": "double",
+            "sourceColumn": "reserved"
+          },
+          {
+            "name": "pishfactorsreserved",
+            "dataType": "double",
+            "sourceColumn": "pishfactorsreserved"
+          },
+          {
+            "name": "reservedrecievedno",
+            "dataType": "double",
+            "sourceColumn": "reservedrecievedno"
+          },
+          {
+            "name": "foreignrmano",
+            "dataType": "double",
+            "sourceColumn": "foreignrmano"
+          },
+          {
+            "name": "min",
+            "dataType": "double",
+            "sourceColumn": "min"
+          },
+          {
+            "name": "systemmin",
+            "dataType": "double",
+            "sourceColumn": "systemmin"
+          },
+          {
+            "name": "orderonway",
+            "dataType": "double",
+            "sourceColumn": "orderonway"
+          },
+          {
+            "name": "highbuy",
+            "dataType": "double",
+            "sourceColumn": "highbuy"
+          },
+          {
+            "name": "lastbuy",
+            "dataType": "double",
+            "sourceColumn": "lastbuy"
+          },
+          {
+            "name": "avgbuy",
+            "dataType": "double",
+            "sourceColumn": "avgbuy"
+          },
+          {
+            "name": "centralavgbuy",
+            "dataType": "double",
+            "sourceColumn": "centralavgbuy"
+          },
+          {
+            "name": "owningavgbuy",
+            "dataType": "double",
+            "sourceColumn": "owningavgbuy"
+          },
+          {
+            "name": "firstavgbuy",
+            "dataType": "double",
+            "sourceColumn": "firstavgbuy"
+          },
+          {
+            "name": "lastfinalavgbuy",
+            "dataType": "double",
+            "sourceColumn": "lastfinalavgbuy"
+          },
+          {
+            "name": "lastfinalowningavgbuy",
+            "dataType": "double",
+            "sourceColumn": "lastfinalowningavgbuy"
+          },
+          {
+            "name": "curhighbuy",
+            "dataType": "double",
+            "sourceColumn": "curhighbuy"
+          },
+          {
+            "name": "curlastbuy",
+            "dataType": "double",
+            "sourceColumn": "curlastbuy"
+          },
+          {
+            "name": "curavgbuy",
+            "dataType": "double",
+            "sourceColumn": "curavgbuy"
+          },
+          {
+            "name": "salep",
+            "dataType": "double",
+            "sourceColumn": "salep"
+          },
+          {
+            "name": "gsalep",
+            "dataType": "double",
+            "sourceColumn": "gsalep"
+          },
+          {
+            "name": "psalep",
+            "dataType": "double",
+            "sourceColumn": "psalep"
+          },
+          {
+            "name": "csalep",
+            "dataType": "double",
+            "sourceColumn": "csalep"
+          },
+          {
+            "name": "cycode",
+            "dataType": "string",
+            "sourceColumn": "cycode"
+          },
+          {
+            "name": "location",
+            "dataType": "string",
+            "sourceColumn": "location"
+          },
+          {
+            "name": "s_buyupdate",
+            "dataType": "string",
+            "sourceColumn": "s_buyupdate"
+          },
+          {
+            "name": "eancode",
+            "dataType": "string",
+            "sourceColumn": "eancode"
+          },
+          {
+            "name": "upccode",
+            "dataType": "string",
+            "sourceColumn": "upccode"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    sorooshan_primary_parts = Source{[Schema=\"sorooshan\",Item=\"primary_parts\"]}[Data]",
+                "in",
+                "    sorooshan_primary_parts"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
