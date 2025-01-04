@@ -6962,6 +6962,7 @@
           {
             "name": "min",
             "dataType": "double",
+            "description": "نقطه سفارش",
             "sourceColumn": "min"
           },
           {
@@ -7032,6 +7033,7 @@
           {
             "name": "salep",
             "dataType": "double",
+            "description": "قیمت فروش عادی ",
             "sourceColumn": "salep"
           },
           {
@@ -7042,7 +7044,7 @@
           {
             "name": "psalep",
             "dataType": "double",
-            "description": "قیمت فروش عادی",
+            "description": "قیمت فروش همکار",
             "sourceColumn": "psalep"
           },
           {
