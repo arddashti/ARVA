@@ -6875,21 +6875,25 @@
           {
             "name": "gcode",
             "dataType": "string",
+            "description": "کد گروه",
             "sourceColumn": "gcode"
           },
           {
             "name": "gname",
             "dataType": "string",
+            "description": "نام گروه",
             "sourceColumn": "gname"
           },
           {
             "name": "spname",
             "dataType": "string",
+            "description": "نام کالا",
             "sourceColumn": "spname"
           },
           {
             "name": "partno",
             "dataType": "string",
+            "description": "شماره فنی",
             "sourceColumn": "partno"
           },
           {
@@ -6900,6 +6904,7 @@
           {
             "name": "model",
             "dataType": "string",
+            "description": "مدل به کار رفته ",
             "sourceColumn": "model"
           },
           {
@@ -6910,11 +6915,13 @@
           {
             "name": "balance",
             "dataType": "double",
+            "description": "موجودی انبار کل ",
             "sourceColumn": "balance"
           },
           {
             "name": "centralbalance",
             "dataType": "double",
+            "description": "موجودی انبار مرکزی",
             "sourceColumn": "centralbalance"
           },
           {
@@ -7035,6 +7042,7 @@
           {
             "name": "psalep",
             "dataType": "double",
+            "description": "قیمت فروش عادی",
             "sourceColumn": "psalep"
           },
           {
