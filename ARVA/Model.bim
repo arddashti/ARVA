@@ -7162,6 +7162,7 @@
           {
             "name": "m_repairdate",
             "dataType": "dateTime",
+            "description": "میلادی اتمام سرویس",
             "sourceColumn": "m_repairdate"
           },
           {
@@ -7342,6 +7343,7 @@
           {
             "name": "repairable",
             "dataType": "boolean",
+            "description": "غیر قابل سرویس",
             "sourceColumn": "repairable"
           },
           {
@@ -8292,6 +8294,7 @@
           {
             "name": "regname",
             "dataType": "string",
+            "description": "نام صادرکننده",
             "sourceColumn": "regname"
           },
           {
