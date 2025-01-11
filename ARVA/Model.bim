@@ -7108,11 +7108,13 @@
           {
             "name": "cncode",
             "dataType": "string",
+            "description": "شماره ثبت پذیرش",
             "sourceColumn": "cncode"
           },
           {
             "name": "cno",
             "dataType": "double",
+            "description": "شماره پذیرش",
             "sourceColumn": "cno"
           },
           {
@@ -7133,11 +7135,13 @@
           {
             "name": "s_enterdate",
             "dataType": "string",
+            "description": "تاریخ شمسی پذیرش",
             "sourceColumn": "s_enterdate"
           },
           {
             "name": "m_enterdate",
             "dataType": "dateTime",
+            "description": "تاریخ میلادی پذیرش",
             "sourceColumn": "m_enterdate"
           },
           {
@@ -7173,6 +7177,7 @@
           {
             "name": "fullname",
             "dataType": "string",
+            "description": "نام مشتری عادی",
             "sourceColumn": "fullname"
           },
           {
@@ -7263,21 +7268,25 @@
           {
             "name": "brand",
             "dataType": "string",
+            "description": "مارک دستگاه ",
             "sourceColumn": "brand"
           },
           {
             "name": "app",
             "dataType": "string",
+            "description": "نوع دستگاه",
             "sourceColumn": "app"
           },
           {
             "name": "model",
             "dataType": "string",
+            "description": "مدل دستگاه",
             "sourceColumn": "model"
           },
           {
             "name": "serialno",
             "dataType": "string",
+            "description": "شماره سریال دستگاه",
             "sourceColumn": "serialno"
           },
           {
@@ -8378,11 +8387,13 @@
           {
             "name": "statename",
             "dataType": "string",
+            "description": "استان ",
             "sourceColumn": "statename"
           },
           {
             "name": "cityname",
             "dataType": "string",
+            "description": "شهر ",
             "sourceColumn": "cityname"
           }
         ],
