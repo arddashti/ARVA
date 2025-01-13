@@ -7106,13 +7106,13 @@
             "sourceColumn": "cnindex"
           },
           {
-            "name": "cncode",
+            "name": "شماره ثبت پذیرش",
             "dataType": "string",
             "description": "شماره ثبت پذیرش",
             "sourceColumn": "cncode"
           },
           {
-            "name": "cno",
+            "name": "شماره پذیرش",
             "dataType": "double",
             "description": "شماره پذیرش",
             "sourceColumn": "cno"
@@ -7133,13 +7133,13 @@
             "sourceColumn": "draftname"
           },
           {
-            "name": "s_enterdate",
+            "name": "تاریخ شمسی پذیرش",
             "dataType": "string",
             "description": "تاریخ شمسی پذیرش",
             "sourceColumn": "s_enterdate"
           },
           {
-            "name": "m_enterdate",
+            "name": "تاریخ میلادی پذیرش",
             "dataType": "dateTime",
             "description": "تاریخ میلادی پذیرش",
             "sourceColumn": "m_enterdate"
@@ -7160,7 +7160,7 @@
             "sourceColumn": "s_repairdate"
           },
           {
-            "name": "m_repairdate",
+            "name": "میلادی اتمام سرویس",
             "dataType": "dateTime",
             "description": "میلادی اتمام سرویس",
             "sourceColumn": "m_repairdate"
@@ -7176,7 +7176,7 @@
             "sourceColumn": "m_exitdate"
           },
           {
-            "name": "fullname",
+            "name": "نام مشتری عادی",
             "dataType": "string",
             "description": "نام مشتری عادی",
             "sourceColumn": "fullname"
@@ -7267,25 +7267,25 @@
             "sourceColumn": "telno"
           },
           {
-            "name": "brand",
+            "name": "مارک دستگاه",
             "dataType": "string",
             "description": "مارک دستگاه ",
             "sourceColumn": "brand"
           },
           {
-            "name": "app",
+            "name": "نوع دستگاه",
             "dataType": "string",
             "description": "نوع دستگاه",
             "sourceColumn": "app"
           },
           {
-            "name": "model",
+            "name": "مدل دستگاه",
             "dataType": "string",
             "description": "مدل دستگاه",
             "sourceColumn": "model"
           },
           {
-            "name": "serialno",
+            "name": "شماره سریال دستگاه",
             "dataType": "string",
             "description": "شماره سریال دستگاه",
             "sourceColumn": "serialno"
@@ -7311,13 +7311,13 @@
             "sourceColumn": "eastimation"
           },
           {
-            "name": "repairaccepted",
+            "name": "عدم انصراف مشتری",
             "dataType": "boolean",
             "description": "عدم انصراف مشتری",
             "sourceColumn": "repairaccepted"
           },
           {
-            "name": "repairrejected",
+            "name": "انصراف مشتری",
             "dataType": "boolean",
             "description": "انصراف مشتری",
             "sourceColumn": "repairrejected"
@@ -7338,13 +7338,13 @@
             "sourceColumn": "noproblem"
           },
           {
-            "name": "unrepairable",
+            "name": "غیر قابل سرویس",
             "dataType": "boolean",
             "description": "غیر قابل تعمیر",
             "sourceColumn": "unrepairable"
           },
           {
-            "name": "repairable",
+            "name": "قابل سرویس",
             "dataType": "boolean",
             "description": "قابل سرویس",
             "sourceColumn": "repairable"
@@ -8295,7 +8295,7 @@
             "sourceColumn": "regpcode"
           },
           {
-            "name": "regname",
+            "name": "نام صادرکننده",
             "dataType": "string",
             "description": "نام صادرکننده",
             "sourceColumn": "regname"
@@ -8397,7 +8397,7 @@
             "sourceColumn": "statename"
           },
           {
-            "name": "cityname",
+            "name": "شهر",
             "dataType": "string",
             "description": "شهر ",
             "sourceColumn": "cityname"
@@ -8822,6 +8822,13 @@
         "name": "01733076-0bd4-49fe-8037-139d060a05af",
         "fromTable": "VN Fact_int_AVG_more5",
         "fromColumn": "VocherDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
+      },
+      {
+        "name": "0d7cc679-167e-4074-afc2-58187a3abd62",
+        "fromTable": "sorooshan servicce_acceptance",
+        "fromColumn": "تاریخ شمسی پذیرش",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
       }
