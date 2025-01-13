@@ -7313,11 +7313,13 @@
           {
             "name": "repairaccepted",
             "dataType": "boolean",
+            "description": "عدم انصراف مشتری",
             "sourceColumn": "repairaccepted"
           },
           {
             "name": "repairrejected",
             "dataType": "boolean",
+            "description": "انصراف مشتری",
             "sourceColumn": "repairrejected"
           },
           {
@@ -7338,12 +7340,13 @@
           {
             "name": "unrepairable",
             "dataType": "boolean",
+            "description": "غیر قابل تعمیر",
             "sourceColumn": "unrepairable"
           },
           {
             "name": "repairable",
             "dataType": "boolean",
-            "description": "غیر قابل سرویس",
+            "description": "قابل سرویس",
             "sourceColumn": "repairable"
           },
           {
