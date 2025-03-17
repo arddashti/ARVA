@@ -1712,6 +1712,20 @@
             "dataType": "int64",
             "description": "برای مشخص شدن  تخفیفات نقدی و جایزه ای که 0 برای تخفیفات نقدی و 1  برای کالای رایگان استflag",
             "sourceColumn": "PrizeType"
+          },
+          {
+            "type": "calculated",
+            "name": "002_tarh taviz",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "description": "طرح تعویض",
+            "expression": [
+              " ",
+              "    if(CONTAINSSTRING('VN Fact_Sale'[PaymentUsance], \"طرح تعویض\"),1,0)",
+              "",
+              "-- طرح تعویض",
+              ""
+            ]
           }
         ],
         "partitions": [
@@ -2517,6 +2531,17 @@
               "--- نسبت برگشتی ناخالص به فروش ناخالص و کالای رایگان "
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "049_Tedad tarh taviz",
+            "description": "تعداد طرح تعویض",
+            "expression": [
+              "",
+              "    ",
+              "   CALCULATE(COUNT('VN Dim_Goods'[GoodsCode]) , FILTER('VN Fact_Sale','VN Fact_Sale'[002_tarh taviz] =1))",
+              "",
+              "--تعداد طرح تعویض"
+            ]
           }
         ]
       },
