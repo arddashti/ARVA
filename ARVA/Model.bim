@@ -2538,7 +2538,7 @@
             "expression": [
               "",
               "    ",
-              "   CALCULATE(COUNT('VN Dim_Goods'[GoodsCode]) , FILTER('VN Fact_Sale','VN Fact_Sale'[002_tarh taviz] =1))",
+              "   CALCULATE(COUNT('VN Fact_Sale'[GoodsRef]) , FILTER('VN Fact_Sale','VN Fact_Sale'[002_tarh taviz] =1))",
               "",
               "--تعداد طرح تعویض"
             ]
