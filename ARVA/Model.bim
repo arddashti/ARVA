@@ -1663,46 +1663,6 @@
             "sourceColumn": "ExitRef_status"
           },
           {
-            "type": "calculated",
-            "name": "033_MiladiSalesDate",
-            "dataType": "string",
-            "isDataTypeInferred": true,
-            "description": "تبدیل تاریخ فاکتور به میلادی",
-            "expression": [
-              "",
-              "      FORMAT( LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Jalali_1], 'VN Fact_Sale'[SaleDate]) , \"yyyy/mm/dd\")",
-              "",
-              "--  تبدیل تاریخ فاکتور به میلادی برای محاسبه تفاضل دو تاریخ )"
-            ]
-          },
-          {
-            "type": "calculated",
-            "name": "034_MiladiDraftDate",
-            "dataType": "string",
-            "isDataTypeInferred": true,
-            "description": "تبدیل تاریخ حواله به میلادی ",
-            "expression": [
-              "",
-              "                  FORMAT( LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Jalali_1], 'VN Fact_Sale'[DraftDate]) , \"yyyy/mm/dd\")",
-              "",
-              "",
-              "-- تبدیل تاریخ حواله به میلادی "
-            ]
-          },
-          {
-            "type": "calculated",
-            "name": "035_ DateDiff (draft and sale)",
-            "dataType": "int64",
-            "isDataTypeInferred": true,
-            "description": "تفاضل بین تاریخ حواله و تاریخ فاکتور ",
-            "expression": [
-              " ",
-              "                    DATEDIFF( 'VN Fact_Sale'[034_MiladiDraftDate],'VN Fact_Sale'[033_MiladiSalesDate],DAY)",
-              "",
-              "--تفاضل بین تاریخ حواله و تاریخ فاکتور )"
-            ]
-          },
-          {
             "name": "unic_code",
             "dataType": "string",
             "sourceColumn": "unic_code"
@@ -1726,6 +1686,21 @@
               "-- طرح تعویض",
               ""
             ]
+          },
+          {
+            "name": "033_MiladiSalesDate",
+            "dataType": "dateTime",
+            "sourceColumn": "033_MiladiSalesDate"
+          },
+          {
+            "name": "034_MiladiDraftDate",
+            "dataType": "dateTime",
+            "sourceColumn": "034_MiladiDraftDate"
+          },
+          {
+            "name": "035_ DateDiff (draft and sale)",
+            "dataType": "int64",
+            "sourceColumn": "035_ DateDiff (draft and sale)"
           }
         ],
         "partitions": [
@@ -1739,9 +1714,10 @@
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    VN_Fact_Sale = Source{[Schema=\"VN\",Item=\"Fact_Sale\"]}[Data],",
                 "    #\"Replaced Value\" = Table.ReplaceValue(VN_Fact_Sale,\"ي\",\"ی\",Replacer.ReplaceText,{\"OrderType\", \"DisType\", \"PaymentUsance\"}),",
-                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"ي\",\"ی\",Replacer.ReplaceText,{\"type\", \"ExitRef_status\"})",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"ي\",\"ی\",Replacer.ReplaceText,{\"type\", \"ExitRef_status\"}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Replaced Value1\",{{\"033_MiladiSalesDate\", type date}, {\"034_MiladiDraftDate\", type date}})",
                 "in",
-                "    #\"Replaced Value1\""
+                "    #\"Changed Type\""
               ]
             }
           }
