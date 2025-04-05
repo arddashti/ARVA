@@ -20,8 +20,6 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
-          "kind": "SQL",
-          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -113,7 +111,7 @@
             "name": "Is Holiday",
             "dataType": "string",
             "description": [
-              "جدول مشخص کننده روزهای تعطیل",
+              "جدول مشخص کننده روزهای تعطیل\r",
               "این جدول دارای 3 وضعیت است اولی 1 برای روز های غیر تعطیل و دومی 0 برای روزهای تعطیل و 0.5 برای روزهای پنجشنبه"
             ],
             "sourceColumn": "Is Holiday"
@@ -7099,8 +7097,43 @@
         ]
       },
       {
+        "name": "sorooshan servicce_acceptance_duration",
+        "columns": [
+          {
+            "name": "cncode",
+            "dataType": "string",
+            "sourceColumn": "cncode"
+          },
+          {
+            "name": "repair_duration",
+            "dataType": "double",
+            "sourceColumn": "repair_duration"
+          },
+          {
+            "name": "service_status",
+            "dataType": "string",
+            "sourceColumn": "service_status"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    sorooshan_servicce_acceptance_duration = Source{[Schema=\"sorooshan\",Item=\"servicce_acceptance_duration\"]}[Data]",
+                "in",
+                "    sorooshan_servicce_acceptance_duration"
+              ]
+            }
+          }
+        ]
+      },
+      {
         "name": "sorooshan servicce_acceptance",
-        "description": "جدول پذیرش خدمات",
         "columns": [
           {
             "name": "cnindex",
@@ -7108,15 +7141,13 @@
             "sourceColumn": "cnindex"
           },
           {
-            "name": "شماره ثبت پذیرش",
+            "name": "cncode",
             "dataType": "string",
-            "description": "شماره ثبت پذیرش",
             "sourceColumn": "cncode"
           },
           {
-            "name": "شماره پذیرش",
+            "name": "cno",
             "dataType": "double",
-            "description": "شماره پذیرش",
             "sourceColumn": "cno"
           },
           {
@@ -7135,15 +7166,13 @@
             "sourceColumn": "draftname"
           },
           {
-            "name": "تاریخ شمسی پذیرش",
+            "name": "s_enterdate",
             "dataType": "string",
-            "description": "تاریخ شمسی پذیرش",
             "sourceColumn": "s_enterdate"
           },
           {
-            "name": "تاریخ میلادی پذیرش",
+            "name": "m_enterdate",
             "dataType": "dateTime",
-            "description": "تاریخ میلادی پذیرش",
             "sourceColumn": "m_enterdate"
           },
           {
@@ -7162,9 +7191,8 @@
             "sourceColumn": "s_repairdate"
           },
           {
-            "name": "میلادی اتمام سرویس",
+            "name": "m_repairdate",
             "dataType": "dateTime",
-            "description": "میلادی اتمام سرویس",
             "sourceColumn": "m_repairdate"
           },
           {
@@ -7178,9 +7206,8 @@
             "sourceColumn": "m_exitdate"
           },
           {
-            "name": "نام مشتری عادی",
+            "name": "fullname",
             "dataType": "string",
-            "description": "نام مشتری عادی",
             "sourceColumn": "fullname"
           },
           {
@@ -7269,27 +7296,23 @@
             "sourceColumn": "telno"
           },
           {
-            "name": "مارک دستگاه",
+            "name": "brand",
             "dataType": "string",
-            "description": "مارک دستگاه ",
             "sourceColumn": "brand"
           },
           {
-            "name": "نوع دستگاه",
+            "name": "app",
             "dataType": "string",
-            "description": "نوع دستگاه",
             "sourceColumn": "app"
           },
           {
-            "name": "مدل دستگاه",
+            "name": "model",
             "dataType": "string",
-            "description": "مدل دستگاه",
             "sourceColumn": "model"
           },
           {
-            "name": "شماره سریال دستگاه",
+            "name": "serialno",
             "dataType": "string",
-            "description": "شماره سریال دستگاه",
             "sourceColumn": "serialno"
           },
           {
@@ -7313,15 +7336,13 @@
             "sourceColumn": "eastimation"
           },
           {
-            "name": "عدم انصراف مشتری",
+            "name": "repairaccepted",
             "dataType": "boolean",
-            "description": "عدم انصراف مشتری",
             "sourceColumn": "repairaccepted"
           },
           {
-            "name": "انصراف مشتری",
+            "name": "repairrejected",
             "dataType": "boolean",
-            "description": "انصراف مشتری",
             "sourceColumn": "repairrejected"
           },
           {
@@ -7340,15 +7361,13 @@
             "sourceColumn": "noproblem"
           },
           {
-            "name": "غیر قابل سرویس",
+            "name": "unrepairable",
             "dataType": "boolean",
-            "description": "غیر قابل تعمیر",
             "sourceColumn": "unrepairable"
           },
           {
-            "name": "قابل سرویس",
+            "name": "repairable",
             "dataType": "boolean",
-            "description": "قابل سرویس",
             "sourceColumn": "repairable"
           },
           {
@@ -8297,9 +8316,8 @@
             "sourceColumn": "regpcode"
           },
           {
-            "name": "نام صادرکننده",
+            "name": "regname",
             "dataType": "string",
-            "description": "نام صادرکننده",
             "sourceColumn": "regname"
           },
           {
@@ -8395,14 +8413,27 @@
           {
             "name": "statename",
             "dataType": "string",
-            "description": "استان ",
             "sourceColumn": "statename"
           },
           {
-            "name": "شهر",
+            "name": "cityname",
             "dataType": "string",
-            "description": "شهر ",
             "sourceColumn": "cityname"
+          },
+          {
+            "name": "entertime",
+            "dataType": "string",
+            "sourceColumn": "entertime"
+          },
+          {
+            "name": "repairtime",
+            "dataType": "string",
+            "sourceColumn": "repairtime"
+          },
+          {
+            "name": "exittime",
+            "dataType": "string",
+            "sourceColumn": "exittime"
           }
         ],
         "partitions": [
@@ -8828,11 +8859,11 @@
         "toColumn": "Jalali_1"
       },
       {
-        "name": "0d7cc679-167e-4074-afc2-58187a3abd62",
+        "name": "3c0a8e08-5b43-4ec1-ab1d-48b9e575f6b0",
         "fromTable": "sorooshan servicce_acceptance",
-        "fromColumn": "تاریخ شمسی پذیرش",
-        "toTable": "BI DIM_DATE",
-        "toColumn": "Jalali_1"
+        "fromColumn": "cncode",
+        "toTable": "sorooshan servicce_acceptance_duration",
+        "toColumn": "cncode"
       }
     ],
     "roles": [
