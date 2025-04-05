@@ -20,6 +20,8 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
