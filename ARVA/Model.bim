@@ -8466,6 +8466,17 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "002_ AVG_Repair_Duration",
+            "description": "میانگین زمان پذیرش تا تعمیر ",
+            "expression": [
+              "",
+              "     AVERAGEA('sorooshan servicce_acceptance'[001_ RepairDuration])",
+              "-- میانگین زمان پذیرش تا تعمیر "
+            ]
+          }
         ]
       }
     ],
