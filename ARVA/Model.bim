@@ -8449,6 +8449,15 @@
               "                                  'sorooshan servicce_acceptance'[cncode])",
               ""
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "002_ repairDuratin (Hour)",
+            "dataType": "double",
+            "expression": [
+              "",
+              "                                         'sorooshan servicce_acceptance'[001_ RepairDuration] /3600"
+            ]
           }
         ],
         "partitions": [
@@ -8473,8 +8482,9 @@
             "description": "میانگین زمان پذیرش تا تعمیر ",
             "expression": [
               "",
-              "     AVERAGEA('sorooshan servicce_acceptance'[001_ RepairDuration])",
-              "-- میانگین زمان پذیرش تا تعمیر "
+              "     AVERAGEA('sorooshan servicce_acceptance'[002_ repairDuratin (Hour)])",
+              "",
+              "-- میانگین زمان پذیرش تا تعمیر )"
             ]
           }
         ]
