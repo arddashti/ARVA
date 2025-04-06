@@ -8492,7 +8492,7 @@
             "name": "003_  count accept",
             "description": " تعداد پذیرش ",
             "expression": [
-              "  DISTINCTCOUNT('sorooshan servicce_acceptance'[cnindex])",
+              "  DISTINCTCOUNT('sorooshan servicce_acceptance'[cncode])",
               "",
               "--- تعداد پذیرش "
             ]
