@@ -8436,6 +8436,19 @@
             "name": "exittime",
             "dataType": "string",
             "sourceColumn": "exittime"
+          },
+          {
+            "type": "calculated",
+            "name": "001_ RepairDuration",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              " LOOKUPVALUE('sorooshan servicce_acceptance_duration'[repair_duration] ,'sorooshan servicce_acceptance_duration'[cncode],",
+              "                  ",
+              "                                  'sorooshan servicce_acceptance'[cncode])",
+              ""
+            ]
           }
         ],
         "partitions": [
