@@ -8890,6 +8890,13 @@
         "fromColumn": "cncode",
         "toTable": "sorooshan servicce_acceptance_duration",
         "toColumn": "cncode"
+      },
+      {
+        "name": "bb7437fa-391b-4204-8bd9-48bdfa38f93c",
+        "fromTable": "sorooshan servicce_acceptance",
+        "fromColumn": "s_enterdate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "roles": [
