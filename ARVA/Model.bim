@@ -7140,7 +7140,8 @@
           {
             "name": "cnindex",
             "dataType": "int64",
-            "sourceColumn": "cnindex"
+            "sourceColumn": "cnindex",
+            "formatString": "0"
           },
           {
             "name": "cncode",
@@ -8485,6 +8486,15 @@
               "     AVERAGEA('sorooshan servicce_acceptance'[002_ repairDuratin (Hour)])",
               "",
               "-- میانگین زمان پذیرش تا تعمیر )"
+            ]
+          },
+          {
+            "name": "003_  count accept",
+            "description": " تعداد پذیرش ",
+            "expression": [
+              "  DISTINCTCOUNT('sorooshan servicce_acceptance'[cnindex])",
+              "",
+              "--- تعداد پذیرش "
             ]
           }
         ]
