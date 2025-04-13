@@ -8444,6 +8444,16 @@
             "name": "service_status",
             "dataType": "string",
             "sourceColumn": "service_status"
+          },
+          {
+            "type": "calculated",
+            "name": "001_Repair Duration (Hour)",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": [
+              "  'sorooshan servicce_acceptance'[repair_duration] /3600",
+              ""
+            ]
           }
         ],
         "partitions": [
@@ -8460,6 +8470,17 @@
                 "    sorooshan_servicce_acceptance"
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "001_Avg_Repair Duration",
+            "description": "محاسبه میانگین مدت زمان تعمیر ",
+            "expression": [
+              " AVERAGEA('sorooshan servicce_acceptance'[001_Repair Duration (Hour)])",
+              "",
+              "       -- محاسبه میانگین مدت زمان تعمیر "
+            ]
           }
         ]
       }
