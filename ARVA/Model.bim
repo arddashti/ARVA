@@ -20,8 +20,6 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
-          "kind": "SQL",
-          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -7140,8 +7138,7 @@
           {
             "name": "cnindex",
             "dataType": "int64",
-            "sourceColumn": "cnindex",
-            "formatString": "0"
+            "sourceColumn": "cnindex"
           },
           {
             "name": "cncode",
@@ -8439,26 +8436,14 @@
             "sourceColumn": "exittime"
           },
           {
-            "type": "calculated",
-            "name": "001_ RepairDuration",
-            "dataType": "double",
-            "isDataTypeInferred": true,
-            "expression": [
-              " ",
-              " LOOKUPVALUE('sorooshan servicce_acceptance_duration'[repair_duration] ,'sorooshan servicce_acceptance_duration'[cncode],",
-              "                  ",
-              "                                  'sorooshan servicce_acceptance'[cncode])",
-              ""
-            ]
+            "name": "repair_duration",
+            "dataType": "string",
+            "sourceColumn": "repair_duration"
           },
           {
-            "type": "calculated",
-            "name": "002_ repairDuratin (Hour)",
-            "dataType": "double",
-            "expression": [
-              "",
-              "                                         'sorooshan servicce_acceptance'[001_ RepairDuration] /3600"
-            ]
+            "name": "service_status",
+            "dataType": "string",
+            "sourceColumn": "service_status"
           }
         ],
         "partitions": [
@@ -8475,27 +8460,6 @@
                 "    sorooshan_servicce_acceptance"
               ]
             }
-          }
-        ],
-        "measures": [
-          {
-            "name": "002_ AVG_Repair_Duration",
-            "description": "میانگین زمان پذیرش تا تعمیر ",
-            "expression": [
-              "",
-              "     AVERAGEA('sorooshan servicce_acceptance'[002_ repairDuratin (Hour)])",
-              "",
-              "-- میانگین زمان پذیرش تا تعمیر )"
-            ]
-          },
-          {
-            "name": "003_  count accept",
-            "description": " تعداد پذیرش ",
-            "expression": [
-              "  DISTINCTCOUNT('sorooshan servicce_acceptance'[cncode])",
-              "",
-              "--- تعداد پذیرش "
-            ]
           }
         ]
       }
@@ -8905,14 +8869,7 @@
         "toColumn": "Jalali_1"
       },
       {
-        "name": "3c0a8e08-5b43-4ec1-ab1d-48b9e575f6b0",
-        "fromTable": "sorooshan servicce_acceptance",
-        "fromColumn": "cncode",
-        "toTable": "sorooshan servicce_acceptance_duration",
-        "toColumn": "cncode"
-      },
-      {
-        "name": "bb7437fa-391b-4204-8bd9-48bdfa38f93c",
+        "name": "b42f7ff7-a90a-4e2f-bc37-854152fc7578",
         "fromTable": "sorooshan servicce_acceptance",
         "fromColumn": "s_enterdate",
         "toTable": "BI DIM_DATE",
