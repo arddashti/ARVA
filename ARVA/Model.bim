@@ -8479,9 +8479,11 @@
             "name": "001_Avg_Repair Duration",
             "description": "محاسبه میانگین مدت زمان تعمیر ",
             "expression": [
-              " AVERAGEA('sorooshan servicce_acceptance'[001_Repair Duration (Hour)])",
+              " ",
+              "        CALCULATE(AVERAGEA('sorooshan servicce_acceptance'[001_Repair Duration (Hour)] ),",
+              "                                     FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[repairrejected]<>TRUE()))",
               "",
-              "       -- محاسبه میانگین مدت زمان تعمیر "
+              "       -- محاسبه میانگین مدت زمان تعمیر ))"
             ]
           },
           {
@@ -8489,7 +8491,8 @@
             "description": "تعداد پذیرش",
             "expression": [
               "",
-              "               DISTINCTCOUNT('sorooshan servicce_acceptance'[cncode])",
+              "              CALCULATE( DISTINCTCOUNT('sorooshan servicce_acceptance'[cncode]) ,",
+              "                         FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[repairrejected] <>TRUE()))",
               "     -- تعداد پذیرش"
             ]
           }
