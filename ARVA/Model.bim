@@ -113,7 +113,7 @@
             "name": "Is Holiday",
             "dataType": "string",
             "description": [
-              "جدول مشخص کننده روزهای تعطیل\r",
+              "جدول مشخص کننده روزهای تعطیل",
               "این جدول دارای 3 وضعیت است اولی 1 برای روز های غیر تعطیل و دومی 0 برای روزهای تعطیل و 0.5 برای روزهای پنجشنبه"
             ],
             "sourceColumn": "Is Holiday"
@@ -4236,6 +4236,11 @@
             "name": "age_cat_No",
             "dataType": "string",
             "sourceColumn": "age_cat_No"
+          },
+          {
+            "name": "national_code",
+            "dataType": "string",
+            "sourceColumn": "national_code"
           }
         ],
         "partitions": [
@@ -7099,58 +7104,12 @@
         ]
       },
       {
-        "name": "sorooshan servicce_acceptance_duration",
-        "columns": [
-          {
-            "name": "cncode",
-            "dataType": "string",
-            "sourceColumn": "cncode"
-          },
-          {
-            "name": "repair_duration",
-            "dataType": "double",
-            "sourceColumn": "repair_duration"
-          },
-          {
-            "name": "service_status",
-            "dataType": "string",
-            "sourceColumn": "service_status"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Partition",
-            "dataView": "full",
-            "source": {
-              "type": "m",
-              "expression": [
-                "let",
-                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    sorooshan_servicce_acceptance_duration = Source{[Schema=\"sorooshan\",Item=\"servicce_acceptance_duration\"]}[Data]",
-                "in",
-                "    sorooshan_servicce_acceptance_duration"
-              ]
-            }
-          }
-        ]
-      },
-      {
         "name": "sorooshan servicce_acceptance",
         "columns": [
           {
             "name": "cnindex",
             "dataType": "int64",
             "sourceColumn": "cnindex"
-          },
-          {
-            "name": "cncode",
-            "dataType": "string",
-            "sourceColumn": "cncode"
-          },
-          {
-            "name": "cno",
-            "dataType": "double",
-            "sourceColumn": "cno"
           },
           {
             "name": "drcode",
@@ -7168,16 +7127,6 @@
             "sourceColumn": "draftname"
           },
           {
-            "name": "s_enterdate",
-            "dataType": "string",
-            "sourceColumn": "s_enterdate"
-          },
-          {
-            "name": "m_enterdate",
-            "dataType": "dateTime",
-            "sourceColumn": "m_enterdate"
-          },
-          {
             "name": "s_eastdate",
             "dataType": "string",
             "sourceColumn": "s_eastdate"
@@ -7193,11 +7142,6 @@
             "sourceColumn": "s_repairdate"
           },
           {
-            "name": "m_repairdate",
-            "dataType": "dateTime",
-            "sourceColumn": "m_repairdate"
-          },
-          {
             "name": "s_exitdate",
             "dataType": "string",
             "sourceColumn": "s_exitdate"
@@ -7206,11 +7150,6 @@
             "name": "m_exitdate",
             "dataType": "dateTime",
             "sourceColumn": "m_exitdate"
-          },
-          {
-            "name": "fullname",
-            "dataType": "string",
-            "sourceColumn": "fullname"
           },
           {
             "name": "accountname",
@@ -7298,26 +7237,6 @@
             "sourceColumn": "telno"
           },
           {
-            "name": "brand",
-            "dataType": "string",
-            "sourceColumn": "brand"
-          },
-          {
-            "name": "app",
-            "dataType": "string",
-            "sourceColumn": "app"
-          },
-          {
-            "name": "model",
-            "dataType": "string",
-            "sourceColumn": "model"
-          },
-          {
-            "name": "serialno",
-            "dataType": "string",
-            "sourceColumn": "serialno"
-          },
-          {
             "name": "prediag",
             "dataType": "string",
             "sourceColumn": "prediag"
@@ -7338,16 +7257,6 @@
             "sourceColumn": "eastimation"
           },
           {
-            "name": "repairaccepted",
-            "dataType": "boolean",
-            "sourceColumn": "repairaccepted"
-          },
-          {
-            "name": "repairrejected",
-            "dataType": "boolean",
-            "sourceColumn": "repairrejected"
-          },
-          {
             "name": "sparewaiting",
             "dataType": "boolean",
             "sourceColumn": "sparewaiting"
@@ -7361,16 +7270,6 @@
             "name": "noproblem",
             "dataType": "boolean",
             "sourceColumn": "noproblem"
-          },
-          {
-            "name": "unrepairable",
-            "dataType": "boolean",
-            "sourceColumn": "unrepairable"
-          },
-          {
-            "name": "repairable",
-            "dataType": "boolean",
-            "sourceColumn": "repairable"
           },
           {
             "name": "cpartsdelivery",
@@ -8318,11 +8217,6 @@
             "sourceColumn": "regpcode"
           },
           {
-            "name": "regname",
-            "dataType": "string",
-            "sourceColumn": "regname"
-          },
-          {
             "name": "incacode",
             "dataType": "string",
             "sourceColumn": "incacode"
@@ -8418,6 +8312,81 @@
             "sourceColumn": "statename"
           },
           {
+            "name": "cncode",
+            "dataType": "string",
+            "sourceColumn": "cncode"
+          },
+          {
+            "name": "cno",
+            "dataType": "double",
+            "sourceColumn": "cno"
+          },
+          {
+            "name": "s_enterdate",
+            "dataType": "string",
+            "sourceColumn": "s_enterdate"
+          },
+          {
+            "name": "m_enterdate",
+            "dataType": "dateTime",
+            "sourceColumn": "m_enterdate"
+          },
+          {
+            "name": "m_repairdate",
+            "dataType": "dateTime",
+            "sourceColumn": "m_repairdate"
+          },
+          {
+            "name": "fullname",
+            "dataType": "string",
+            "sourceColumn": "fullname"
+          },
+          {
+            "name": "brand",
+            "dataType": "string",
+            "sourceColumn": "brand"
+          },
+          {
+            "name": "app",
+            "dataType": "string",
+            "sourceColumn": "app"
+          },
+          {
+            "name": "model",
+            "dataType": "string",
+            "sourceColumn": "model"
+          },
+          {
+            "name": "serialno",
+            "dataType": "string",
+            "sourceColumn": "serialno"
+          },
+          {
+            "name": "repairaccepted",
+            "dataType": "boolean",
+            "sourceColumn": "repairaccepted"
+          },
+          {
+            "name": "repairrejected",
+            "dataType": "boolean",
+            "sourceColumn": "repairrejected"
+          },
+          {
+            "name": "unrepairable",
+            "dataType": "boolean",
+            "sourceColumn": "unrepairable"
+          },
+          {
+            "name": "repairable",
+            "dataType": "boolean",
+            "sourceColumn": "repairable"
+          },
+          {
+            "name": "regname",
+            "dataType": "string",
+            "sourceColumn": "regname"
+          },
+          {
             "name": "cityname",
             "dataType": "string",
             "sourceColumn": "cityname"
@@ -8495,6 +8464,120 @@
               "                         FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[repairrejected] <>TRUE()))",
               "     -- تعداد پذیرش"
             ]
+          }
+        ]
+      },
+      {
+        "name": "sorooshan servicce_acceptance_duration",
+        "columns": [
+          {
+            "name": "cncode",
+            "dataType": "string",
+            "sourceColumn": "cncode"
+          },
+          {
+            "name": "repair_duration",
+            "dataType": "double",
+            "sourceColumn": "repair_duration"
+          },
+          {
+            "name": "service_status",
+            "dataType": "string",
+            "sourceColumn": "service_status"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    sorooshan_servicce_acceptance_duration = Source{[Schema=\"sorooshan\",Item=\"servicce_acceptance_duration\"]}[Data]",
+                "in",
+                "    sorooshan_servicce_acceptance_duration"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "NL personnel_duration_presence",
+        "columns": [
+          {
+            "name": "national_code",
+            "dataType": "int64",
+            "sourceColumn": "national_code"
+          },
+          {
+            "name": "company_name",
+            "dataType": "string",
+            "sourceColumn": "company_name"
+          },
+          {
+            "name": "duration_presence",
+            "dataType": "int64",
+            "sourceColumn": "duration_presence"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_personnel_duration_presence = Source{[Schema=\"NL\",Item=\"personnel_duration_presence\"]}[Data]",
+                "in",
+                "    NL_personnel_duration_presence"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "NL DIM_personnel_HR",
+        "columns": [
+          {
+            "name": "personnel number",
+            "dataType": "string",
+            "sourceColumn": "personnel number"
+          },
+          {
+            "name": "name",
+            "dataType": "string",
+            "sourceColumn": "name"
+          },
+          {
+            "name": "family name",
+            "dataType": "string",
+            "sourceColumn": "family name"
+          },
+          {
+            "name": "national_code",
+            "dataType": "string",
+            "sourceColumn": "national_code"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_DIM_personnel_HR = Source{[Schema=\"NL\",Item=\"DIM_personnel_HR\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_DIM_personnel_HR,\"ي\",\"ی\",Replacer.ReplaceText,{\"name\", \"family name\"})",
+                "in",
+                "    #\"Replaced Value\""
+              ]
+            }
           }
         ]
       }
@@ -8909,6 +8992,15 @@
         "fromColumn": "s_enterdate",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "26f2b557-2f1a-40f0-920c-c3cb842fa68d",
+        "toCardinality": "many",
+        "fromTable": "NL personnel_duration_presence",
+        "fromColumn": "national_code",
+        "toTable": "NL DIM_personnel_HR",
+        "toColumn": "national_code",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
