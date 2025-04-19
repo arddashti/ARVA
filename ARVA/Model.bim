@@ -4268,8 +4268,8 @@
             "description": "تعداد پرسنل ",
             "expression": [
               " ",
-              "                                       DISTINCTCOUNT('NL personnel_HR'[personnel number])",
-              "                                       -- تعداد پرسنل "
+              "                                       DISTINCTCOUNT('NL personnel_HR'[personnel number]",
+              "                                       -- تعداد پرسنل )"
             ]
           },
           {
@@ -9008,6 +9008,14 @@
         "fromColumn": "personnel number",
         "toTable": "NL personnel_HR",
         "toColumn": "personnel number"
+      },
+      {
+        "name": "73a49a8e-cf2e-489a-924b-1ada03431286",
+        "fromTable": "NL personnel_duration_presence",
+        "fromColumn": "national_code",
+        "toTable": "NL personnel_HR",
+        "toColumn": "national_code",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
