@@ -113,7 +113,7 @@
             "name": "Is Holiday",
             "dataType": "string",
             "description": [
-              "جدول مشخص کننده روزهای تعطیل",
+              "جدول مشخص کننده روزهای تعطیل\r",
               "این جدول دارای 3 وضعیت است اولی 1 برای روز های غیر تعطیل و دومی 0 برای روزهای تعطیل و 0.5 برای روزهای پنجشنبه"
             ],
             "sourceColumn": "Is Holiday"
@@ -9001,6 +9001,13 @@
         "toTable": "NL DIM_personnel_HR",
         "toColumn": "national_code",
         "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "2e6e4fce-e399-431d-b976-5a8385cbac13",
+        "fromTable": "NL DIM_personnel_HR",
+        "fromColumn": "personnel number",
+        "toTable": "NL personnel_HR",
+        "toColumn": "personnel number"
       }
     ],
     "roles": [
