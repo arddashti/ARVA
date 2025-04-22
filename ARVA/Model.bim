@@ -8548,7 +8548,8 @@
               "",
               "  sum('NL personnel_duration_presence'[duration_presence])/30",
               "-- میزان  سابقه حضور در سازمان"
-            ]
+            ],
+            "formatString": "0"
           }
         ]
       },
