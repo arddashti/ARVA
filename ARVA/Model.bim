@@ -4087,7 +4087,7 @@
         "columns": [
           {
             "name": "personnel number",
-            "dataType": "string",
+            "dataType": "int64",
             "sourceColumn": "personnel number"
           },
           {
@@ -4268,7 +4268,7 @@
             "description": "تعداد پرسنل ",
             "expression": [
               " ",
-              "                                       DISTINCTCOUNT('NL personnel_HR'[personnel number]",
+              "                                       DISTINCTCOUNT('NL personnel_HR'[personnel number])",
               "                                       -- تعداد پرسنل )"
             ]
           },
@@ -8536,6 +8536,20 @@
                 "    NL_personnel_duration_presence"
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "001_TotalDaysInHolding",
+            "description": " میزان  سابقه حضور در سازمان",
+            "expression": [
+              " ",
+              "                       sum('NL personnel_duration_presence'[duration_presence]) -",
+              "                   CALCULATE(SUM('NL personnel_duration_presence'[duration_presence]) , ",
+              "                                     'NL personnel_duration_presence'[company_name] = \"shared_time\")",
+              "",
+              "-- میزان  سابقه حضور در سازمان"
+            ]
           }
         ]
       },
