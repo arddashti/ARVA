@@ -4303,6 +4303,7 @@
           },
           {
             "name": "004_ExitRate",
+            "description": "نرخ خروج پرسنل ",
             "expression": [
               " ",
               "        DIVIDE(   CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
