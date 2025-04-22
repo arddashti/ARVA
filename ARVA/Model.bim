@@ -4328,6 +4328,16 @@
               "                                             'NL personnel_HR_history'[type]=\"استخدام\"))",
               "-- تعداد پرسنل استخدامی )"
             ]
+          },
+          {
+            "name": "006_ExitCount",
+            "description": "تعداد خروج ",
+            "expression": [
+              " CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
+              "         ",
+              "                              FILTER('NL personnel_HR_history',  'NL personnel_HR_history'[type]=\"خروج\")",
+              "--تعداد خروج )"
+            ]
           }
         ]
       },
