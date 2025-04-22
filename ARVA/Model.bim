@@ -4335,7 +4335,7 @@
             "expression": [
               " CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
               "         ",
-              "                              FILTER('NL personnel_HR_history',  'NL personnel_HR_history'[type]=\"خروج\")",
+              "                              FILTER('NL personnel_HR_history',  'NL personnel_HR_history'[type]=\"خروج\"))",
               "--تعداد خروج )"
             ]
           }
