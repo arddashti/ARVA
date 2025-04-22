@@ -8541,13 +8541,12 @@
         "measures": [
           {
             "name": "001_TotalDaysInHolding",
-            "description": " میزان  سابقه حضور در سازمان",
+            "description": " (ماه )میزان  سابقه حضور در سازمان",
             "expression": [
               " ",
-              "                       sum('NL personnel_duration_presence'[duration_presence]) -",
-              "                   CALCULATE(SUM('NL personnel_duration_presence'[duration_presence]) , ",
-              "                                     'NL personnel_duration_presence'[company_name] = \"shared_time\")",
+              "             ",
               "",
+              "  sum('NL personnel_duration_presence'[duration_presence])/12",
               "-- میزان  سابقه حضور در سازمان"
             ]
           }
