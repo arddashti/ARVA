@@ -4317,6 +4317,17 @@
               "                             ",
               ""
             ]
+          },
+          {
+            "name": "005_ CountPersonelInfirtPeriod",
+            "description": "تعداد پرسنل استخدامی ",
+            "expression": [
+              " ",
+              "           CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
+              "                               FILTER('NL personnel_HR_history', ",
+              "                                             'NL personnel_HR_history'[type]=\"استخدام\"))",
+              "-- تعداد پرسنل استخدامی )"
+            ]
           }
         ]
       },
