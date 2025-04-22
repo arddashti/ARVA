@@ -4276,6 +4276,7 @@
           },
           {
             "name": "002_ CountPersonelInfirtPeriod",
+            "description": " تعداد پرسنل اول دوره )",
             "expression": [
               " ",
               "           CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
@@ -4286,6 +4287,7 @@
           },
           {
             "name": "003_ CountPersonelendofPeriod",
+            "description": "تعداد پرسنل آخر دوره ",
             "expression": [
               " ",
               "              CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
