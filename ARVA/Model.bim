@@ -20,8 +20,6 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
-          "kind": "SQL",
-          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -4087,7 +4085,7 @@
         "columns": [
           {
             "name": "personnel number",
-            "dataType": "int64",
+            "dataType": "string",
             "sourceColumn": "personnel number"
           },
           {
@@ -4241,6 +4239,11 @@
             "name": "national_code",
             "dataType": "string",
             "sourceColumn": "national_code"
+          },
+          {
+            "name": "marital_status",
+            "dataType": "string",
+            "sourceColumn": "marital_status"
           }
         ],
         "partitions": [
@@ -4265,7 +4268,6 @@
         "measures": [
           {
             "name": "001_PersonelCount",
-            "description": "تعداد پرسنل ",
             "expression": [
               " ",
               "                                       DISTINCTCOUNT('NL personnel_HR'[personnel number])",
@@ -4274,7 +4276,6 @@
           },
           {
             "name": "002_ CountPersonelInfirtPeriod",
-            "description": "تعداد پرسنل اول دوره ",
             "expression": [
               " ",
               "           CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
@@ -4285,7 +4286,6 @@
           },
           {
             "name": "003_ CountPersonelendofPeriod",
-            "description": "تعداد پرسنل آخر دوره ",
             "expression": [
               " ",
               "              CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
@@ -4301,7 +4301,6 @@
           },
           {
             "name": "004_ExitRate",
-            "description": "نرخ خروج پرسنل ",
             "expression": [
               " ",
               "        DIVIDE(   CALCULATE(DISTINCTCOUNT('NL personnel_HR_history'[personnel number]),",
@@ -4314,8 +4313,7 @@
               "--نرخ خروج پرسنل ",
               "                             ",
               ""
-            ],
-            "formatString": "0.00%;-0.00%;0.00%"
+            ]
           }
         ]
       },
