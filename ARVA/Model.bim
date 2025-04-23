@@ -20,6 +20,8 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -4338,6 +4340,30 @@
               "                              FILTER('NL personnel_HR_history',  'NL personnel_HR_history'[type]=\"خروج\"))",
               "--تعداد خروج )"
             ]
+          },
+          {
+            "name": "007_Femaile Percent",
+            "description": " درصد حضور خانم ها در سازمان ",
+            "expression": [
+              " ",
+              "      CALCULATE(   DISTINCTCOUNT('NL personnel_HR'[personnel number]) , FILTER('NL personnel_HR', 'NL personnel_HR'[gender] =\"زن\"))",
+              "             /",
+              "   CALCULATE(   DISTINCTCOUNT('NL personnel_HR'[personnel number]) , ALL('NL personnel_HR'[gender]))",
+              "-- درصد حضور خانم ها در سازمان "
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "008_Male Percent",
+            "description": "درصد حضور آقایان در سازمان ",
+            "expression": [
+              " ",
+              "      CALCULATE(   DISTINCTCOUNT('NL personnel_HR'[personnel number]) , FILTER('NL personnel_HR', 'NL personnel_HR'[gender] =\"مرد\"))",
+              "             /",
+              "   CALCULATE(   DISTINCTCOUNT('NL personnel_HR'[personnel number]) , ALL('NL personnel_HR'[gender]))",
+              "-- درصد حضور آقایان در سازمان "
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
