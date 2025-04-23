@@ -4364,6 +4364,16 @@
               "-- درصد حضور آقایان در سازمان "
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "009_AVG Age",
+            "description": " میانگین سن ",
+            "expression": [
+              " ",
+              "      AVERAGEA('NL personnel_HR'[age])",
+              "-- میانگین سن "
+            ],
+            "formatString": "0"
           }
         ]
       },
