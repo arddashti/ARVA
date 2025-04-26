@@ -8578,7 +8578,21 @@
           {
             "name": "duration_presence",
             "dataType": "int64",
+            "description": "روز کاری ",
             "sourceColumn": "duration_presence"
+          },
+          {
+            "type": "calculated",
+            "name": "001_Days Work",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "description": "تبدیل روز به ماه کاری ",
+            "expression": [
+              " ",
+              "                     'NL personnel_duration_presence'[duration_presence] /30",
+              "",
+              "-- تبدیل روز به ماه کاری "
+            ]
           }
         ],
         "partitions": [
