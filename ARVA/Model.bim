@@ -8631,7 +8631,7 @@
               " ",
               "             ",
               "",
-              "  AVERAGE('NL personnel_duration_presence'[duration_presence]) /30",
+              "AVERAGE('NL personnel_duration_presence'[001_Days Work])",
               "--  میانگین  سابقه حضور در سازمان "
             ]
           }
