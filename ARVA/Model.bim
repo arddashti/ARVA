@@ -8609,6 +8609,17 @@
               "-- میزان  سابقه حضور در سازمان"
             ],
             "formatString": "0"
+          },
+          {
+            "name": "002_AVGTotalDaysInHolding",
+            "description": "میانگین  سابقه حضور در سازمان ",
+            "expression": [
+              " ",
+              "             ",
+              "",
+              "  AVERAGE('NL personnel_duration_presence'[duration_presence]) /30",
+              "--  میانگین  سابقه حضور در سازمان "
+            ]
           }
         ]
       },
