@@ -8626,13 +8626,13 @@
           },
           {
             "name": "002_AVGTotalDaysInHolding",
-            "description": "میانگین  سابقه حضور در سازمان ",
+            "description": "میانگین حضور افراد در ساز مان ",
             "expression": [
-              " ",
-              "             ",
+              "  ",
+              "          ( AVERAGEX(VALUES('NL personnel_duration_presence'[national_code]),",
+              "                        CALCULATE(SUM('NL personnel_duration_presence'[duration_presence]))))/30",
               "",
-              "AVERAGE('NL personnel_duration_presence'[001_Days Work])",
-              "--  میانگین  سابقه حضور در سازمان "
+              "-- میانگین حضور افراد در ساز مان "
             ]
           }
         ]
