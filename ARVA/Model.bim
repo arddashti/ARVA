@@ -8484,6 +8484,31 @@
               "  'sorooshan servicce_acceptance'[repair_duration] /3600",
               ""
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "001_DraftName",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": " فیلتر برای  قبض پذیرش",
+            "expression": [
+              " ",
+              "    if( 'sorooshan servicce_acceptance'[regname] = \"محدثه گرشاسبي\" || ",
+              "        'sorooshan servicce_acceptance'[regname] = \"الهه زهي مفرد\" || ",
+              "        'sorooshan servicce_acceptance'[regname] = \"فاطمه اويسي\" || ",
+              "        'sorooshan servicce_acceptance'[regname] = \"انيس احمدي\" || ",
+              "        'sorooshan servicce_acceptance'[regname] = \"مهدي صلح جوي فرد\" || ",
+              "        'sorooshan servicce_acceptance'[regname] = \"عاطفه مشيريان\" || ",
+              "        'sorooshan servicce_acceptance'[regname] = \"الناز حاجي ميري\" || ",
+              "        'sorooshan servicce_acceptance'[regname] = \"سعيد بهره مند\" || ",
+              "        'sorooshan servicce_acceptance'[regname] = \"عاطفه مختاري\" || ",
+              "        'sorooshan servicce_acceptance'[regname] = \"طوفان اسکندرپور\"  ",
+              "         ",
+              "              , \"قبض پذيرش استاندارد تعميرگاه\" ,",
+              "                 'sorooshan servicce_acceptance'[draftname])",
+              "",
+              "--- فیلتر برای  قبض پذیرش"
+            ]
           }
         ],
         "partitions": [
