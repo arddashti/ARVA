@@ -8500,8 +8500,9 @@
               "        'sorooshan servicce_acceptance'[regname] = \"عاطفه مشيريان\" || ",
               "        'sorooshan servicce_acceptance'[regname] = \"الناز حاجي ميري\" || ",
               "        'sorooshan servicce_acceptance'[regname] = \"سعيد بهره مند\" || ",
-              "       'sorooshan servicce_acceptance'[regname] = \"عاطفه مختاري\" || ",
-              "        'sorooshan servicce_acceptance'[regname] = \"طوفان اسکندرپور\"  ",
+              "        'sorooshan servicce_acceptance'[regname] = \"عاطفه مختاري\" || ",
+              "        'sorooshan servicce_acceptance'[regname] = \"طوفان اسکندرپور\"  ||",
+              "        'sorooshan servicce_acceptance'[regname] = \"شايان رستم زاده \" ",
               "         ",
               "          , \"قبض پذيرش استاندارد تعميرگاه\" )",
               "               ",
@@ -9410,11 +9411,13 @@
           {
             "name": "REVIS_NO",
             "dataType": "string",
+            "description": "شماره اقدام",
             "sourceColumn": "REVIS_NO"
           },
           {
             "name": "REVIS_DATE",
             "dataType": "string",
+            "description": "تاریخ صدور",
             "sourceColumn": "REVIS_DATE"
           },
           {
@@ -9440,6 +9443,7 @@
           {
             "name": "MOJRI_SEMAT",
             "dataType": "string",
+            "description": "سمت مجری",
             "sourceColumn": "MOJRI_SEMAT"
           },
           {
