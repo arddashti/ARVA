@@ -113,7 +113,7 @@
             "name": "Is Holiday",
             "dataType": "string",
             "description": [
-              "جدول مشخص کننده روزهای تعطیل\r",
+              "جدول مشخص کننده روزهای تعطیل",
               "این جدول دارای 3 وضعیت است اولی 1 برای روز های غیر تعطیل و دومی 0 برای روزهای تعطیل و 0.5 برای روزهای پنجشنبه"
             ],
             "sourceColumn": "Is Holiday"
@@ -3134,11 +3134,6 @@
             "sourceColumn": "Acceptance limit"
           },
           {
-            "name": "Target",
-            "dataType": "double",
-            "sourceColumn": "Target"
-          },
-          {
             "name": "the trustee",
             "dataType": "string",
             "sourceColumn": "the trustee"
@@ -3162,6 +3157,11 @@
             "name": "Target Achievement Status",
             "dataType": "int64",
             "sourceColumn": "Target Achievement Status"
+          },
+          {
+            "name": "Target",
+            "dataType": "double",
+            "sourceColumn": "Target"
           }
         ],
         "partitions": [
@@ -3174,9 +3174,10 @@
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    NL_BSC = Source{[Schema=\"NL\",Item=\"BSC\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(NL_BSC,\"ي\",\"ی\",Replacer.ReplaceText,{\"the unit\", \"Organization indicators\", \"scale of measurement\", \"index direction\", \"monitoring period\", \"the trustee\", \"Senior user\"})",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_BSC,\"ي\",\"ی\",Replacer.ReplaceText,{\"the unit\", \"Organization indicators\", \"scale of measurement\", \"index direction\", \"monitoring period\", \"the trustee\", \"Senior user\"}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Replaced Value\", each true)",
                 "in",
-                "    #\"Replaced Value\""
+                "    #\"Filtered Rows\""
               ]
             }
           }
@@ -3204,24 +3205,36 @@
             "description": "رنگ گیج BSc",
             "expression": [
               " ",
+              "SWITCH (",
+              "    TRUE(),",
               "",
-              " IF(MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit] ) && ",
-              "MAX('NL BSC'[index direction]) = \"افزایشی\" && MAX('NL BSC'[Amount achieved during the period]) > MAX('NL BSC'[Target]), \"#0A6511\",  ----- افزایشی",
-              "--IF(MAX(BSC[هدف]) >= MAX(BSC[حد پذیرش] ) && MAX(BSC[جهت شاخص]) = \"افزایشی\" && MAX(BSC[هدف])> MAX(BSC[مقدار محقق شده طی دوره]) >= MAX(BSC[حد پذیرش]), \"#DBDE1C\",   ----- افزایشی",
-              "            ",
-              "              ",
-              "      if( MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit])    &&[001_BSCTahaghogh]",
-              " MAX('NL BSC'[index direction]) = \"افزایشی\" && MAX('NL BSC'[Acceptance limit])> MAX('NL BSC'[Amount achieved during the period]) ,\"#FA0000\",",
-              "          if( MAX('NL BSC'[Target]) <= MAX('NL BSC'[Acceptance limit] ) &&",
-              " MAX('NL BSC'[index direction]) = \"کاهشی\"  &&   MAX('NL BSC'[Target])< MAX('NL BSC'[Amount achieved during the period]) ,\"#FA0000\" , ",
+              "    -- حالت افزایشی، موفق (سبز)",
+              "    MAX('NL BSC'[index direction]) = \"افزایشی\" &&",
+              "    MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit]) &&",
+              "    MAX('NL BSC'[Amount achieved during the period]) > MAX('NL BSC'[Target]),",
+              "    \"#0A6511\",",
               "",
-              "  if( MAX('NL BSC'[Target]) <= MAX('NL BSC'[Acceptance limit] ) && MAX('NL BSC'[index direction]) = \"کاهشی\" ",
-              "    &&   MAX('NL BSC'[Acceptance limit])> MAX('NL BSC'[Amount achieved during the period]) ,\"#0A6511\"))))",
-              "       --       if (MAX(BSC[هدف]) <= MAX(BSC[حد پذیرش] )&& MAX(BSC[هدف])< MAX(BSC[مقدار محقق شده طی دوره]) < MAX(BSC[حد پذیرش]), \"#DBDE1C\", ",
-              "  --  \"#01533D\"))",
-              "    --     ))))",
+              "    -- حالت افزایشی، ناموفق (قرمز)",
+              "    MAX('NL BSC'[index direction]) = \"افزایشی\" &&",
+              "    MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit]) &&",
+              "    MAX('NL BSC'[Acceptance limit]) > MAX('NL BSC'[Amount achieved during the period]),",
+              "    \"#FA0000\",",
               "",
+              "    -- حالت کاهشی، ناموفق (قرمز)",
+              "    MAX('NL BSC'[index direction]) = \"کاهشی\" &&",
+              "    MAX('NL BSC'[Target]) <= MAX('NL BSC'[Acceptance limit]) &&",
+              "    MAX('NL BSC'[Target]) < MAX('NL BSC'[Amount achieved during the period]),",
+              "    \"#FA0000\",",
               "",
+              "    -- حالت کاهشی، موفق (سبز)",
+              "    MAX('NL BSC'[index direction]) = \"کاهشی\" &&",
+              "    MAX('NL BSC'[Target]) <= MAX('NL BSC'[Acceptance limit]) &&",
+              "    MAX('NL BSC'[Acceptance limit]) > MAX('NL BSC'[Amount achieved during the period]),",
+              "    \"#0A6511\",",
+              "",
+              "    -- پیش‌فرض (زرد)",
+              "    \"#DBDE1C\"",
+              ")",
               "",
               "---- رنگ گیج BSc"
             ]
@@ -4251,16 +4264,6 @@
             "name": "age_cat_No",
             "dataType": "string",
             "sourceColumn": "age_cat_No"
-          },
-          {
-            "name": "national_code",
-            "dataType": "string",
-            "sourceColumn": "national_code"
-          },
-          {
-            "name": "marital_status",
-            "dataType": "string",
-            "sourceColumn": "marital_status"
           }
         ],
         "partitions": [
@@ -10025,19 +10028,18 @@
         "toColumn": "personnel number"
       },
       {
-        "name": "73a49a8e-cf2e-489a-924b-1ada03431286",
-        "fromTable": "NL personnel_duration_presence",
-        "fromColumn": "national_code",
-        "toTable": "NL personnel_HR",
-        "toColumn": "national_code",
-        "crossFilteringBehavior": "bothDirections"
-      },
-      {
         "name": "a9a073a8-23b9-46c9-b7a7-269583566b93",
         "fromTable": "NL_Q corrective_action",
         "fromColumn": "REVIS_DATE",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "cd060cc9-69ff-4466-ba86-4b28df5c5055",
+        "fromTable": "NL personnel_duration_presence",
+        "fromColumn": "national_code",
+        "toTable": "NL personnel_HR",
+        "toColumn": "personnel number"
       }
     ],
     "roles": [
