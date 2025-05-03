@@ -20,6 +20,8 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -3117,13 +3119,14 @@
           },
           {
             "name": "The starting point of the course",
-            "dataType": "double",
+            "dataType": "string",
             "sourceColumn": "The starting point of the course"
           },
           {
             "name": "Amount achieved during the period",
             "dataType": "double",
-            "sourceColumn": "Amount achieved during the period"
+            "sourceColumn": "Amount achieved during the period",
+            "formatString": "0.00"
           },
           {
             "name": "Acceptance limit",
@@ -3132,7 +3135,7 @@
           },
           {
             "name": "Target",
-            "dataType": "int64",
+            "dataType": "double",
             "sourceColumn": "Target"
           },
           {
@@ -3149,6 +3152,16 @@
             "name": "Unit code",
             "dataType": "int64",
             "sourceColumn": "Unit code"
+          },
+          {
+            "name": "upper Acceptance limit",
+            "dataType": "int64",
+            "sourceColumn": "upper Acceptance limit"
+          },
+          {
+            "name": "Target Achievement Status",
+            "dataType": "int64",
+            "sourceColumn": "Target Achievement Status"
           }
         ],
         "partitions": [
@@ -3175,11 +3188,15 @@
             "expression": [
               " ",
               "",
-              "           IF(MAX('NL BSC'[scale of measurement]) = \"درصد\",",
+              "          IF(",
+              "                MAX('NL BSC'[scale of measurement]) = ",
+              "                                                                                 \"درصد\"",
+              "                                                                                           ,",
+              "                                                                                           ",
               "                                        AVERAGE(('NL BSC'[Amount achieved during the period])))",
               "",
               "",
-              "----  مقدار تحقق طی دوره  به درصد برای BSC)  "
+              "----  مقدار تحقق طی دوره  به درصد برای BSC)  )"
             ]
           },
           {
@@ -3193,7 +3210,7 @@
               "--IF(MAX(BSC[هدف]) >= MAX(BSC[حد پذیرش] ) && MAX(BSC[جهت شاخص]) = \"افزایشی\" && MAX(BSC[هدف])> MAX(BSC[مقدار محقق شده طی دوره]) >= MAX(BSC[حد پذیرش]), \"#DBDE1C\",   ----- افزایشی",
               "            ",
               "              ",
-              "      if( MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit])    &&",
+              "      if( MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit])    &&[001_BSCTahaghogh]",
               " MAX('NL BSC'[index direction]) = \"افزایشی\" && MAX('NL BSC'[Acceptance limit])> MAX('NL BSC'[Amount achieved during the period]) ,\"#FA0000\",",
               "          if( MAX('NL BSC'[Target]) <= MAX('NL BSC'[Acceptance limit] ) &&",
               " MAX('NL BSC'[index direction]) = \"کاهشی\"  &&   MAX('NL BSC'[Target])< MAX('NL BSC'[Amount achieved during the period]) ,\"#FA0000\" , ",
