@@ -3161,7 +3161,8 @@
           {
             "name": "Target",
             "dataType": "double",
-            "sourceColumn": "Target"
+            "sourceColumn": "Target",
+            "formatString": "0.00"
           }
         ],
         "partitions": [
@@ -3174,10 +3175,9 @@
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
                 "    NL_BSC = Source{[Schema=\"NL\",Item=\"BSC\"]}[Data],",
-                "    #\"Replaced Value\" = Table.ReplaceValue(NL_BSC,\"ي\",\"ی\",Replacer.ReplaceText,{\"the unit\", \"Organization indicators\", \"scale of measurement\", \"index direction\", \"monitoring period\", \"the trustee\", \"Senior user\"}),",
-                "    #\"Filtered Rows\" = Table.SelectRows(#\"Replaced Value\", each true)",
+                "    #\"Replaced Value\" = Table.ReplaceValue(NL_BSC,\"ي\",\"ی\",Replacer.ReplaceText,{\"the unit\", \"Organization indicators\", \"scale of measurement\", \"index direction\", \"monitoring period\", \"the trustee\", \"Senior user\"})",
                 "in",
-                "    #\"Filtered Rows\""
+                "    #\"Replaced Value\""
               ]
             }
           }
@@ -3205,37 +3205,32 @@
             "description": "رنگ گیج BSc",
             "expression": [
               " ",
-              "SWITCH (",
+              "",
+              "SWITCH(",
               "    TRUE(),",
+              "    ",
+              "    'NL BSC'[index direction] = \"افزایشی\" &&",
+              "    'NL BSC'[Target] >= 'NL BSC'[Acceptance limit] &&",
+              "    'NL BSC'[Amount achieved during the period] > 'NL BSC'[Target],",
+              "    \"#0A6511\",  -- سبز (موفق)",
               "",
-              "    -- حالت افزایشی، موفق (سبز)",
-              "    MAX('NL BSC'[index direction]) = \"افزایشی\" &&",
-              "    MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit]) &&",
-              "    MAX('NL BSC'[Amount achieved during the period]) > MAX('NL BSC'[Target]),",
-              "    \"#0A6511\",",
+              "    'NL BSC'[index direction] = \"افزایشی\" &&",
+              "    'NL BSC'[Target] >= 'NL BSC'[Acceptance limit] &&",
+              "    'NL BSC'[Acceptance limit] > 'NL BSC'[Amount achieved during the period],",
+              "    \"#FA0000\",  -- قرمز (ناموفق)",
               "",
-              "    -- حالت افزایشی، ناموفق (قرمز)",
-              "    MAX('NL BSC'[index direction]) = \"افزایشی\" &&",
-              "    MAX('NL BSC'[Target]) >= MAX('NL BSC'[Acceptance limit]) &&",
-              "    MAX('NL BSC'[Acceptance limit]) > MAX('NL BSC'[Amount achieved during the period]),",
-              "    \"#FA0000\",",
+              "    'NL BSC'[index direction] = \"کاهشی\" &&",
+              "    'NL BSC'[Target] <= 'NL BSC'[Acceptance limit] &&",
+              "    'NL BSC'[Target] < 'NL BSC'[Amount achieved during the period],",
+              "    \"#FA0000\",  -- قرمز (ناموفق)",
               "",
-              "    -- حالت کاهشی، ناموفق (قرمز)",
-              "    MAX('NL BSC'[index direction]) = \"کاهشی\" &&",
-              "    MAX('NL BSC'[Target]) <= MAX('NL BSC'[Acceptance limit]) &&",
-              "    MAX('NL BSC'[Target]) < MAX('NL BSC'[Amount achieved during the period]),",
-              "    \"#FA0000\",",
+              "    'NL BSC'[index direction] = \"کاهشی\" &&",
+              "    'NL BSC'[Target] <= 'NL BSC'[Acceptance limit] &&",
+              "    'NL BSC'[Acceptance limit] > 'NL BSC'[Amount achieved during the period],",
+              "    \"#0A6511\",  -- سبز (موفق)",
               "",
-              "    -- حالت کاهشی، موفق (سبز)",
-              "    MAX('NL BSC'[index direction]) = \"کاهشی\" &&",
-              "    MAX('NL BSC'[Target]) <= MAX('NL BSC'[Acceptance limit]) &&",
-              "    MAX('NL BSC'[Acceptance limit]) > MAX('NL BSC'[Amount achieved during the period]),",
-              "    \"#0A6511\",",
-              "",
-              "    -- پیش‌فرض (زرد)",
-              "    \"#DBDE1C\"",
+              "    \"#DBDE1C\"  -- زرد (پیش‌فرض)",
               ")",
-              "",
               "---- رنگ گیج BSc"
             ]
           }
