@@ -20,8 +20,6 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
-          "kind": "SQL",
-          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -8705,6 +8703,877 @@
             }
           }
         ]
+      },
+      {
+        "name": "NL_Q open_requests",
+        "columns": [
+          {
+            "name": "DET_ID2",
+            "dataType": "string",
+            "sourceColumn": "DET_ID2"
+          },
+          {
+            "name": "ORD_NO",
+            "dataType": "double",
+            "sourceColumn": "ORD_NO"
+          },
+          {
+            "name": "YYYY",
+            "dataType": "double",
+            "sourceColumn": "YYYY"
+          },
+          {
+            "name": "ORD_RDF",
+            "dataType": "double",
+            "sourceColumn": "ORD_RDF"
+          },
+          {
+            "name": "T_STK_GDS",
+            "dataType": "string",
+            "sourceColumn": "T_STK_GDS"
+          },
+          {
+            "name": "COM_CD",
+            "dataType": "string",
+            "sourceColumn": "COM_CD"
+          },
+          {
+            "name": "T_STK_NO",
+            "dataType": "string",
+            "sourceColumn": "T_STK_NO"
+          },
+          {
+            "name": "KALA_NAME",
+            "dataType": "string",
+            "sourceColumn": "KALA_NAME"
+          },
+          {
+            "name": "UNIT",
+            "dataType": "string",
+            "sourceColumn": "UNIT"
+          },
+          {
+            "name": "TARIKH_NIAZ",
+            "dataType": "string",
+            "sourceColumn": "TARIKH_NIAZ"
+          },
+          {
+            "name": "CNFRM_QTY",
+            "dataType": "double",
+            "sourceColumn": "CNFRM_QTY"
+          },
+          {
+            "name": "ORDER_QTY",
+            "dataType": "double",
+            "sourceColumn": "ORDER_QTY"
+          },
+          {
+            "name": "T_ORD_INS_DT",
+            "dataType": "string",
+            "sourceColumn": "T_ORD_INS_DT"
+          },
+          {
+            "name": "BUYER_NAME",
+            "dataType": "string",
+            "sourceColumn": "BUYER_NAME"
+          },
+          {
+            "name": "BYR_CD",
+            "dataType": "string",
+            "sourceColumn": "BYR_CD"
+          },
+          {
+            "name": "PROG_QTY",
+            "dataType": "double",
+            "sourceColumn": "PROG_QTY"
+          },
+          {
+            "name": "BUY_DATE",
+            "dataType": "string",
+            "sourceColumn": "BUY_DATE"
+          },
+          {
+            "name": "QTY_ENSERAF",
+            "dataType": "double",
+            "sourceColumn": "QTY_ENSERAF"
+          },
+          {
+            "name": "ORDR_QTY",
+            "dataType": "double",
+            "sourceColumn": "ORDR_QTY"
+          },
+          {
+            "name": "RESID_DAEM",
+            "dataType": "double",
+            "sourceColumn": "RESID_DAEM"
+          },
+          {
+            "name": "ORDER_DT",
+            "dataType": "string",
+            "sourceColumn": "ORDER_DT"
+          },
+          {
+            "name": "temp_receipt_number",
+            "dataType": "double",
+            "sourceColumn": "temp_receipt_number"
+          },
+          {
+            "name": "temp_receipt_date",
+            "dataType": "string",
+            "sourceColumn": "temp_receipt_date"
+          },
+          {
+            "name": "receipt_date",
+            "dataType": "string",
+            "sourceColumn": "receipt_date"
+          },
+          {
+            "name": "receipt_number",
+            "dataType": "double",
+            "sourceColumn": "receipt_number"
+          },
+          {
+            "name": "notification_date",
+            "dataType": "string",
+            "sourceColumn": "notification_date"
+          },
+          {
+            "name": "item_request_number",
+            "dataType": "double",
+            "sourceColumn": "item_request_number"
+          },
+          {
+            "name": "expedite_request_number",
+            "dataType": "double",
+            "sourceColumn": "expedite_request_number"
+          },
+          {
+            "name": "expedite_request_date",
+            "dataType": "string",
+            "sourceColumn": "expedite_request_date"
+          },
+          {
+            "name": "withdrawal_request_number",
+            "dataType": "double",
+            "sourceColumn": "withdrawal_request_number"
+          },
+          {
+            "name": "withdrawal_request_date",
+            "dataType": "string",
+            "sourceColumn": "withdrawal_request_date"
+          },
+          {
+            "name": "postpone_request_number",
+            "dataType": "double",
+            "sourceColumn": "postpone_request_number"
+          },
+          {
+            "name": "postpone_request_date",
+            "dataType": "string",
+            "sourceColumn": "postpone_request_date"
+          },
+          {
+            "name": "approval_status",
+            "dataType": "string",
+            "sourceColumn": "approval_status"
+          },
+          {
+            "name": "approval_date",
+            "dataType": "string",
+            "sourceColumn": "approval_date"
+          },
+          {
+            "name": "postpone_count",
+            "dataType": "double",
+            "sourceColumn": "postpone_count"
+          },
+          {
+            "name": "expedite_count",
+            "dataType": "double",
+            "sourceColumn": "expedite_count"
+          },
+          {
+            "name": "purchase_type",
+            "dataType": "string",
+            "sourceColumn": "purchase_type"
+          },
+          {
+            "name": "technical_approval_number",
+            "dataType": "double",
+            "sourceColumn": "technical_approval_number"
+          },
+          {
+            "name": "technical_approval_count",
+            "dataType": "double",
+            "sourceColumn": "technical_approval_count"
+          },
+          {
+            "name": "RESID_NASHODE",
+            "dataType": "double",
+            "sourceColumn": "RESID_NASHODE"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_Q_open_requests = Source{[Schema=\"NL_Q\",Item=\"open_requests\"]}[Data]",
+                "in",
+                "    NL_Q_open_requests"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "NL_Q nonconforming_items_control",
+        "description": "اقلام  نامنطبق نیلرام ",
+        "columns": [
+          {
+            "name": "NAME_MAHSOOL",
+            "dataType": "string",
+            "sourceColumn": "NAME_MAHSOOL"
+          },
+          {
+            "name": "CODE_KALA",
+            "dataType": "string",
+            "sourceColumn": "CODE_KALA"
+          },
+          {
+            "name": "SHOMARE_TAEEDIYE_FANI",
+            "dataType": "double",
+            "sourceColumn": "SHOMARE_TAEEDIYE_FANI"
+          },
+          {
+            "name": "TEDADE_NAMONTABEGH",
+            "dataType": "double",
+            "sourceColumn": "TEDADE_NAMONTABEGH"
+          },
+          {
+            "name": "SHARHE_ELALE_ADAME_ENTEBAGH",
+            "dataType": "string",
+            "sourceColumn": "SHARHE_ELALE_ADAME_ENTEBAGH"
+          },
+          {
+            "name": "NOE_TASMIM",
+            "dataType": "string",
+            "sourceColumn": "NOE_TASMIM"
+          },
+          {
+            "name": "SHOMAREYE_ADAME_ENTEBAGH",
+            "dataType": "string",
+            "sourceColumn": "SHOMAREYE_ADAME_ENTEBAGH"
+          },
+          {
+            "name": "NAME_TAMIN_KONANDE",
+            "dataType": "string",
+            "sourceColumn": "NAME_TAMIN_KONANDE"
+          },
+          {
+            "name": "CODE_TAMINKONANDE",
+            "dataType": "double",
+            "sourceColumn": "CODE_TAMINKONANDE"
+          },
+          {
+            "name": "NOE_RESID_MOVAGHAT",
+            "dataType": "string",
+            "sourceColumn": "NOE_RESID_MOVAGHAT"
+          },
+          {
+            "name": "CODE_ANBAR",
+            "dataType": "string",
+            "sourceColumn": "CODE_ANBAR"
+          },
+          {
+            "name": "TARIKHE_SODORE_ADAME_ENTEBAGH",
+            "dataType": "string",
+            "sourceColumn": "TARIKHE_SODORE_ADAME_ENTEBAGH"
+          },
+          {
+            "name": "TARIKHE_TAYIDIYE_FANNI",
+            "dataType": "string",
+            "sourceColumn": "TARIKHE_TAYIDIYE_FANNI"
+          },
+          {
+            "name": "OK_Y",
+            "dataType": "double",
+            "sourceColumn": "OK_Y"
+          },
+          {
+            "name": "N_SERIAL",
+            "dataType": "double",
+            "sourceColumn": "N_SERIAL"
+          },
+          {
+            "name": "LOG_GUID",
+            "dataType": "string",
+            "sourceColumn": "LOG_GUID"
+          },
+          {
+            "name": "BAZRES",
+            "dataType": "string",
+            "sourceColumn": "BAZRES"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_Q_nonconforming_items_control = Source{[Schema=\"NL_Q\",Item=\"nonconforming_items_control\"]}[Data]",
+                "in",
+                "    NL_Q_nonconforming_items_control"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "NL_Q complaint_trend_by_type",
+        "columns": [
+          {
+            "name": "TRACE_SEQ",
+            "dataType": "double",
+            "sourceColumn": "TRACE_SEQ"
+          },
+          {
+            "name": "TRACE_SEQ_DSP",
+            "dataType": "double",
+            "sourceColumn": "TRACE_SEQ_DSP"
+          },
+          {
+            "name": "YYYY",
+            "dataType": "double",
+            "sourceColumn": "YYYY"
+          },
+          {
+            "name": "KARFARMA_ID",
+            "dataType": "double",
+            "sourceColumn": "KARFARMA_ID"
+          },
+          {
+            "name": "KARFARMA_DESC",
+            "dataType": "string",
+            "sourceColumn": "KARFARMA_DESC"
+          },
+          {
+            "name": "CALL_DATE",
+            "dataType": "string",
+            "sourceColumn": "CALL_DATE"
+          },
+          {
+            "name": "USR",
+            "dataType": "string",
+            "sourceColumn": "USR"
+          },
+          {
+            "name": "CALL_TIME",
+            "dataType": "string",
+            "sourceColumn": "CALL_TIME"
+          },
+          {
+            "name": "SUBJECT",
+            "dataType": "string",
+            "sourceColumn": "SUBJECT"
+          },
+          {
+            "name": "SUBJECT_DSC",
+            "dataType": "string",
+            "sourceColumn": "SUBJECT_DSC"
+          },
+          {
+            "name": "FLAG_KEFAYAT",
+            "dataType": "string",
+            "sourceColumn": "FLAG_KEFAYAT"
+          },
+          {
+            "name": "KEFAYAD_DATE",
+            "dataType": "string",
+            "sourceColumn": "KEFAYAD_DATE"
+          },
+          {
+            "name": "KEFAYAT_USER",
+            "dataType": "string",
+            "sourceColumn": "KEFAYAT_USER"
+          },
+          {
+            "name": "EFFECTIVE",
+            "dataType": "string",
+            "sourceColumn": "EFFECTIVE"
+          },
+          {
+            "name": "EFFECTIVE_DSC",
+            "dataType": "string",
+            "sourceColumn": "EFFECTIVE_DSC"
+          },
+          {
+            "name": "EFFECTIVE_DATE",
+            "dataType": "string",
+            "sourceColumn": "EFFECTIVE_DATE"
+          },
+          {
+            "name": "CUST_CODE",
+            "dataType": "double",
+            "sourceColumn": "CUST_CODE"
+          },
+          {
+            "name": "CUST_NAME",
+            "dataType": "string",
+            "sourceColumn": "CUST_NAME"
+          },
+          {
+            "name": "FLAG_CANCELI",
+            "dataType": "string",
+            "sourceColumn": "FLAG_CANCELI"
+          },
+          {
+            "name": "MAX_DATE_TARHRIZI",
+            "dataType": "string",
+            "sourceColumn": "MAX_DATE_TARHRIZI"
+          },
+          {
+            "name": "OK_DTE_LAST",
+            "dataType": "string",
+            "sourceColumn": "OK_DTE_LAST"
+          },
+          {
+            "name": "OK_DTE_FIRST",
+            "dataType": "string",
+            "sourceColumn": "OK_DTE_FIRST"
+          },
+          {
+            "name": "CALL_AZ_OK_FIRST",
+            "dataType": "double",
+            "sourceColumn": "CALL_AZ_OK_FIRST"
+          },
+          {
+            "name": "OK_FIRST_AZ_KEFAYAD",
+            "dataType": "double",
+            "sourceColumn": "OK_FIRST_AZ_KEFAYAD"
+          },
+          {
+            "name": "OK_FIRST_AZ_OK_LAST",
+            "dataType": "double",
+            "sourceColumn": "OK_FIRST_AZ_OK_LAST"
+          },
+          {
+            "name": "OK_DTE_LAST_SCHEDUL",
+            "dataType": "string",
+            "sourceColumn": "OK_DTE_LAST_SCHEDUL"
+          },
+          {
+            "name": "KEFAYAD_AZ_OK_LAST_SCHEDUL",
+            "dataType": "double",
+            "sourceColumn": "KEFAYAD_AZ_OK_LAST_SCHEDUL"
+          },
+          {
+            "name": "MAX_RL_STRT",
+            "dataType": "string",
+            "sourceColumn": "MAX_RL_STRT"
+          },
+          {
+            "name": "OK_LAST_SCHEDUL_AZ_RL_STRT",
+            "dataType": "double",
+            "sourceColumn": "OK_LAST_SCHEDUL_AZ_RL_STRT"
+          },
+          {
+            "name": "CALL_AZ_EFFECTIVE",
+            "dataType": "double",
+            "sourceColumn": "CALL_AZ_EFFECTIVE"
+          },
+          {
+            "name": "CCM_COMPLAINT",
+            "dataType": "double",
+            "sourceColumn": "CCM_COMPLAINT"
+          },
+          {
+            "name": "T_STK_NO",
+            "dataType": "string",
+            "sourceColumn": "T_STK_NO"
+          },
+          {
+            "name": "T_STK_GDS",
+            "dataType": "string",
+            "sourceColumn": "T_STK_GDS"
+          },
+          {
+            "name": "PRIORITY",
+            "dataType": "string",
+            "sourceColumn": "PRIORITY"
+          },
+          {
+            "name": "CLASSIFICATION_CODE",
+            "dataType": "double",
+            "sourceColumn": "CLASSIFICATION_CODE"
+          },
+          {
+            "name": "CLASSIFICATION_DESC",
+            "dataType": "string",
+            "sourceColumn": "CLASSIFICATION_DESC"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_Q_complaint_trend_by_type = Source{[Schema=\"NL_Q\",Item=\"complaint_trend_by_type\"]}[Data]",
+                "in",
+                "    NL_Q_complaint_trend_by_type"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "NL_Q complaint_master",
+        "columns": [
+          {
+            "name": "TRACE_SEQ",
+            "dataType": "string",
+            "sourceColumn": "TRACE_SEQ"
+          },
+          {
+            "name": "TRACE_SEQ_DSP",
+            "dataType": "string",
+            "sourceColumn": "TRACE_SEQ_DSP"
+          },
+          {
+            "name": "YYYY",
+            "dataType": "string",
+            "sourceColumn": "YYYY"
+          },
+          {
+            "name": "KARFARMA_ID",
+            "dataType": "string",
+            "sourceColumn": "KARFARMA_ID"
+          },
+          {
+            "name": "KARFARMA_DESC",
+            "dataType": "string",
+            "sourceColumn": "KARFARMA_DESC"
+          },
+          {
+            "name": "CALL_DATE",
+            "dataType": "string",
+            "sourceColumn": "CALL_DATE"
+          },
+          {
+            "name": "CALL_TIME",
+            "dataType": "string",
+            "sourceColumn": "CALL_TIME"
+          },
+          {
+            "name": "CUST_CODE_FK",
+            "dataType": "string",
+            "sourceColumn": "CUST_CODE_FK"
+          },
+          {
+            "name": "CUST_NAME",
+            "dataType": "string",
+            "sourceColumn": "CUST_NAME"
+          },
+          {
+            "name": "TRACE_SEQ_PARENT",
+            "dataType": "string",
+            "sourceColumn": "TRACE_SEQ_PARENT"
+          },
+          {
+            "name": "SUBJECT",
+            "dataType": "string",
+            "sourceColumn": "SUBJECT"
+          },
+          {
+            "name": "CCM_COMPLAINT_DSC",
+            "dataType": "string",
+            "sourceColumn": "CCM_COMPLAINT_DSC"
+          },
+          {
+            "name": "FLAG_KEFAYAT",
+            "dataType": "string",
+            "sourceColumn": "FLAG_KEFAYAT"
+          },
+          {
+            "name": "MOZOEIAT",
+            "dataType": "string",
+            "sourceColumn": "MOZOEIAT"
+          },
+          {
+            "name": "EFFECTIVE",
+            "dataType": "string",
+            "sourceColumn": "EFFECTIVE"
+          },
+          {
+            "name": "EFFECTIVE_DATE",
+            "dataType": "string",
+            "sourceColumn": "EFFECTIVE_DATE"
+          },
+          {
+            "name": "FLAG_CANCELI",
+            "dataType": "string",
+            "sourceColumn": "FLAG_CANCELI"
+          },
+          {
+            "name": "REZAYAT_SANJI_CUST",
+            "dataType": "string",
+            "sourceColumn": "REZAYAT_SANJI_CUST"
+          },
+          {
+            "name": "REZAYAT_SANJI_DATE",
+            "dataType": "string",
+            "sourceColumn": "REZAYAT_SANJI_DATE"
+          },
+          {
+            "name": "NAMAYANDE_CODE",
+            "dataType": "string",
+            "sourceColumn": "NAMAYANDE_CODE"
+          },
+          {
+            "name": "NAMAYANDE_DESC",
+            "dataType": "string",
+            "sourceColumn": "NAMAYANDE_DESC"
+          },
+          {
+            "name": "PRIORITY",
+            "dataType": "string",
+            "sourceColumn": "PRIORITY"
+          },
+          {
+            "name": "CONNECTION_TYPE",
+            "dataType": "string",
+            "sourceColumn": "CONNECTION_TYPE"
+          },
+          {
+            "name": "CON_TYP_DESC",
+            "dataType": "string",
+            "sourceColumn": "CON_TYP_DESC"
+          },
+          {
+            "name": "CLASSIFICATION_CODE",
+            "dataType": "string",
+            "sourceColumn": "CLASSIFICATION_CODE"
+          },
+          {
+            "name": "CLASSIFICATION_DESC",
+            "dataType": "string",
+            "sourceColumn": "CLASSIFICATION_DESC"
+          },
+          {
+            "name": "OTHER_CODE",
+            "dataType": "string",
+            "sourceColumn": "OTHER_CODE"
+          },
+          {
+            "name": "OTHER_DESC",
+            "dataType": "string",
+            "sourceColumn": "OTHER_DESC"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_Q_complaint_master = Source{[Schema=\"NL_Q\",Item=\"complaint_master\"]}[Data]",
+                "in",
+                "    NL_Q_complaint_master"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "NL_Q corrective_action",
+        "columns": [
+          {
+            "name": "REVIS_NO_PAD",
+            "dataType": "string",
+            "sourceColumn": "REVIS_NO_PAD"
+          },
+          {
+            "name": "REVIS_NO",
+            "dataType": "string",
+            "sourceColumn": "REVIS_NO"
+          },
+          {
+            "name": "REVIS_DATE",
+            "dataType": "string",
+            "sourceColumn": "REVIS_DATE"
+          },
+          {
+            "name": "PRIORITY",
+            "dataType": "string",
+            "sourceColumn": "PRIORITY"
+          },
+          {
+            "name": "REVIS_YR",
+            "dataType": "double",
+            "sourceColumn": "REVIS_YR"
+          },
+          {
+            "name": "DO_TIME",
+            "dataType": "string",
+            "sourceColumn": "DO_TIME"
+          },
+          {
+            "name": "COM_CD",
+            "dataType": "string",
+            "sourceColumn": "COM_CD"
+          },
+          {
+            "name": "MOJRI_SEMAT",
+            "dataType": "string",
+            "sourceColumn": "MOJRI_SEMAT"
+          },
+          {
+            "name": "CONTROL_ID",
+            "dataType": "double",
+            "sourceColumn": "CONTROL_ID"
+          },
+          {
+            "name": "CONTROL_DT",
+            "dataType": "string",
+            "sourceColumn": "CONTROL_DT"
+          },
+          {
+            "name": "EXP",
+            "dataType": "string",
+            "sourceColumn": "EXP"
+          },
+          {
+            "name": "BENEFIT",
+            "dataType": "string",
+            "sourceColumn": "BENEFIT"
+          },
+          {
+            "name": "NEXT_CONTROL_DT",
+            "dataType": "string",
+            "sourceColumn": "NEXT_CONTROL_DT"
+          },
+          {
+            "name": "SADERE",
+            "dataType": "string",
+            "sourceColumn": "SADERE"
+          },
+          {
+            "name": "MABNA",
+            "dataType": "string",
+            "sourceColumn": "MABNA"
+          },
+          {
+            "name": "REL",
+            "dataType": "string",
+            "sourceColumn": "REL"
+          },
+          {
+            "name": "STATUS",
+            "dataType": "string",
+            "sourceColumn": "STATUS"
+          },
+          {
+            "name": "INS_USR",
+            "dataType": "string",
+            "sourceColumn": "INS_USR"
+          },
+          {
+            "name": "AATF",
+            "dataType": "string",
+            "sourceColumn": "AATF"
+          },
+          {
+            "name": "OK_DTE1",
+            "dataType": "string",
+            "sourceColumn": "OK_DTE1"
+          },
+          {
+            "name": "STS1",
+            "dataType": "string",
+            "sourceColumn": "STS1"
+          },
+          {
+            "name": "CONF_CD1",
+            "dataType": "double",
+            "sourceColumn": "CONF_CD1"
+          },
+          {
+            "name": "CONF_CD11",
+            "dataType": "double",
+            "sourceColumn": "CONF_CD11"
+          },
+          {
+            "name": "OK_DTE2",
+            "dataType": "string",
+            "sourceColumn": "OK_DTE2"
+          },
+          {
+            "name": "STS2",
+            "dataType": "string",
+            "sourceColumn": "STS2"
+          },
+          {
+            "name": "CONF_CD2",
+            "dataType": "double",
+            "sourceColumn": "CONF_CD2"
+          },
+          {
+            "name": "CONF_CD22",
+            "dataType": "double",
+            "sourceColumn": "CONF_CD22"
+          },
+          {
+            "name": "OK_DTE3",
+            "dataType": "string",
+            "sourceColumn": "OK_DTE3"
+          },
+          {
+            "name": "STS3",
+            "dataType": "string",
+            "sourceColumn": "STS3"
+          },
+          {
+            "name": "CONF_CD3",
+            "dataType": "double",
+            "sourceColumn": "CONF_CD3"
+          },
+          {
+            "name": "CONF_CD33",
+            "dataType": "double",
+            "sourceColumn": "CONF_CD33"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_Q_corrective_action = Source{[Schema=\"NL_Q\",Item=\"corrective_action\"]}[Data]",
+                "in",
+                "    NL_Q_corrective_action"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -9141,6 +10010,13 @@
         "toTable": "NL personnel_HR",
         "toColumn": "national_code",
         "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "a9a073a8-23b9-46c9-b7a7-269583566b93",
+        "fromTable": "NL_Q corrective_action",
+        "fromColumn": "REVIS_DATE",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "roles": [
