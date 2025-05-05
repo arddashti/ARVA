@@ -9437,7 +9437,7 @@
           },
           {
             "name": "REVIS_YR",
-            "dataType": "double",
+            "dataType": "string",
             "sourceColumn": "REVIS_YR"
           },
           {
@@ -9575,6 +9575,16 @@
             "name": "REVIS_NO",
             "dataType": "string",
             "sourceColumn": "REVIS_NO"
+          },
+          {
+            "type": "calculated",
+            "name": "001_UnicCode",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "                CONCATENATE('NL_Q corrective_action'[REVIS_NO] , 'NL_Q corrective_action'[REVIS_YR])"
+            ]
           }
         ],
         "partitions": [
@@ -9591,6 +9601,18 @@
                 "    NL_Q_corrective_action"
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "002_ AuditCount",
+            "description": "تعداد اقدام اصلاحی ",
+            "expression": [
+              " ",
+              "                                 DISTINCTCOUNT('NL_Q corrective_action'[001_UnicCode])",
+              "                                 ",
+              "                                 -- تعداد اقدام اصلاحی "
+            ]
           }
         ]
       }
