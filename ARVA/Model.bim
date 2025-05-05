@@ -113,7 +113,7 @@
             "name": "Is Holiday",
             "dataType": "string",
             "description": [
-              "جدول مشخص کننده روزهای تعطیل",
+              "جدول مشخص کننده روزهای تعطیل\r",
               "این جدول دارای 3 وضعیت است اولی 1 برای روز های غیر تعطیل و دومی 0 برای روزهای تعطیل و 0.5 برای روزهای پنجشنبه"
             ],
             "sourceColumn": "Is Holiday"
@@ -9417,17 +9417,12 @@
       },
       {
         "name": "NL_Q corrective_action",
+        "description": "جدول اقدام اصلاحی  با  کوئری نیلرام ",
         "columns": [
           {
             "name": "REVIS_NO_PAD",
             "dataType": "string",
             "sourceColumn": "REVIS_NO_PAD"
-          },
-          {
-            "name": "REVIS_NO",
-            "dataType": "string",
-            "description": "شماره اقدام",
-            "sourceColumn": "REVIS_NO"
           },
           {
             "name": "REVIS_DATE",
@@ -9575,6 +9570,11 @@
             "name": "CONF_CD33",
             "dataType": "double",
             "sourceColumn": "CONF_CD33"
+          },
+          {
+            "name": "REVIS_NO",
+            "dataType": "string",
+            "sourceColumn": "REVIS_NO"
           }
         ],
         "partitions": [
