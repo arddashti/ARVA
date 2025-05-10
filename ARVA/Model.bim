@@ -2522,7 +2522,7 @@
             "formatString": "0"
           },
           {
-            "name": "050_01_AmountNut",
+            "name": "050_AmountNut",
             "description": "فروش خالص طرح تعویض",
             "expression": [
               "",
