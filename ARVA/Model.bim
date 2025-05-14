@@ -2533,7 +2533,8 @@
               "                                                         ), FILTER('VN Fact_Sale','VN Fact_Sale'[002_tarh taviz] =1) )",
               "",
               "-- فروش خالص طرح تعویض"
-            ]
+            ],
+            "formatString": "#,#"
           }
         ]
       },
