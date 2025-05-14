@@ -2544,7 +2544,8 @@
               "                      'VN Fact_Sale'[050_AmountNut(tarh taviz)]/ 'VN Fact_Sale'[01_AmountNut]",
               "",
               "-- نسبت  ریال  تعویض به  کل "
-            ]
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
