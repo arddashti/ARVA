@@ -2535,6 +2535,16 @@
               "-- فروش خالص طرح تعویض"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "051_Rial tarh taviz / total",
+            "description": " نسبت  ریال  تعویض به  کل ",
+            "expression": [
+              "",
+              "                      'VN Fact_Sale'[050_AmountNut(tarh taviz)]/ 'VN Fact_Sale'[01_AmountNut]",
+              "",
+              "-- نسبت  ریال  تعویض به  کل "
+            ]
           }
         ]
       },
