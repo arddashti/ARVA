@@ -113,7 +113,7 @@
             "name": "Is Holiday",
             "dataType": "string",
             "description": [
-              "جدول مشخص کننده روزهای تعطیل\r",
+              "جدول مشخص کننده روزهای تعطیل",
               "این جدول دارای 3 وضعیت است اولی 1 برای روز های غیر تعطیل و دومی 0 برای روزهای تعطیل و 0.5 برای روزهای پنجشنبه"
             ],
             "sourceColumn": "Is Holiday"
@@ -9642,6 +9642,62 @@
               "                                 ",
               "                                 -- تعداد اقدام اصلاحی "
             ]
+          }
+        ]
+      },
+      {
+        "name": "NL Production_Efficiency",
+        "columns": [
+          {
+            "name": "ACT_TIME",
+            "dataType": "double",
+            "sourceColumn": "ACT_TIME"
+          },
+          {
+            "name": "QC_DATE",
+            "dataType": "string",
+            "sourceColumn": "QC_DATE"
+          },
+          {
+            "name": "RESID_DATE",
+            "dataType": "string",
+            "sourceColumn": "RESID_DATE"
+          },
+          {
+            "name": "DT_TOLID",
+            "dataType": "dateTime",
+            "sourceColumn": "DT_TOLID"
+          },
+          {
+            "name": "TIM_RM",
+            "dataType": "double",
+            "sourceColumn": "TIM_RM"
+          },
+          {
+            "name": "TIM",
+            "dataType": "double",
+            "sourceColumn": "TIM"
+          },
+          {
+            "name": "FAC_CD",
+            "dataType": "double",
+            "sourceColumn": "FAC_CD"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    NL_Production_Efficiency = Source{[Schema=\"NL\",Item=\"Production_Efficiency\"]}[Data]",
+                "in",
+                "    NL_Production_Efficiency"
+              ]
+            }
           }
         ]
       }
