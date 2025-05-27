@@ -2552,6 +2552,21 @@
               "-- نسبت  ریال  تعویض به  کل "
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "052_Sales (made in iran )",
+            "expression": [
+              "  ",
+              "          CALCULATE (",
+              "              SUM ( 'VN Fact_Sale'[Amount] ),",
+              "",
+              "               FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1 ) , ",
+              "                       FILTER('VN Dim_Goods', 'VN Dim_Goods'[001_Made In Iran] =1) , ",
+              "                          FILTER('VN Dim_Goods', 'VN Dim_Goods'[GoodsName]= \"آروا\"))",
+              "",
+              "-- فروش محصولات تولیدی ساخت ایران برای شرکت آروا",
+              ""
+            ]
           }
         ]
       },
