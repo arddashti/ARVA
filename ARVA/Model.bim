@@ -382,12 +382,9 @@
             "expression": " RIGHT('VN Dim_Goods'[GoodsCode],5)"
           },
           {
-            "type": "calculated",
-            "name": "001_Made In Iran",
-            "dataType": "double",
-            "isDataTypeInferred": true,
-            "description": "مشخص شدن کالای تولیدی کارخانه  از محصولات بازرگانی ",
-            "expression": "  LOOKUPVALUE(goodmanufacture[made in iran] , goodmanufacture[GoodsCode], 'VN Dim_Goods'[GoodsCode])"
+            "name": "made in iran",
+            "dataType": "int64",
+            "sourceColumn": "made in iran"
           }
         ],
         "partitions": [
@@ -2563,8 +2560,9 @@
               "              SUM ( 'VN Fact_Sale'[Amount] ),",
               "",
               "               FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1 ) , ",
-              "                       FILTER('VN Dim_Goods', 'VN Dim_Goods'[001_Made In Iran] =1), ",
-              "                         FILTER('VN Dim_Goods', 'VN Dim_Goods'[ManufacturerName]= \"آروا\"))",
+              "                       FILTER('VN Dim_Goods', 'VN Dim_Goods'[made in iran]=1),",
+              "",
+              "                        FILTER('VN Dim_Goods', 'VN Dim_Goods'[ManufacturerName]= \"آروا\"))",
               "",
               "-- فروش محصولات تولیدی ساخت ایران برای شرکت آروا",
               ""
@@ -9748,62 +9746,6 @@
             }
           }
         ]
-      },
-      {
-        "name": "goodmanufacture",
-        "columns": [
-          {
-            "name": "Goods_ID",
-            "dataType": "double",
-            "sourceColumn": "Goods_ID"
-          },
-          {
-            "name": "GoodsCode",
-            "dataType": "string",
-            "sourceColumn": "GoodsCode"
-          },
-          {
-            "name": "GoodsName",
-            "dataType": "string",
-            "sourceColumn": "GoodsName"
-          },
-          {
-            "name": "ManufacturerName",
-            "dataType": "string",
-            "sourceColumn": "ManufacturerName"
-          },
-          {
-            "name": "GoodsGroupName",
-            "dataType": "string",
-            "sourceColumn": "GoodsGroupName"
-          },
-          {
-            "name": "GoodsGroupName_Parent",
-            "dataType": "string",
-            "sourceColumn": "GoodsGroupName_Parent"
-          },
-          {
-            "name": "made in iran",
-            "dataType": "double",
-            "sourceColumn": "made in iran"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Partition",
-            "dataView": "full",
-            "source": {
-              "type": "m",
-              "expression": [
-                "let",
-                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    dbo_goodmanufacture = Source{[Schema=\"dbo\",Item=\"goodmanufacture\"]}[Data]",
-                "in",
-                "    dbo_goodmanufacture"
-              ]
-            }
-          }
-        ]
       }
     ],
     "relationships": [
@@ -10246,15 +10188,6 @@
         "fromColumn": "national_code",
         "toTable": "NL personnel_HR",
         "toColumn": "personnel number"
-      },
-      {
-        "name": "8e3fc9b4-d25d-4b73-83de-25d16adfbaad",
-        "toCardinality": "many",
-        "fromTable": "VN Dim_Goods",
-        "fromColumn": "GoodsCode",
-        "toTable": "goodmanufacture",
-        "toColumn": "GoodsCode",
-        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
