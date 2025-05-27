@@ -2561,12 +2561,25 @@
               "              SUM ( 'VN Fact_Sale'[Amount] ),",
               "",
               "               FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1 ) , ",
-              "                       FILTER('VN Dim_Goods', 'VN Dim_Goods'[001_Made In Iran] =1) , ",
-              "                          FILTER('VN Dim_Goods', 'VN Dim_Goods'[GoodsName]= \"آروا\"))",
+              "                       FILTER('VN Dim_Goods', 'VN Dim_Goods'[001_Made In Iran] =1), ",
+              "                         FILTER('VN Dim_Goods', 'VN Dim_Goods'[ManufacturerName]= \"آروا\"))",
               "",
               "-- فروش محصولات تولیدی ساخت ایران برای شرکت آروا",
               ""
             ]
+          },
+          {
+            "name": "053_Percent(made in iran\\total Amount)",
+            "description": "سهم  محصولات داخلی به  کل  محصولات ",
+            "expression": [
+              "",
+              "                 DIVIDE('VN Fact_Sale'[052_Sales (made in iran )], 'VN Fact_Sale'[02_Amount])",
+              "",
+              "-- سهم  محصولات داخلی به  کل  محصولات ",
+              " ",
+              ""
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
