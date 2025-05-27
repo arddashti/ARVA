@@ -20,8 +20,6 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
-          "kind": "SQL",
-          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -113,7 +111,7 @@
             "name": "Is Holiday",
             "dataType": "string",
             "description": [
-              "جدول مشخص کننده روزهای تعطیل",
+              "جدول مشخص کننده روزهای تعطیل\r",
               "این جدول دارای 3 وضعیت است اولی 1 برای روز های غیر تعطیل و دومی 0 برای روزهای تعطیل و 0.5 برای روزهای پنجشنبه"
             ],
             "sourceColumn": "Is Holiday"
@@ -380,6 +378,14 @@
             "dataType": "string",
             "description": "کد کالا",
             "expression": " RIGHT('VN Dim_Goods'[GoodsCode],5)"
+          },
+          {
+            "type": "calculated",
+            "name": "001_Made In Iran",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "description": "مشخص شدن کالای تولیدی کارخانه  از محصولات بازرگانی ",
+            "expression": "  LOOKUPVALUE(goodmanufacture[made in iran] , goodmanufacture[GoodsCode], 'VN Dim_Goods'[GoodsCode])"
           }
         ],
         "partitions": [
@@ -9712,6 +9718,62 @@
             }
           }
         ]
+      },
+      {
+        "name": "goodmanufacture",
+        "columns": [
+          {
+            "name": "Goods_ID",
+            "dataType": "double",
+            "sourceColumn": "Goods_ID"
+          },
+          {
+            "name": "GoodsCode",
+            "dataType": "string",
+            "sourceColumn": "GoodsCode"
+          },
+          {
+            "name": "GoodsName",
+            "dataType": "string",
+            "sourceColumn": "GoodsName"
+          },
+          {
+            "name": "ManufacturerName",
+            "dataType": "string",
+            "sourceColumn": "ManufacturerName"
+          },
+          {
+            "name": "GoodsGroupName",
+            "dataType": "string",
+            "sourceColumn": "GoodsGroupName"
+          },
+          {
+            "name": "GoodsGroupName_Parent",
+            "dataType": "string",
+            "sourceColumn": "GoodsGroupName_Parent"
+          },
+          {
+            "name": "made in iran",
+            "dataType": "double",
+            "sourceColumn": "made in iran"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    dbo_goodmanufacture = Source{[Schema=\"dbo\",Item=\"goodmanufacture\"]}[Data]",
+                "in",
+                "    dbo_goodmanufacture"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -10154,6 +10216,13 @@
         "fromColumn": "national_code",
         "toTable": "NL personnel_HR",
         "toColumn": "personnel number"
+      },
+      {
+        "name": "42fb1b3a-9d27-46f8-bf17-20901b911cad",
+        "fromTable": "VN Dim_Goods",
+        "fromColumn": "GoodsCode",
+        "toTable": "goodmanufacture",
+        "toColumn": "GoodsCode"
       }
     ],
     "roles": [
