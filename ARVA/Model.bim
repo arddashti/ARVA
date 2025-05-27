@@ -20,6 +20,8 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -111,7 +113,7 @@
             "name": "Is Holiday",
             "dataType": "string",
             "description": [
-              "جدول مشخص کننده روزهای تعطیل\r",
+              "جدول مشخص کننده روزهای تعطیل",
               "این جدول دارای 3 وضعیت است اولی 1 برای روز های غیر تعطیل و دومی 0 برای روزهای تعطیل و 0.5 برای روزهای پنجشنبه"
             ],
             "sourceColumn": "Is Holiday"
@@ -10246,11 +10248,13 @@
         "toColumn": "personnel number"
       },
       {
-        "name": "42fb1b3a-9d27-46f8-bf17-20901b911cad",
+        "name": "8e3fc9b4-d25d-4b73-83de-25d16adfbaad",
+        "toCardinality": "many",
         "fromTable": "VN Dim_Goods",
         "fromColumn": "GoodsCode",
         "toTable": "goodmanufacture",
-        "toColumn": "GoodsCode"
+        "toColumn": "GoodsCode",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
