@@ -2582,7 +2582,7 @@
             "formatString": "0.00%;-0.00%;0.00%"
           },
           {
-            "name": "054_016_QTY",
+            "name": "054_QTY made in iran",
             "description": "فروش تعدادی محصولات تولیدی آروا",
             "expression": [
               "",
