@@ -2598,7 +2598,8 @@
               "---- فروش تعدادی محصولات تولیدی آروا",
               "                                  ",
               ""
-            ]
+            ],
+            "formatString": "#,#"
           },
           {
             "name": "055_Percent(made in iran\\total Amount)",
