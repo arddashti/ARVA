@@ -2606,7 +2606,7 @@
             "description": "سهم تعدادی محصولات داخلی به  کل  محصولات ",
             "expression": [
               "",
-              "                 DIVIDE('VN Fact_Sale'[053_Percent(made in iran\\total Amount)], 'VN Fact_Sale'[016_QTY])",
+              "                 DIVIDE('VN Fact_Sale'[054_QTY made in iran], 'VN Fact_Sale'[016_QTY])",
               "",
               "-- سهم تعدادی محصولات داخلی به  کل  محصولات ",
               " "
