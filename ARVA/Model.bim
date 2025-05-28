@@ -113,7 +113,7 @@
             "name": "Is Holiday",
             "dataType": "string",
             "description": [
-              "جدول مشخص کننده روزهای تعطیل",
+              "جدول مشخص کننده روزهای تعطیل\r",
               "این جدول دارای 3 وضعیت است اولی 1 برای روز های غیر تعطیل و دومی 0 برای روزهای تعطیل و 0.5 برای روزهای پنجشنبه"
             ],
             "sourceColumn": "Is Holiday"
@@ -2578,6 +2578,37 @@
               "-- سهم  محصولات داخلی به  کل  محصولات ",
               " ",
               ""
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "054_016_QTY",
+            "description": "فروش تعدادی محصولات تولیدی آروا",
+            "expression": [
+              "",
+              "     CALCULATE (",
+              "              SUM ( 'VN Fact_Sale'[TotalQty] ),",
+              "",
+              "              FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1 )  ,",
+              "                      FILTER('VN Dim_Goods', 'VN Dim_Goods'[made in iran]=1),",
+              "",
+              "                        FILTER('VN Dim_Goods', 'VN Dim_Goods'[ManufacturerName]= \"آروا\"))",
+              "",
+              "",
+              "---- فروش تعدادی محصولات تولیدی آروا",
+              "                                  ",
+              ""
+            ]
+          },
+          {
+            "name": "055_Percent(made in iran\\total Amount)",
+            "description": "سهم تعدادی محصولات داخلی به  کل  محصولات ",
+            "expression": [
+              "",
+              "                 DIVIDE('VN Fact_Sale'[053_Percent(made in iran\\total Amount)], 'VN Fact_Sale'[016_QTY])",
+              "",
+              "-- سهم تعدادی محصولات داخلی به  کل  محصولات ",
+              " "
             ],
             "formatString": "0.00%;-0.00%;0.00%"
           }
