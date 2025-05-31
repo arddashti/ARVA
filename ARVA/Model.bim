@@ -11268,6 +11268,17 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "001_ Number of device acceptances",
+            "description": "تعداد پذیرش دستگاه",
+            "expression": [
+              " ",
+              "         DISTINCTCOUNT(SooroshanCustomerspares[cno])",
+              "-- تعداد پذیرش دستگاه"
+            ]
+          }
         ]
       }
     ],
