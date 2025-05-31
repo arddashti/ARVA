@@ -9779,6 +9779,7 @@
       },
       {
         "name": "SooroshanCustomerspares",
+        "description": "گزارش نو- خراب سروشان",
         "columns": [
           {
             "name": "cncode",
@@ -9797,7 +9798,7 @@
           },
           {
             "name": "cno",
-            "dataType": "double",
+            "dataType": "int64",
             "sourceColumn": "cno"
           },
           {
@@ -11260,9 +11261,10 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    dbo_SooroshanCustomerspares = Source{[Schema=\"dbo\",Item=\"SooroshanCustomerspares\"]}[Data]",
+                "    dbo_SooroshanCustomerspares = Source{[Schema=\"dbo\",Item=\"SooroshanCustomerspares\"]}[Data],",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(dbo_SooroshanCustomerspares,{{\"cno\", Int64.Type}})",
                 "in",
-                "    dbo_SooroshanCustomerspares"
+                "    #\"Changed Type\""
               ]
             }
           }
