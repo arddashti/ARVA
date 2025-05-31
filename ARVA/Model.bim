@@ -20,8 +20,6 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
-          "kind": "SQL",
-          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -9778,6 +9776,1497 @@
             }
           }
         ]
+      },
+      {
+        "name": "SooroshanCustomerspares",
+        "columns": [
+          {
+            "name": "cncode",
+            "dataType": "string",
+            "sourceColumn": "cncode"
+          },
+          {
+            "name": "cncode (2)",
+            "dataType": "string",
+            "sourceColumn": "cncode (2)"
+          },
+          {
+            "name": "cnindex",
+            "dataType": "int64",
+            "sourceColumn": "cnindex"
+          },
+          {
+            "name": "cno",
+            "dataType": "double",
+            "sourceColumn": "cno"
+          },
+          {
+            "name": "drcode",
+            "dataType": "string",
+            "sourceColumn": "drcode"
+          },
+          {
+            "name": "prcode",
+            "dataType": "string",
+            "sourceColumn": "prcode"
+          },
+          {
+            "name": "draftname",
+            "dataType": "string",
+            "sourceColumn": "draftname"
+          },
+          {
+            "name": "s_enterdate",
+            "dataType": "string",
+            "sourceColumn": "s_enterdate"
+          },
+          {
+            "name": "m_enterdate",
+            "dataType": "dateTime",
+            "sourceColumn": "m_enterdate"
+          },
+          {
+            "name": "s_eastdate",
+            "dataType": "string",
+            "sourceColumn": "s_eastdate"
+          },
+          {
+            "name": "m_eastdate",
+            "dataType": "dateTime",
+            "sourceColumn": "m_eastdate"
+          },
+          {
+            "name": "s_repairdate",
+            "dataType": "string",
+            "sourceColumn": "s_repairdate"
+          },
+          {
+            "name": "m_repairdate",
+            "dataType": "dateTime",
+            "sourceColumn": "m_repairdate"
+          },
+          {
+            "name": "s_exitdate",
+            "dataType": "string",
+            "sourceColumn": "s_exitdate"
+          },
+          {
+            "name": "m_exitdate",
+            "dataType": "dateTime",
+            "sourceColumn": "m_exitdate"
+          },
+          {
+            "name": "fullname",
+            "dataType": "string",
+            "sourceColumn": "fullname"
+          },
+          {
+            "name": "accountname",
+            "dataType": "string",
+            "sourceColumn": "accountname"
+          },
+          {
+            "name": "accountprcode",
+            "dataType": "string",
+            "sourceColumn": "accountprcode"
+          },
+          {
+            "name": "accountlawkind",
+            "dataType": "double",
+            "sourceColumn": "accountlawkind"
+          },
+          {
+            "name": "kindwork",
+            "dataType": "string",
+            "sourceColumn": "kindwork"
+          },
+          {
+            "name": "skcode",
+            "dataType": "string",
+            "sourceColumn": "skcode"
+          },
+          {
+            "name": "servicekind",
+            "dataType": "string",
+            "sourceColumn": "servicekind"
+          },
+          {
+            "name": "gaurantee",
+            "dataType": "boolean",
+            "sourceColumn": "gaurantee"
+          },
+          {
+            "name": "rejected",
+            "dataType": "boolean",
+            "sourceColumn": "rejected"
+          },
+          {
+            "name": "gauranteecode",
+            "dataType": "string",
+            "sourceColumn": "gauranteecode"
+          },
+          {
+            "name": "gaccountname",
+            "dataType": "string",
+            "sourceColumn": "gaccountname"
+          },
+          {
+            "name": "gprcode",
+            "dataType": "string",
+            "sourceColumn": "gprcode"
+          },
+          {
+            "name": "s_gexpdate",
+            "dataType": "string",
+            "sourceColumn": "s_gexpdate"
+          },
+          {
+            "name": "m_gexpdate",
+            "dataType": "dateTime",
+            "sourceColumn": "m_gexpdate"
+          },
+          {
+            "name": "s_gbegdate",
+            "dataType": "string",
+            "sourceColumn": "s_gbegdate"
+          },
+          {
+            "name": "m_gbegdate",
+            "dataType": "dateTime",
+            "sourceColumn": "m_gbegdate"
+          },
+          {
+            "name": "rejecteddes",
+            "dataType": "string",
+            "sourceColumn": "rejecteddes"
+          },
+          {
+            "name": "telno",
+            "dataType": "string",
+            "sourceColumn": "telno"
+          },
+          {
+            "name": "brand",
+            "dataType": "string",
+            "sourceColumn": "brand"
+          },
+          {
+            "name": "app",
+            "dataType": "string",
+            "sourceColumn": "app"
+          },
+          {
+            "name": "model",
+            "dataType": "string",
+            "sourceColumn": "model"
+          },
+          {
+            "name": "serialno",
+            "dataType": "string",
+            "sourceColumn": "serialno"
+          },
+          {
+            "name": "prediag",
+            "dataType": "string",
+            "sourceColumn": "prediag"
+          },
+          {
+            "name": "extappendix",
+            "dataType": "string",
+            "sourceColumn": "extappendix"
+          },
+          {
+            "name": "eastimate",
+            "dataType": "boolean",
+            "sourceColumn": "eastimate"
+          },
+          {
+            "name": "eastimation",
+            "dataType": "string",
+            "sourceColumn": "eastimation"
+          },
+          {
+            "name": "repairaccepted",
+            "dataType": "boolean",
+            "sourceColumn": "repairaccepted"
+          },
+          {
+            "name": "repairrejected",
+            "dataType": "boolean",
+            "sourceColumn": "repairrejected"
+          },
+          {
+            "name": "sparewaiting",
+            "dataType": "boolean",
+            "sourceColumn": "sparewaiting"
+          },
+          {
+            "name": "mapwaiting",
+            "dataType": "boolean",
+            "sourceColumn": "mapwaiting"
+          },
+          {
+            "name": "noproblem",
+            "dataType": "boolean",
+            "sourceColumn": "noproblem"
+          },
+          {
+            "name": "unrepairable",
+            "dataType": "boolean",
+            "sourceColumn": "unrepairable"
+          },
+          {
+            "name": "repairable",
+            "dataType": "boolean",
+            "sourceColumn": "repairable"
+          },
+          {
+            "name": "cpartsdelivery",
+            "dataType": "boolean",
+            "sourceColumn": "cpartsdelivery"
+          },
+          {
+            "name": "sparewaitingdes",
+            "dataType": "string",
+            "sourceColumn": "sparewaitingdes"
+          },
+          {
+            "name": "mapwaitingdes",
+            "dataType": "string",
+            "sourceColumn": "mapwaitingdes"
+          },
+          {
+            "name": "unrepairabledes",
+            "dataType": "string",
+            "sourceColumn": "unrepairabledes"
+          },
+          {
+            "name": "noproblemdes",
+            "dataType": "string",
+            "sourceColumn": "noproblemdes"
+          },
+          {
+            "name": "repaired",
+            "dataType": "boolean",
+            "sourceColumn": "repaired"
+          },
+          {
+            "name": "spare01",
+            "dataType": "string",
+            "sourceColumn": "spare01"
+          },
+          {
+            "name": "spare02",
+            "dataType": "string",
+            "sourceColumn": "spare02"
+          },
+          {
+            "name": "spare03",
+            "dataType": "string",
+            "sourceColumn": "spare03"
+          },
+          {
+            "name": "spare04",
+            "dataType": "string",
+            "sourceColumn": "spare04"
+          },
+          {
+            "name": "spare05",
+            "dataType": "string",
+            "sourceColumn": "spare05"
+          },
+          {
+            "name": "spare06",
+            "dataType": "string",
+            "sourceColumn": "spare06"
+          },
+          {
+            "name": "spare07",
+            "dataType": "string",
+            "sourceColumn": "spare07"
+          },
+          {
+            "name": "spare08",
+            "dataType": "string",
+            "sourceColumn": "spare08"
+          },
+          {
+            "name": "spare09",
+            "dataType": "string",
+            "sourceColumn": "spare09"
+          },
+          {
+            "name": "spare10",
+            "dataType": "string",
+            "sourceColumn": "spare10"
+          },
+          {
+            "name": "spare11",
+            "dataType": "string",
+            "sourceColumn": "spare11"
+          },
+          {
+            "name": "spare12",
+            "dataType": "string",
+            "sourceColumn": "spare12"
+          },
+          {
+            "name": "spare13",
+            "dataType": "string",
+            "sourceColumn": "spare13"
+          },
+          {
+            "name": "spare14",
+            "dataType": "string",
+            "sourceColumn": "spare14"
+          },
+          {
+            "name": "sppartno01",
+            "dataType": "string",
+            "sourceColumn": "sppartno01"
+          },
+          {
+            "name": "sppartno02",
+            "dataType": "string",
+            "sourceColumn": "sppartno02"
+          },
+          {
+            "name": "sppartno03",
+            "dataType": "string",
+            "sourceColumn": "sppartno03"
+          },
+          {
+            "name": "sppartno04",
+            "dataType": "string",
+            "sourceColumn": "sppartno04"
+          },
+          {
+            "name": "sppartno05",
+            "dataType": "string",
+            "sourceColumn": "sppartno05"
+          },
+          {
+            "name": "sppartno06",
+            "dataType": "string",
+            "sourceColumn": "sppartno06"
+          },
+          {
+            "name": "sppartno07",
+            "dataType": "string",
+            "sourceColumn": "sppartno07"
+          },
+          {
+            "name": "sppartno08",
+            "dataType": "string",
+            "sourceColumn": "sppartno08"
+          },
+          {
+            "name": "sppartno09",
+            "dataType": "string",
+            "sourceColumn": "sppartno09"
+          },
+          {
+            "name": "sppartno10",
+            "dataType": "string",
+            "sourceColumn": "sppartno10"
+          },
+          {
+            "name": "sppartno11",
+            "dataType": "string",
+            "sourceColumn": "sppartno11"
+          },
+          {
+            "name": "sppartno12",
+            "dataType": "string",
+            "sourceColumn": "sppartno12"
+          },
+          {
+            "name": "sppartno13",
+            "dataType": "string",
+            "sourceColumn": "sppartno13"
+          },
+          {
+            "name": "sppartno14",
+            "dataType": "string",
+            "sourceColumn": "sppartno14"
+          },
+          {
+            "name": "spno01",
+            "dataType": "double",
+            "sourceColumn": "spno01"
+          },
+          {
+            "name": "spno02",
+            "dataType": "double",
+            "sourceColumn": "spno02"
+          },
+          {
+            "name": "spno03",
+            "dataType": "double",
+            "sourceColumn": "spno03"
+          },
+          {
+            "name": "spno04",
+            "dataType": "double",
+            "sourceColumn": "spno04"
+          },
+          {
+            "name": "spno05",
+            "dataType": "double",
+            "sourceColumn": "spno05"
+          },
+          {
+            "name": "spno06",
+            "dataType": "double",
+            "sourceColumn": "spno06"
+          },
+          {
+            "name": "spno07",
+            "dataType": "double",
+            "sourceColumn": "spno07"
+          },
+          {
+            "name": "spno08",
+            "dataType": "double",
+            "sourceColumn": "spno08"
+          },
+          {
+            "name": "spno09",
+            "dataType": "double",
+            "sourceColumn": "spno09"
+          },
+          {
+            "name": "spno10",
+            "dataType": "double",
+            "sourceColumn": "spno10"
+          },
+          {
+            "name": "spno11",
+            "dataType": "double",
+            "sourceColumn": "spno11"
+          },
+          {
+            "name": "spno12",
+            "dataType": "double",
+            "sourceColumn": "spno12"
+          },
+          {
+            "name": "spno13",
+            "dataType": "double",
+            "sourceColumn": "spno13"
+          },
+          {
+            "name": "spno14",
+            "dataType": "double",
+            "sourceColumn": "spno14"
+          },
+          {
+            "name": "spunitp01",
+            "dataType": "double",
+            "sourceColumn": "spunitp01"
+          },
+          {
+            "name": "spunitp02",
+            "dataType": "double",
+            "sourceColumn": "spunitp02"
+          },
+          {
+            "name": "spunitp03",
+            "dataType": "double",
+            "sourceColumn": "spunitp03"
+          },
+          {
+            "name": "spunitp04",
+            "dataType": "double",
+            "sourceColumn": "spunitp04"
+          },
+          {
+            "name": "spunitp05",
+            "dataType": "double",
+            "sourceColumn": "spunitp05"
+          },
+          {
+            "name": "spunitp06",
+            "dataType": "double",
+            "sourceColumn": "spunitp06"
+          },
+          {
+            "name": "spunitp07",
+            "dataType": "double",
+            "sourceColumn": "spunitp07"
+          },
+          {
+            "name": "spunitp08",
+            "dataType": "double",
+            "sourceColumn": "spunitp08"
+          },
+          {
+            "name": "spunitp09",
+            "dataType": "double",
+            "sourceColumn": "spunitp09"
+          },
+          {
+            "name": "spunitp10",
+            "dataType": "double",
+            "sourceColumn": "spunitp10"
+          },
+          {
+            "name": "spunitp11",
+            "dataType": "double",
+            "sourceColumn": "spunitp11"
+          },
+          {
+            "name": "spunitp12",
+            "dataType": "double",
+            "sourceColumn": "spunitp12"
+          },
+          {
+            "name": "spunitp13",
+            "dataType": "double",
+            "sourceColumn": "spunitp13"
+          },
+          {
+            "name": "spunitp14",
+            "dataType": "double",
+            "sourceColumn": "spunitp14"
+          },
+          {
+            "name": "spavgbuy01",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy01"
+          },
+          {
+            "name": "spavgbuy02",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy02"
+          },
+          {
+            "name": "spavgbuy03",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy03"
+          },
+          {
+            "name": "spavgbuy04",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy04"
+          },
+          {
+            "name": "spavgbuy05",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy05"
+          },
+          {
+            "name": "spavgbuy06",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy06"
+          },
+          {
+            "name": "spavgbuy07",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy07"
+          },
+          {
+            "name": "spavgbuy08",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy08"
+          },
+          {
+            "name": "spavgbuy09",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy09"
+          },
+          {
+            "name": "spavgbuy10",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy10"
+          },
+          {
+            "name": "spavgbuy11",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy11"
+          },
+          {
+            "name": "spavgbuy12",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy12"
+          },
+          {
+            "name": "spavgbuy13",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy13"
+          },
+          {
+            "name": "spavgbuy14",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy14"
+          },
+          {
+            "name": "spware01",
+            "dataType": "boolean",
+            "sourceColumn": "spware01"
+          },
+          {
+            "name": "spware02",
+            "dataType": "boolean",
+            "sourceColumn": "spware02"
+          },
+          {
+            "name": "spware03",
+            "dataType": "boolean",
+            "sourceColumn": "spware03"
+          },
+          {
+            "name": "spware04",
+            "dataType": "boolean",
+            "sourceColumn": "spware04"
+          },
+          {
+            "name": "spware05",
+            "dataType": "boolean",
+            "sourceColumn": "spware05"
+          },
+          {
+            "name": "spware06",
+            "dataType": "boolean",
+            "sourceColumn": "spware06"
+          },
+          {
+            "name": "spware07",
+            "dataType": "boolean",
+            "sourceColumn": "spware07"
+          },
+          {
+            "name": "spware08",
+            "dataType": "boolean",
+            "sourceColumn": "spware08"
+          },
+          {
+            "name": "spware09",
+            "dataType": "boolean",
+            "sourceColumn": "spware09"
+          },
+          {
+            "name": "spware10",
+            "dataType": "boolean",
+            "sourceColumn": "spware10"
+          },
+          {
+            "name": "spware11",
+            "dataType": "boolean",
+            "sourceColumn": "spware11"
+          },
+          {
+            "name": "spware12",
+            "dataType": "boolean",
+            "sourceColumn": "spware12"
+          },
+          {
+            "name": "spware13",
+            "dataType": "boolean",
+            "sourceColumn": "spware13"
+          },
+          {
+            "name": "spware14",
+            "dataType": "boolean",
+            "sourceColumn": "spware14"
+          },
+          {
+            "name": "spcode01",
+            "dataType": "string",
+            "sourceColumn": "spcode01"
+          },
+          {
+            "name": "spcode02",
+            "dataType": "string",
+            "sourceColumn": "spcode02"
+          },
+          {
+            "name": "spcode03",
+            "dataType": "string",
+            "sourceColumn": "spcode03"
+          },
+          {
+            "name": "spcode04",
+            "dataType": "string",
+            "sourceColumn": "spcode04"
+          },
+          {
+            "name": "spcode05",
+            "dataType": "string",
+            "sourceColumn": "spcode05"
+          },
+          {
+            "name": "spcode06",
+            "dataType": "string",
+            "sourceColumn": "spcode06"
+          },
+          {
+            "name": "spcode07",
+            "dataType": "string",
+            "sourceColumn": "spcode07"
+          },
+          {
+            "name": "spcode08",
+            "dataType": "string",
+            "sourceColumn": "spcode08"
+          },
+          {
+            "name": "spcode09",
+            "dataType": "string",
+            "sourceColumn": "spcode09"
+          },
+          {
+            "name": "spcode10",
+            "dataType": "string",
+            "sourceColumn": "spcode10"
+          },
+          {
+            "name": "spcode11",
+            "dataType": "string",
+            "sourceColumn": "spcode11"
+          },
+          {
+            "name": "spcode12",
+            "dataType": "string",
+            "sourceColumn": "spcode12"
+          },
+          {
+            "name": "spcode13",
+            "dataType": "string",
+            "sourceColumn": "spcode13"
+          },
+          {
+            "name": "spcode14",
+            "dataType": "string",
+            "sourceColumn": "spcode14"
+          },
+          {
+            "name": "spc01",
+            "dataType": "boolean",
+            "sourceColumn": "spc01"
+          },
+          {
+            "name": "spc02",
+            "dataType": "boolean",
+            "sourceColumn": "spc02"
+          },
+          {
+            "name": "spc03",
+            "dataType": "boolean",
+            "sourceColumn": "spc03"
+          },
+          {
+            "name": "spc04",
+            "dataType": "boolean",
+            "sourceColumn": "spc04"
+          },
+          {
+            "name": "spc05",
+            "dataType": "boolean",
+            "sourceColumn": "spc05"
+          },
+          {
+            "name": "spc06",
+            "dataType": "boolean",
+            "sourceColumn": "spc06"
+          },
+          {
+            "name": "spc07",
+            "dataType": "boolean",
+            "sourceColumn": "spc07"
+          },
+          {
+            "name": "spc08",
+            "dataType": "boolean",
+            "sourceColumn": "spc08"
+          },
+          {
+            "name": "spc09",
+            "dataType": "boolean",
+            "sourceColumn": "spc09"
+          },
+          {
+            "name": "spc10",
+            "dataType": "boolean",
+            "sourceColumn": "spc10"
+          },
+          {
+            "name": "spc11",
+            "dataType": "boolean",
+            "sourceColumn": "spc11"
+          },
+          {
+            "name": "spc12",
+            "dataType": "boolean",
+            "sourceColumn": "spc12"
+          },
+          {
+            "name": "spc13",
+            "dataType": "boolean",
+            "sourceColumn": "spc13"
+          },
+          {
+            "name": "spc14",
+            "dataType": "boolean",
+            "sourceColumn": "spc14"
+          },
+          {
+            "name": "diag01",
+            "dataType": "string",
+            "sourceColumn": "diag01"
+          },
+          {
+            "name": "diag02",
+            "dataType": "string",
+            "sourceColumn": "diag02"
+          },
+          {
+            "name": "diag03",
+            "dataType": "string",
+            "sourceColumn": "diag03"
+          },
+          {
+            "name": "diag04",
+            "dataType": "string",
+            "sourceColumn": "diag04"
+          },
+          {
+            "name": "diag05",
+            "dataType": "string",
+            "sourceColumn": "diag05"
+          },
+          {
+            "name": "diag06",
+            "dataType": "string",
+            "sourceColumn": "diag06"
+          },
+          {
+            "name": "diag07",
+            "dataType": "string",
+            "sourceColumn": "diag07"
+          },
+          {
+            "name": "diag08",
+            "dataType": "string",
+            "sourceColumn": "diag08"
+          },
+          {
+            "name": "diag09",
+            "dataType": "string",
+            "sourceColumn": "diag09"
+          },
+          {
+            "name": "diag10",
+            "dataType": "string",
+            "sourceColumn": "diag10"
+          },
+          {
+            "name": "pcode01",
+            "dataType": "string",
+            "sourceColumn": "pcode01"
+          },
+          {
+            "name": "pcode02",
+            "dataType": "string",
+            "sourceColumn": "pcode02"
+          },
+          {
+            "name": "pcode03",
+            "dataType": "string",
+            "sourceColumn": "pcode03"
+          },
+          {
+            "name": "pcode04",
+            "dataType": "string",
+            "sourceColumn": "pcode04"
+          },
+          {
+            "name": "pcode05",
+            "dataType": "string",
+            "sourceColumn": "pcode05"
+          },
+          {
+            "name": "pcode06",
+            "dataType": "string",
+            "sourceColumn": "pcode06"
+          },
+          {
+            "name": "pcode07",
+            "dataType": "string",
+            "sourceColumn": "pcode07"
+          },
+          {
+            "name": "pcode08",
+            "dataType": "string",
+            "sourceColumn": "pcode08"
+          },
+          {
+            "name": "pcode09",
+            "dataType": "string",
+            "sourceColumn": "pcode09"
+          },
+          {
+            "name": "pcode10",
+            "dataType": "string",
+            "sourceColumn": "pcode10"
+          },
+          {
+            "name": "wscode01",
+            "dataType": "string",
+            "sourceColumn": "wscode01"
+          },
+          {
+            "name": "wscode02",
+            "dataType": "string",
+            "sourceColumn": "wscode02"
+          },
+          {
+            "name": "wscode03",
+            "dataType": "string",
+            "sourceColumn": "wscode03"
+          },
+          {
+            "name": "wscode04",
+            "dataType": "string",
+            "sourceColumn": "wscode04"
+          },
+          {
+            "name": "wscode05",
+            "dataType": "string",
+            "sourceColumn": "wscode05"
+          },
+          {
+            "name": "wscode06",
+            "dataType": "string",
+            "sourceColumn": "wscode06"
+          },
+          {
+            "name": "wscode07",
+            "dataType": "string",
+            "sourceColumn": "wscode07"
+          },
+          {
+            "name": "wscode08",
+            "dataType": "string",
+            "sourceColumn": "wscode08"
+          },
+          {
+            "name": "wscode09",
+            "dataType": "string",
+            "sourceColumn": "wscode09"
+          },
+          {
+            "name": "wscode10",
+            "dataType": "string",
+            "sourceColumn": "wscode10"
+          },
+          {
+            "name": "diagp01",
+            "dataType": "double",
+            "sourceColumn": "diagp01"
+          },
+          {
+            "name": "diagp02",
+            "dataType": "double",
+            "sourceColumn": "diagp02"
+          },
+          {
+            "name": "diagp03",
+            "dataType": "double",
+            "sourceColumn": "diagp03"
+          },
+          {
+            "name": "diagp04",
+            "dataType": "double",
+            "sourceColumn": "diagp04"
+          },
+          {
+            "name": "diagp05",
+            "dataType": "double",
+            "sourceColumn": "diagp05"
+          },
+          {
+            "name": "diagp06",
+            "dataType": "double",
+            "sourceColumn": "diagp06"
+          },
+          {
+            "name": "diagp07",
+            "dataType": "double",
+            "sourceColumn": "diagp07"
+          },
+          {
+            "name": "diagp08",
+            "dataType": "double",
+            "sourceColumn": "diagp08"
+          },
+          {
+            "name": "diagp09",
+            "dataType": "double",
+            "sourceColumn": "diagp09"
+          },
+          {
+            "name": "diagp10",
+            "dataType": "double",
+            "sourceColumn": "diagp10"
+          },
+          {
+            "name": "etcgaurantee01",
+            "dataType": "boolean",
+            "sourceColumn": "etcgaurantee01"
+          },
+          {
+            "name": "etcgaurantee02",
+            "dataType": "boolean",
+            "sourceColumn": "etcgaurantee02"
+          },
+          {
+            "name": "etcdes01",
+            "dataType": "string",
+            "sourceColumn": "etcdes01"
+          },
+          {
+            "name": "etcdes02",
+            "dataType": "string",
+            "sourceColumn": "etcdes02"
+          },
+          {
+            "name": "etcprice01",
+            "dataType": "double",
+            "sourceColumn": "etcprice01"
+          },
+          {
+            "name": "etcprice02",
+            "dataType": "double",
+            "sourceColumn": "etcprice02"
+          },
+          {
+            "name": "etctotalp",
+            "dataType": "double",
+            "sourceColumn": "etctotalp"
+          },
+          {
+            "name": "spavgbuy",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy"
+          },
+          {
+            "name": "sptotalp",
+            "dataType": "double",
+            "sourceColumn": "sptotalp"
+          },
+          {
+            "name": "diagtotalp",
+            "dataType": "double",
+            "sourceColumn": "diagtotalp"
+          },
+          {
+            "name": "workerspayment",
+            "dataType": "double",
+            "sourceColumn": "workerspayment"
+          },
+          {
+            "name": "totalp",
+            "dataType": "double",
+            "sourceColumn": "totalp"
+          },
+          {
+            "name": "discount",
+            "dataType": "double",
+            "sourceColumn": "discount"
+          },
+          {
+            "name": "specialdiscount",
+            "dataType": "double",
+            "sourceColumn": "specialdiscount"
+          },
+          {
+            "name": "reciept",
+            "dataType": "double",
+            "sourceColumn": "reciept"
+          },
+          {
+            "name": "deposit",
+            "dataType": "double",
+            "sourceColumn": "deposit"
+          },
+          {
+            "name": "balance",
+            "dataType": "double",
+            "sourceColumn": "balance"
+          },
+          {
+            "name": "nextdiscount",
+            "dataType": "double",
+            "sourceColumn": "nextdiscount"
+          },
+          {
+            "name": "nextpayed",
+            "dataType": "double",
+            "sourceColumn": "nextpayed"
+          },
+          {
+            "name": "archive",
+            "dataType": "boolean",
+            "sourceColumn": "archive"
+          },
+          {
+            "name": "blacklist",
+            "dataType": "boolean",
+            "sourceColumn": "blacklist"
+          },
+          {
+            "name": "indexfullname",
+            "dataType": "string",
+            "sourceColumn": "indexfullname"
+          },
+          {
+            "name": "indexaccountname",
+            "dataType": "string",
+            "sourceColumn": "indexaccountname"
+          },
+          {
+            "name": "blackdes",
+            "dataType": "string",
+            "sourceColumn": "blackdes"
+          },
+          {
+            "name": "address",
+            "dataType": "string",
+            "sourceColumn": "address"
+          },
+          {
+            "name": "customerdes",
+            "dataType": "string",
+            "sourceColumn": "customerdes"
+          },
+          {
+            "name": "balancepayed",
+            "dataType": "boolean",
+            "sourceColumn": "balancepayed"
+          },
+          {
+            "name": "aftersalegaurantee",
+            "dataType": "boolean",
+            "sourceColumn": "aftersalegaurantee"
+          },
+          {
+            "name": "beforesalegaurantee",
+            "dataType": "boolean",
+            "sourceColumn": "beforesalegaurantee"
+          },
+          {
+            "name": "actionkind",
+            "dataType": "string",
+            "sourceColumn": "actionkind"
+          },
+          {
+            "name": "regpcode",
+            "dataType": "string",
+            "sourceColumn": "regpcode"
+          },
+          {
+            "name": "regname",
+            "dataType": "string",
+            "sourceColumn": "regname"
+          },
+          {
+            "name": "incacode",
+            "dataType": "string",
+            "sourceColumn": "incacode"
+          },
+          {
+            "name": "outcacode",
+            "dataType": "string",
+            "sourceColumn": "outcacode"
+          },
+          {
+            "name": "cecode",
+            "dataType": "string",
+            "sourceColumn": "cecode"
+          },
+          {
+            "name": "branchprcode",
+            "dataType": "string",
+            "sourceColumn": "branchprcode"
+          },
+          {
+            "name": "jobtransfercncode",
+            "dataType": "string",
+            "sourceColumn": "jobtransfercncode"
+          },
+          {
+            "name": "idtype",
+            "dataType": "string",
+            "sourceColumn": "idtype"
+          },
+          {
+            "name": "idno",
+            "dataType": "string",
+            "sourceColumn": "idno"
+          },
+          {
+            "name": "fuelgauge",
+            "dataType": "double",
+            "sourceColumn": "fuelgauge"
+          },
+          {
+            "name": "pyramid",
+            "dataType": "string",
+            "sourceColumn": "pyramid"
+          },
+          {
+            "name": "productcolor",
+            "dataType": "string",
+            "sourceColumn": "productcolor"
+          },
+          {
+            "name": "s_lastactiondate",
+            "dataType": "string",
+            "sourceColumn": "s_lastactiondate"
+          },
+          {
+            "name": "m_lastactiondate",
+            "dataType": "dateTime",
+            "sourceColumn": "m_lastactiondate"
+          },
+          {
+            "name": "lastactiontime",
+            "dataType": "string",
+            "sourceColumn": "lastactiontime"
+          },
+          {
+            "name": "lastactiondes",
+            "dataType": "string",
+            "sourceColumn": "lastactiondes"
+          },
+          {
+            "name": "deletejobsent",
+            "dataType": "boolean",
+            "sourceColumn": "deletejobsent"
+          },
+          {
+            "name": "lasteditdatetime",
+            "dataType": "dateTime",
+            "sourceColumn": "lasteditdatetime"
+          },
+          {
+            "name": "aocode",
+            "dataType": "string",
+            "sourceColumn": "aocode"
+          },
+          {
+            "name": "bringtelno",
+            "dataType": "string",
+            "sourceColumn": "bringtelno"
+          },
+          {
+            "name": "spavgbuy (1)",
+            "dataType": "double",
+            "sourceColumn": "spavgbuy (1)"
+          },
+          {
+            "name": "regpcode (1)",
+            "dataType": "string",
+            "sourceColumn": "regpcode (1)"
+          },
+          {
+            "name": "regname (1)",
+            "dataType": "string",
+            "sourceColumn": "regname (1)"
+          },
+          {
+            "name": "lasteditdatetime (1)",
+            "dataType": "dateTime",
+            "sourceColumn": "lasteditdatetime (1)"
+          },
+          {
+            "name": "xpindex",
+            "dataType": "int64",
+            "sourceColumn": "xpindex"
+          },
+          {
+            "name": "xpcode",
+            "dataType": "string",
+            "sourceColumn": "xpcode"
+          },
+          {
+            "name": "whcode",
+            "dataType": "string",
+            "sourceColumn": "whcode"
+          },
+          {
+            "name": "spcode",
+            "dataType": "string",
+            "sourceColumn": "spcode"
+          },
+          {
+            "name": "spindex",
+            "dataType": "double",
+            "sourceColumn": "spindex"
+          },
+          {
+            "name": "spare",
+            "dataType": "string",
+            "sourceColumn": "spare"
+          },
+          {
+            "name": "sppartno",
+            "dataType": "string",
+            "sourceColumn": "sppartno"
+          },
+          {
+            "name": "spintcode",
+            "dataType": "string",
+            "sourceColumn": "spintcode"
+          },
+          {
+            "name": "rkcode",
+            "dataType": "string",
+            "sourceColumn": "rkcode"
+          },
+          {
+            "name": "spno",
+            "dataType": "double",
+            "sourceColumn": "spno"
+          },
+          {
+            "name": "spunitp",
+            "dataType": "double",
+            "sourceColumn": "spunitp"
+          },
+          {
+            "name": "spdiscountpercent",
+            "dataType": "double",
+            "sourceColumn": "spdiscountpercent"
+          },
+          {
+            "name": "spdiscount",
+            "dataType": "double",
+            "sourceColumn": "spdiscount"
+          },
+          {
+            "name": "spfixprice",
+            "dataType": "double",
+            "sourceColumn": "spfixprice"
+          },
+          {
+            "name": "sptotalprice",
+            "dataType": "double",
+            "sourceColumn": "sptotalprice"
+          },
+          {
+            "name": "spware",
+            "dataType": "boolean",
+            "sourceColumn": "spware"
+          },
+          {
+            "name": "spc",
+            "dataType": "boolean",
+            "sourceColumn": "spc"
+          },
+          {
+            "name": "spg",
+            "dataType": "boolean",
+            "sourceColumn": "spg"
+          },
+          {
+            "name": "spa",
+            "dataType": "boolean",
+            "sourceColumn": "spa"
+          },
+          {
+            "name": "spi",
+            "dataType": "boolean",
+            "sourceColumn": "spi"
+          },
+          {
+            "name": "uscode",
+            "dataType": "string",
+            "sourceColumn": "uscode"
+          },
+          {
+            "name": "uwcode",
+            "dataType": "string",
+            "sourceColumn": "uwcode"
+          },
+          {
+            "name": "satisfied",
+            "dataType": "boolean",
+            "sourceColumn": "satisfied"
+          },
+          {
+            "name": "sparedes",
+            "dataType": "string",
+            "sourceColumn": "sparedes"
+          },
+          {
+            "name": "zscode",
+            "dataType": "string",
+            "sourceColumn": "zscode"
+          },
+          {
+            "name": "s_regdate",
+            "dataType": "string",
+            "sourceColumn": "s_regdate"
+          },
+          {
+            "name": "m_regdate",
+            "dataType": "dateTime",
+            "sourceColumn": "m_regdate"
+          },
+          {
+            "name": "regtime",
+            "dataType": "string",
+            "sourceColumn": "regtime"
+          },
+          {
+            "name": "regdatetime",
+            "dataType": "dateTime",
+            "sourceColumn": "regdatetime"
+          },
+          {
+            "name": "gacode",
+            "dataType": "string",
+            "sourceColumn": "gacode"
+          },
+          {
+            "name": "rncode",
+            "dataType": "string",
+            "sourceColumn": "rncode"
+          },
+          {
+            "name": "defectivecollection",
+            "dataType": "boolean",
+            "sourceColumn": "defectivecollection"
+          },
+          {
+            "name": "defectivefinancetype",
+            "dataType": "double",
+            "sourceColumn": "defectivefinancetype"
+          },
+          {
+            "name": "AdCode",
+            "dataType": "string",
+            "sourceColumn": "AdCode"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    dbo_SooroshanCustomerspares = Source{[Schema=\"dbo\",Item=\"SooroshanCustomerspares\"]}[Data]",
+                "in",
+                "    dbo_SooroshanCustomerspares"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -10220,6 +11709,13 @@
         "fromColumn": "national_code",
         "toTable": "NL personnel_HR",
         "toColumn": "personnel number"
+      },
+      {
+        "name": "6d442ac5-8b28-4455-967e-6a14df59a44c",
+        "fromTable": "SooroshanCustomerspares",
+        "fromColumn": "s_enterdate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "roles": [
