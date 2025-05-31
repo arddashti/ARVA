@@ -11276,10 +11276,12 @@
             "expression": [
               " ",
               "        CALCULATE( DISTINCTCOUNT(SooroshanCustomerspares[cno]) , ",
-              "                        FILTER(SooroshanCustomerspares , SooroshanCustomerspares[fullname] = \" نو خراب\"),",
-              "                         FILTER(SooroshanCustomerspares,SooroshanCustomerspares[accountname] =\"نوخراب1000\"),",
-              "                         FILTER(SooroshanCustomerspares,SooroshanCustomerspares[fullname] = \"لجستيک\"))",
-              "-- تعداد پذیرش دستگاه نو- خراب "
+              "                                 FILTER(SooroshanCustomerspares, ",
+              "                                     SooroshanCustomerspares[fullname] = \" نو خراب\" ||",
+              "                                  SooroshanCustomerspares[accountname] =\"نوخراب1000\" ||",
+              "                                      SooroshanCustomerspares[fullname] = \"لجستيک\"))",
+              "                ",
+              "-- تعداد پذیرش دستگاه نو- خراب )"
             ]
           }
         ]
