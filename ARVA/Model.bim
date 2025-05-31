@@ -11272,14 +11272,14 @@
         "measures": [
           {
             "name": "001_ Number of device acceptances",
-            "description": "تعداد پذیرش دستگاه",
+            "description": " تعداد پذیرش دستگاه نو- خراب ",
             "expression": [
               " ",
               "        CALCULATE( DISTINCTCOUNT(SooroshanCustomerspares[cno]) , ",
-              "                        FILTER(SooroshanCustomerspares , SooroshanCustomerspares[accountname] = \" نو خراب\"),",
+              "                        FILTER(SooroshanCustomerspares , SooroshanCustomerspares[fullname] = \" نو خراب\"),",
               "                         FILTER(SooroshanCustomerspares,SooroshanCustomerspares[accountname] =\"نوخراب1000\"),",
-              "                         FILTER(SooroshanCustomerspares,SooroshanCustomerspares[accountname] = \"لجستيک\"))",
-              "-- تعداد پذیرش دستگاه"
+              "                         FILTER(SooroshanCustomerspares,SooroshanCustomerspares[fullname] = \"لجستيک\"))",
+              "-- تعداد پذیرش دستگاه نو- خراب "
             ]
           }
         ]
