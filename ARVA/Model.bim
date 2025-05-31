@@ -11275,7 +11275,10 @@
             "description": "تعداد پذیرش دستگاه",
             "expression": [
               " ",
-              "         DISTINCTCOUNT(SooroshanCustomerspares[cno])",
+              "        CALCULATE( DISTINCTCOUNT(SooroshanCustomerspares[cno]) , ",
+              "                        FILTER(SooroshanCustomerspares , SooroshanCustomerspares[accountname] = \" نو خراب\"),",
+              "                         FILTER(SooroshanCustomerspares,SooroshanCustomerspares[accountname] =\"نوخراب1000\"),",
+              "                         FILTER(SooroshanCustomerspares,SooroshanCustomerspares[accountname] = \"لجستيک\"))",
               "-- تعداد پذیرش دستگاه"
             ]
           }
