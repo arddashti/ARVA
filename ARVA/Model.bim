@@ -20,6 +20,8 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -8630,6 +8632,61 @@
               "--- فیلتر برای  قبض پذیرش",
               ""
             ]
+          },
+          {
+            "name": "diag",
+            "dataType": "string",
+            "sourceColumn": "diag"
+          },
+          {
+            "name": "diagunitprice",
+            "dataType": "double",
+            "sourceColumn": "diagunitprice"
+          },
+          {
+            "name": "diagtotalprice",
+            "dataType": "double",
+            "sourceColumn": "diagtotalprice"
+          },
+          {
+            "name": "diagp",
+            "dataType": "double",
+            "sourceColumn": "diagp"
+          },
+          {
+            "name": "fullname (#1)",
+            "dataType": "string",
+            "sourceColumn": "fullname (#1)"
+          },
+          {
+            "name": "assigntime",
+            "dataType": "string",
+            "sourceColumn": "assigntime"
+          },
+          {
+            "name": "m_assigndate",
+            "dataType": "dateTime",
+            "sourceColumn": "m_assigndate"
+          },
+          {
+            "name": "s_assigndate",
+            "dataType": "string",
+            "sourceColumn": "s_assigndate"
+          },
+          {
+            "name": "assign_duration",
+            "dataType": "string",
+            "sourceColumn": "assign_duration"
+          },
+          {
+            "type": "calculated",
+            "name": "002_assign Duration",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": [
+              "  'sorooshan servicce_acceptance'[assign_duration] /3600",
+              "--"
+            ]
           }
         ],
         "partitions": [
@@ -8669,6 +8726,17 @@
               "                         FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[repairrejected] <>TRUE()))",
               "     -- تعداد پذیرش"
             ]
+          },
+          {
+            "name": "003_Avg_Assign Duration",
+            "description": " محاسبه میانگین مدت زمان تعمیر  دستگاه توسط تعمیرکاران",
+            "expression": [
+              " ",
+              "        CALCULATE(AVERAGEA('sorooshan servicce_acceptance'[002_assign Duration]))",
+              "                                   --  FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[repairrejected]<>TRUE()))",
+              "",
+              "       -- محاسبه میانگین مدت زمان تعمیر  دستگاه توسط تعمیرکاران ))"
+            ]
           }
         ]
       },
@@ -8689,6 +8757,11 @@
             "name": "service_status",
             "dataType": "string",
             "sourceColumn": "service_status"
+          },
+          {
+            "name": "assign_duration",
+            "dataType": "double",
+            "sourceColumn": "assign_duration"
           }
         ],
         "partitions": [
