@@ -8688,6 +8688,18 @@
               "  'sorooshan servicce_acceptance'[assign_duration] /3600",
               "--"
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "003_New-broken",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "                LOOKUPVALUE(SooroshanCustomerspares[accountname], SooroshanCustomerspares[cncode],'sorooshan servicce_acceptance'[cncode])",
+              "",
+              "--نو- خراب"
+            ]
           }
         ],
         "partitions": [
