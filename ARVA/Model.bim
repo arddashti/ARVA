@@ -8497,7 +8497,7 @@
           },
           {
             "name": "cno",
-            "dataType": "double",
+            "dataType": "int64",
             "sourceColumn": "cno"
           },
           {
@@ -8738,7 +8738,8 @@
               "              CALCULATE( DISTINCTCOUNT('sorooshan servicce_acceptance'[cncode]) ,",
               "                         FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[repairrejected] <>TRUE()))",
               "     -- تعداد پذیرش"
-            ]
+            ],
+            "formatString": "#,#"
           },
           {
             "name": "003_Avg_Assign Duration",
