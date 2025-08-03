@@ -20,8 +20,6 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
-          "kind": "SQL",
-          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -385,6 +383,26 @@
             "name": "made in iran",
             "dataType": "int64",
             "sourceColumn": "made in iran"
+          },
+          {
+            "type": "calculated",
+            "name": "002_Target Power SKU",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "description": "ایجاد کد برای Power SKU",
+            "expression": [
+              " ",
+              "             if('VN Dim_Goods'[GoodsGroupName] = \"دستگاه جوشکاري (05)\" , 1 ,",
+              "             if('VN Dim_Goods'[GoodsGroupName] = \"فرز (20)\" || 'VN Dim_Goods'[GoodsGroupName] = \"ميني فرز شارژي (27)\" ||",
+              "                'VN Dim_Goods'[GoodsGroupName] = \"ميني فرز (23)\",2,",
+              "             if('VN Dim_Goods'[GoodsGroupName] = \"بتن کن (05)\" || 'VN Dim_Goods'[GoodsGroupName] = \"بتن کن شارژِي (26)\",3,",
+              "             if('VN Dim_Goods'[GoodsGroupName] = \"دريل شارژي (19)\" || 'VN Dim_Goods'[GoodsGroupName]= \"دريل (17)\" || 'VN Dim_Goods'[GoodsGroupName] = \"دريل برقي چکشي(41)\" ,4,",
+              "             if('VN Dim_Goods'[GoodsGroupName] = \"چکش (26)\" || 'VN Dim_Goods'[GoodsGroupName] = \"پيکور (12)\" , 5,   ",
+              "             if('VN Dim_Goods'[GoodsGroupName] = \"ميخ کوب (10)\" , 6 , ",
+              "             if('VN Dim_Goods'[GoodsGroupName] = \"منگنه کوب (09)\" , 7)))))))",
+              "",
+              "--ایجاد کد برای Power SKU"
+            ]
           }
         ],
         "partitions": [
@@ -11423,6 +11441,52 @@
               "                ",
               "-- تعداد پذیرش دستگاه نو- خراب )"
             ]
+          }
+        ]
+      },
+      {
+        "name": "Target Power SKU",
+        "columns": [
+          {
+            "name": "سال",
+            "dataType": "double",
+            "sourceColumn": "سال"
+          },
+          {
+            "name": "ماه",
+            "dataType": "double",
+            "sourceColumn": "ماه"
+          },
+          {
+            "name": "کد گروه محصول",
+            "dataType": "double",
+            "sourceColumn": "کد گروه محصول"
+          },
+          {
+            "name": "نام گروه محصول",
+            "dataType": "string",
+            "sourceColumn": "نام گروه محصول"
+          },
+          {
+            "name": "تارکت",
+            "dataType": "double",
+            "sourceColumn": "تارکت"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    #\"dbo_Target Power SKU\" = Source{[Schema=\"dbo\",Item=\"Target Power SKU\"]}[Data]",
+                "in",
+                "    #\"dbo_Target Power SKU\""
+              ]
+            }
           }
         ]
       }
