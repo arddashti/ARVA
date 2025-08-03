@@ -11938,6 +11938,15 @@
         "fromColumn": "s_enterdate",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "36a2c0f4-8dc9-4c67-b389-f7d6a13e72c5",
+        "toCardinality": "many",
+        "fromTable": "VN Dim_Goods",
+        "fromColumn": "002_Target Power SKU",
+        "toTable": "Target Power SKU",
+        "toColumn": "کد گروه محصول",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
