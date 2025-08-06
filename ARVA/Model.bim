@@ -20,6 +20,8 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -111,7 +113,7 @@
             "name": "Is Holiday",
             "dataType": "string",
             "description": [
-              "جدول مشخص کننده روزهای تعطیل\r",
+              "جدول مشخص کننده روزهای تعطیل",
               "این جدول دارای 3 وضعیت است اولی 1 برای روز های غیر تعطیل و دومی 0 برای روزهای تعطیل و 0.5 برای روزهای پنجشنبه"
             ],
             "sourceColumn": "Is Holiday"
@@ -403,6 +405,11 @@
               "",
               "--ایجاد کد برای Power SKU"
             ]
+          },
+          {
+            "name": "Power_SKU_Code",
+            "dataType": "int64",
+            "sourceColumn": "Power_SKU_Code"
           }
         ],
         "partitions": [
@@ -2913,7 +2920,7 @@
           },
           {
             "name": "target_amount_per_day",
-            "dataType": "int64",
+            "dataType": "double",
             "description": "مقدار تارگت روزانه هر شهر در هر تاریخ خاص",
             "sourceColumn": "target_amount_per_day",
             "formatString": "#,#"
@@ -2923,6 +2930,11 @@
             "dataType": "string",
             "description": "کد شهر",
             "sourceColumn": "StateCode"
+          },
+          {
+            "name": "Power_SKU_Code",
+            "dataType": "int64",
+            "sourceColumn": "Power_SKU_Code"
           }
         ],
         "partitions": [
