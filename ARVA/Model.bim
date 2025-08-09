@@ -3081,7 +3081,8 @@
             "description": " محاسبه  تارگت کل power SKU",
             "expression": [
               " ",
-              "                          CALCULATE( SUM('VN Fact_Target'[target_amount_per_day]), 'VN Fact_Target'[StateCode] = BLANK())",
+              "                          CALCULATE( SUM('VN Fact_Target'[target_amount_per_day]),",
+              "                                           FILTER('VN Fact_Target','VN Fact_Target'[StateCode] = BLANK()))",
               "",
               "-- محاسبه  تارگت کل power SKU"
             ],
