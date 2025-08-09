@@ -2946,9 +2946,10 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    VN_Fact_Target = Source{[Schema=\"VN\",Item=\"Fact_Target\"]}[Data]",
+                "    VN_Fact_Target = Source{[Schema=\"VN\",Item=\"Fact_Target\"]}[Data],",
+                "    #\"Filtered Rows\" = Table.SelectRows(VN_Fact_Target, each true)",
                 "in",
-                "    VN_Fact_Target"
+                "    #\"Filtered Rows\""
               ]
             }
           }
