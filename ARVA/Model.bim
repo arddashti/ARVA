@@ -11488,52 +11488,6 @@
             ]
           }
         ]
-      },
-      {
-        "name": "Target Power SKU",
-        "columns": [
-          {
-            "name": "سال",
-            "dataType": "double",
-            "sourceColumn": "سال"
-          },
-          {
-            "name": "ماه",
-            "dataType": "double",
-            "sourceColumn": "ماه"
-          },
-          {
-            "name": "کد گروه محصول",
-            "dataType": "double",
-            "sourceColumn": "کد گروه محصول"
-          },
-          {
-            "name": "نام گروه محصول",
-            "dataType": "string",
-            "sourceColumn": "نام گروه محصول"
-          },
-          {
-            "name": "تارکت",
-            "dataType": "double",
-            "sourceColumn": "تارکت"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Partition",
-            "dataView": "full",
-            "source": {
-              "type": "m",
-              "expression": [
-                "let",
-                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    #\"dbo_Target Power SKU\" = Source{[Schema=\"dbo\",Item=\"Target Power SKU\"]}[Data]",
-                "in",
-                "    #\"dbo_Target Power SKU\""
-              ]
-            }
-          }
-        ]
       }
     ],
     "relationships": [
@@ -11983,15 +11937,6 @@
         "fromColumn": "s_enterdate",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
-      },
-      {
-        "name": "36a2c0f4-8dc9-4c67-b389-f7d6a13e72c5",
-        "toCardinality": "many",
-        "fromTable": "VN Dim_Goods",
-        "fromColumn": "002_Target Power SKU",
-        "toTable": "Target Power SKU",
-        "toColumn": "کد گروه محصول",
-        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
