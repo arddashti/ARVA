@@ -11689,8 +11689,8 @@
               "        RETURN",
               "           CALCULATE(sum('VN Fact_Target_SKU'[target_amount_per_day]), ",
               "                                     'BI DIM_DATE'[jyear]= Y,",
-              "                                      'BI DIM_DATE'[Day_number_year] <= D , ",
-              "                              REMOVEFILTERS('BI DIM_DATE'[jmonthN]))",
+              "                                      'BI DIM_DATE'[Day_number_year] <= D , REMOVEFILTERS('BI DIM_DATE'[jmonthN] ) )",
+              "                           ",
               "                                       ",
               "                                                    ",
               "-- محاسبه تارگت سال تا روز power SKU"
