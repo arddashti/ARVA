@@ -20,8 +20,6 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
-          "kind": "SQL",
-          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -2690,6 +2688,27 @@
               " "
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "056_ Daily QTY",
+            "description": "محاسبه فروش  تعدادی روزانه",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE('VN Fact_Sale'[016_QTY], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y,",
+              "                                                     'BI DIM_DATE'[day]=d)",
+              "",
+              "",
+              "",
+              "-- محاسبه فروش  تعدادی روزانه"
+            ],
+            "formatString": "#,#"
           }
         ]
       },
@@ -3074,38 +3093,6 @@
               "",
               "",
               "---- تارگت سال تا روز "
-            ]
-          },
-          {
-            "name": "008_ TotalTarget Power SKU",
-            "description": " محاسبه  تارگت کل power SKU",
-            "expression": [
-              " ",
-              "                          CALCULATE( SUM('VN Fact_Target'[target_amount_per_day]),",
-              "                                           FILTER('VN Fact_Target','VN Fact_Target'[StateCode] = BLANK()))",
-              "",
-              "-- محاسبه  تارگت کل power SKU"
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "009__ MTD Target Power SKU",
-            "description": "تارگت ماه تا روز Power Sku",
-            "expression": [
-              " ",
-              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
-              "                 ",
-              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
-              "",
-              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
-              "",
-              "        RETURN",
-              "           CALCULATE(sum('VN Fact_Target'[target_amount_per_day]),",
-              "                                        'BI DIM_DATE'[jmonthN] = m , ",
-              "                                                       'BI DIM_DATE'[jyear]= Y,",
-              "                                                                   'BI DIM_DATE'[day]<=d , 'VN Fact_Target'[StateCode] = BLANK())        ",
-              "           ",
-              "-- تارگت ماه تا روز Power Sku"
             ]
           }
         ]
@@ -11488,6 +11475,185 @@
             ]
           }
         ]
+      },
+      {
+        "name": "power_sku_reference",
+        "columns": [
+          {
+            "name": "Power_SKU_Code",
+            "dataType": "int64",
+            "sourceColumn": "Power_SKU_Code"
+          },
+          {
+            "name": "نام گروه کالا (GoodsGroupName)",
+            "dataType": "string",
+            "sourceColumn": "نام گروه کالا (GoodsGroupName)"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    dbo_power_sku_reference = Source{[Schema=\"dbo\",Item=\"power_sku_reference\"]}[Data]",
+                "in",
+                "    dbo_power_sku_reference"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "VN Fact_Target_SKU",
+        "columns": [
+          {
+            "name": "Power_SKU_Code",
+            "dataType": "int64",
+            "sourceColumn": "Power_SKU_Code"
+          },
+          {
+            "name": "target_amount_per_day",
+            "dataType": "double",
+            "sourceColumn": "target_amount_per_day"
+          },
+          {
+            "name": "Jalali_1",
+            "dataType": "string",
+            "sourceColumn": "Jalali_1"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Fact_Target_SKU = Source{[Schema=\"VN\",Item=\"Fact_Target_SKU\"]}[Data]",
+                "in",
+                "    VN_Fact_Target_SKU"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "001_ TotalTarget SKU",
+            "description": "تاریگت کل power sku",
+            "expression": [
+              " CALCULATE( SUM('VN Fact_Target_SKU'[target_amount_per_day]))",
+              "",
+              "-- تاریگت کل power sku"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "002_ MTD Target sku",
+            "description": "POWER sku تارگت ماه تا روز ",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE(sum('VN Fact_Target_SKU'[target_amount_per_day]),",
+              "                                        'BI DIM_DATE'[jmonthN] = m , ",
+              "                                                       'BI DIM_DATE'[jyear]= Y,",
+              "                                                                   'BI DIM_DATE'[day]<=d)             ",
+              "           ",
+              "--  POWER sku تارگت ماه تا روز "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "003_MTD Target SKU  percentage",
+            "description": "درصد تحقق تارگت تعدادی ماه تا روز",
+            "expression": [
+              "       ",
+              "                                     DIVIDE('VN Fact_Sale'[016_QTY] , 'VN Fact_Target_SKU'[002_ MTD Target sku])",
+              "--درصد تحقق تارگت تعدادی ماه تا روز "
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "004_Daily Target SKU",
+            "description": "محاسبه تارگت روزانه power SKU",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE(sum('VN Fact_Target_SKU'[target_amount_per_day]),",
+              "                                        'BI DIM_DATE'[jmonthN] = m , ",
+              "                                                       'BI DIM_DATE'[jyear]= Y,",
+              "                                                                   'BI DIM_DATE'[day]=d)  ",
+              "",
+              "----- محاسبه تارگت روزانه power SKU"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "005_daily target SKU percentage",
+            "description": "محاسبه تارگت روزانه Power SKU",
+            "expression": [
+              "",
+              "",
+              "",
+              "             DIVIDE('VN Fact_Sale'[023_ Daily Amount] , 'VN Fact_Target_SKU'[004_Daily Target SKU])",
+              "",
+              "",
+              "",
+              "---- محاسبه تارگت روزانه Power SKU)"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "006_YTD Target SKU",
+            "description": "محاسبه تارگت سال تا روز power SKU",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "         VAR D = LOOKUPVALUE('BI DIM_DATE'[Day_number_year], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "         ",
+              "        RETURN",
+              "           CALCULATE(sum('VN Fact_Target_SKU'[target_amount_per_day]), ",
+              "                                     'BI DIM_DATE'[jyear]= Y,",
+              "                                      'BI DIM_DATE'[Day_number_year] <= D)",
+              "                                       ",
+              "                                                    ",
+              "-- محاسبه تارگت سال تا روز power SKU"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "007_ YTD Target SKU percentage",
+            "description": "درصد تحقق سال تا روز power SKU",
+            "expression": [
+              "",
+              "",
+              "",
+              "             DIVIDE('VN Fact_Sale'[05_YTD Sales(Amount)] , 'VN Fact_Target_SKU'[006_YTD Target SKU])",
+              "",
+              "--درصد تحقق سال تا روز power SKU"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -11935,6 +12101,22 @@
         "name": "6d442ac5-8b28-4455-967e-6a14df59a44c",
         "fromTable": "SooroshanCustomerspares",
         "fromColumn": "s_enterdate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
+      },
+      {
+        "name": "6f550507-66b0-46fe-9525-f3a50fc2c494",
+        "toCardinality": "many",
+        "fromTable": "VN Fact_Target_SKU",
+        "fromColumn": "Power_SKU_Code",
+        "toTable": "VN Dim_Goods",
+        "toColumn": "Power_SKU_Code",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "5d89326b-9cff-45df-b3bd-48955139f7cf",
+        "fromTable": "VN Fact_Target_SKU",
+        "fromColumn": "Jalali_1",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
       }
