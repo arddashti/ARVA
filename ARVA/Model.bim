@@ -11562,11 +11562,11 @@
         "measures": [
           {
             "name": "001_ TotalTarget SKU",
-            "description": "تاریگت کل power sku",
+            "description": " تارگت کل power sku",
             "expression": [
               " CALCULATE( SUM('VN Fact_Target_SKU'[target_amount_per_day]))",
               "",
-              "-- تاریگت کل power sku"
+              "-- تارگت کل power sku"
             ],
             "formatString": "#,#"
           },
@@ -11667,6 +11667,16 @@
               "             DIVIDE('VN Fact_Sale'[057_YTD Sales(QTY)] , 'VN Fact_Target_SKU'[006_YTD Target SKU])",
               "",
               "--درصد تحقق  تعداد سال تا روز power SKU"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "008_Total target Percentage sku",
+            "description": "درصد تحقق کل power sku",
+            "expression": [
+              " ",
+              "                               DIVIDE('VN Fact_Sale'[016_QTY] , 'VN Fact_Target_SKU'[001_ TotalTarget SKU])",
+              "-- درصد تحقق کل power sku"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
           }
