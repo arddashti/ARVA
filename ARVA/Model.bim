@@ -12122,20 +12122,20 @@
         "toColumn": "Jalali_1"
       },
       {
-        "name": "6f550507-66b0-46fe-9525-f3a50fc2c494",
-        "toCardinality": "many",
-        "fromTable": "VN Fact_Target_SKU",
-        "fromColumn": "Power_SKU_Code",
-        "toTable": "VN Dim_Goods",
-        "toColumn": "Power_SKU_Code",
-        "crossFilteringBehavior": "bothDirections"
-      },
-      {
         "name": "5d89326b-9cff-45df-b3bd-48955139f7cf",
         "fromTable": "VN Fact_Target_SKU",
         "fromColumn": "Jalali_1",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "e5d36b7f-b32a-41df-83b9-176d54b2e2d5",
+        "toCardinality": "many",
+        "fromTable": "VN Dim_Goods",
+        "fromColumn": "002_Target Power SKU",
+        "toTable": "VN Fact_Target_SKU",
+        "toColumn": "Power_SKU_Code",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
