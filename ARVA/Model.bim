@@ -408,6 +408,25 @@
             "name": "Power_SKU_Code",
             "dataType": "int64",
             "sourceColumn": "Power_SKU_Code"
+          },
+          {
+            "type": "calculated",
+            "name": "003_Power_SKU_Name",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "                IF('VN Dim_Goods'[002_Target Power SKU] = 1 , \"اینورتر\",",
+              "                if('VN Dim_Goods'[002_Target Power SKU] = 2 , \"فرز\",",
+              "                if('VN Dim_Goods'[002_Target Power SKU] = 3 , \"بتن\", ",
+              "                if('VN Dim_Goods'[002_Target Power SKU] = 4 , \"دریل\",",
+              "                IF('VN Dim_Goods'[002_Target Power SKU] = 5 , \"چکش\" ,",
+              "                if('VN Dim_Goods'[002_Target Power SKU] = 6 , \"میخکوب\", ",
+              "                IF('VN Dim_Goods'[002_Target Power SKU] = 7 , \"منگنه\" )))))))",
+              "",
+              "                   ",
+              ""
+            ]
           }
         ],
         "partitions": [
