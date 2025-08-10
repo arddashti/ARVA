@@ -2745,6 +2745,25 @@
               "---- فروس تعدادی سال تا روز "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "058_ MTD QTY",
+            "description": "فروش  تعدادی ماه تا روز ",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE('VN Fact_Sale'[016_QTY], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y,",
+              "                                                     'BI DIM_DATE'[day]<=d)",
+              "                                            ",
+              "---- فروش  تعدادی ماه تا روز "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
@@ -11615,7 +11634,7 @@
             "description": "درصد تحقق تارگت تعدادی ماه تا روز",
             "expression": [
               "       ",
-              "                                     DIVIDE('VN Fact_Sale'[016_QTY] , 'VN Fact_Target_SKU'[002_ MTD Target sku])",
+              "                                     DIVIDE('VN Fact_Sale'[058_ MTD QTY] , 'VN Fact_Target_SKU'[002_ MTD Target sku])",
               "--درصد تحقق تارگت تعدادی ماه تا روز "
             ],
             "formatString": "0.00%;-0.00%;0.00%"
