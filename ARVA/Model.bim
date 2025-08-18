@@ -11522,7 +11522,8 @@
               "                                 FILTER(SooroshanCustomerspares, ",
               "                                     SooroshanCustomerspares[fullname] = \" نو خراب\" ||",
               "                                  SooroshanCustomerspares[accountname] =\"نوخراب1000\" ||",
-              "                                      SooroshanCustomerspares[fullname] = \"لجستيک\"))",
+              "                                      SooroshanCustomerspares[fullname] = \"لجستيک\" ||",
+              "                                       SooroshanCustomerspares[fullname] = \"پارسا پايتخت1000\"))",
               "                ",
               "-- تعداد پذیرش دستگاه نو- خراب )"
             ]
