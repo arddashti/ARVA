@@ -11518,12 +11518,14 @@
             "description": " تعداد پذیرش دستگاه نو- خراب ",
             "expression": [
               " ",
-              "        CALCULATE( DISTINCTCOUNT(SooroshanCustomerspares[cno]) , ",
-              "                                 FILTER(SooroshanCustomerspares, ",
+              "     ",
+              "CALCULATE( DISTINCTCOUNT(SooroshanCustomerspares[cno]) , ",
+              "                         FILTER(SooroshanCustomerspares, ",
               "                                     SooroshanCustomerspares[fullname] = \" نو خراب\" ||",
-              "                                  SooroshanCustomerspares[accountname] =\"نوخراب1000\" ||",
-              "                                      SooroshanCustomerspares[fullname] = \"لجستيک\" ||",
-              "                                       SooroshanCustomerspares[fullname] = \"پارسا پايتخت1000\"))",
+              "                                 SooroshanCustomerspares[accountname] =\"نوخراب1000\" ||",
+              "                                     SooroshanCustomerspares[fullname] = \"لجستيک\" ||",
+              "                                   SooroshanCustomerspares[accountname] = \"پارسا پايتخت1000\")) ",
+              "",
               "                ",
               "-- تعداد پذیرش دستگاه نو- خراب )"
             ]
