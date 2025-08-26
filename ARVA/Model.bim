@@ -20,6 +20,8 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -2663,9 +2665,9 @@
               "              SUM ( 'VN Fact_Sale'[Amount] ),",
               "",
               "               FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1 ) , ",
-              "                       FILTER('VN Dim_Goods', 'VN Dim_Goods'[made in iran]=1),",
+              "                       KEEPFILTERS('VN Dim_Goods'[made in iran]=1),",
               "",
-              "                        FILTER('VN Dim_Goods', 'VN Dim_Goods'[ManufacturerName]= \"آروا\"))",
+              "                        KEEPFILTERS('VN Dim_Goods'[ManufacturerName]= \"آروا\"))",
               "",
               "-- فروش محصولات تولیدی ساخت ایران برای شرکت آروا",
               ""
@@ -2690,12 +2692,10 @@
             "expression": [
               "",
               "     CALCULATE (",
-              "              SUM ( 'VN Fact_Sale'[TotalQty] ),",
+              "         'VN Fact_Sale'[016_QTY]  ,",
+              "                   KEEPFILTERS('VN Dim_Goods'[made in iran]=1),",
               "",
-              "              FILTER('VN Fact_Sale','VN Fact_Sale'[IsDeleted] <>1 )  ,",
-              "                      FILTER('VN Dim_Goods', 'VN Dim_Goods'[made in iran]=1),",
-              "",
-              "                        FILTER('VN Dim_Goods', 'VN Dim_Goods'[ManufacturerName]= \"آروا\"))",
+              "                        KEEPFILTERS( 'VN Dim_Goods'[ManufacturerName]= \"آروا\"))",
               "",
               "",
               "---- فروش تعدادی محصولات تولیدی آروا",
