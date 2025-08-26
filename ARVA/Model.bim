@@ -20,8 +20,6 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
-          "kind": "SQL",
-          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -189,6 +187,13 @@
             "name": "date_Counter_all",
             "dataType": "int64",
             "sourceColumn": "date_Counter_all"
+          },
+          {
+            "type": "calculated",
+            "name": "Date",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": " 'BI DIM_DATE'[jyear] & 'BI DIM_DATE'[jmonthN] & 'BI DIM_DATE'[day]"
           }
         ],
         "partitions": [
@@ -11721,6 +11726,177 @@
             "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
+      },
+      {
+        "name": "PW_Kara",
+        "columns": [
+          {
+            "name": "Id",
+            "dataType": "int64",
+            "sourceColumn": "Id"
+          },
+          {
+            "name": "Emp_No",
+            "dataType": "int64",
+            "sourceColumn": "Emp_No"
+          },
+          {
+            "name": "Date",
+            "dataType": "int64",
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "DayAbsentState",
+            "dataType": "int64",
+            "sourceColumn": "DayAbsentState"
+          },
+          {
+            "name": "Shift_No",
+            "dataType": "int64",
+            "sourceColumn": "Shift_No"
+          },
+          {
+            "name": "Mor_Mam",
+            "dataType": "int64",
+            "sourceColumn": "Mor_Mam"
+          },
+          {
+            "name": "Card1",
+            "dataType": "int64",
+            "sourceColumn": "Card1"
+          },
+          {
+            "name": "Card2",
+            "dataType": "int64",
+            "sourceColumn": "Card2"
+          },
+          {
+            "name": "Card3",
+            "dataType": "int64",
+            "sourceColumn": "Card3"
+          },
+          {
+            "name": "Card4",
+            "dataType": "int64",
+            "sourceColumn": "Card4"
+          },
+          {
+            "name": "Card5",
+            "dataType": "int64",
+            "sourceColumn": "Card5"
+          },
+          {
+            "name": "Card6",
+            "dataType": "int64",
+            "sourceColumn": "Card6"
+          },
+          {
+            "name": "Holiday_w",
+            "dataType": "int64",
+            "sourceColumn": "Holiday_w"
+          },
+          {
+            "name": "Shabkari",
+            "dataType": "int64",
+            "sourceColumn": "Shabkari"
+          },
+          {
+            "name": "Total_W",
+            "dataType": "int64",
+            "sourceColumn": "Total_W"
+          },
+          {
+            "name": "TimeHozor",
+            "dataType": "int64",
+            "sourceColumn": "TimeHozor"
+          },
+          {
+            "name": "Ezafe1",
+            "dataType": "int64",
+            "sourceColumn": "Ezafe1"
+          },
+          {
+            "name": "Ezafe2",
+            "dataType": "int64",
+            "sourceColumn": "Ezafe2"
+          },
+          {
+            "name": "Prev_Ez",
+            "dataType": "int64",
+            "sourceColumn": "Prev_Ez"
+          },
+          {
+            "name": "Prev_Ez2",
+            "dataType": "int64",
+            "sourceColumn": "Prev_Ez2"
+          },
+          {
+            "name": "After_Ez",
+            "dataType": "int64",
+            "sourceColumn": "After_Ez"
+          },
+          {
+            "name": "After_Ez2",
+            "dataType": "int64",
+            "sourceColumn": "After_Ez2"
+          },
+          {
+            "name": "GradeTitle",
+            "dataType": "string",
+            "sourceColumn": "GradeTitle"
+          },
+          {
+            "name": "PositionTitle",
+            "dataType": "string",
+            "sourceColumn": "PositionTitle"
+          },
+          {
+            "name": "NameFamily",
+            "dataType": "string",
+            "sourceColumn": "NameFamily"
+          },
+          {
+            "name": "Emp_Date",
+            "dataType": "int64",
+            "sourceColumn": "Emp_Date"
+          },
+          {
+            "name": "End_Date",
+            "dataType": "int64",
+            "sourceColumn": "End_Date"
+          },
+          {
+            "name": "Gender",
+            "dataType": "int64",
+            "sourceColumn": "Gender"
+          },
+          {
+            "name": "IsCut",
+            "dataType": "boolean",
+            "sourceColumn": "IsCut"
+          },
+          {
+            "name": "EmpTypeTitle",
+            "dataType": "string",
+            "sourceColumn": "EmpTypeTitle"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    dbo_PW_Kara = Source{[Schema=\"dbo\",Item=\"PW_Kara\"]}[Data]",
+                "in",
+                "    dbo_PW_Kara"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -12186,6 +12362,13 @@
         "toTable": "VN Fact_Target_SKU",
         "toColumn": "Power_SKU_Code",
         "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "2deb8671-5d9c-41dc-ace5-8ca9c3c9c6a6",
+        "fromTable": "PW_Kara",
+        "fromColumn": "Date",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Date"
       }
     ],
     "roles": [
