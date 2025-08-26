@@ -11896,6 +11896,22 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "Today Jalali",
+            "expression": [
+              " ",
+              "VAR TodayGregorian = TODAY()",
+              "VAR TodayJalali = ",
+              "    CALCULATE(",
+              "        MAX('BI DIM_DATE'[Jalali_1]),",
+              "        'BI DIM_DATE'[Miladi]= TodayGregorian",
+              "    )",
+              "RETURN",
+              "TodayJalali"
+            ]
+          }
         ]
       }
     ],
