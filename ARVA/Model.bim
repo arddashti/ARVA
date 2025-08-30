@@ -194,7 +194,12 @@
             "type": "calculated",
             "name": "Date",
             "dataType": "int64",
-            "expression": " 'BI DIM_DATE'[jyear] & 'BI DIM_DATE'[jmonthN] & 'BI DIM_DATE'[day]"
+            "expression": [
+              " if('BI DIM_DATE'[jmonthN]<10 , ",
+              "",
+              " 'BI DIM_DATE'[jyear] & 0 & 'BI DIM_DATE'[jmonthN] & 'BI DIM_DATE'[day], ",
+              "           'BI DIM_DATE'[jyear] & 'BI DIM_DATE'[jmonthN] & 'BI DIM_DATE'[day])"
+            ]
           }
         ],
         "partitions": [
