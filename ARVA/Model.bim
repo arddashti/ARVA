@@ -193,8 +193,7 @@
           {
             "type": "calculated",
             "name": "Date",
-            "dataType": "string",
-            "isDataTypeInferred": true,
+            "dataType": "int64",
             "expression": " 'BI DIM_DATE'[jyear] & 'BI DIM_DATE'[jmonthN] & 'BI DIM_DATE'[day]"
           }
         ],
@@ -11879,6 +11878,74 @@
             "name": "EmpTypeTitle",
             "dataType": "string",
             "sourceColumn": "EmpTypeTitle"
+          },
+          {
+            "type": "calculated",
+            "name": "Today Anchor",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "VAR t = TODAY()",
+              "RETURN",
+              "CALCULATE(",
+              "    MAX ( 'BI DIM_DATE'[Miladi] ),",
+              "    FILTER ( ALL ( 'BI DIM_DATE'), 'BI DIM_DATE'[Miladi] <= t )",
+              ")",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Last Attendance Date",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "VAR Emp = 'pw_kara'[Emp_No]  -- گرفتن Emp_No از جدول pw_kara",
+              "VAR TodayDate = [Today Anchor]  -- ذخیره‌سازی تاریخ امروز برای استفاده در محاسبات",
+              "RETURN",
+              "    CALCULATE(",
+              "        MAX('PW_Kara'[miladidate]),  -- محاسبه آخرین تاریخ تردد",
+              "        FILTER(",
+              "            'PW_Kara',  -- فیلتر کردن جدول pw_kara",
+              "            'PW_Kara'[Emp_No] = Emp &&  -- تطابق با Emp_No در ردیف جاری",
+              "            'PW_Kara'[miladidate] <= TodayDate  -- تاریخ کمتر یا برابر با [Today Anchor]",
+              "        )",
+              "    )",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "miladidate",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": [
+              " LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Date], PW_Kara[Date])",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Last Attendance Date2",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "VAR Emp = 'pw_kara'[Emp_No]  -- گرفتن Emp_No از جدول pw_kara",
+              "VAR TodayDate = [Today Anchor]  -- ذخیره‌سازی تاریخ امروز برای استفاده در محاسبات",
+              "RETURN",
+              "    CALCULATE (",
+              "        MAX('PW_Kara'[miladidate]),  -- محاسبه آخرین تاریخ تردد",
+              "        FILTER (",
+              "            'PW_Kara',  -- فیلتر کردن جدول pw_kara",
+              "            'PW_Kara'[Emp_No] = EARLIER('pw_kara'[Emp_No]) &&  -- تطابق با Emp_No در ردیف جاری",
+              "            'PW_Kara'[miladidate] <= TodayDate  -- تاریخ کمتر یا برابر با [Today Anchor]",
+              "        )",
+              "    )",
+              ""
+            ]
           }
         ],
         "partitions": [
