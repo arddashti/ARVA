@@ -12037,6 +12037,14 @@
               "RETURN",
               "TodayJalali"
             ]
+          },
+          {
+            "name": "001_CountExitPersonel",
+            "description": " تعداد پرسنل خارج شده ",
+            "expression": [
+              " CALCULATE(  SUM(PW_Kara[Over 3 Working Days Flag]) , FILTER(PW_Kara , PW_Kara[Over 3 Working Days Flag] = 1))",
+              "-- تعداد پرسنل خارج شده "
+            ]
           }
         ]
       }
