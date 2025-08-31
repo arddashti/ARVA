@@ -12006,6 +12006,23 @@
               "",
               " -- تاریخ جلالی آخرین حضور "
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "IsExitRow",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "description": "تاریخ خروج",
+            "expression": [
+              "",
+              "IF(",
+              "    'PW_Kara'[Over 3 Working Days Flag] = 1 &&",
+              "    NOT ISBLANK('PW_Kara'[card1]) &&",
+              "    'PW_Kara'[miladidate] = 'PW_Kara'[Last Attendance Date],",
+              "    1, 0",
+              ")",
+              "  -- تاریخ خروج "
+            ]
           }
         ],
         "partitions": [
