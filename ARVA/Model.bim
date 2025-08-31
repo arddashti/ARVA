@@ -11905,6 +11905,7 @@
             "name": "Last Attendance Date",
             "dataType": "dateTime",
             "isDataTypeInferred": true,
+            "description": "تاریخ آخرین حضور",
             "expression": [
               "",
               "VAR Emp = 'pw_kara'[Emp_No]  -- گرفتن Emp_No از جدول pw_kara",
@@ -11925,7 +11926,9 @@
               "        BLANK(),",
               "        dd",
               "    )",
-              ""
+              "",
+              "",
+              "--- محاسبه تاریخ آخرین حضور "
             ]
           },
           {
@@ -11973,7 +11976,8 @@
               "VAR WorkingDaysCount = 'pw_kara'[Working Days Since Last]  -- تعداد روزهای کاری از آخرین حضور",
               "RETURN",
               "    IF ( NOT ISBLANK(WorkingDaysCount) && WorkingDaysCount > 3, 1, 0 )  -- اگر بیشتر از ۳ روز کاری باشد، 1 می‌دهد",
-              ""
+              "",
+              "-- پرسنلی که بیش از 3 روز کاری حضور نداشتند "
             ]
           }
         ],
