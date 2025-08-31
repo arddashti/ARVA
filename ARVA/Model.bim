@@ -12057,11 +12057,22 @@
             ]
           },
           {
-            "name": "001_CountExitPersonel",
+            "name": "Exits Count",
             "description": " تعداد پرسنل خارج شده ",
             "expression": [
-              " CALCULATE(  COUNT(PW_Kara[Emp_No]), FILTER(PW_Kara , PW_Kara[Over 3 Working Days Flag] = 1))",
-              "-- تعداد پرسنل خارج شده )"
+              "",
+              "VAR MinD = MIN ( 'BI DIM_DATE'[Miladi] )",
+              "VAR MaxD = MAX ( 'BI DIM_DATE'[Miladi] )",
+              "RETURN",
+              "CALCULATE(",
+              "    DISTINCTCOUNT( 'PW_Kara'[Emp_No] ),",
+              "    'PW_Kara'[Over 3 Working Days Flag] = 1,",
+              "    'PW_Kara'[Last Attendance Date]>= MinD,",
+              "    'PW_Kara'[Last Attendance Date] <= MaxD",
+              ")",
+              "",
+              "--تعداد خروجی ها ",
+              ""
             ]
           }
         ]
