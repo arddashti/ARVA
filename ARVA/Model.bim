@@ -11929,6 +11929,13 @@
               "",
               "",
               "--- محاسبه تاریخ آخرین حضور "
+            ],
+            "formatString": "Short Date",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeShortDatePattern\" />"
+              }
             ]
           },
           {
@@ -11939,6 +11946,13 @@
             "expression": [
               " LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Date], PW_Kara[Date])",
               ""
+            ],
+            "formatString": "Short Date",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeShortDatePattern\" />"
+              }
             ]
           },
           {
@@ -11978,6 +11992,18 @@
               "    IF ( NOT ISBLANK(WorkingDaysCount) && WorkingDaysCount > 3, 1, 0 )  -- اگر بیشتر از ۳ روز کاری باشد، 1 می‌دهد",
               "",
               "-- پرسنلی که بیش از 3 روز کاری حضور نداشتند "
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Last Attendance Jalali Date",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": " تاریخ جلالی آخرین حضور ",
+            "expression": [
+              " LOOKUPVALUE('BI DIM_DATE'[Jalali_1], 'BI DIM_DATE'[Date], PW_Kara[Date])",
+              "",
+              " -- تاریخ جلالی آخرین حضور "
             ]
           }
         ],
