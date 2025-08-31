@@ -11992,7 +11992,8 @@
               "    IF ( NOT ISBLANK(WorkingDaysCount) && WorkingDaysCount > 3, 1, 0 )  -- اگر بیشتر از ۳ روز کاری باشد، 1 می‌دهد",
               "",
               "-- پرسنلی که بیش از 3 روز کاری حضور نداشتند "
-            ]
+            ],
+            "formatString": "0"
           },
           {
             "type": "calculated",
@@ -12042,8 +12043,8 @@
             "name": "001_CountExitPersonel",
             "description": " تعداد پرسنل خارج شده ",
             "expression": [
-              " CALCULATE(  SUM(PW_Kara[Over 3 Working Days Flag]) , FILTER(PW_Kara , PW_Kara[Over 3 Working Days Flag] = 1))",
-              "-- تعداد پرسنل خارج شده "
+              " CALCULATE(  COUNT(PW_Kara[Emp_No]), FILTER(PW_Kara , PW_Kara[Over 3 Working Days Flag] = 1))",
+              "-- تعداد پرسنل خارج شده )"
             ]
           }
         ]
