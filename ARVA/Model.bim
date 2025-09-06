@@ -1535,6 +1535,11 @@
               "",
               "-- وضعیت مشتریان سیستمی"
             ]
+          },
+          {
+            "name": "CustLevel_title",
+            "dataType": "string",
+            "sourceColumn": "CustLevel_title"
           }
         ],
         "partitions": [
@@ -2075,7 +2080,7 @@
           },
           {
             "name": "016_QTY",
-            "description": " تعداد فروش ",
+            "description": " تعداد فروش و ظرف و جایزه",
             "expression": [
               "",
               "     CALCULATE (",
@@ -2085,7 +2090,7 @@
               "))",
               "",
               "",
-              "-----   تعداد فروش "
+              "-----   تعداد فروش و ظرف و جایزه"
             ],
             "formatString": "#,#"
           },
