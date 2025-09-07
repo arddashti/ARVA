@@ -12060,11 +12060,12 @@
           {
             "type": "calculated",
             "name": "003_MiladiEnd_Date",
-            "dataType": "double",
+            "dataType": "dateTime",
             "isDataTypeInferred": true,
             "expression": [
               " ",
-              "   if(PW_Kara[End_Date]>14200101,2055, LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Date], PW_Kara[End_Date]))",
+              "",
+              "    LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Date], PW_Kara[End_Date])",
               "",
               " --میلادی خروج "
             ]
@@ -12075,7 +12076,7 @@
             "dataType": "int64",
             "expression": [
               "    ",
-              "          right(PW_Kara[003_MiladiEnd_Date], 4)",
+              "        right(PW_Kara[003_MiladiEnd_Date], 4)",
               "",
               ""
             ]
@@ -12111,9 +12112,20 @@
               " ",
               "     --if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)] , \"عدم استخدام \", \"استخدام \")",
               "",
-              "  if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)]  && PW_Kara[IsCut]= TRUE (),\"خروج\" , ",
-              "                if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)]  &&  PW_Kara[IsCut]= FALSE(), \"عدم استخدام\" ,",
-              "                if( PW_Kara[004_YearmiladiEnd_Date]>PW_Kara[005_year(Today)] && PW_Kara[IsCut]= FALSE(),  \"فعال\")))"
+              "  if(PW_Kara[008_YearMiladi]<=PW_Kara[005_year(Today)]  && PW_Kara[IsCut]= TRUE (),\"خروج\" , ",
+              "                if(PW_Kara[008_YearMiladi]<=PW_Kara[005_year(Today)]  &&  PW_Kara[IsCut]= FALSE(), \"عدم استخدام\" ,",
+              "                if( PW_Kara[008_YearMiladi]>PW_Kara[005_year(Today)] && PW_Kara[IsCut]= FALSE(),  \"فعال\")))"
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "008_YearMiladi",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              "  if(PW_Kara[004_YearmiladiEnd_Date] = BLANK() , 2055 , PW_Kara[004_YearmiladiEnd_Date])",
+              "",
+              "-- سال  میلادی خروج  با توجه  به اینکه  دایمنشن تاریخ  محودیت داره  و بعضی رکورد ها  خالی میباشد این  ستون برای ساخت status  ساخته شده "
             ]
           }
         ],
