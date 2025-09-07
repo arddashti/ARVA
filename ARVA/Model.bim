@@ -12115,7 +12115,11 @@
             "description": "استخدام /عدم استخدام ",
             "expression": [
               " ",
-              "     if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)] , \"عدم استخدام \", \"استخدام \")"
+              "     --if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)] , \"عدم استخدام \", \"استخدام \")",
+              "",
+              "  if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)]  && PW_Kara[006_Status IsCut]= \"خروج\",",
+              "                                                                                  \"خروج\" , ",
+              "                if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)]  && PW_Kara[006_Status IsCut]<>\"خروج\", \"عدم استخدام\" , \"فعال\"))"
             ]
           }
         ],
