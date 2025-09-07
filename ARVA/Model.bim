@@ -12078,8 +12078,7 @@
           {
             "type": "calculated",
             "name": "004_YearmiladiEnd_Date",
-            "dataType": "string",
-            "isDataTypeInferred": true,
+            "dataType": "int64",
             "expression": [
               "    ",
               "          right(PW_Kara[003_MiladiEnd_Date], 4)",
@@ -12106,6 +12105,17 @@
             "expression": [
               "  ",
               "        if(PW_Kara[IsCut] =TRUE(), \"خروج \")"
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "007_Lack of employment",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": "استخدام /عدم استخدام ",
+            "expression": [
+              " ",
+              "     if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)] , \"عدم استخدام \", \"استخدام \")"
             ]
           }
         ],
