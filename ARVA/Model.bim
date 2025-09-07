@@ -12060,19 +12060,13 @@
           {
             "type": "calculated",
             "name": "003_MiladiEnd_Date",
-            "dataType": "dateTime",
+            "dataType": "double",
             "isDataTypeInferred": true,
             "expression": [
               " ",
-              "     LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Date], PW_Kara[End_Date])",
+              "   if(PW_Kara[End_Date]>14200101,2055, LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Date], PW_Kara[End_Date]))",
+              "",
               " --میلادی خروج "
-            ],
-            "formatString": "Short Date",
-            "annotations": [
-              {
-                "name": "Format",
-                "value": "<Format Format=\"DateTimeShortDatePattern\" />"
-              }
             ]
           },
           {
@@ -12117,9 +12111,9 @@
               " ",
               "     --if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)] , \"عدم استخدام \", \"استخدام \")",
               "",
-              "  if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)]  && PW_Kara[006_Status IsCut]= \"خروج\",",
-              "                                                                                  \"خروج\" , ",
-              "                if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)]  && PW_Kara[006_Status IsCut]<>\"خروج\", \"عدم استخدام\" , \"فعال\"))"
+              "  if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)]  && PW_Kara[IsCut]= TRUE (),\"خروج\" , ",
+              "                if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)]  &&  PW_Kara[IsCut]= FALSE(), \"عدم استخدام\" ,",
+              "                if( PW_Kara[004_YearmiladiEnd_Date]>PW_Kara[005_year(Today)] && PW_Kara[IsCut]= FALSE(),  \"فعال\")))"
             ]
           }
         ],
