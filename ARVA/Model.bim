@@ -2996,6 +2996,16 @@
               ""
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "003_ReturnQTy",
+            "description": "تعداد برگشت از فروش",
+            "expression": [
+              " ",
+              "               sum('VN Fact_RetSale'[MainQty])",
+              "",
+              "-- تعداد برگشت از فروش"
+            ]
           }
         ]
       },
