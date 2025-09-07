@@ -12051,6 +12051,62 @@
               ")",
               "  -- تاریخ خروج "
             ]
+          },
+          {
+            "name": "SectionTitle",
+            "dataType": "string",
+            "sourceColumn": "SectionTitle"
+          },
+          {
+            "type": "calculated",
+            "name": "003_MiladiEnd_Date",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "     LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Date], PW_Kara[End_Date])",
+              " --میلادی خروج "
+            ],
+            "formatString": "Short Date",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeShortDatePattern\" />"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "004_YearmiladiEnd_Date",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "    ",
+              "          right(PW_Kara[003_MiladiEnd_Date], 4)",
+              "",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "005_year(Today)",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "             year(TODAY())",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "006_Status IsCut",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "  ",
+              "        if(PW_Kara[IsCut] =TRUE(), \"خروج \")"
+            ]
           }
         ],
         "partitions": [
