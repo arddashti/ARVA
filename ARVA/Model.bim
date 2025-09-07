@@ -3005,7 +3005,8 @@
               "               sum('VN Fact_RetSale'[MainQty])",
               "",
               "-- تعداد برگشت از فروش"
-            ]
+            ],
+            "formatString": "#,#"
           }
         ]
       },
