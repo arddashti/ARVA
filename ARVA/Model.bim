@@ -2828,6 +2828,17 @@
               "-- فروش تعدادی روزانه با کسر برگشتی "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "063_ TotalNetQTY",
+            "description": " تعداد فروش باکسر برگشتی ",
+            "expression": [
+              "",
+              "                   'VN Fact_Sale'[016_QTY] - [003_ReturnQTy]",
+              "",
+              "-- تعداد فروش باکسر برگشتی "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
