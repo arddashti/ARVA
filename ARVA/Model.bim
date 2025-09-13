@@ -11873,6 +11873,19 @@
               "---- محاسبه تارگت تعدادی باکسر برگشتی روزانه Power SKU)"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "011_ YTD Target SKU percentage",
+            "description": "درصد تحقق  تعداد سال تا روز power SKU",
+            "expression": [
+              "",
+              "",
+              "",
+              "             DIVIDE('VN Fact_Sale'[060_YTD Sales(NetQTY)] , 'VN Fact_Target_SKU'[006_YTD Target SKU])",
+              "",
+              "--درصد تحقق  تعداد سال تا روز power SKU"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
