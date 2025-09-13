@@ -3055,6 +3055,26 @@
               "-- تعداد برگشتی ماه تا روز "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "006_Return Daily QTY",
+            "description": "برگشتی روزانه ",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE('VN Fact_RetSale'[003_ReturnQTy], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y,",
+              "                                                     'BI DIM_DATE'[day]=d)",
+              "",
+              "-- برگشتی روزانه ",
+              ""
+            ],
+            "formatString": "#,#"
           }
         ]
       },
