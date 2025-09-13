@@ -11860,7 +11860,7 @@
             "formatString": "0.00%;-0.00%;0.00%"
           },
           {
-            "name": "009_MTD Target SKU  percentage",
+            "name": "009_MTD Target SKU  percentage(Net)",
             "description": "درصد تحقق تارگت تعدادی با کسر برگشتی ماه تا روز ",
             "expression": [
               "       ",
@@ -11871,7 +11871,7 @@
             "formatString": "0.00%;-0.00%;0.00%"
           },
           {
-            "name": "010_daily target SKU percentage",
+            "name": "010_daily target SKU percentage(Net)",
             "description": "محاسبه تارگت تعدادی باکسر برگشتی روزانه Power SKU)",
             "expression": [
               "",
@@ -11886,15 +11886,25 @@
             "formatString": "0.00%;-0.00%;0.00%"
           },
           {
-            "name": "011_ YTD Target SKU percentage",
-            "description": "درصد تحقق  تعداد سال تا روز power SKU",
+            "name": "011_ YTD Target SKU percentage(Net)",
+            "description": "درصد تحقق  تعدادفروش  باکسر برگشتی سال تا روز power SKU",
             "expression": [
               "",
               "",
               "",
               "             DIVIDE('VN Fact_Sale'[060_YTD Sales(NetQTY)] , 'VN Fact_Target_SKU'[006_YTD Target SKU])",
               "",
-              "--درصد تحقق  تعداد سال تا روز power SKU"
+              "--درصد تحقق  تعدادفروش  باکسر برگشتی سال تا روز power SKU"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "012_Total target Percentage sku(NET)",
+            "description": " درصد تحقق کل فروش تعدادی با کسر برگشتی  power sku",
+            "expression": [
+              " ",
+              "                               DIVIDE('VN Fact_Sale'[063_ TotalNetQTY] , 'VN Fact_Target_SKU'[001_ TotalTarget SKU])",
+              "-- درصد تحقق کل فروش تعدادی با کسر برگشتی  power sku"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
           }
