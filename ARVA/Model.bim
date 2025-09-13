@@ -11904,7 +11904,7 @@
             "expression": [
               " ",
               "                               DIVIDE('VN Fact_Sale'[063_ TotalNetQTY] , 'VN Fact_Target_SKU'[001_ TotalTarget SKU])",
-              "-- درصد تحقق کل فروش تعدادی با کسر برگشتی  power sku"
+              "-- درصد تحقق کل فروش تعدادی با کسر برگشتی   power sku"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
           }
