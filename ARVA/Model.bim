@@ -2793,6 +2793,19 @@
               "-- تعداد خالص فروش و جایزه باکسر برگشتی "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "060_YTD Sales(NetQTY)",
+            "description": "فروش تعدادی سال تا روز با کسر برگشتی ",
+            "expression": [
+              "",
+              "",
+              "       'VN Fact_Sale'[057_YTD Sales(QTY)] - [004_Return YTD Sales(QTY)]",
+              "",
+              "-- فروش تعدادی سال تا روز با کسر برگشتی ",
+              ""
+            ],
+            "formatString": "#,#"
           }
         ]
       },
