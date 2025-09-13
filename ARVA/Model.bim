@@ -11847,6 +11847,32 @@
               "-- درصد تحقق کل power sku"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "009_MTD Target SKU  percentage",
+            "description": "درصد تحقق تارگت تعدادی با کسر برگشتی ماه تا روز ",
+            "expression": [
+              "       ",
+              "                                     ",
+              "   DIVIDE('VN Fact_Sale'[061_MTD_NETQTY] , 'VN Fact_Target_SKU'[002_ MTD Target sku])",
+              "--درصد تحقق تارگت تعدادی با کسر برگشتی ماه تا روز "
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "010_daily target SKU percentage",
+            "description": "محاسبه تارگت تعدادی باکسر برگشتی روزانه Power SKU)",
+            "expression": [
+              "",
+              "",
+              "",
+              "             DIVIDE('VN Fact_Sale'[062_Daily Net QTY], 'VN Fact_Target_SKU'[004_Daily Target SKU])",
+              "",
+              "",
+              "",
+              "---- محاسبه تارگت تعدادی باکسر برگشتی روزانه Power SKU)"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
