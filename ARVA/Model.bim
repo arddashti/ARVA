@@ -2817,6 +2817,17 @@
               "--فروش تعدادی  ماه تا روز با کسر برگشتی"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "062_Daily Net QTY",
+            "description": "فروش تعدادی روزانه با کسر برگشتی ",
+            "expression": [
+              " ",
+              "      'VN Fact_Sale'[056_ Daily QTY] - [006_Return Daily QTY]",
+              "",
+              "-- فروش تعدادی روزانه با کسر برگشتی "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
