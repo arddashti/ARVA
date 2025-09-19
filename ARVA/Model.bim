@@ -193,9 +193,13 @@
           {
             "type": "calculated",
             "name": "Date",
-            "dataType": "string",
-            "isDataTypeInferred": true,
-            "expression": " 'BI DIM_DATE'[jyear] & 'BI DIM_DATE'[jmonthN] & 'BI DIM_DATE'[day]"
+            "dataType": "int64",
+            "expression": [
+              " if('BI DIM_DATE'[jmonthN]<10 , ",
+              "",
+              " 'BI DIM_DATE'[jyear] & 0 & 'BI DIM_DATE'[jmonthN] & 'BI DIM_DATE'[day], ",
+              "           'BI DIM_DATE'[jyear] & 'BI DIM_DATE'[jmonthN] & 'BI DIM_DATE'[day])"
+            ]
           }
         ],
         "partitions": [
@@ -1531,6 +1535,11 @@
               "",
               "-- وضعیت مشتریان سیستمی"
             ]
+          },
+          {
+            "name": "CustLevel_title",
+            "dataType": "string",
+            "sourceColumn": "CustLevel_title"
           }
         ],
         "partitions": [
@@ -2071,7 +2080,7 @@
           },
           {
             "name": "016_QTY",
-            "description": " تعداد فروش ",
+            "description": " تعداد فروش و ظرف و جایزه",
             "expression": [
               "",
               "     CALCULATE (",
@@ -2081,7 +2090,7 @@
               "))",
               "",
               "",
-              "-----   تعداد فروش "
+              "-----   تعداد فروش و ظرف و جایزه"
             ],
             "formatString": "#,#"
           },
@@ -2772,6 +2781,64 @@
               "---- فروش  تعدادی ماه تا روز "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "059_NetQTY",
+            "description": "تعداد خالص فروش و جایزه باکسر برگشتی ",
+            "expression": [
+              " ",
+              "         'VN Fact_Sale'[016_QTY] - 'VN Fact_RetSale'[003_ReturnQTy]",
+              "",
+              "",
+              "-- تعداد خالص فروش و جایزه باکسر برگشتی "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "060_YTD Sales(NetQTY)",
+            "description": "فروش تعدادی سال تا روز با کسر برگشتی ",
+            "expression": [
+              "",
+              "",
+              "       'VN Fact_Sale'[057_YTD Sales(QTY)] - [004_Return YTD Sales(QTY)]",
+              "",
+              "-- فروش تعدادی سال تا روز با کسر برگشتی ",
+              ""
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "061_MTD_NETQTY",
+            "description": "فروش تعدادی  ماه تا روز با کسر برگشتی",
+            "expression": [
+              " ",
+              "           'VN Fact_Sale'[058_ MTD QTY] - [005_Return MTD QTY]",
+              "",
+              "--فروش تعدادی  ماه تا روز با کسر برگشتی"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "062_Daily Net QTY",
+            "description": "فروش تعدادی روزانه با کسر برگشتی ",
+            "expression": [
+              " ",
+              "      'VN Fact_Sale'[056_ Daily QTY] - [006_Return Daily QTY]",
+              "",
+              "-- فروش تعدادی روزانه با کسر برگشتی "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "063_ TotalNetQTY",
+            "description": " تعداد فروش باکسر برگشتی ",
+            "expression": [
+              "",
+              "                   'VN Fact_Sale'[016_QTY] - [003_ReturnQTy]",
+              "",
+              "-- تعداد فروش باکسر برگشتی "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
@@ -2984,6 +3051,73 @@
               "",
               "",
               "----  ناخالص  برگشت از فروش ",
+              ""
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "003_ReturnQTy",
+            "description": "تعداد برگشت از فروش",
+            "expression": [
+              " ",
+              "               sum('VN Fact_RetSale'[MainQty])",
+              "",
+              "-- تعداد برگشت از فروش"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "004_Return YTD Sales(QTY)",
+            "description": "تعداد برگشتی سال تا روز ",
+            "expression": [
+              "",
+              "VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "VAR D = LOOKUPVALUE('BI DIM_DATE'[Day_number_year], 'BI DIM_DATE'[Miladi], TODAY())",
+              "RETURN",
+              "    CALCULATE('VN Fact_RetSale'[003_ReturnQTy], ",
+              "                    'BI DIM_DATE'[Day_number_year] <= D , ",
+              "                                        'BI DIM_DATE'[jyear]= Y , REMOVEFILTERS('BI DIM_DATE'[jmonthN]))",
+              "",
+              "-- تعداد برگشتی سال تا روز ",
+              ""
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "005_Return MTD QTY",
+            "description": "تعداد برگشتی ماه تا روز ",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE('VN Fact_RetSale'[003_ReturnQTy], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y,",
+              "                                                     'BI DIM_DATE'[day]<=d)",
+              "",
+              "-- تعداد برگشتی ماه تا روز "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "006_Return Daily QTY",
+            "description": "برگشتی روزانه ",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE('VN Fact_RetSale'[003_ReturnQTy], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y,",
+              "                                                     'BI DIM_DATE'[day]=d)",
+              "",
+              "-- برگشتی روزانه ",
               ""
             ],
             "formatString": "#,#"
@@ -11724,6 +11858,55 @@
               "-- درصد تحقق کل power sku"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "009_MTD Target SKU  percentage(Net)",
+            "description": "درصد تحقق تارگت تعدادی با کسر برگشتی ماه تا روز ",
+            "expression": [
+              "       ",
+              "                                     ",
+              "   DIVIDE('VN Fact_Sale'[061_MTD_NETQTY] , 'VN Fact_Target_SKU'[002_ MTD Target sku])",
+              "--درصد تحقق تارگت تعدادی با کسر برگشتی ماه تا روز "
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "010_daily target SKU percentage(Net)",
+            "description": "محاسبه تارگت تعدادی باکسر برگشتی روزانه Power SKU)",
+            "expression": [
+              "",
+              "",
+              "",
+              "             DIVIDE('VN Fact_Sale'[062_Daily Net QTY], 'VN Fact_Target_SKU'[004_Daily Target SKU])",
+              "",
+              "",
+              "",
+              "---- محاسبه تارگت تعدادی باکسر برگشتی روزانه Power SKU)"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "011_ YTD Target SKU percentage(Net)",
+            "description": "درصد تحقق  تعدادفروش  باکسر برگشتی سال تا روز power SKU",
+            "expression": [
+              "",
+              "",
+              "",
+              "             DIVIDE('VN Fact_Sale'[060_YTD Sales(NetQTY)] , 'VN Fact_Target_SKU'[006_YTD Target SKU])",
+              "",
+              "--درصد تحقق  تعدادفروش  باکسر برگشتی سال تا روز power SKU"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "012_Total target Percentage sku(NET)",
+            "description": " درصد تحقق کل فروش تعدادی با کسر برگشتی  power sku",
+            "expression": [
+              " ",
+              "                               DIVIDE('VN Fact_Sale'[063_ TotalNetQTY] , 'VN Fact_Target_SKU'[001_ TotalTarget SKU])",
+              "-- درصد تحقق کل فروش تعدادی با کسر برگشتی   power sku"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
@@ -11879,6 +12062,222 @@
             "name": "EmpTypeTitle",
             "dataType": "string",
             "sourceColumn": "EmpTypeTitle"
+          },
+          {
+            "type": "calculated",
+            "name": "Today Anchor",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "VAR t = TODAY()",
+              "RETURN",
+              "CALCULATE(",
+              "    MAX ( 'BI DIM_DATE'[Miladi] ),",
+              "    FILTER ( ALL ( 'BI DIM_DATE'), 'BI DIM_DATE'[Miladi] <= t )",
+              ")",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Last Attendance Date",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "description": "تاریخ آخرین حضور",
+            "expression": [
+              "",
+              "VAR Emp = 'pw_kara'[Emp_No]  -- گرفتن Emp_No از جدول pw_kara",
+              "VAR TodayDate = [Today Anchor]  -- تاریخ امروز",
+              "VAR dd =",
+              "    CALCULATE (",
+              "        MAX('PW_Kara'[miladidate]),  -- محاسبه آخرین تاریخ تردد",
+              "        FILTER (",
+              "            'PW_Kara',  -- فیلتر کردن جدول pw_kara",
+              "            'PW_Kara'[Emp_No] = EARLIER('pw_kara'[Emp_No]) &&  -- تطابق با Emp_No در ردیف جاری",
+              "            NOT(ISBLANK('PW_Kara'[card1])) &&  -- بررسی اینکه ستون card1 خالی نباشد",
+              "            'PW_Kara'[miladidate] <= TodayDate  -- تاریخ کمتر یا برابر با [Today Anchor]",
+              "        )",
+              "    )",
+              "RETURN",
+              "    IF (",
+              "        ISBLANK(dd),",
+              "        BLANK(),",
+              "        dd",
+              "    )",
+              "",
+              "",
+              "--- محاسبه تاریخ آخرین حضور "
+            ],
+            "formatString": "Short Date",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeShortDatePattern\" />"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "miladidate",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": [
+              " LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Date], PW_Kara[Date])",
+              ""
+            ],
+            "formatString": "Short Date",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeShortDatePattern\" />"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Working Days Since Last",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "VAR dd = 'pw_kara'[Last Attendance Date]  -- تاریخ آخرین حضور که در ستون قبلی محاسبه کردیم",
+              "VAR TodayDate = [Today Anchor]  -- تاریخ امروز",
+              "RETURN",
+              "    IF (",
+              "        ISBLANK(dd),",
+              "        BLANK(),",
+              "        COUNTROWS (",
+              "            FILTER (",
+              "                'BI DIM_DATE',",
+              "                'BI DIM_DATE'[Miladi] > dd &&  -- روزهایی که بعد از تاریخ آخرین حضور هستند",
+              "                'BI DIM_DATE'[Miladi] <= TodayDate &&  -- تا تاریخ امروز",
+              "                'BI DIM_DATE'[holiday] = 1  -- فقط روزهای کاری",
+              "            )",
+              "        )",
+              "    )",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Over 3 Working Days Flag",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "VAR WorkingDaysCount = 'pw_kara'[Working Days Since Last]  -- تعداد روزهای کاری از آخرین حضور",
+              "RETURN",
+              "    IF ( NOT ISBLANK(WorkingDaysCount) && WorkingDaysCount > 3, 1, 0 )  -- اگر بیشتر از ۳ روز کاری باشد، 1 می‌دهد",
+              "",
+              "-- پرسنلی که بیش از 3 روز کاری حضور نداشتند "
+            ],
+            "formatString": "0"
+          },
+          {
+            "type": "calculated",
+            "name": "Last Attendance Jalali Date",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": " تاریخ جلالی آخرین حضور ",
+            "expression": [
+              " LOOKUPVALUE('BI DIM_DATE'[Jalali_1], 'BI DIM_DATE'[Date], PW_Kara[Date])",
+              "",
+              " -- تاریخ جلالی آخرین حضور "
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "IsExitRow",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "description": "تاریخ خروج",
+            "expression": [
+              "",
+              "IF(",
+              "    'PW_Kara'[Over 3 Working Days Flag] = 1 &&",
+              "    NOT ISBLANK('PW_Kara'[card1]) &&",
+              "    'PW_Kara'[miladidate] = 'PW_Kara'[Last Attendance Date],",
+              "    1, 0",
+              ")",
+              "  -- تاریخ خروج "
+            ]
+          },
+          {
+            "name": "SectionTitle",
+            "dataType": "string",
+            "sourceColumn": "SectionTitle"
+          },
+          {
+            "type": "calculated",
+            "name": "003_MiladiEnd_Date",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "",
+              "    LOOKUPVALUE('BI DIM_DATE'[Miladi], 'BI DIM_DATE'[Date], PW_Kara[End_Date])",
+              "",
+              " --میلادی خروج "
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "004_YearmiladiEnd_Date",
+            "dataType": "int64",
+            "expression": [
+              "    ",
+              "        right(PW_Kara[003_MiladiEnd_Date], 4)",
+              "",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "005_year(Today)",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "             year(TODAY())",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "006_Status IsCut",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "  ",
+              "        if(PW_Kara[IsCut] =TRUE(), \"خروج \")"
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "007_Lack of employment",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": "استخدام /عدم استخدام ",
+            "expression": [
+              " ",
+              "     --if(PW_Kara[004_YearmiladiEnd_Date]<=PW_Kara[005_year(Today)] , \"عدم استخدام \", \"استخدام \")",
+              "",
+              "  if(PW_Kara[008_YearMiladi]<=PW_Kara[005_year(Today)]  && PW_Kara[IsCut]= TRUE (),\"خروج\" , ",
+              "                if(PW_Kara[008_YearMiladi]<=PW_Kara[005_year(Today)]  &&  PW_Kara[IsCut]= FALSE(), \"عدم استخدام\" ,",
+              "                if( PW_Kara[008_YearMiladi]>PW_Kara[005_year(Today)] && PW_Kara[IsCut]= FALSE(),  \"فعال\")))"
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "008_YearMiladi",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              "  if(PW_Kara[004_YearmiladiEnd_Date] = BLANK() , 2055 , PW_Kara[004_YearmiladiEnd_Date])",
+              "",
+              "-- سال  میلادی خروج  با توجه  به اینکه  دایمنشن تاریخ  محودیت داره  و بعضی رکورد ها  خالی میباشد این  ستون برای ساخت status  ساخته شده "
+            ]
           }
         ],
         "partitions": [
@@ -11910,6 +12309,25 @@
               "    )",
               "RETURN",
               "TodayJalali"
+            ]
+          },
+          {
+            "name": "Exits Count",
+            "description": " تعداد پرسنل خارج شده ",
+            "expression": [
+              "",
+              "VAR MinD = MIN ( 'BI DIM_DATE'[Miladi] )",
+              "VAR MaxD = MAX ( 'BI DIM_DATE'[Miladi] )",
+              "RETURN",
+              "CALCULATE(",
+              "    DISTINCTCOUNT( 'PW_Kara'[Emp_No] ),",
+              "    'PW_Kara'[Over 3 Working Days Flag] = 1,",
+              "    'PW_Kara'[Last Attendance Date]>= MinD,",
+              "    'PW_Kara'[Last Attendance Date] <= MaxD",
+              ")",
+              "",
+              "--تعداد خروجی ها ",
+              ""
             ]
           }
         ]
