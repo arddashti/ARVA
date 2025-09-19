@@ -745,562 +745,6 @@
         ]
       },
       {
-        "name": "VN Fact_int_Vocher_Itm_Qty_history",
-        "description": "جدول سوابق روزانه موجودی هر کالا در هر انبار براساس داده های سندهای رسید انبار",
-        "columns": [
-          {
-            "name": "StockDCRef",
-            "dataType": "int64",
-            "description": "کد انبار",
-            "sourceColumn": "StockDCRef"
-          },
-          {
-            "name": "GoodsRef",
-            "dataType": "int64",
-            "description": "id کالا",
-            "sourceColumn": "GoodsRef"
-          },
-          {
-            "name": "Sum(TotalQty)",
-            "dataType": "double",
-            "description": "تعداد موجودی انبار در هر روز در هر انبار",
-            "sourceColumn": "Sum(TotalQty)",
-            "formatString": "#,#"
-          },
-          {
-            "name": "VocherDate",
-            "dataType": "string",
-            "description": "تاریخ",
-            "sourceColumn": "VocherDate"
-          },
-          {
-            "name": "SalePrice",
-            "dataType": "double",
-            "description": "قیمت هر روز یک کالا در بک انبار",
-            "sourceColumn": "SalePrice",
-            "formatString": "#,#"
-          },
-          {
-            "name": "unic_code_int",
-            "dataType": "string",
-            "sourceColumn": "unic_code_int"
-          },
-          {
-            "type": "calculated",
-            "name": "022_411 warehouse inventory",
-            "dataType": "double",
-            "isDataTypeInferred": true,
-            "description": "موجودی روز انبار 411 کارخانه",
-            "expression": [
-              "",
-              "          if('VN Fact_int_Vocher_Itm_Qty_history'[StockDCRef] = 411 &&",
-              "                        'VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]>0,        ",
-              "                                  'VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)])",
-              "",
-              "--موجودی روز انبار 411 کارخانه  که در اکسل موجود است "
-            ]
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Partition",
-            "dataView": "full",
-            "source": {
-              "type": "m",
-              "expression": [
-                "let",
-                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    VN_Fact_int_Vocher_Itm_Qty_history = Source{[Schema=\"VN\",Item=\"Fact_int_Vocher_Itm_Qty_history\"]}[Data]",
-                "in",
-                "    VN_Fact_int_Vocher_Itm_Qty_history"
-              ]
-            }
-          }
-        ],
-        "measures": [
-          {
-            "name": "01_product_in_stock_in_last_day",
-            "description": "موجودی پایان دوره",
-            "expression": [
-              " ",
-              "     CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                                  FILTER('BI DIM_DATE','BI DIM_DATE'[end_month] =1)",
-              "                                                                                    )"
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "02_ product_in_stock_in_frist_day",
-            "description": "موجودی ابتدای دوره",
-            "expression": [
-              "",
-              "     CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , FILTER('BI DIM_DATE','BI DIM_DATE'[end_month] =2)",
-              ")"
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "04_ average invetory",
-            "description": "میانگین موجودی انبار ( ابتدا و انتهای دوره )",
-            "expression": [
-              "",
-              "                 ( 'VN Fact_int_Vocher_Itm_Qty_history'[01_product_in_stock_in_last_day] +",
-              "                           'VN Fact_int_Vocher_Itm_Qty_history'[02_ product_in_stock_in_frist_day] )/2"
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "05_real ITR",
-            "description": "محاسبه ITR ",
-            "expression": [
-              "  if (MAX('VN Dim_Stock'[StockDC_ID]) <> 2, ",
-              "    DIVIDE('VN Fact_int_Vocher_Itm_Qty'[03_NumberSold],'VN Fact_int_Vocher_Itm_Qty_history'[04_ average invetory]),",
-              "            DIVIDE(CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] =",
-              "\"انبار به انبار بستانكار\"))",
-              " , [04_ average invetory]))",
-              "",
-              "",
-              "",
-              ""
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "06_ CurrentInventory",
-            "description": "موجودی لحظه ای انبار",
-            "expression": [
-              "  ",
-              "",
-              "         --   var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
-              "          --  var MToday= CONVERT(MONTH(TODAY()),INTEGER)",
-              "           ",
-              " --   return",
-              "",
-              "    -- if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                              --     'BI DIM_DATE'[Miladi]=TODAY()) , ",
-              "                      CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                                  'BI DIM_DATE'[end_month] =1)",
-              "",
-              "",
-              "",
-              "",
-              "",
-              " -----   موجودی لحظه ای انبار   "
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "07_ Current Inventory(Rial)",
-            "description": "موجودی ریالی لحظه ای ",
-            "expression": [
-              "",
-              "       --   var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
-              "       --     var MToday= CONVERT(MONTH(TODAY()),INTEGER)",
-              "           ",
-              "  --  return",
-              "",
-              "--   (  if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                               --    'BI DIM_DATE'[Miladi]=TODAY()) , ",
-              "               --       CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
-              "                             --     'BI DIM_DATE'[end_month] =1)))",
-              "       --       * ",
-              "        --      CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) ,  'BI DIM_DATE'[end_month] = 1)",
-              "",
-              "----  موجودی ریالی لحظه ای  برای  ماه های قبل از ماه جاری ",
-              "",
-              "",
-              "",
-              "CALCULATE(",
-              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
-              "                                                                * ",
-              "                                                                   'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
-              "                                                                                       'BI DIM_DATE'[end_month]= 1 )            ",
-              "               ",
-              "",
-              "--CALCULATE(AVERAGE('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) ,  'BI DIM_DATE'[end_month] = 1)",
-              "----موجودی ریالی لحظه ای"
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "08 _Lastyear'sprice",
-            "description": "قیمت سال گذشته",
-            "expression": [
-              "    ",
-              "                         var y = MAX('BI DIM_DATE'[jyear])-1",
-              "          return ",
-              "                  CALCULATE(MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) ,",
-              "                                  'BI DIM_DATE'[jyear] = y)",
-              "",
-              "",
-              "---- قیمت سال گذشته"
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "09_ProductGrowthRate",
-            "description": "نرخ تغغیرات (رشد) قیمت کالا",
-            "expression": [
-              "",
-              " ",
-              "if( 'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice] >0 && MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) <> BLANK(),",
-              "  DIVIDE(MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) - 'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice] ,",
-              "                              'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice]))",
-              "",
-              "       --   ( MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) -'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice])",
-              "                                            --  /'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice]",
-              "",
-              "",
-              "",
-              "------نرخ تغغیرات (رشد) قیمت کالا",
-              "                                                "
-            ],
-            "formatString": "0.00 %;0.00- %;0.00 %"
-          },
-          {
-            "name": "010_CurrentInventory(currentMonth)",
-            "expression": [
-              "  ",
-              "",
-              "              var y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
-              "              var m = LOOKUPVALUE('BI DIM_DATE'[jmonthN] , 'BI DIM_DATE'[Miladi], TODAY())",
-              "  ",
-              "               return",
-              "",
-              "",
-              "          CALCULATE( sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) ,",
-              "                                 'BI DIM_DATE'[jyear]=y , 'BI DIM_DATE'[jmonthN]=m ,  'BI DIM_DATE'[end_month]=1)",
-              "                                              ",
-              "",
-              "",
-              "---- محاسبه موجودی روز انبار فقط برای ماه جاری  )"
-            ]
-          },
-          {
-            "name": "011_ Current Inventory(Rial_CurrentMonth)",
-            "description": "موجودی ریالی لحظه ای ماه جاری ",
-            "expression": [
-              "",
-              "       var yy = SELECTEDVALUE( 'BI DIM_DATE'[jyear])",
-              "       ",
-              "        var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
-              "           ",
-              " return",
-              "",
-              "",
-              "",
-              "",
-              "CALCULATE(",
-              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
-              "                                        * ",
-              "                                            'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
-              "                                                          'BI DIM_DATE'[jyear]=yy, 'BI DIM_DATE'[jmonthN]=mm,'BI DIM_DATE'[end_month]=1)            ",
-              "               ",
-              "",
-              "----  موجودی ریالی لحظه ای ماه جاری "
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "012_ Last Inventory(Rial_LastMonth)",
-            "description": "ریال ماه گذشته انبار",
-            "expression": [
-              "",
-              "           var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
-              "       ",
-              "           var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
-              "           var pm = if(mm=1 , 12, mm-1)",
-              "           var py = IF(pm=12 , yy-1, yy)",
-              "",
-              " return",
-              "",
-              "",
-              "CALCULATE(",
-              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
-              "                                        * ",
-              "                                            'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
-              "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm,'BI DIM_DATE'[end_month]=1) ",
-              "",
-              "",
-              "-- ریال ماه گذشته انبار"
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "013_ Inventory growth Rate (Rial)",
-            "description": "نرخ رشد ریالی انبار ",
-            "expression": [
-              "",
-              "                             if( 'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)]>0 && 'VN Fact_int_Vocher_Itm_Qty_history'[07_ Current Inventory(Rial)]<> BLANK(),",
-              "                                 ('VN Fact_int_Vocher_Itm_Qty_history'[07_ Current Inventory(Rial)]- 'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)])",
-              "                                                    /'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)])",
-              "",
-              "-- نرخ رشد ریالی انیار )"
-            ],
-            "formatString": "0.00%;-0.00%;0.00%"
-          },
-          {
-            "name": "014_ First Inventory(Rial_FirstMonth)",
-            "description": "ریال ابتدای سال انبار برای محاسبه نرخ رشد ریالی نسبت به روز ",
-            "expression": [
-              "",
-              "        ",
-              "",
-              "        var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
-              "   return",
-              "     CALCULATE(",
-              "             sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
-              "                                      * ",
-              "                              'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
-              "                                                    'BI DIM_DATE'[jyear]=yy-1, 'BI DIM_DATE'[jmonthN]=12,'BI DIM_DATE'[end_month]=1)",
-              "",
-              "-- ریال ابتدای سال انبار برای محاسبه نرخ رشد ریالی نسبت به روز ",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              ""
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "015_Growth Rate(beginning to now)",
-            "description": "نرخ رشد ریالی انبار نسبت به ابتدای سال ",
-            "expression": [
-              "",
-              "",
-              "",
-              " if ( 'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)] <> 0",
-              "                 && ",
-              "              'VN Fact_int_Vocher_Itm_Qty_history'[011_ Current Inventory(Rial_CurrentMonth)] <> BLANK(),",
-              "     ( 'VN Fact_int_Vocher_Itm_Qty_history'[011_ Current Inventory(Rial_CurrentMonth)]- 'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)])",
-              "                         /",
-              "'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)])",
-              "",
-              "-- نرخ رشد ریالی انبار نسبت به ابتدای سال ))"
-            ],
-            "formatString": "0.00%;-0.00%;0.00%"
-          },
-          {
-            "name": "016_ DollarPriceStorage",
-            "description": "قیمت دلاری موجودی انبار ",
-            "expression": [
-              "      ",
-              "",
-              "    CALCULATE(",
-              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
-              "                   *   'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice] ),",
-              "                                                  'BI DIM_DATE'[end_month]= 1 )  /",
-              "                                     'BI dollar_price'[001_ maxClose Price_Dollar]",
-              "                                                              ",
-              "",
-              "--- قیمت دلاری موجودی انبار "
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "017_PreviousDollarPrice(Storage)",
-            "description": "دلار انبار  ماه گذشته ",
-            "expression": [
-              "",
-              "",
-              "",
-              "     --- محاسبه ریال انبار ماه گذشته               ",
-              "           var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
-              "           var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
-              "           var pm = if(mm=1 , 12, mm-1)",
-              "           var py = IF(pm=12 , yy-1, yy)",
-              "",
-              " return",
-              "",
-              "",
-              "CALCULATE(",
-              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
-              "                                        * ",
-              "                                            'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
-              "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm,'BI DIM_DATE'[end_month]=1) ",
-              "                                                             /",
-              "                                                     ",
-              "",
-              " ----- محاسبه دلار انبار ماه گذشته                  ",
-              "           var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
-              "           var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
-              "           var pm = if(mm=1 , 12, mm-1)",
-              "           var py = IF(pm=12 , yy-1, yy)",
-              "",
-              " return",
-              "",
-              "",
-              "CALCULATE(",
-              "        ",
-              "                  'BI dollar_price'[001_ maxClose Price_Dollar] ,",
-              "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm) ",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "",
-              "-- دلار انبار  ماه گذشته ",
-              ""
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "018_ Inventory growth Rate (Dollar)",
-            "description": " نرخ رشد دلاری انبار ",
-            "expression": [
-              "",
-              "                  if( 'VN Fact_int_Vocher_Itm_Qty_history'[017_PreviousDollarPrice(Storage)]>0 && 'VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage]> BLANK(),",
-              "                                 ('VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage]- 'VN Fact_int_Vocher_Itm_Qty_history'[017_PreviousDollarPrice(Storage)])",
-              "                                                    /'VN Fact_int_Vocher_Itm_Qty_history'[017_PreviousDollarPrice(Storage)]",
-              "-- نرخ رشد دلاری انبار ",
-              ")"
-            ],
-            "formatString": "0.00%;-0.00%;0.00%"
-          },
-          {
-            "name": "019_ First Inventory(Dollar_FirstMonth)",
-            "description": "دلار ابتدای سال انبار",
-            "expression": [
-              "",
-              "        ",
-              "",
-              "        var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
-              "   return",
-              "    CALCULATE(",
-              "             sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
-              "                                      * ",
-              "                              'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
-              "                                                    'BI DIM_DATE'[jyear]=yy-1, 'BI DIM_DATE'[jmonthN]=12,'BI DIM_DATE'[end_month]=1)",
-              "                                     /  ",
-              "",
-              " var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
-              "          ",
-              "          ",
-              " return",
-              "",
-              "CALCULATE(",
-              "        ",
-              "                  'BI dollar_price'[001_ maxClose Price_Dollar] ,",
-              "                                                          'BI DIM_DATE'[jyear]=yy-1, 'BI DIM_DATE'[jmonthN]=12) ",
-              "",
-              "-- دلار ابتدای سال انبار برای محاسبه نرخ رشد ریالی نسبت به روز "
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "020_Growth Rate Dollar(beginning to now)",
-            "description": "نرخ رشد دلاری نسبت به ابتدای سال ",
-            "expression": [
-              "",
-              "",
-              "",
-              " if ( 'VN Fact_int_Vocher_Itm_Qty_history'[019_ First Inventory(Dollar_FirstMonth)]<> 0",
-              "                 && ",
-              "              'VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage] <> BLANK(),",
-              "     ( 'VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage]- 'VN Fact_int_Vocher_Itm_Qty_history'[019_ First Inventory(Dollar_FirstMonth)])",
-              "                         /",
-              "'VN Fact_int_Vocher_Itm_Qty_history'[019_ First Inventory(Dollar_FirstMonth)])",
-              "",
-              "--نرخ رشد دلاری نسبت به ابتدای سال ",
-              ""
-            ],
-            "formatString": "0.00%;-0.00%;0.00%"
-          },
-          {
-            "name": "020_PrevouseDollar",
-            "description": "دلار ماه گذشته ",
-            "expression": [
-              "",
-              "                      var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
-              "           var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
-              "           var pm = if(mm=1 , 12, mm-1)",
-              "           var py = IF(pm=12 , yy-1, yy)",
-              "",
-              " return",
-              "",
-              "",
-              "CALCULATE(",
-              "        ",
-              "                  'BI dollar_price'[001_ maxClose Price_Dollar] ,",
-              "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm) ",
-              "",
-              "-- دلار ماه گذشته "
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "023_Current inventory(411)",
-            "description": "موجودی پایان دوره  انبار 411 کارخانه ",
-            "expression": [
-              "",
-              "            sum('VN Fact_int_Vocher_Itm_Qty_history'[022_411 warehouse inventory]) ",
-              "                       ",
-              "",
-              "",
-              "--موجودی پایان دوره  انبار 411 کارخانه "
-            ],
-            "formatString": "#,#"
-          },
-          {
-            "name": "024_Avg_ProductGrowthRate",
-            "description": "نرخ  رشد قیمت  کالاها با  احتساب میانگین  کل ",
-            "expression": [
-              "",
-              "",
-              "",
-              "VAR currentYear = MAX('BI DIM_DATE'[jyear])",
-              "VAR currentPrice =",
-              "    CALCULATE(",
-              "        MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
-              "        'BI DIM_DATE'[jyear] = currentYear",
-              "    )",
-              "VAR lastYearPrice =",
-              "    CALCULATE(",
-              "        MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
-              "        'BI DIM_DATE'[jyear] = currentYear - 1",
-              "    )",
-              "RETURN",
-              "    IF(",
-              "        HASONEVALUE('VN Fact_int_Vocher_Itm_Qty_history'[goodsref]),",
-              "        // در ردیف‌ها: نرخ رشد همین کالا",
-              "        IF(",
-              "            lastYearPrice > 0 && NOT ISBLANK(currentPrice),",
-              "            DIVIDE(currentPrice - lastYearPrice, lastYearPrice)",
-              "        ),",
-              "        // در Total: میانگین نرخ رشد همه کالاها",
-              "        AVERAGEX(",
-              "            VALUES('VN Fact_int_Vocher_Itm_Qty_history'[goodsref]),",
-              "            VAR oneGoodRef = 'VN Fact_int_Vocher_Itm_Qty_history'[goodsref]",
-              "            VAR thisYearPrice =",
-              "                CALCULATE(",
-              "                    MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
-              "                    'BI DIM_DATE'[jyear] = currentYear,",
-              "                    'VN Fact_int_Vocher_Itm_Qty_history'[goodsref] = oneGoodRef",
-              "                )",
-              "            VAR prevYearPrice =",
-              "                CALCULATE(",
-              "                    MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
-              "                    'BI DIM_DATE'[jyear] = currentYear - 1,",
-              "                    'VN Fact_int_Vocher_Itm_Qty_history'[goodsref] = oneGoodRef",
-              "                )",
-              "            RETURN",
-              "                IF(",
-              "                    prevYearPrice > 0 && NOT ISBLANK(thisYearPrice),",
-              "                    DIVIDE(thisYearPrice - prevYearPrice, prevYearPrice)",
-              "                )",
-              "        )",
-              "    )",
-              ""
-            ],
-            "formatString": "0.00%;-0.00%;0.00%"
-          }
-        ]
-      },
-      {
         "name": "VN Fact_Order",
         "description": "جدول درخواست فروش",
         "columns": [
@@ -3146,6 +2590,11 @@
             "dataType": "string",
             "description": "کد شهر",
             "sourceColumn": "StateCode"
+          },
+          {
+            "name": "target_amount_per_day_VIP",
+            "dataType": "double",
+            "sourceColumn": "target_amount_per_day_VIP"
           }
         ],
         "partitions": [
@@ -12331,6 +11780,602 @@
             ]
           }
         ]
+      },
+      {
+        "name": "VN Fact_int_Vocher_Itm_Qty_history",
+        "description": "جدول سوابق روزانه موجودی هر کالا در هر انبار براساس داده های سندهای رسید انبار",
+        "columns": [
+          {
+            "name": "StockDCRef",
+            "dataType": "int64",
+            "description": "کد انبار",
+            "sourceColumn": "StockDCRef"
+          },
+          {
+            "name": "GoodsRef",
+            "dataType": "int64",
+            "description": "id کالا",
+            "sourceColumn": "GoodsRef"
+          },
+          {
+            "name": "Sum(TotalQty)",
+            "dataType": "double",
+            "description": "تعداد موجودی انبار در هر روز در هر انبار",
+            "sourceColumn": "Sum(TotalQty)",
+            "formatString": "#,#"
+          },
+          {
+            "name": "VocherDate",
+            "dataType": "string",
+            "description": "تاریخ",
+            "sourceColumn": "VocherDate"
+          },
+          {
+            "name": "SalePrice",
+            "dataType": "double",
+            "description": "قیمت هر روز یک کالا در بک انبار",
+            "sourceColumn": "SalePrice",
+            "formatString": "#,#"
+          },
+          {
+            "name": "unic_code_int",
+            "dataType": "string",
+            "sourceColumn": "unic_code_int"
+          },
+          {
+            "type": "calculated",
+            "name": "022_411 warehouse inventory",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "description": "موجودی روز انبار 411 کارخانه",
+            "expression": [
+              "",
+              "          if('VN Fact_int_Vocher_Itm_Qty_history'[StockDCRef] = 411 &&",
+              "                        'VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]>0,        ",
+              "                                  'VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)])",
+              "",
+              "--موجودی روز انبار 411 کارخانه  که در اکسل موجود است "
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "before 1404",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Fact_int_Vocher_Itm_Qty_history = Source{[Schema=\"VN\",Item=\"Fact_int_Vocher_Itm_Qty_history\"]}[Data],",
+                "    #\"Filtered Rows\" = Table.SelectRows(VN_Fact_int_Vocher_Itm_Qty_history, each not Text.StartsWith([VocherDate], \"1404\"))",
+                "in",
+                "    #\"Filtered Rows\""
+              ]
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>let",
+                  "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                  "    VN_Fact_int_Vocher_Itm_Qty_history = Source{[Schema=\"VN\",Item=\"Fact_int_Vocher_Itm_Qty_history\"]}[Data],",
+                  "    #\"Filtered Rows\" = Table.SelectRows(VN_Fact_int_Vocher_Itm_Qty_history, each not Text.StartsWith([VocherDate], \"1404\"))",
+                  "in",
+                  "    #\"Filtered Rows\"</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "1404",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    VN_Fact_int_Vocher_Itm_Qty_history = Source{[Schema=\"VN\",Item=\"Fact_int_Vocher_Itm_Qty_history\"]}[Data],",
+                "    #\"Filtered Rows\" = Table.SelectRows(VN_Fact_int_Vocher_Itm_Qty_history, each Text.StartsWith([VocherDate], \"1404\"))",
+                "in",
+                "    #\"Filtered Rows\""
+              ]
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>let",
+                  "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                  "    VN_Fact_int_Vocher_Itm_Qty_history = Source{[Schema=\"VN\",Item=\"Fact_int_Vocher_Itm_Qty_history\"]}[Data],",
+                  "    #\"Filtered Rows\" = Table.SelectRows(VN_Fact_int_Vocher_Itm_Qty_history, each Text.StartsWith([VocherDate], \"1404\"))",
+                  "in",
+                  "    #\"Filtered Rows\"</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "01_product_in_stock_in_last_day",
+            "description": "موجودی پایان دوره",
+            "expression": [
+              " ",
+              "     CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                  FILTER('BI DIM_DATE','BI DIM_DATE'[end_month] =1)",
+              "                                                                                    )"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "02_ product_in_stock_in_frist_day",
+            "description": "موجودی ابتدای دوره",
+            "expression": [
+              "",
+              "     CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , FILTER('BI DIM_DATE','BI DIM_DATE'[end_month] =2)",
+              ")"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "04_ average invetory",
+            "description": "میانگین موجودی انبار ( ابتدا و انتهای دوره )",
+            "expression": [
+              "",
+              "                 ( 'VN Fact_int_Vocher_Itm_Qty_history'[01_product_in_stock_in_last_day] +",
+              "                           'VN Fact_int_Vocher_Itm_Qty_history'[02_ product_in_stock_in_frist_day] )/2"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "05_real ITR",
+            "description": "محاسبه ITR ",
+            "expression": [
+              "  if (MAX('VN Dim_Stock'[StockDC_ID]) <> 2, ",
+              "    DIVIDE('VN Fact_int_Vocher_Itm_Qty'[03_NumberSold],'VN Fact_int_Vocher_Itm_Qty_history'[04_ average invetory]),",
+              "            DIVIDE(CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty'[TotalQty]),FILTER('VN Fact_int_Vocher_Itm_Qty', 'VN Fact_int_Vocher_Itm_Qty'[VocherTypeName] =",
+              "\"انبار به انبار بستانكار\"))",
+              " , [04_ average invetory]))",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "06_ CurrentInventory",
+            "description": "موجودی لحظه ای انبار",
+            "expression": [
+              "  ",
+              "",
+              "         --   var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
+              "          --  var MToday= CONVERT(MONTH(TODAY()),INTEGER)",
+              "           ",
+              " --   return",
+              "",
+              "    -- if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                              --     'BI DIM_DATE'[Miladi]=TODAY()) , ",
+              "                      CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                                  'BI DIM_DATE'[end_month] =1)",
+              "",
+              "",
+              "",
+              "",
+              "",
+              " -----   موجودی لحظه ای انبار   "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "07_ Current Inventory(Rial)",
+            "description": "موجودی ریالی لحظه ای ",
+            "expression": [
+              "",
+              "       --   var mm = SELECTEDVALUE('BI DIM_DATE'[jmonthN])",
+              "       --     var MToday= CONVERT(MONTH(TODAY()),INTEGER)",
+              "           ",
+              "  --  return",
+              "",
+              "--   (  if(mm = MToday , CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                               --    'BI DIM_DATE'[Miladi]=TODAY()) , ",
+              "               --       CALCULATE(sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) , ",
+              "                             --     'BI DIM_DATE'[end_month] =1)))",
+              "       --       * ",
+              "        --      CALCULATE(SUM('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) ,  'BI DIM_DATE'[end_month] = 1)",
+              "",
+              "----  موجودی ریالی لحظه ای  برای  ماه های قبل از ماه جاری ",
+              "",
+              "",
+              "",
+              "CALCULATE(",
+              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
+              "                                                                * ",
+              "                                                                   'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                                                                                       'BI DIM_DATE'[end_month]= 1 )            ",
+              "               ",
+              "",
+              "--CALCULATE(AVERAGE('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) ,  'BI DIM_DATE'[end_month] = 1)",
+              "----موجودی ریالی لحظه ای"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "08 _Lastyear'sprice",
+            "description": "قیمت سال گذشته",
+            "expression": [
+              "    ",
+              "                         var y = MAX('BI DIM_DATE'[jyear])-1",
+              "          return ",
+              "                  CALCULATE(MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) ,",
+              "                                  'BI DIM_DATE'[jyear] = y)",
+              "",
+              "",
+              "---- قیمت سال گذشته"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "09_ProductGrowthRate",
+            "description": "نرخ تغغیرات (رشد) قیمت کالا",
+            "expression": [
+              "",
+              " ",
+              "if( 'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice] >0 && MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) <> BLANK(),",
+              "  DIVIDE(MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) - 'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice] ,",
+              "                              'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice]))",
+              "",
+              "       --   ( MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]) -'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice])",
+              "                                            --  /'VN Fact_int_Vocher_Itm_Qty_history'[08 _Lastyear'sprice]",
+              "",
+              "",
+              "",
+              "------نرخ تغغیرات (رشد) قیمت کالا",
+              "                                                "
+            ],
+            "formatString": "0.00 %;0.00- %;0.00 %"
+          },
+          {
+            "name": "010_CurrentInventory(currentMonth)",
+            "expression": [
+              "  ",
+              "",
+              "              var y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "              var m = LOOKUPVALUE('BI DIM_DATE'[jmonthN] , 'BI DIM_DATE'[Miladi], TODAY())",
+              "  ",
+              "               return",
+              "",
+              "",
+              "          CALCULATE( sum('VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)]) ,",
+              "                                 'BI DIM_DATE'[jyear]=y , 'BI DIM_DATE'[jmonthN]=m ,  'BI DIM_DATE'[end_month]=1)",
+              "                                              ",
+              "",
+              "",
+              "---- محاسبه موجودی روز انبار فقط برای ماه جاری  )"
+            ]
+          },
+          {
+            "name": "011_ Current Inventory(Rial_CurrentMonth)",
+            "description": "موجودی ریالی لحظه ای ماه جاری ",
+            "expression": [
+              "",
+              "       var yy = SELECTEDVALUE( 'BI DIM_DATE'[jyear])",
+              "       ",
+              "        var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
+              "           ",
+              " return",
+              "",
+              "",
+              "",
+              "",
+              "CALCULATE(",
+              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
+              "                                        * ",
+              "                                            'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                                                          'BI DIM_DATE'[jyear]=yy, 'BI DIM_DATE'[jmonthN]=mm,'BI DIM_DATE'[end_month]=1)            ",
+              "               ",
+              "",
+              "----  موجودی ریالی لحظه ای ماه جاری "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "012_ Last Inventory(Rial_LastMonth)",
+            "description": "ریال ماه گذشته انبار",
+            "expression": [
+              "",
+              "           var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
+              "       ",
+              "           var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
+              "           var pm = if(mm=1 , 12, mm-1)",
+              "           var py = IF(pm=12 , yy-1, yy)",
+              "",
+              " return",
+              "",
+              "",
+              "CALCULATE(",
+              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
+              "                                        * ",
+              "                                            'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm,'BI DIM_DATE'[end_month]=1) ",
+              "",
+              "",
+              "-- ریال ماه گذشته انبار"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "013_ Inventory growth Rate (Rial)",
+            "description": "نرخ رشد ریالی انبار ",
+            "expression": [
+              "",
+              "                             if( 'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)]>0 && 'VN Fact_int_Vocher_Itm_Qty_history'[07_ Current Inventory(Rial)]<> BLANK(),",
+              "                                 ('VN Fact_int_Vocher_Itm_Qty_history'[07_ Current Inventory(Rial)]- 'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)])",
+              "                                                    /'VN Fact_int_Vocher_Itm_Qty_history'[012_ Last Inventory(Rial_LastMonth)])",
+              "",
+              "-- نرخ رشد ریالی انیار )"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "014_ First Inventory(Rial_FirstMonth)",
+            "description": "ریال ابتدای سال انبار برای محاسبه نرخ رشد ریالی نسبت به روز ",
+            "expression": [
+              "",
+              "        ",
+              "",
+              "        var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
+              "   return",
+              "     CALCULATE(",
+              "             sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
+              "                                      * ",
+              "                              'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                                                    'BI DIM_DATE'[jyear]=yy-1, 'BI DIM_DATE'[jmonthN]=12,'BI DIM_DATE'[end_month]=1)",
+              "",
+              "-- ریال ابتدای سال انبار برای محاسبه نرخ رشد ریالی نسبت به روز ",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "015_Growth Rate(beginning to now)",
+            "description": "نرخ رشد ریالی انبار نسبت به ابتدای سال ",
+            "expression": [
+              "",
+              "",
+              "",
+              " if ( 'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)] <> 0",
+              "                 && ",
+              "              'VN Fact_int_Vocher_Itm_Qty_history'[011_ Current Inventory(Rial_CurrentMonth)] <> BLANK(),",
+              "     ( 'VN Fact_int_Vocher_Itm_Qty_history'[011_ Current Inventory(Rial_CurrentMonth)]- 'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)])",
+              "                         /",
+              "'VN Fact_int_Vocher_Itm_Qty_history'[014_ First Inventory(Rial_FirstMonth)])",
+              "",
+              "-- نرخ رشد ریالی انبار نسبت به ابتدای سال ))"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "016_ DollarPriceStorage",
+            "description": "قیمت دلاری موجودی انبار ",
+            "expression": [
+              "      ",
+              "",
+              "    CALCULATE(",
+              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
+              "                   *   'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice] ),",
+              "                                                  'BI DIM_DATE'[end_month]= 1 )  /",
+              "                                     'BI dollar_price'[001_ maxClose Price_Dollar]",
+              "                                                              ",
+              "",
+              "--- قیمت دلاری موجودی انبار "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "017_PreviousDollarPrice(Storage)",
+            "description": "دلار انبار  ماه گذشته ",
+            "expression": [
+              "",
+              "",
+              "",
+              "     --- محاسبه ریال انبار ماه گذشته               ",
+              "           var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
+              "           var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
+              "           var pm = if(mm=1 , 12, mm-1)",
+              "           var py = IF(pm=12 , yy-1, yy)",
+              "",
+              " return",
+              "",
+              "",
+              "CALCULATE(",
+              "        sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
+              "                                        * ",
+              "                                            'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm,'BI DIM_DATE'[end_month]=1) ",
+              "                                                             /",
+              "                                                     ",
+              "",
+              " ----- محاسبه دلار انبار ماه گذشته                  ",
+              "           var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
+              "           var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
+              "           var pm = if(mm=1 , 12, mm-1)",
+              "           var py = IF(pm=12 , yy-1, yy)",
+              "",
+              " return",
+              "",
+              "",
+              "CALCULATE(",
+              "        ",
+              "                  'BI dollar_price'[001_ maxClose Price_Dollar] ,",
+              "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm) ",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "-- دلار انبار  ماه گذشته ",
+              ""
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "018_ Inventory growth Rate (Dollar)",
+            "description": " نرخ رشد دلاری انبار ",
+            "expression": [
+              "",
+              "                  if( 'VN Fact_int_Vocher_Itm_Qty_history'[017_PreviousDollarPrice(Storage)]>0 && 'VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage]> BLANK(),",
+              "                                 ('VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage]- 'VN Fact_int_Vocher_Itm_Qty_history'[017_PreviousDollarPrice(Storage)])",
+              "                                                    /'VN Fact_int_Vocher_Itm_Qty_history'[017_PreviousDollarPrice(Storage)]",
+              "-- نرخ رشد دلاری انبار ",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "019_ First Inventory(Dollar_FirstMonth)",
+            "description": "دلار ابتدای سال انبار",
+            "expression": [
+              "",
+              "        ",
+              "",
+              "        var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
+              "   return",
+              "    CALCULATE(",
+              "             sumx('VN Fact_int_Vocher_Itm_Qty_history','VN Fact_int_Vocher_Itm_Qty_history'[Sum(TotalQty)] ",
+              "                                      * ",
+              "                              'VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                                                    'BI DIM_DATE'[jyear]=yy-1, 'BI DIM_DATE'[jmonthN]=12,'BI DIM_DATE'[end_month]=1)",
+              "                                     /  ",
+              "",
+              " var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
+              "          ",
+              "          ",
+              " return",
+              "",
+              "CALCULATE(",
+              "        ",
+              "                  'BI dollar_price'[001_ maxClose Price_Dollar] ,",
+              "                                                          'BI DIM_DATE'[jyear]=yy-1, 'BI DIM_DATE'[jmonthN]=12) ",
+              "",
+              "-- دلار ابتدای سال انبار برای محاسبه نرخ رشد ریالی نسبت به روز "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "020_Growth Rate Dollar(beginning to now)",
+            "description": "نرخ رشد دلاری نسبت به ابتدای سال ",
+            "expression": [
+              "",
+              "",
+              "",
+              " if ( 'VN Fact_int_Vocher_Itm_Qty_history'[019_ First Inventory(Dollar_FirstMonth)]<> 0",
+              "                 && ",
+              "              'VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage] <> BLANK(),",
+              "     ( 'VN Fact_int_Vocher_Itm_Qty_history'[016_ DollarPriceStorage]- 'VN Fact_int_Vocher_Itm_Qty_history'[019_ First Inventory(Dollar_FirstMonth)])",
+              "                         /",
+              "'VN Fact_int_Vocher_Itm_Qty_history'[019_ First Inventory(Dollar_FirstMonth)])",
+              "",
+              "--نرخ رشد دلاری نسبت به ابتدای سال ",
+              ""
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "020_PrevouseDollar",
+            "description": "دلار ماه گذشته ",
+            "expression": [
+              "",
+              "                      var yy = SELECTEDVALUE ('BI DIM_DATE'[jyear] )",
+              "           var mm = SELECTEDVALUE ('BI DIM_DATE'[jmonthN] )",
+              "           var pm = if(mm=1 , 12, mm-1)",
+              "           var py = IF(pm=12 , yy-1, yy)",
+              "",
+              " return",
+              "",
+              "",
+              "CALCULATE(",
+              "        ",
+              "                  'BI dollar_price'[001_ maxClose Price_Dollar] ,",
+              "                                                          'BI DIM_DATE'[jyear]=py, 'BI DIM_DATE'[jmonthN]=pm) ",
+              "",
+              "-- دلار ماه گذشته "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "023_Current inventory(411)",
+            "description": "موجودی پایان دوره  انبار 411 کارخانه ",
+            "expression": [
+              "",
+              "            sum('VN Fact_int_Vocher_Itm_Qty_history'[022_411 warehouse inventory]) ",
+              "                       ",
+              "",
+              "",
+              "--موجودی پایان دوره  انبار 411 کارخانه "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "024_Avg_ProductGrowthRate",
+            "description": "نرخ  رشد قیمت  کالاها با  احتساب میانگین  کل ",
+            "expression": [
+              "",
+              "",
+              "",
+              "VAR currentYear = MAX('BI DIM_DATE'[jyear])",
+              "VAR currentPrice =",
+              "    CALCULATE(",
+              "        MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "        'BI DIM_DATE'[jyear] = currentYear",
+              "    )",
+              "VAR lastYearPrice =",
+              "    CALCULATE(",
+              "        MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "        'BI DIM_DATE'[jyear] = currentYear - 1",
+              "    )",
+              "RETURN",
+              "    IF(",
+              "        HASONEVALUE('VN Fact_int_Vocher_Itm_Qty_history'[goodsref]),",
+              "        // در ردیف‌ها: نرخ رشد همین کالا",
+              "        IF(",
+              "            lastYearPrice > 0 && NOT ISBLANK(currentPrice),",
+              "            DIVIDE(currentPrice - lastYearPrice, lastYearPrice)",
+              "        ),",
+              "        // در Total: میانگین نرخ رشد همه کالاها",
+              "        AVERAGEX(",
+              "            VALUES('VN Fact_int_Vocher_Itm_Qty_history'[goodsref]),",
+              "            VAR oneGoodRef = 'VN Fact_int_Vocher_Itm_Qty_history'[goodsref]",
+              "            VAR thisYearPrice =",
+              "                CALCULATE(",
+              "                    MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                    'BI DIM_DATE'[jyear] = currentYear,",
+              "                    'VN Fact_int_Vocher_Itm_Qty_history'[goodsref] = oneGoodRef",
+              "                )",
+              "            VAR prevYearPrice =",
+              "                CALCULATE(",
+              "                    MAX('VN Fact_int_Vocher_Itm_Qty_history'[SalePrice]),",
+              "                    'BI DIM_DATE'[jyear] = currentYear - 1,",
+              "                    'VN Fact_int_Vocher_Itm_Qty_history'[goodsref] = oneGoodRef",
+              "                )",
+              "            RETURN",
+              "                IF(",
+              "                    prevYearPrice > 0 && NOT ISBLANK(thisYearPrice),",
+              "                    DIVIDE(thisYearPrice - prevYearPrice, prevYearPrice)",
+              "                )",
+              "        )",
+              "    )",
+              ""
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          }
+        ]
       }
     ],
     "relationships": [
@@ -12361,27 +12406,6 @@
         "fromColumn": "Date",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
-      },
-      {
-        "name": "0789e9d5-972c-490b-a637-0e5e032db74b",
-        "fromTable": "VN Fact_int_Vocher_Itm_Qty_history",
-        "fromColumn": "StockDCRef",
-        "toTable": "VN Dim_Stock",
-        "toColumn": "StockDC_ID"
-      },
-      {
-        "name": "4b70da09-6fcc-477d-9596-c79b15c23ed0",
-        "fromTable": "VN Fact_int_Vocher_Itm_Qty_history",
-        "fromColumn": "VocherDate",
-        "toTable": "BI DIM_DATE",
-        "toColumn": "Jalali_1"
-      },
-      {
-        "name": "767ab058-c049-419c-a7c0-67e6fb310c2e",
-        "fromTable": "VN Fact_int_Vocher_Itm_Qty_history",
-        "fromColumn": "GoodsRef",
-        "toTable": "VN Dim_Goods",
-        "toColumn": "Goods_ID"
       },
       {
         "name": "4ed638d1-000d-4315-8373-6a839cb24ac8",
@@ -12554,15 +12578,6 @@
         "fromColumn": "payment_date",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
-      },
-      {
-        "name": "794e2d3f-c64b-46a8-88e2-b6fdefd333eb",
-        "toCardinality": "many",
-        "fromTable": "VN Fact_int_Vocher_Itm_Qty",
-        "fromColumn": "unic_code_int",
-        "toTable": "VN Fact_int_Vocher_Itm_Qty_history",
-        "toColumn": "unic_code_int",
-        "crossFilteringBehavior": "bothDirections"
       },
       {
         "name": "a2ae8352-b24b-4f23-9a67-0afcc30d9cd6",
@@ -12803,6 +12818,36 @@
         "fromColumn": "Date",
         "toTable": "BI DIM_DATE",
         "toColumn": "Date"
+      },
+      {
+        "name": "0789e9d5-972c-490b-a637-0e5e032db74b",
+        "fromTable": "VN Fact_int_Vocher_Itm_Qty_history",
+        "fromColumn": "StockDCRef",
+        "toTable": "VN Dim_Stock",
+        "toColumn": "StockDC_ID"
+      },
+      {
+        "name": "4b70da09-6fcc-477d-9596-c79b15c23ed0",
+        "fromTable": "VN Fact_int_Vocher_Itm_Qty_history",
+        "fromColumn": "VocherDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
+      },
+      {
+        "name": "767ab058-c049-419c-a7c0-67e6fb310c2e",
+        "fromTable": "VN Fact_int_Vocher_Itm_Qty_history",
+        "fromColumn": "GoodsRef",
+        "toTable": "VN Dim_Goods",
+        "toColumn": "Goods_ID"
+      },
+      {
+        "name": "794e2d3f-c64b-46a8-88e2-b6fdefd333eb",
+        "toCardinality": "many",
+        "fromTable": "VN Fact_int_Vocher_Itm_Qty",
+        "fromColumn": "unic_code_int",
+        "toTable": "VN Fact_int_Vocher_Itm_Qty_history",
+        "toColumn": "unic_code_int",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
