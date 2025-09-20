@@ -2594,7 +2594,9 @@
           {
             "name": "target_amount_per_day_VIP",
             "dataType": "double",
-            "sourceColumn": "target_amount_per_day_VIP"
+            "description": "مقدار تارگت VIP",
+            "sourceColumn": "target_amount_per_day_VIP",
+            "formatString": "#,#"
           }
         ],
         "partitions": [
