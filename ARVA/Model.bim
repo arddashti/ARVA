@@ -2676,7 +2676,7 @@
           },
           {
             "name": "05_daily target percentage",
-            "description": "محاسبه تارگت روزانه",
+            "description": "محاسبه درصد تحقق تارگت روزانه",
             "expression": [
               "",
               "",
@@ -2724,6 +2724,7 @@
           },
           {
             "name": "05_YTD target",
+            "description": "تارگت سال تا روز ",
             "expression": [
               "",
               "VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
@@ -2737,6 +2738,25 @@
               "",
               "---- تارگت سال تا روز "
             ]
+          },
+          {
+            "name": "06_PercentageSalesTarget",
+            "description": "درصد تحقق تارگت فروش ناخالص VIP",
+            "expression": [
+              " ",
+              "                 ",
+              "",
+              "    ",
+              "                    DIVIDE( 'VN Fact_Sale'[02_Amount]",
+              "                                  ",
+              "                              ,SUM('VN Fact_Target'[target_amount_per_day_VIP] ), BLANK()) ",
+              "",
+              "",
+              "",
+              "------ درصد تحقق فروش ناخاص VIP(فاکتور و حواله)",
+              ""
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
