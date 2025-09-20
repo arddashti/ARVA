@@ -2757,6 +2757,42 @@
               ""
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "08_Daily Target(VIP)",
+            "description": "VIP محاسبه تارگت روزانه ",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE(sum('VN Fact_Target'[target_amount_per_day_VIP]),",
+              "                                        'BI DIM_DATE'[jmonthN] = m , ",
+              "                                                       'BI DIM_DATE'[jyear]= Y,",
+              "                                                                   'BI DIM_DATE'[day]=d)  ",
+              "",
+              "-----   VIP محاسبه تارگت روزانه "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "09_daily target percentage(VIP)",
+            "description": "VIP محاسبه درصد تحقق تارگت روزانه",
+            "expression": [
+              "",
+              "",
+              "",
+              "             DIVIDE('VN Fact_Sale'[023_ Daily Amount] , 'VN Fact_Target'[08_Daily Target(VIP)])",
+              "",
+              "",
+              "",
+              "----  VIP محاسبه درصد تحقق تارگت روزانه)"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
