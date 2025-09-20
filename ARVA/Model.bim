@@ -2858,6 +2858,12 @@
               "--  VIP درصد تحقق سال تا روز"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "01_Target_amount_Per_day_VIP",
+            "description": "تارگت  VIP",
+            "expression": " sum('VN Fact_Target'[target_amount_per_day_VIP])",
+            "formatString": "#,#"
           }
         ]
       },
