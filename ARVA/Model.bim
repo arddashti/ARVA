@@ -2740,7 +2740,7 @@
             ]
           },
           {
-            "name": "06_PercentageSalesTarget",
+            "name": "06_PercentageSalesTarget(VIP)",
             "description": "درصد تحقق تارگت فروش ناخالص VIP",
             "expression": [
               " ",
