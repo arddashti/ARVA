@@ -2814,6 +2814,17 @@
               "--VIP  تارگت ماه تا روز "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "011_MTD Target percentage(VIP)",
+            "description": "VIP درصد تحقق ماه تا روز ",
+            "expression": [
+              "       ",
+              "                                     DIVIDE('VN Fact_Sale'[010_ MTD Amount] , 'VN Fact_Target'[010__ MTD Target(VIP)])",
+              "",
+              "                    --  VIP درصد تحقق ماه تا روز "
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
