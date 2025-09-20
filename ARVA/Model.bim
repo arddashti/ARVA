@@ -11738,9 +11738,23 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                "    dbo_PW_Kara = Source{[Schema=\"dbo\",Item=\"PW_Kara\"]}[Data]",
+                "    dbo_PW_Kara = Source{[Schema=\"dbo\",Item=\"PW_Kara\"]}[Data],",
+                "    #\"Filtered Rows\" = Table.SelectRows(dbo_PW_Kara, each [Emp_No] <> 6000016),",
+                "    #\"Filtered Rows1\" = Table.SelectRows(#\"Filtered Rows\", each [Emp_No] <> 4030267),",
+                "    #\"Filtered Rows2\" = Table.SelectRows(#\"Filtered Rows1\", each [Emp_No] <> 5),",
+                "    #\"Filtered Rows3\" = Table.SelectRows(#\"Filtered Rows2\", each [Emp_No] <> 6000020),",
+                "    #\"Filtered Rows4\" = Table.SelectRows(#\"Filtered Rows3\", each [Emp_No] <> 6000018),",
+                "    #\"Filtered Rows5\" = Table.SelectRows(#\"Filtered Rows4\", each [Emp_No] <> 6000022),",
+                "    #\"Filtered Rows6\" = Table.SelectRows(#\"Filtered Rows5\", each [Emp_No] <> 1),",
+                "    #\"Filtered Rows7\" = Table.SelectRows(#\"Filtered Rows6\", each [Emp_No] <> 226),",
+                "    #\"Filtered Rows8\" = Table.SelectRows(#\"Filtered Rows7\", each [Emp_No] <> 505),",
+                "    #\"Filtered Rows9\" = Table.SelectRows(#\"Filtered Rows8\", each [Emp_No] <> 510),",
+                "    #\"Filtered Rows10\" = Table.SelectRows(#\"Filtered Rows9\", each [Emp_No] <> 25112),",
+                "    #\"Filtered Rows11\" = Table.SelectRows(#\"Filtered Rows10\", each [Emp_No] <> 115788),",
+                "    #\"Filtered Rows12\" = Table.SelectRows(#\"Filtered Rows11\", each [Emp_No] <> 115836),",
+                "    #\"Filtered Rows13\" = Table.SelectRows(#\"Filtered Rows12\", each [Emp_No] <> 116309)",
                 "in",
-                "    dbo_PW_Kara"
+                "    #\"Filtered Rows13\""
               ]
             }
           }
