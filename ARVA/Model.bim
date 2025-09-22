@@ -11856,6 +11856,30 @@
               "",
               "-- سال  میلادی خروج  با توجه  به اینکه  دایمنشن تاریخ  محودیت داره  و بعضی رکورد ها  خالی میباشد این  ستون برای ساخت status  ساخته شده "
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "009_Branches Code",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "               mid(PW_Kara[Emp_No], 1,1) ",
+              ""
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "010_Branches Name",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": " نام شعبه ",
+            "expression": [
+              " ",
+              "                     if(PW_Kara[009_Branches Code] = \"4\" , \"آروا\" , \"پارسا\")",
+              "",
+              "-- نام شعبه "
+            ]
           }
         ],
         "partitions": [
