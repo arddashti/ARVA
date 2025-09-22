@@ -11876,7 +11876,20 @@
             "description": " نام شعبه ",
             "expression": [
               " ",
-              "                     if(PW_Kara[009_Branches Code] = \"4\" , \"آروا\" , \"پارسا\")",
+              "                     if( ",
+              "                         CONTAINSSTRING(PW_Kara[SectionTitle],\"شعبه\")                ||",
+              "                         CONTAINSSTRING(PW_Kara[SectionTitle], \"مدیر منطقه\" )         ||",
+              "                         CONTAINSSTRING(PW_Kara[SectionTitle],\"موزعین مویرگی لجستیک\")  ||",
+              "                         CONTAINSSTRING(PW_Kara[SectionTitle],\"فروش\"   )              ||",
+              "                         CONTAINSSTRING(PW_Kara[SectionTitle],\" پارسا\"   )              ||",
+              "                         CONTAINSSTRING(PW_Kara[SectionTitle],\"VIP\"  )                 ||",
+              "                         CONTAINSSTRING(PW_Kara[SectionTitle],\"موزعین مویرگی لجستیک\" )  ||",
+              "                         CONTAINSSTRING(PW_Kara[SectionTitle],\"توزیع و ترانسپورت\"  )      ||",
+              "                         CONTAINSSTRING(PW_Kara[SectionTitle], \"خراسان شمالی\"  )        ||",
+              "                         CONTAINSSTRING(PW_Kara[SectionTitle],\"مدیر لجستیک\"  )          ||",
+              "                         CONTAINSSTRING(PW_Kara[SectionTitle],\"خراسان جنوبی\" )           ||",
+              "                         CONTAINSSTRING(PW_Kara[SectionTitle],\"لجستیک\" ) , \"پارسا\"",
+              "                           , \"آروا\")",
               "",
               "-- نام شعبه "
             ]
