@@ -113,7 +113,7 @@
             "name": "Is Holiday",
             "dataType": "string",
             "description": [
-              "جدول مشخص کننده روزهای تعطیل",
+              "جدول مشخص کننده روزهای تعطیل\r",
               "این جدول دارای 3 وضعیت است اولی 1 برای روز های غیر تعطیل و دومی 0 برای روزهای تعطیل و 0.5 برای روزهای پنجشنبه"
             ],
             "sourceColumn": "Is Holiday"
@@ -12037,11 +12037,11 @@
               {
                 "name": "QueryEditorSerialization",
                 "value": [
-                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>let",
-                  "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                  "    VN_Fact_int_Vocher_Itm_Qty_history = Source{[Schema=\"VN\",Item=\"Fact_int_Vocher_Itm_Qty_history\"]}[Data],",
-                  "    #\"Filtered Rows\" = Table.SelectRows(VN_Fact_int_Vocher_Itm_Qty_history, each not Text.StartsWith([VocherDate], \"1404\"))",
-                  "in",
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>let\r",
+                  "    Source = #\"SQL/192 168 1 28;ARVA_BI\",\r",
+                  "    VN_Fact_int_Vocher_Itm_Qty_history = Source{[Schema=\"VN\",Item=\"Fact_int_Vocher_Itm_Qty_history\"]}[Data],\r",
+                  "    #\"Filtered Rows\" = Table.SelectRows(VN_Fact_int_Vocher_Itm_Qty_history, each not Text.StartsWith([VocherDate], \"1404\"))\r",
+                  "in\r",
                   "    #\"Filtered Rows\"</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
@@ -12064,11 +12064,11 @@
               {
                 "name": "QueryEditorSerialization",
                 "value": [
-                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>let",
-                  "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
-                  "    VN_Fact_int_Vocher_Itm_Qty_history = Source{[Schema=\"VN\",Item=\"Fact_int_Vocher_Itm_Qty_history\"]}[Data],",
-                  "    #\"Filtered Rows\" = Table.SelectRows(VN_Fact_int_Vocher_Itm_Qty_history, each Text.StartsWith([VocherDate], \"1404\"))",
-                  "in",
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>let\r",
+                  "    Source = #\"SQL/192 168 1 28;ARVA_BI\",\r",
+                  "    VN_Fact_int_Vocher_Itm_Qty_history = Source{[Schema=\"VN\",Item=\"Fact_int_Vocher_Itm_Qty_history\"]}[Data],\r",
+                  "    #\"Filtered Rows\" = Table.SelectRows(VN_Fact_int_Vocher_Itm_Qty_history, each Text.StartsWith([VocherDate], \"1404\"))\r",
+                  "in\r",
                   "    #\"Filtered Rows\"</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
                 ]
               }
@@ -13823,6 +13823,17 @@
           {
             "memberName": "ARVA\\ایونت تبریز",
             "memberId": "S-1-5-21-455356666-4183223732-1480618698-6654"
+          }
+        ]
+      },
+      {
+        "name": "ProductGroup",
+        "description": "مشاهده گزارش محصول",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ARVA\\ProductGroup",
+            "memberId": "S-1-5-21-455356666-4183223732-1480618698-7000"
           }
         ]
       }
