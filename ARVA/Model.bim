@@ -8608,8 +8608,10 @@
             "description": "تعداد پذیرش",
             "expression": [
               "",
-              "              CALCULATE( DISTINCTCOUNT('sorooshan servicce_acceptance'[cncode]) ,",
-              "                        FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[repairrejected] <>TRUE()),",
+              "              CALCULATE( ",
+              "                        DISTINCTCOUNT('sorooshan servicce_acceptance'[cncode]) ,",
+              "              ",
+              "                  ",
               "               USERELATIONSHIP('BI DIM_DATE'[Jalali_1], 'sorooshan servicce_acceptance'[s_enterdate]))",
               "     -- تعداد پذیرش"
             ],
