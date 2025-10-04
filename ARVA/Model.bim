@@ -22,7 +22,7 @@
           "AuthenticationKind": "UsernamePassword",
           "kind": "SQL",
           "path": "192.168.1.28;ARVA_BI",
-          "Username": "sa",
+          "Username": "SA",
           "EncryptConnection": false
         }
       }
@@ -8609,7 +8609,8 @@
             "expression": [
               "",
               "              CALCULATE( DISTINCTCOUNT('sorooshan servicce_acceptance'[cncode]) ,",
-              "                         FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[repairrejected] <>TRUE()))",
+              "                        FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[repairrejected] <>TRUE()),",
+              "               USERELATIONSHIP('BI DIM_DATE'[Jalali_1], 'sorooshan servicce_acceptance'[s_enterdate]))",
               "     -- تعداد پذیرش"
             ],
             "formatString": "#,#"
@@ -12934,13 +12935,6 @@
         "toColumn": "Jalali_1"
       },
       {
-        "name": "b42f7ff7-a90a-4e2f-bc37-854152fc7578",
-        "fromTable": "sorooshan servicce_acceptance",
-        "fromColumn": "s_enterdate",
-        "toTable": "BI DIM_DATE",
-        "toColumn": "Jalali_1"
-      },
-      {
         "name": "26f2b557-2f1a-40f0-920c-c3cb842fa68d",
         "toCardinality": "many",
         "fromTable": "NL personnel_duration_presence",
@@ -13029,6 +13023,21 @@
         "toTable": "VN Fact_int_Vocher_Itm_Qty_history",
         "toColumn": "unic_code_int",
         "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "f5d4fe01-8a5d-45ad-a700-c7b8ff35e49b",
+        "fromTable": "sorooshan servicce_acceptance",
+        "fromColumn": "s_enterdate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1",
+        "isActive": false
+      },
+      {
+        "name": "153c8210-525a-47f8-9f6a-b2c82202cac2",
+        "fromTable": "sorooshan servicce_acceptance",
+        "fromColumn": "s_repairdate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "roles": [
