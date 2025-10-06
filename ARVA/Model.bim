@@ -20,9 +20,7 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
-          "kind": "SQL",
-          "path": "192.168.1.28;ARVA_BI",
-          "Username": "SA",
+          "Username": "sa",
           "EncryptConnection": false
         }
       }
@@ -12558,6 +12556,62 @@
               ""
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          }
+        ]
+      },
+      {
+        "name": "it internet_status",
+        "columns": [
+          {
+            "name": "today",
+            "dataType": "dateTime",
+            "sourceColumn": "today"
+          },
+          {
+            "name": "province",
+            "dataType": "string",
+            "sourceColumn": "province"
+          },
+          {
+            "name": "provider",
+            "dataType": "string",
+            "sourceColumn": "provider"
+          },
+          {
+            "name": "date_shamsi",
+            "dataType": "string",
+            "sourceColumn": "date_shamsi"
+          },
+          {
+            "name": "status",
+            "dataType": "string",
+            "sourceColumn": "status"
+          },
+          {
+            "name": "Converted_Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Converted_Date"
+          },
+          {
+            "name": "Date&Time Difference",
+            "dataType": "int64",
+            "sourceColumn": "Date&Time Difference"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    it_internet_status = Source{[Schema=\"it\",Item=\"internet_status\"]}[Data]",
+                "in",
+                "    it_internet_status"
+              ]
+            }
           }
         ]
       }
