@@ -8571,6 +8571,16 @@
               "",
               "--نو- خراب"
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "004_BlankRepairDate",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              " if('sorooshan servicce_acceptance'[s_repairdate] = BLANK() , 1,0)",
+              ""
+            ]
           }
         ],
         "partitions": [
@@ -8633,11 +8643,12 @@
               " ",
               "        CALCULATE( ",
               "                     DISTINCTCOUNT('sorooshan servicce_acceptance'[cncode]) ,",
-              "                               FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[s_repairdate]= BLANK()),",
+              "                             'sorooshan servicce_acceptance'[004_BlankRepairDate]=1,",
               "                  ",
               "                               USERELATIONSHIP('BI DIM_DATE'[Jalali_1], 'sorooshan servicce_acceptance'[s_enterdate]))",
               "     -- تعداد دستگاه تعمیر نشده"
-            ]
+            ],
+            "formatString": "#,#"
           }
         ]
       },
