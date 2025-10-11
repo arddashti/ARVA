@@ -8625,6 +8625,19 @@
               "",
               "       -- محاسبه میانگین مدت زمان تعمیر  دستگاه توسط تعمیرکاران ))"
             ]
+          },
+          {
+            "name": "004_Number of unrepaired",
+            "description": "تعداد دستگاه تعمیر نشده",
+            "expression": [
+              " ",
+              "        CALCULATE( ",
+              "                     DISTINCTCOUNT('sorooshan servicce_acceptance'[cncode]) ,",
+              "                               FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[s_repairdate]= BLANK()),",
+              "                  ",
+              "                               USERELATIONSHIP('BI DIM_DATE'[Jalali_1], 'sorooshan servicce_acceptance'[s_enterdate]))",
+              "     -- تعداد دستگاه تعمیر نشده"
+            ]
           }
         ]
       },
