@@ -20,6 +20,8 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -438,6 +440,11 @@
               "                   ",
               ""
             ]
+          },
+          {
+            "name": "guarantee_duration",
+            "dataType": "int64",
+            "sourceColumn": "guarantee_duration"
           }
         ],
         "partitions": [
@@ -8368,7 +8375,7 @@
           },
           {
             "name": "cno",
-            "dataType": "int64",
+            "dataType": "double",
             "sourceColumn": "cno"
           },
           {
@@ -8581,6 +8588,16 @@
               " if('sorooshan servicce_acceptance'[s_repairdate] = BLANK() , 1,0)",
               ""
             ]
+          },
+          {
+            "name": "taxpercent",
+            "dataType": "double",
+            "sourceColumn": "taxpercent"
+          },
+          {
+            "name": "GoodsCode",
+            "dataType": "string",
+            "sourceColumn": "GoodsCode"
           }
         ],
         "partitions": [
@@ -13118,6 +13135,13 @@
         "fromColumn": "s_repairdate",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "9f6010eb-9bac-4cf8-8a9a-bfce50bf7b55",
+        "fromTable": "sorooshan servicce_acceptance",
+        "fromColumn": "GoodsCode",
+        "toTable": "VN Dim_Goods",
+        "toColumn": "GoodsCode"
       }
     ],
     "roles": [
