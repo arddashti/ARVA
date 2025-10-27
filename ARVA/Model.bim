@@ -11362,9 +11362,10 @@
             "name": "001_ TotalTarget SKU",
             "description": " تارگت کل power sku",
             "expression": [
-              " CALCULATE( SUM('VN Fact_Target_SKU'[target_amount_per_day]))",
+              " CALCULATE( SUM('VN Fact_Target_SKU'[target_amount_per_day]),",
+              "                          USERELATIONSHIP('VN Dim_Goods'[002_Target Power SKU], 'VN Fact_Target_SKU'[Power_SKU_Code]))",
               "",
-              "-- تارگت کل power sku"
+              "-- تارگت کل power sk"
             ],
             "formatString": "#,#"
           },
@@ -11383,7 +11384,8 @@
               "           CALCULATE(sum('VN Fact_Target_SKU'[target_amount_per_day]),",
               "                                        'BI DIM_DATE'[jmonthN] = m , ",
               "                                                       'BI DIM_DATE'[jyear]= Y,",
-              "                                                                   'BI DIM_DATE'[day]<=d)             ",
+              "                                                                   'BI DIM_DATE'[day]<=d",
+              "    ,  USERELATIONSHIP('VN Dim_Goods'[002_Target Power SKU], 'VN Fact_Target_SKU'[Power_SKU_Code]))             ",
               "           ",
               "--  POWER sku تارگت ماه تا روز "
             ],
@@ -11414,7 +11416,9 @@
               "           CALCULATE(sum('VN Fact_Target_SKU'[target_amount_per_day]),",
               "                                        'BI DIM_DATE'[jmonthN] = m , ",
               "                                                       'BI DIM_DATE'[jyear]= Y,",
-              "                                                                   'BI DIM_DATE'[day]=d)  ",
+              "                                                                   'BI DIM_DATE'[day]=d,",
+              "  USERELATIONSHIP('VN Dim_Goods'[002_Target Power SKU], 'VN Fact_Target_SKU'[Power_SKU_Code]))",
+              "  ",
               "",
               "----- محاسبه تارگت روزانه power SKU"
             ],
@@ -11448,7 +11452,9 @@
               "        RETURN",
               "           CALCULATE(sum('VN Fact_Target_SKU'[target_amount_per_day]), ",
               "                                     'BI DIM_DATE'[jyear]= Y,",
-              "                                      'BI DIM_DATE'[Day_number_year] <= D , REMOVEFILTERS('BI DIM_DATE'[jmonthN] ) )",
+              "                                      'BI DIM_DATE'[Day_number_year] <= D , REMOVEFILTERS('BI DIM_DATE'[jmonthN] ) ,",
+              "     USERELATIONSHIP('VN Dim_Goods'[002_Target Power SKU], 'VN Fact_Target_SKU'[Power_SKU_Code]))",
+              "",
               "                           ",
               "                                       ",
               "                                                    ",
@@ -13076,15 +13082,6 @@
         "toColumn": "Jalali_1"
       },
       {
-        "name": "e5d36b7f-b32a-41df-83b9-176d54b2e2d5",
-        "toCardinality": "many",
-        "fromTable": "VN Dim_Goods",
-        "fromColumn": "002_Target Power SKU",
-        "toTable": "VN Fact_Target_SKU",
-        "toColumn": "Power_SKU_Code",
-        "crossFilteringBehavior": "bothDirections"
-      },
-      {
         "name": "2deb8671-5d9c-41dc-ace5-8ca9c3c9c6a6",
         "fromTable": "PW_Kara",
         "fromColumn": "Date",
@@ -13142,6 +13139,16 @@
         "fromColumn": "GoodsCode",
         "toTable": "VN Dim_Goods",
         "toColumn": "GoodsCode"
+      },
+      {
+        "name": "e57f4d97-bc19-4083-b29a-c63bef8eac8e",
+        "toCardinality": "many",
+        "fromTable": "VN Dim_Goods",
+        "fromColumn": "002_Target Power SKU",
+        "toTable": "VN Fact_Target_SKU",
+        "toColumn": "Power_SKU_Code",
+        "isActive": false,
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
