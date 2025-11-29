@@ -8598,6 +8598,32 @@
             "name": "GoodsCode",
             "dataType": "string",
             "sourceColumn": "GoodsCode"
+          },
+          {
+            "type": "calculated",
+            "name": "005_m_repairdate",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "           if('sorooshan servicce_acceptance'[m_repairdate] = BLANK(), TODAY(),'sorooshan servicce_acceptance'[m_repairdate] )",
+              "",
+              "-- جایگزین کردن با تاریخ روز جاری "
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "006_s_repaireDate",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": "تاریخ شمسی  تعمیر با جایگزین کردن تاریخ روز",
+            "expression": [
+              " ",
+              "                  LOOKUPVALUE('BI DIM_DATE'[Jalali_1],",
+              "                                             'BI DIM_DATE'[Date], ",
+              "                                                 'sorooshan servicce_acceptance'[005_m_repairdate])",
+              " -- تاریخ شمسی  تعمیر با جایگزین کردن تاریخ روز"
+            ]
           }
         ],
         "partitions": [
@@ -12935,15 +12961,6 @@
         "toColumn": "Miladi"
       },
       {
-        "name": "b091e47d-f142-47d8-a8ce-33f5ab301b88",
-        "toCardinality": "many",
-        "fromTable": "BI DIM_DATE",
-        "fromColumn": "unic_code",
-        "toTable": "NL personnel_HR_history",
-        "toColumn": "unic_code",
-        "crossFilteringBehavior": "bothDirections"
-      },
-      {
         "name": "043da1f2-57e4-4992-8d6f-5356c2400a50",
         "toCardinality": "many",
         "fromTable": "NL personnel_HR_history",
@@ -13127,13 +13144,6 @@
         "isActive": false
       },
       {
-        "name": "153c8210-525a-47f8-9f6a-b2c82202cac2",
-        "fromTable": "sorooshan servicce_acceptance",
-        "fromColumn": "s_repairdate",
-        "toTable": "BI DIM_DATE",
-        "toColumn": "Jalali_1"
-      },
-      {
         "name": "9f6010eb-9bac-4cf8-8a9a-bfce50bf7b55",
         "fromTable": "sorooshan servicce_acceptance",
         "fromColumn": "GoodsCode",
@@ -13149,6 +13159,23 @@
         "toColumn": "Power_SKU_Code",
         "isActive": false,
         "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "f7006e48-566f-4967-b6d2-2802257149f1",
+        "toCardinality": "many",
+        "fromTable": "BI DIM_DATE",
+        "fromColumn": "unic_code",
+        "toTable": "sorooshan servicce_acceptance",
+        "toColumn": "006_s_repaireDate",
+        "isActive": false,
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "d22daddf-29bc-447b-8602-9b7d42f30bbb",
+        "fromTable": "sorooshan servicce_acceptance",
+        "fromColumn": "006_s_repaireDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1"
       }
     ],
     "roles": [
