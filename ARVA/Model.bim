@@ -13176,6 +13176,15 @@
         "fromColumn": "006_s_repaireDate",
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1"
+      },
+      {
+        "name": "978842f0-da56-4304-a0a9-be60bc137260",
+        "toCardinality": "many",
+        "fromTable": "BI DIM_DATE",
+        "fromColumn": "unic_code",
+        "toTable": "NL personnel_HR_history",
+        "toColumn": "unic_code",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
