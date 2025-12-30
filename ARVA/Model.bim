@@ -11973,6 +11973,7 @@
             "name": "011_Personnel delay",
             "dataType": "int64",
             "isDataTypeInferred": true,
+            "description": "تاخیر یک ساعته پرسنل ",
             "expression": [
               "",
               "",
