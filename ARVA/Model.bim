@@ -11967,6 +11967,19 @@
               "",
               "-- نام شعبه "
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "011_Personnel delay",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "",
+              "     if(PW_Kara[Card1] > 900  && PW_Kara[Card1] < 1000 , 1 , 0)",
+              "",
+              "-- تاخیر یک  ساعتهه پرسنل  "
+            ]
           }
         ],
         "partitions": [
