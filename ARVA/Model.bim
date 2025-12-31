@@ -11986,6 +11986,17 @@
             "dataType": "string",
             "isDataTypeInferred": true,
             "expression": " CONCATENATE(PW_Kara[Emp_No] , PW_Kara[Date])"
+          },
+          {
+            "type": "calculated",
+            "name": "013_PersonelDelayTime",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "                    IF(PW_Kara[001_NumberofDelayedPersonnel] = 1, 1000-PW_Kara[Card1],0)",
+              "                    -- مدت زمان تاخیر"
+            ]
           }
         ],
         "partitions": [
@@ -12058,11 +12069,11 @@
             "description": "تعداد پرسنلی که با تاخیر یک ساعته حضور داشته اند ",
             "expression": [
               "",
-              "    --   CALCULATE(sum(PW_Kara[011_Personnel delay]) , FILTER(PW_Kara , PW_Kara[011_Personnel delay] = 1))",
+              "   CALCULATE(sum(PW_Kara[011_Personnel delay]) , FILTER(PW_Kara , PW_Kara[011_Personnel delay] = 1))",
               "-- تعداد پرسنلی که با تاخیر یک ساعته حضور داشته اند ",
               "",
-              "CALCULATE(sum(PW_Kara[011_Personnel delay]) , FILTER(PW_Kara , PW_Kara[011_Personnel delay] = 1), ",
-              "                                              FILTER(PWKara_GetRequest,PWKara_GetRequest[Title] <> \"ماموریت  ساعتی\"))"
+              "/*CALCULATE(sum(PW_Kara[011_Personnel delay]) , FILTER(PW_Kara , PW_Kara[011_Personnel delay] = 1), ",
+              "                                              FILTER(PWKara_GetRequest,PWKara_GetRequest[Title] <> \"ماموریت  ساعتی\"))*/"
             ]
           }
         ]
