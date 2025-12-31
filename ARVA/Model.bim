@@ -11994,7 +11994,7 @@
             "isDataTypeInferred": true,
             "expression": [
               " ",
-              "                    IF(PW_Kara[001_NumberofDelayedPersonnel] = 1, 1000-PW_Kara[Card1],0)",
+              "                    IF(PW_Kara[001_NumberofDelayedPersonnel] = 1, PW_Kara[Card1]-900,0)",
               "                    -- مدت زمان تاخیر"
             ]
           }
