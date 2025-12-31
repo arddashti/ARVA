@@ -20,8 +20,6 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
-          "kind": "SQL",
-          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -11981,6 +11979,13 @@
               "",
               "-- تاخیر یک  ساعتهه پرسنل  "
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "012_Em_no_Date",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": " CONCATENATE(PW_Kara[Emp_No] , PW_Kara[Date])"
           }
         ],
         "partitions": [
@@ -12053,8 +12058,11 @@
             "description": "تعداد پرسنلی که با تاخیر یک ساعته حضور داشته اند ",
             "expression": [
               "",
-              "       CALCULATE(sum(PW_Kara[011_Personnel delay]) , FILTER(PW_Kara , PW_Kara[011_Personnel delay] = 1))",
-              "-- تعداد پرسنلی که با تاخیر یک ساعته حضور داشته اند "
+              "    --   CALCULATE(sum(PW_Kara[011_Personnel delay]) , FILTER(PW_Kara , PW_Kara[011_Personnel delay] = 1))",
+              "-- تعداد پرسنلی که با تاخیر یک ساعته حضور داشته اند ",
+              "",
+              "CALCULATE(sum(PW_Kara[011_Personnel delay]) , FILTER(PW_Kara , PW_Kara[011_Personnel delay] = 1), ",
+              "                                              FILTER(PWKara_GetRequest,PWKara_GetRequest[Title] <> \"ماموریت  ساعتی\"))"
             ]
           }
         ]
@@ -12710,6 +12718,132 @@
             }
           }
         ]
+      },
+      {
+        "name": "PWKara_GetRequest",
+        "columns": [
+          {
+            "name": "Employee",
+            "dataType": "string",
+            "sourceColumn": "Employee"
+          },
+          {
+            "name": "Title",
+            "dataType": "string",
+            "sourceColumn": "Title"
+          },
+          {
+            "name": "STATUS",
+            "dataType": "string",
+            "sourceColumn": "STATUS"
+          },
+          {
+            "name": "CardType",
+            "dataType": "int64",
+            "sourceColumn": "CardType"
+          },
+          {
+            "name": "IsDay",
+            "dataType": "int64",
+            "sourceColumn": "IsDay"
+          },
+          {
+            "name": "Duration",
+            "dataType": "string",
+            "sourceColumn": "Duration"
+          },
+          {
+            "name": "RequestId",
+            "dataType": "int64",
+            "sourceColumn": "RequestId"
+          },
+          {
+            "name": "Emp_No",
+            "dataType": "int64",
+            "sourceColumn": "Emp_No"
+          },
+          {
+            "name": "Card_No",
+            "dataType": "int64",
+            "sourceColumn": "Card_No"
+          },
+          {
+            "name": "SubmittedByEmployeeID",
+            "dataType": "int64",
+            "sourceColumn": "SubmittedByEmployeeID"
+          },
+          {
+            "name": "IsFinalApproved",
+            "dataType": "boolean",
+            "sourceColumn": "IsFinalApproved"
+          },
+          {
+            "name": "StartHour",
+            "dataType": "int64",
+            "sourceColumn": "StartHour"
+          },
+          {
+            "name": "EndHour",
+            "dataType": "int64",
+            "sourceColumn": "EndHour"
+          },
+          {
+            "name": "StartDate",
+            "dataType": "string",
+            "sourceColumn": "StartDate"
+          },
+          {
+            "name": "EndDate",
+            "dataType": "string",
+            "sourceColumn": "EndDate"
+          },
+          {
+            "name": "SubmittedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "SubmittedDate"
+          },
+          {
+            "name": "MiladyStartDate",
+            "dataType": "dateTime",
+            "sourceColumn": "MiladyStartDate"
+          },
+          {
+            "name": "MiladyEndDate",
+            "dataType": "dateTime",
+            "sourceColumn": "MiladyEndDate"
+          },
+          {
+            "name": "MiladySubmittedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "MiladySubmittedDate"
+          },
+          {
+            "type": "calculated",
+            "name": "001_Em_No_Date",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "  CONCATENATE(PWKara_GetRequest[Emp_No] , SUBSTITUTE(PWKara_GetRequest[StartDate], \"/\",\"\"))",
+              ""
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/192 168 1 28;ARVA_BI\",",
+                "    dbo_PWKara_GetRequest = Source{[Schema=\"dbo\",Item=\"PWKara_GetRequest\"]}[Data]",
+                "in",
+                "    dbo_PWKara_GetRequest"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
@@ -13208,6 +13342,13 @@
         "toTable": "NL personnel_HR_history",
         "toColumn": "unic_code",
         "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "2268202a-b46a-4786-978d-ea1dd78348a0",
+        "fromTable": "PWKara_GetRequest",
+        "fromColumn": "001_Em_No_Date",
+        "toTable": "PW_Kara",
+        "toColumn": "012_Em_no_Date"
       }
     ],
     "roles": [
