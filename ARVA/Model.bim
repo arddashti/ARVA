@@ -20,6 +20,8 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "192.168.1.28;ARVA_BI",
           "Username": "sa",
           "EncryptConnection": false
         }
@@ -11971,13 +11973,13 @@
             "name": "011_Personnel delay",
             "dataType": "int64",
             "isDataTypeInferred": true,
-            "description": "تاخیر یک ساعته پرسنل ",
+            "description": "تاخیر نیم ساعته پرسنل ",
             "expression": [
               "",
               "",
-              "     if(PW_Kara[Card1] > 900  && PW_Kara[Card1] < 1000 , 1 , 0)",
+              "     if(PW_Kara[Card1] > 905  && PW_Kara[Card1] < 930 , 1 , 0)",
               "",
-              "-- تاخیر یک  ساعتهه پرسنل  "
+              "-- تاخیر یک   نیم ساعته پرسنل  "
             ]
           },
           {
@@ -11994,7 +11996,7 @@
             "isDataTypeInferred": true,
             "expression": [
               " ",
-              "                    IF(PW_Kara[001_NumberofDelayedPersonnel] = 1, PW_Kara[Card1]-900,0)",
+              "                    IF(PW_Kara[001_NumberofDelayedPersonnel] = 1, PW_Kara[Card1]-901,0)",
               "                    -- مدت زمان تاخیر"
             ]
           }
