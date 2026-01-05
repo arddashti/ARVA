@@ -11977,7 +11977,7 @@
             "expression": [
               "",
               "",
-              "     if(PW_Kara[Card1] > 905  && PW_Kara[Card1] < 935 , 1 , 0)",
+              "     if(PW_Kara[Card1] > 901  && PW_Kara[Card1] < 931 , 1 , 0)",
               "",
               "-- تاخیر نیم ساعته پرسنل  "
             ]
@@ -12866,7 +12866,7 @@
             "isDataTypeInferred": true,
             "expression": [
               " ",
-              "        IF(PWKara_GetRequest[001_DelayTime] =1  &&  900<PWKara_GetRequest[StartHour] && PWKara_GetRequest[StartHour]<935 ,1,0)",
+              "        IF(PWKara_GetRequest[001_DelayTime] =1  &&  901<PWKara_GetRequest[StartHour] && PWKara_GetRequest[StartHour]<931 ,1,0)",
               "",
               "",
               "--مرخصی و ماموریت اول وقت "
