@@ -12845,6 +12845,32 @@
               "  CONCATENATE(PWKara_GetRequest[Emp_No] , SUBSTITUTE(PWKara_GetRequest[StartDate], \"/\",\"\"))",
               ""
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "001_DelayTime",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "           if(PWKara_GetRequest[Title] = \"مرخصی ساعتی\"  || PWKara_GetRequest[Title] = \"ماموریت  ساعتی\"",
+              "                ,1, 0)",
+              "",
+              "-- مرخصی ساعتی و ماموریت "
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "002_30min Delay",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              " ",
+              "        IF(PWKara_GetRequest[001_DelayTime] =1  &&  900<PWKara_GetRequest[StartHour] && PWKara_GetRequest[StartHour]<935 ,1,0)",
+              "",
+              "",
+              "--مرخصی و ماموریت اول وقت "
+            ]
           }
         ],
         "partitions": [
