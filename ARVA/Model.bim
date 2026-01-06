@@ -12869,7 +12869,8 @@
             "isDataTypeInferred": true,
             "expression": [
               " ",
-              "        IF(PWKara_GetRequest[001_DelayTime] =1  &&  901<PWKara_GetRequest[StartHour] && PWKara_GetRequest[StartHour]<931 ,1,0)",
+              "    IF(PWKara_GetRequest[001_DelayTime] =1  &&  901<PWKara_GetRequest[StartHour] && PWKara_GetRequest[StartHour]<931 ,",
+              "                                         1,0)",
               "",
               "",
               "--مرخصی و ماموریت اول وقت "
@@ -12890,6 +12891,18 @@
                 "    dbo_PWKara_GetRequest"
               ]
             }
+          }
+        ],
+        "measures": [
+          {
+            "name": "001_mom_mor_FirtTime",
+            "description": "تعداد مرخصی و ماموریت نیم ساعت اول کار ",
+            "expression": [
+              " ",
+              "                   CALCULATE(SUM(PWKara_GetRequest[002_30min Delay]) , FILTER(PWKara_GetRequest, PWKara_GetRequest[002_30min Delay] = 1))",
+              "",
+              "-- تعداد مرخصی و ماموریت نیم ساعت اول کار "
+            ]
           }
         ]
       }
