@@ -8620,7 +8620,7 @@
             "expression": [
               " ",
               "                  LOOKUPVALUE('BI DIM_DATE'[Jalali_1],",
-              "                                             'BI DIM_DATE'[Date], ",
+              "                                             'BI DIM_DATE'[Miladi], ",
               "                                                 'sorooshan servicce_acceptance'[005_m_repairdate])",
               " -- تاریخ شمسی  تعمیر با جایگزین کردن تاریخ روز"
             ]
