@@ -12851,7 +12851,7 @@
           },
           {
             "type": "calculated",
-            "name": "001_DelayTime",
+            "name": "001_Mor_Mom",
             "dataType": "int64",
             "isDataTypeInferred": true,
             "expression": [
@@ -12864,12 +12864,12 @@
           },
           {
             "type": "calculated",
-            "name": "002_30min Delay",
+            "name": "002_mor_mom_FirstTime",
             "dataType": "int64",
             "isDataTypeInferred": true,
             "expression": [
               " ",
-              "    IF(PWKara_GetRequest[001_DelayTime] =1  &&  901<PWKara_GetRequest[StartHour] && PWKara_GetRequest[StartHour]<931 ,",
+              "    IF(PWKara_GetRequest[001_Mor_Mom] =1  &&  901<PWKara_GetRequest[StartHour] && PWKara_GetRequest[StartHour]<931 ,",
               "                                         1,0)",
               "",
               "",
@@ -12899,7 +12899,7 @@
             "description": "تعداد مرخصی و ماموریت نیم ساعت اول کار ",
             "expression": [
               " ",
-              "                   CALCULATE(SUM(PWKara_GetRequest[002_30min Delay]) , FILTER(PWKara_GetRequest, PWKara_GetRequest[002_30min Delay] = 1))",
+              "                   CALCULATE(SUM(PWKara_GetRequest[002_mor_mom_FirstTime]) , FILTER(PWKara_GetRequest, PWKara_GetRequest[002_mor_mom_FirstTime] = 1))",
               "",
               "-- تعداد مرخصی و ماموریت نیم ساعت اول کار "
             ]
