@@ -12864,7 +12864,7 @@
           },
           {
             "type": "calculated",
-            "name": "002_mor_mom_FirstTime",
+            "name": "002_status_mor_mom_FirstTime",
             "dataType": "int64",
             "isDataTypeInferred": true,
             "expression": [
@@ -12874,6 +12874,19 @@
               "",
               "",
               "--مرخصی و ماموریت اول وقت "
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "003_mor_mom_firstTime",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "description": "مدت ماموریت و مرخصی اول وقت ",
+            "expression": [
+              " ",
+              "    IF(PWKara_GetRequest[002_status_mor_mom_FirstTime] = 1, PWKara_GetRequest[StartHour]-901,0)",
+              "",
+              "-- مدت ماموریت و مرخصی اول وقت "
             ]
           }
         ],
@@ -12895,13 +12908,23 @@
         ],
         "measures": [
           {
-            "name": "001_mom_mor_FirtTime",
+            "name": "001_count mom_mor_FirtTime",
             "description": "تعداد مرخصی و ماموریت نیم ساعت اول کار ",
             "expression": [
               " ",
-              "                   CALCULATE(SUM(PWKara_GetRequest[002_mor_mom_FirstTime]) , FILTER(PWKara_GetRequest, PWKara_GetRequest[002_mor_mom_FirstTime] = 1))",
+              "                   CALCULATE(SUM(PWKara_GetRequest[002_status_mor_mom_FirstTime]) , FILTER(PWKara_GetRequest, PWKara_GetRequest[002_status_mor_mom_FirstTime] = 1))",
               "",
               "-- تعداد مرخصی و ماموریت نیم ساعت اول کار "
+            ]
+          },
+          {
+            "name": "002_SUm_Mor_mom_FirstTime",
+            "description": " مدت زمان ماموریت ومرخصی اول وقت ",
+            "expression": [
+              "",
+              "      SUM(PWKara_GetRequest[003_mor_mom_firstTime])",
+              "",
+              "-- مدت زمان ماموریت ومرخصی اول وقت "
             ]
           }
         ]
