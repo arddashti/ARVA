@@ -12068,11 +12068,14 @@
           },
           {
             "name": "001_NumberofDelayedPersonnel",
-            "description": "تعداد پرسنلی که با تاخیر یک ساعته حضور داشته اند ",
+            "description": [
+              " تعداد پرسنلی که با تاخیر نیم ساعته حضور داشته اند ",
+              ""
+            ],
             "expression": [
               "",
               "   CALCULATE(sum(PW_Kara[011_Personnel delay]) , FILTER(PW_Kara , PW_Kara[011_Personnel delay] = 1))",
-              "-- تعداد پرسنلی که با تاخیر یک ساعته حضور داشته اند ",
+              "-- تعداد پرسنلی که با تاخیر نیم ساعته حضور داشته اند ",
               ""
             ]
           },
