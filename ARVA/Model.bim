@@ -8691,7 +8691,20 @@
               "                             'sorooshan servicce_acceptance'[004_BlankRepairDate]=1,",
               "                  ",
               "                               USERELATIONSHIP('BI DIM_DATE'[Jalali_1], 'sorooshan servicce_acceptance'[s_enterdate]))",
-              "     -- تعداد دستگاه تعمیر نشده"
+              "     -- تعداد دستگاه تعمیر نشده (تعداد تعمیر نشده از تعداد پذیرش شده در همان ماه "
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "005_Number of unrepaired(Total)",
+            "description": " تعداد کل دستگاه تعمیر نشده ، دستگاه هایی که تاریخ تعمیر ندارند",
+            "expression": [
+              " ",
+              "        CALCULATE( ",
+              "                     DISTINCTCOUNT('sorooshan servicce_acceptance'[cncode]) ,",
+              "                             'sorooshan servicce_acceptance'[004_BlankRepairDate]=1)",
+              "",
+              "-- تعداد کل دستگاه تعمیر نشده ، دستگاه هایی که تاریخ تعمیر ندارند"
             ],
             "formatString": "#,#"
           }
