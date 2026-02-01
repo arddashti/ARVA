@@ -8730,6 +8730,17 @@
               "-- تعداد کل دستگاه تعمیر نشده ، دستگاه هایی که تاریخ تعمیر ندارند"
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "006_Number Of Repaired",
+            "description": "تعداد دستگاه های تعمیر شده",
+            "expression": [
+              "    'sorooshan servicce_acceptance'[002_Number of receipts accepted] -",
+              "                             'sorooshan servicce_acceptance'[004_Number of unrepaired]",
+              "",
+              "-- تعداد دستگاه های تعمیر شده "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
