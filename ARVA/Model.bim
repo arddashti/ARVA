@@ -8636,6 +8636,19 @@
             "name": "branchname",
             "dataType": "string",
             "sourceColumn": "branchname"
+          },
+          {
+            "type": "calculated",
+            "name": "007_BranchName",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": "اضافه شدن نام سرویس مرکزی",
+            "expression": [
+              "  IF('sorooshan servicce_acceptance'[branchname] = BLANK() , ",
+              "                                \"سرویس مرکزی\" ,  'sorooshan servicce_acceptance'[branchname])",
+              "",
+              " -- اضافه شدن نام سرویس مرکزی"
+            ]
           }
         ],
         "partitions": [
