@@ -8606,7 +8606,9 @@
             "isDataTypeInferred": true,
             "expression": [
               "",
-              "           if('sorooshan servicce_acceptance'[m_repairdate] = BLANK(), TODAY(),'sorooshan servicce_acceptance'[m_repairdate] )",
+              "           if('sorooshan servicce_acceptance'[m_repairdate] = BLANK() || ",
+              "                        'sorooshan servicce_acceptance'[s_repairdate] = BLANK(),",
+              "                            TODAY(),'sorooshan servicce_acceptance'[m_repairdate] )",
               "",
               "-- جایگزین کردن با تاریخ روز جاری "
             ]
