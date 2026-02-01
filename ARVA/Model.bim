@@ -8626,6 +8626,16 @@
               "                                                 'sorooshan servicce_acceptance'[005_m_repairdate])",
               " -- تاریخ شمسی  تعمیر با جایگزین کردن تاریخ روز"
             ]
+          },
+          {
+            "name": "branchcode",
+            "dataType": "string",
+            "sourceColumn": "branchcode"
+          },
+          {
+            "name": "branchname",
+            "dataType": "string",
+            "sourceColumn": "branchname"
           }
         ],
         "partitions": [
