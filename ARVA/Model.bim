@@ -8643,6 +8643,29 @@
               "                                                 'sorooshan servicce_acceptance'[005_m_repairdate])",
               " -- تاریخ شمسی  تعمیر با جایگزین کردن تاریخ روز"
             ]
+          },
+          {
+            "name": "branchcode",
+            "dataType": "string",
+            "sourceColumn": "branchcode"
+          },
+          {
+            "name": "branchname",
+            "dataType": "string",
+            "sourceColumn": "branchname"
+          },
+          {
+            "type": "calculated",
+            "name": "007_BranchName",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "description": "اضافه شدن نام سرویس مرکزی",
+            "expression": [
+              "  IF('sorooshan servicce_acceptance'[branchname] = BLANK() , ",
+              "                                \"سرویس مرکزی\" ,  'sorooshan servicce_acceptance'[branchname])",
+              "",
+              " -- اضافه شدن نام سرویس مرکزی"
+            ]
           }
         ],
         "partitions": [
@@ -8722,6 +8745,17 @@
               "                             'sorooshan servicce_acceptance'[004_BlankRepairDate]=1)",
               "",
               "-- تعداد کل دستگاه تعمیر نشده ، دستگاه هایی که تاریخ تعمیر ندارند"
+            ],
+            "formatString": "#,#"
+          },
+          {
+            "name": "006_Number Of Repaired",
+            "description": "تعداد دستگاه های تعمیر شده",
+            "expression": [
+              "    'sorooshan servicce_acceptance'[002_Number of receipts accepted] -",
+              "                             'sorooshan servicce_acceptance'[004_Number of unrepaired]",
+              "",
+              "-- تعداد دستگاه های تعمیر شده "
             ],
             "formatString": "#,#"
           }
