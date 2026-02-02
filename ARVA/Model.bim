@@ -878,6 +878,23 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "01_Amount",
+            "description": "فروش ناخالص",
+            "expression": [
+              "",
+              "CALCULATE (",
+              "    SUM ( 'VN Fact_Order'[amount] ),",
+              "",
+              "    FILTER('VN Fact_Order','VN Fact_Order'[IsDeleted] <>1",
+              "))",
+              "",
+              "--فروش ناخالص "
+            ],
+            "formatString": "#,#"
+          }
         ]
       },
       {
