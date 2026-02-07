@@ -2886,6 +2886,20 @@
             "description": "تارگت  VIP",
             "expression": " sum('VN Fact_Target'[target_amount_per_day_VIP])",
             "formatString": "#,#"
+          },
+          {
+            "name": "014_daily target percentage",
+            "description": " محاسبه تارگت روزانه فروش خالص با کسر برگشتی ",
+            "expression": [
+              "",
+              "",
+              "",
+              "             DIVIDE('VN Fact_Sale'[039 _Net sales with return deductions] , 'VN Fact_Target'[04__Daily Target])",
+              "",
+              "",
+              "",
+              "----  محاسبه تارگت روزانه فروش خالص با کسر برگشتی "
+            ]
           }
         ]
       },
