@@ -4160,6 +4160,16 @@
               "-- درصد تحقق ماه تاروز ویزیتور "
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "006_Daily visitor Target sales with return deductions",
+            "description": "ناخالص فروش روزانه با کسر برگشتی )درصد تحقق روزانه ویزیتور",
+            "expression": [
+              " ",
+              "                  DIVIDE('VN Fact_Sale'[064_sales with return deductions(Daily)],'VN Fact_Tour'[002__Daily Visitor Target])",
+              "",
+              "-- ناخالص فروش روزانه با کسر برگشتی )درصد تحقق روزانه ویزیتور"
+            ]
           }
         ]
       },
