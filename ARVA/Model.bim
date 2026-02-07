@@ -4000,6 +4000,16 @@
               "",
               "-- بیشترین ساعت پایان "
             ]
+          },
+          {
+            "name": "004_CUstomerCount",
+            "description": "تعداد مشتریان ",
+            "expression": [
+              "CALCULATE(DISTINCTCOUNT('VN Fact_Tour_detail'[CustomerCode]))",
+              "",
+              "-- تعداد مشتریان "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
