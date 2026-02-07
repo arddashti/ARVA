@@ -2327,7 +2327,7 @@
             ]
           },
           {
-            "name": "065_ MTD Amount",
+            "name": "065_ MTD Amount sales with return deductions",
             "description": "فروش ناخالص ماه تا روز  با کسر برگشتی ماه تا روز ",
             "expression": [
               " ",
@@ -2945,7 +2945,7 @@
             "description": "درصد تحقق ماه تا روز فروش ناخالص با کسر برگشتی",
             "expression": [
               "       ",
-              "                                     DIVIDE('VN Fact_Sale'[065_ MTD Amount], 'VN Fact_Target'[02__ MTD Target])",
+              "                                     DIVIDE('VN Fact_Sale'[065_ MTD Amount sales with return deductions], 'VN Fact_Target'[02__ MTD Target])",
               "",
               "                    --  درصد تحقق ماه تا روز فروش ناخالص با کسر برگشتی"
             ],
