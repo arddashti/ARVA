@@ -4116,7 +4116,8 @@
               "                                                                   'BI DIM_DATE'[day]=d)  ",
               "",
               "--تارگت روزانه ویزیتور "
-            ]
+            ],
+            "formatString": "#,#"
           },
           {
             "name": "003_Daily visitor Target",
