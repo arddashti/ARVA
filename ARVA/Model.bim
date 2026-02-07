@@ -2305,6 +2305,44 @@
               "-- تعداد فروش باکسر برگشتی "
             ],
             "formatString": "#,#"
+          },
+          {
+            "name": "064_sales with return deductions(Daily)",
+            "description": "محاسبه ناخالص فروش روزانه با کسر برگشتی ",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE('VN Fact_Sale'[040 _ sales with return deductions], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y,",
+              "                                                     'BI DIM_DATE'[day]=d)",
+              "",
+              "",
+              "",
+              "-- محاسبه ناخالص فروش روزانه با کسر برگشتی "
+            ]
+          },
+          {
+            "name": "065_ MTD Amount",
+            "description": "فروش ناخالص ماه تا روز  با کسر برگشتی ماه تا روز ",
+            "expression": [
+              " ",
+              "                VAR Y = LOOKUPVALUE('BI DIM_DATE'[jyear], 'BI DIM_DATE'[Miladi], TODAY())",
+              "                 ",
+              "                 VAR m = LOOKUPVALUE('BI DIM_DATE'[jmonthN], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "               VAR D = LOOKUPVALUE('BI DIM_DATE'[day], 'BI DIM_DATE'[Miladi], TODAY())",
+              "",
+              "        RETURN",
+              "           CALCULATE('VN Fact_Sale'[040 _ sales with return deductions], 'BI DIM_DATE'[jmonthN] = m , 'BI DIM_DATE'[jyear]= Y,",
+              "                                                     'BI DIM_DATE'[day]<=d)",
+              "                                            ",
+              "---- فروش ناخالص ماه تا روز  با کسر برگشتی ماه تا روز "
+            ]
           }
         ]
       },
@@ -2888,18 +2926,30 @@
             "formatString": "#,#"
           },
           {
-            "name": "014_daily target percentage",
-            "description": " محاسبه تارگت روزانه فروش خالص با کسر برگشتی ",
+            "name": "014_daily target percentage sales with return deductions",
+            "description": "محاسبه تارگت روزانه فروش ناخالص فروش  با کسر برگشتی ",
             "expression": [
               "",
               "",
               "",
-              "             DIVIDE('VN Fact_Sale'[039 _Net sales with return deductions] , 'VN Fact_Target'[04__Daily Target])",
+              "             DIVIDE('VN Fact_Sale'[064_sales with return deductions(Daily)] , 'VN Fact_Target'[04__Daily Target])",
               "",
               "",
               "",
-              "----  محاسبه تارگت روزانه فروش خالص با کسر برگشتی "
-            ]
+              "----  محاسبه تارگت روزانه فروش ناخالص فروش  با کسر برگشتی "
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "015_MTD Target percentage",
+            "description": "درصد تحقق ماه تا روز فروش ناخالص با کسر برگشتی",
+            "expression": [
+              "       ",
+              "                                     DIVIDE('VN Fact_Sale'[065_ MTD Amount], 'VN Fact_Target'[02__ MTD Target])",
+              "",
+              "                    --  درصد تحقق ماه تا روز فروش ناخالص با کسر برگشتی"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
