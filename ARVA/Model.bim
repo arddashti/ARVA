@@ -4169,7 +4169,19 @@
               "                  DIVIDE('VN Fact_Sale'[064_sales with return deductions(Daily)],'VN Fact_Tour'[002__Daily Visitor Target])",
               "",
               "-- ناخالص فروش روزانه با کسر برگشتی )درصد تحقق روزانه ویزیتور"
-            ]
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "007_MTD Visitor Target Percentage",
+            "description": " درصد تحقق ماه تاروز ویزیتور (فروش ناخالص با کسر برگشتی)",
+            "expression": [
+              " ",
+              "                    DIVIDE('VN Fact_Sale'[065_ MTD Amount sales with return deductions] , 'VN Fact_Tour'[004_ MTD Target])",
+              "",
+              "-- درصد تحقق ماه تاروز ویزیتور (فروش ناخالص با کسر برگشتی)"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%"
           }
         ]
       },
