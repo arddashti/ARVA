@@ -2681,7 +2681,8 @@
         "measures": [
           {
             "name": "Target",
-            "expression": " CALCULATE( SUM('VN Fact_Target'[target_amount_per_day]))"
+            "expression": " CALCULATE( SUM('VN Fact_Target'[target_amount_per_day]))",
+            "formatString": "#,#"
           },
           {
             "name": "02__ MTD Target",
