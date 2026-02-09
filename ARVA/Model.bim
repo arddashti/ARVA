@@ -2953,6 +2953,15 @@
               "                    --  درصد تحقق ماه تا روز فروش ناخالص با کسر برگشتی"
             ],
             "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "016_TotalTarger",
+            "description": "تارگت کلی ",
+            "expression": [
+              " sum('VN Fact_Target'[target_amount_per_day])",
+              "--تارگت کلی "
+            ],
+            "formatString": "#,#"
           }
         ]
       },
