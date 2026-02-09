@@ -4210,7 +4210,7 @@
             "name": "08_TotalTarger",
             "description": "تارگت کلی ",
             "expression": [
-              " sum('VN Fact_Target'[target_amount_per_day])",
+              " sum('VN Fact_Tour'[target_amount_per_day])",
               "--تارگت کلی "
             ],
             "formatString": "#,#"
