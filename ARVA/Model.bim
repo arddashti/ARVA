@@ -8814,7 +8814,8 @@
               "                        FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[repairrejected]<>TRUE()))",
               "",
               "       -- محاسبه میانگین مدت زمان تعمیر ))"
-            ]
+            ],
+            "formatString": "#,#"
           },
           {
             "name": "002_Number of receipts accepted",
