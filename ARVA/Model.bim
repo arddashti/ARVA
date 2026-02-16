@@ -8810,12 +8810,17 @@
             "description": "محاسبه میانگین مدت زمان تعمیر ",
             "expression": [
               " ",
-              "        CALCULATE(AVERAGEA('sorooshan servicce_acceptance'[001_Repair Duration (Hour)] ))",
-              "                      --  FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[repairrejected]<>TRUE()))",
-              "",
+              "          AVERAGEA('sorooshan servicce_acceptance'[001_Repair Duration (Hour)] )",
+              "                    ",
               "       -- محاسبه میانگین مدت زمان تعمیر ))"
             ],
-            "formatString": "#,#"
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
           },
           {
             "name": "002_Number of receipts accepted",
