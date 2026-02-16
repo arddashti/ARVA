@@ -8810,8 +8810,8 @@
             "description": "محاسبه میانگین مدت زمان تعمیر ",
             "expression": [
               " ",
-              "        CALCULATE(AVERAGEA('sorooshan servicce_acceptance'[001_Repair Duration (Hour)] ),",
-              "                        FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[repairrejected]<>TRUE()))",
+              "        CALCULATE(AVERAGEA('sorooshan servicce_acceptance'[001_Repair Duration (Hour)] ))",
+              "                      --  FILTER('sorooshan servicce_acceptance','sorooshan servicce_acceptance'[repairrejected]<>TRUE()))",
               "",
               "       -- محاسبه میانگین مدت زمان تعمیر ))"
             ],
