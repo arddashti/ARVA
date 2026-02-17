@@ -13526,13 +13526,6 @@
         "toColumn": "Jalali_1"
       },
       {
-        "name": "2deb8671-5d9c-41dc-ace5-8ca9c3c9c6a6",
-        "fromTable": "PW_Kara",
-        "fromColumn": "Date",
-        "toTable": "BI DIM_DATE",
-        "toColumn": "Date"
-      },
-      {
         "name": "0789e9d5-972c-490b-a637-0e5e032db74b",
         "fromTable": "VN Fact_int_Vocher_Itm_Qty_history",
         "fromColumn": "StockDCRef",
@@ -13630,6 +13623,14 @@
         "toTable": "BI DIM_DATE",
         "toColumn": "Jalali_1",
         "isActive": false
+      },
+      {
+        "name": "e301447a-a473-4911-95e1-aee236010eea",
+        "fromTable": "PWKara_GetRequest",
+        "fromColumn": "001_Em_No_Date",
+        "toTable": "PW_Kara",
+        "toColumn": "012_Em_no_Date",
+        "crossFilteringBehavior": "bothDirections"
       }
     ],
     "roles": [
