@@ -13614,11 +13614,22 @@
         "crossFilteringBehavior": "bothDirections"
       },
       {
-        "name": "2268202a-b46a-4786-978d-ea1dd78348a0",
+        "name": "ac56cadd-bba1-435e-af2d-7ffa984e4f42",
+        "toCardinality": "many",
+        "fromTable": "PW_Kara",
+        "fromColumn": "003_MiladiEnd_Date",
+        "toTable": "PWKara_GetRequest",
+        "toColumn": "001_Em_No_Date",
+        "isActive": false,
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "6424a0f9-8169-48a6-9fde-bf43c239b81d",
         "fromTable": "PWKara_GetRequest",
-        "fromColumn": "001_Em_No_Date",
-        "toTable": "PW_Kara",
-        "toColumn": "012_Em_no_Date"
+        "fromColumn": "StartDate",
+        "toTable": "BI DIM_DATE",
+        "toColumn": "Jalali_1",
+        "isActive": false
       }
     ],
     "roles": [
