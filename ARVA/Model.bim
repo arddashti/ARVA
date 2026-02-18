@@ -13607,14 +13607,6 @@
         "crossFilteringBehavior": "bothDirections"
       },
       {
-        "name": "e301447a-a473-4911-95e1-aee236010eea",
-        "fromTable": "PWKara_GetRequest",
-        "fromColumn": "001_Em_No_Date",
-        "toTable": "PW_Kara",
-        "toColumn": "012_Em_no_Date",
-        "crossFilteringBehavior": "bothDirections"
-      },
-      {
         "name": "ac56cadd-bba1-435e-af2d-7ffa984e4f42",
         "toCardinality": "many",
         "fromTable": "PW_Kara",
@@ -13625,11 +13617,20 @@
         "crossFilteringBehavior": "bothDirections"
       },
       {
-        "name": "66b596c1-30c0-416b-91a2-efc1fd16c3da",
+        "name": "cd5a778d-53e7-45c1-b509-d2d56e0bf966",
+        "toCardinality": "many",
+        "fromTable": "PWKara_GetRequest",
+        "fromColumn": "001_Em_No_Date",
+        "toTable": "PW_Kara",
+        "toColumn": "012_Em_no_Date",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "921971fb-08d8-4373-a297-2a9169c2c882",
         "fromTable": "PW_Kara",
-        "fromColumn": "003_MiladiEnd_Date",
+        "fromColumn": "Date",
         "toTable": "BI DIM_DATE",
-        "toColumn": "Jalali_1"
+        "toColumn": "Date"
       }
     ],
     "roles": [
