@@ -12211,9 +12211,10 @@
                 "    #\"Filtered Rows11\" = Table.SelectRows(#\"Filtered Rows10\", each [Emp_No] <> 115788),",
                 "    #\"Filtered Rows12\" = Table.SelectRows(#\"Filtered Rows11\", each [Emp_No] <> 115836),",
                 "    #\"Filtered Rows13\" = Table.SelectRows(#\"Filtered Rows12\", each [Emp_No] <> 116309),",
-                "    #\"Filtered Rows14\" = Table.SelectRows(#\"Filtered Rows13\", each [Emp_No] <> 10)",
+                "    #\"Filtered Rows14\" = Table.SelectRows(#\"Filtered Rows13\", each [Emp_No] <> 10),",
+                "    #\"Filtered Rows15\" = Table.SelectRows(#\"Filtered Rows14\", each [Emp_No] <> 14)",
                 "in",
-                "    #\"Filtered Rows14\""
+                "    #\"Filtered Rows15\""
               ]
             }
           }
