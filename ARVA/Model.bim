@@ -8786,6 +8786,22 @@
               "",
               " -- اضافه شدن نام سرویس مرکزی"
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "008_RegnameGroup",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "  IF('sorooshan servicce_acceptance'[regname] = \"مجيد منتظري\" ||",
+              "     'sorooshan servicce_acceptance'[regname] = \"سهيلا نعمتي\"||",
+              "      'sorooshan servicce_acceptance'[regname] = \"معصومه جليلوند\"||",
+              "       'sorooshan servicce_acceptance'[regname] = \"کيميا قهرماني\", \"CRM\" ,",
+              "                               'sorooshan servicce_acceptance'[regname])",
+              "",
+              "-- گروه بندی CRM"
+            ]
           }
         ],
         "partitions": [
