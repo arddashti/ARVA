@@ -8802,6 +8802,19 @@
               "",
               "-- گروه بندی CRM"
             ]
+          },
+          {
+            "type": "calculated",
+            "name": "009_BlankExit",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": [
+              "",
+              "",
+              "   if( 'sorooshan servicce_acceptance'[s_exitdate] =BLANK() , 1 , 0)",
+              "",
+              "--تاریخ خالی بایگانی "
+            ]
           }
         ],
         "partitions": [
@@ -8862,12 +8875,20 @@
             "description": "تعداد دستگاه تعمیر نشده",
             "expression": [
               " ",
-              "        CALCULATE( ",
-              "                     DISTINCTCOUNT('sorooshan servicce_acceptance'[cncode]) ,",
-              "                             'sorooshan servicce_acceptance'[004_BlankRepairDate]=1,",
-              "                  ",
-              "                               USERELATIONSHIP('BI DIM_DATE'[Jalali_1], 'sorooshan servicce_acceptance'[s_enterdate]))",
-              "     -- تعداد دستگاه تعمیر نشده (تعداد تعمیر نشده از تعداد پذیرش شده در همان ماه "
+              " ",
+              "CALCULATE(",
+              "    DISTINCTCOUNT('sorooshan servicce_acceptance'[cncode]),",
+              "    FILTER(",
+              "        'sorooshan servicce_acceptance',",
+              "        'sorooshan servicce_acceptance'[004_BlankRepairDate] = 1",
+              "            && 'sorooshan servicce_acceptance'[009_BlankExit] = 1",
+              "    )",
+              ",",
+              "   USERELATIONSHIP(",
+              "        'BI DIM_DATE'[Jalali_1],",
+              "       'sorooshan servicce_acceptance'[s_enterdate]",
+              "    ))",
+              "     -- تعداد دستگاه تعمیر نشده (تعداد تعمیر نشده از تعداد پذیرش شده در همان ماه"
             ],
             "formatString": "#,#"
           },
